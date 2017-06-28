@@ -2,13 +2,13 @@
 <html lang="zh">
 <head>
     <meta charset="utf-8">
-    <title>title</title>
+    <title>覆盖css</title>
     <meta name="description" content="newhuan">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="renderer" content="webkit">
     <link rel="stylesheet" href="http://www.newhuan.info/css/app.css">
-    <script src="../../../../js/app.js"></script>
+    <script src="http://www.newhuan.info/js/app.js"></script>
     <meta name="apple-mobile-web-app-title" content="newhuan">
 </head>
 <body class="body body-article">
@@ -16,7 +16,7 @@
     <div class="full-header">
         <div class="container">
             <div class="logo">
-                <a href="http://www.newhuan.info/" title="newhuan" alt="newhuan">首頁</a>
+                <a href="../../../index.html" title="newhuan" alt="newhuan">首頁</a>
             </div>
 
             <div class="nav">
@@ -28,43 +28,24 @@
     <div class="full-container">
         <div class="container">
             <div class="content">
-                <h1 class="title">聊聊 CSS 預處理器，LESS、Sass、Stylus 及 postCSS</h1>
-                <h3 class="date">20150912</h3>
+                <h1 class="title">js覆盖css</h1>
+                <h3 class="date">20170628</h3>
                 <div class="clearfix typo">
-                    <p><img src="http://7xls5g.com1.z0.glb.clouddn.com/talk-about-css-preprocessor.png" alt="LESS, Sass, Stylus, postCSS" /></p>
-
-                    <h2>先說結論</h2>
-
-
-                    <p> <a href="http://lesscss.org/"><strong>LESS</strong></a></p>
-
-                    <p><a href="http://code.tutsplus.com/tutorials/sass-vs-less-vs-stylus-a-preprocessor-shootout--net-24320">Sass vs. LESS vs. Stylus: Preprocessor Shootout</a>。</p>
-
-
-                    <h3>「舊式」樣式復用</h3>
-
-
-                    <pre><code>&lt;div class="
-                        pd25
-                    "&gt;
-                        halo
-                    &lt;/div&gt;
-                    </code></pre>
-
-
-                    <blockquote>
-                        <p></p>
-                    </blockquote>
-
-                    <h2></h2>
-
-                    <p></p>
-
-                    <h2></h2>
-
-                    <p><code></code> </p>
-
-                    <p></p>
+                    <p>因为js不能修改css文件，所以不能修改无法获取的dom元素的属性和当前不存在页面中的元素的属性，比如:before和:after伪类和懒加载添加的元素。</p>
+                    <p>这里提供一种比较简单粗暴但是十分有效的解决方案：</p>
+                    <p>动态生成style标签，在style标签中把原css属性覆盖掉，然后将生成的style标签添加到head标签中。嗯，简单，粗暴，有效！僕の美學！下面是示例：</p>
+                    <pre>
+                        <code>
+    let styleInner = `
+                .cross::before{background-color:#a2abfe}
+                .cross::after{background-color:#a2abfe}
+                a.cur{color:#a2abfe!important;}
+            `;
+    let $style = document.createElement("style");
+    $style.innerHTML = styleInner;
+    document.querySelector('head').append($style);
+                        </code>
+                    </pre>
 
                 </div>
             </div>
@@ -123,4 +104,7 @@
         }
     }
     function __w(s,n){document.write("<sc"+"ript src='"+s+"'></scr"+"ipt>");document.write(__h+n+__b);}
+</script>
+<script>
+
 </script>
