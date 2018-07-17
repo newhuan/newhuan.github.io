@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>vim复制粘贴剪切到不同的剪切版</title>
+    <meta name="description" content="newhuan">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="http://www.newhuan.name/css/app.css">
+    <script src="http://www.newhuan.name/js/app.js"></script>
+    <meta name="apple-mobile-web-app-title" content="newhuan">
+</head>
+<body class="body body-article">
+
+    <div class="full-header">
+        <div class="container">
+            <div class="logo">
+                <a href="http://www.newhuan.name/blog" title="newhuan" alt="newhuan">首頁</a>
+            </div>
+
+            <div class="nav">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="full-container">
+        <div class="container">
+            <div class="content">
+                <h1 class="title">vim复制粘贴剪切到不同的剪切版</h1>
+                <h3 class="date">20180717</h3>
+                <div class="clearfix typo">
+                    <p>对Unix系统下vim复制粘贴剪切以及剪切版的一些总结。</p>
+                    <p>vim中包含多个剪切版，<code>:reg</code>命令可以查看当前所有剪切版的内容。</p>
+                    <p>vim中，<code>"</code>是选择剪切版的命令，如<code>"+</code>就是使用<code>+</code>代表的系统剪切版。</p>
+                    <p><code>Tip:<code>+</code>代表系统剪切版，<code>*</code>代表vim自己的剪切版</code></p>
+                    <p>选择剪切板的命令可以和复制粘贴剪切命令一起使用。</p>
+                    <p>vim中<code>y</code>是复制命令，<code>p</code>是粘贴命令，<code>d</code>是剪切命令，这三个命令可以跟在选择剪切版命令之后使用，如<code>"+y</code>就是先选择系统剪切版，然后复制，即复制选中内容到系统剪切版。<code>"+p</code>就是粘贴系统剪切版内容到光标处。<code>"+yy</code>也类似的就是复制当前行到系统剪切板。</p>
+                    <p><code>Tip:大部分系统Vim默认不支持系统剪切板，需要在.vimrc文件中添加set cilpboard=unamed启用系统剪切板，启用成功则:reg命令中会显示+号剪切板</code></p>
+                    <p>复制粘贴可以配合<code>v</code>命令进入可视模式达到复制选中部分的功能，步骤如下：</p>
+                    <p>1. v命令进入可视模式，选中想要复制或剪切的内容</p>
+                    <p>2. <code>"</code>命令选择剪切板，如 <code>"+</code>选择系统剪切板</p>
+                    <p>3. 输入复制或剪切命令,如<code>y</code>复制选中内容。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="full-footer">
+        <div class="container">
+            <div class="copyright">
+                © 2018&nbsp;
+                <a href="http://www.newhuan.name/blog/" target="_blank">newhuan</a>&nbsp;by&nbsp;
+            </div>
+
+            <div class="hm hidden">
+                <script type="text/javascript">
+                    var _hmt = _hmt || [];
+                    (function() {
+                        var hm = document.createElement("script");
+                        hm.src = "//hm.baidu.com/hm.js?63392a0ec51d4ad23453b82650af1329";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                    })();
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script src="http://www.newhuan.name/js/import.js"></script>
