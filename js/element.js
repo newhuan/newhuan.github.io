@@ -21,8 +21,7 @@ var nodes = [
     { type: "meta", attributes: { "http-equiv": "X-UA-Compatible", content: 'IE=edge' } },
     { type: "meta", attributes: { name: "viewport", content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' } },
     { type: "meta", attributes: { name: "renderer", content: 'webkit' } },
-    { type: "meta", attributes: { name: "apple-mobile-web-app-title", content: 'newhuan' } },
-    { type: "link", attributes: { rel: "stylesheet", href: root + 'css/app.css' } },
+    { type: "meta", attributes: { name: "apple-mobile-web-app-title", content: 'newhuan' } }
 ]
 var fragment = document.createDocumentFragment();
 for ( var i = 0, len = nodes.length; i < len; ++i  ) {
@@ -118,8 +117,13 @@ function getElement( data ) {
 }
 
 window.onload = function (ev) {
-    var $body = document.body;
-    $body.className = "body body-article";
-    $body.append( getElement( $footer ) );
-    $body.prepend( getElement( $header ) );
+    var $body = document.body,
+        className = $body.className;
+    if ( className === "" ) {
+        $body.className = "body body-article";
+    }
+    if ( !/katana-body/.test( className ) ) {
+        $body.append( getElement( $footer ) );
+        $body.prepend( getElement( $header ) );
+    }
 }
