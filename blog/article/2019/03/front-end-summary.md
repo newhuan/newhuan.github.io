@@ -52,7 +52,7 @@ JA： https://shimo.im/docs/4YbNrdthPX0nH4JX
 
 ## 做出来的效果
 
-轻流： http://121.43.61.190:4202/user/login
+轻流： http://localhost:4202/user/login
 
 JA： http://localhost:8000/sync-ws
 
