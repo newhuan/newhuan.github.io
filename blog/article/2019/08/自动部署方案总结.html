@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <link rel="stylesheet" href="http://www.newhuan.name/css/app.css">
+    <script src="http://www.newhuan.name/js/element.js"></script>
+</head>
+<body class="body body-article">
+
+    <div class="full-container">
+        <div class="container">
+            <div class="content">
+                <h1 class="title">jenkins结合github webhook持续集成方案总结</h1>
+                <h3 class="date">20190804</h3>
+                <div class="clearfix typo">
+                  <h3>主要步骤</h3>
+                  <p>1. 成员在github上提交 pull request</p>
+                  <p>2. github webhook将pr信息发送到jenkins</p>
+                  <p>3. 在jenkins中根据pr的编号获取pr的base和head分支, 判断如果base分支是[master]或者[1.0.1]这样的版本分支,那么用github openApi生成一个base为develop, head为源pr的head分支,然后用github openApi merge这个base为develop的分支,如果源pr的base不匹配.则什么都不做</p>
+                  <p>4. 在jenkins监听develop分支的push行为(用github的webhook),当develop分支被push的之后,根据dev分支重新部署测试版</p>
+                  <p>5. 自动部署dev分支的方法结束后,触发下级任务,下级任务用jenkins openApi,获取最后一个部署测试版任务的结果状态,如果部署失败,向某个地方发送请求(现行的是Q-Source),通知项目负责成员测试版部署失败</p>
+
+                  <h3>每步详解</h3>
+                  <h4>1. 安装jenkins</h4>
+                  <p>根据 <a href="https://jenkins.io/zh/doc/book/installing/">安装文档</a>本地部署jenkins</p>
+                  <p>安装完jenkins后,在jenkins -> 系统管理 -> 插件管理 -> 可安装: 安装 GitHub Pull Request Builder 1.42.0, 用于接口pull request 的webhook</p>
+                  <p>在有项目管理权限的github用户的 personal setting -> developer setting -> personal accesstoken 生成一个含有: repo,admin:repo_hook,admin:org_hook三个大类权限的accessToken(最好是系统账户,不要绑定个人)</p>
+                  <h4>2. 添加凭证</h4>
+                  <p>在系统管理 -> 凭证 -> 系统 -> 全局凭证 -> 添加凭据, 添加一个类型是Username with password 范围全局的新凭证,将刚才得到的accessToken填写到ID中,用户名可以随便定,密码不用填写</p>
+                  <p>和上一步一样的位置,添加一个类型是secret text,范围全局的新凭证,在secret中填写某个有测试服务器访问权限的ssh pub key, id可以随便填写,描述不用填,这个用户部署测试版的时候作为部署shell的环境变量使用</p>
+
+                  <h4>3. 系统配置</h4>
+                  <p>如果要指定jenkins接收github webhook的url,则在GitHub配置处,选择高级,勾选覆盖Hook Url,指定一个新的url用于接收hook,如[http://***.***.***.***:****/github-webhook/], 然后复制新的url,到github项目setting -> webhook添加一个选中了pushes 和pull requests, issue comments的webhook</p>
+                  <p>如果正确安装了插件[GitHub Pull Request Builder], 则系统配置出会出现同名的配置项, server url填写 https://api.github.com, [Credentials]选择刚才添加的accessToken, 勾选	Auto-manage webhooks, [Admin list]里填写项目所有成员的github用户名,换行符分割</p>
+                  <p>可以点击test credentials测试凭证是否生效</p>
+
+                  <h4>4. 配置pull request</h4>
+                  <p>在jenkins添加一个新的自动项目,general中选中[GitHub 项目], 填入项目url,如[https://github.com/[MyOrg]/my-repo/]</p>
+                  <p>源码管理: 选择[Git], 填入[Repository URL], 如: [git@github.com:[MyOrg]/my-repo.git], Credentials选择刚才添加的accessToken, 然后点击[高级], Name填写: [origin], [Refspec]填写[+refs/pull/${ghprbPullId}/*:refs/remotes/origin/pr/${ghprbPullId}/*]</p>
+                  <p>	[Branches to build]填写[${ghprbActualCommit}]</p>
+                  <p>[构建触发器]: 勾选[GitHub Pull Request Builder](如果插件安装成功这里会有), 勾选[Use github hooks for build triggering],然后点击高级</p>
+                  <p>[Trigger phrase]: 指定在github的pr里评论什么内容的时候会再次触发这个任务,如[.*(re)?deploy dev.*] 标识评论deploy dev开头的文本时,再次触发此任务</p>
+                  <p>[	Admin list]: 存疑: 随便填一个不在项目内的成员昵称就行了</p>
+                  <p>[White list]填写所有可以触发此任务的github成员的github帐号名,换行分隔</p>
+                  <p>[	List of organizations. Their members will be whitelisted.]这里填写的人的pr不会触发此任务(存疑: 随便填一个不在项目内的成员昵称就行了)</p>
+                  <p>[	Trigger Setup ]: 点击后新增一个[Update commit status during build], 添加context, 作为名称, build result里添加两个分别标识SUCCESS和ERROR的result,messgae里填写提示文本</p>
+                  <p>[构建]: 选择执行shelll, 此时shell中自动注入了环境变量 [ ${sha1} ] 代表pr信息如: [origin/pr/5967/merge] ,可以通过它提取pr编号, 用github openApi根据pr编号获取pr的head和base分支名称以及pr提交人的github昵称, 然后筛选base分支,符合添加的话用github openApi生成一个把head分支merge到dev的pull request, 然后用github openApi合并这个到develop分支的pr, 根据merge请求返回的信息,如果merge失败,则向pr提交人发送一个通知</p>
+                  <p>实例build shell在末尾,通知使用轻流的Q-Source</p>
+
+                  <h4>5. 配置develop分支 push监听</h4>
+                  <p>在jenkins添加一个新的自动项目,general中选中[GitHub 项目], 填入项目url,如[https://github.com/[MyOrg]/my-repo/]</p>
+                  <p>源码管理: 选择[Git], 填入[Repository URL], 如: [git@github.com:[MyOrg]/my-repo.git], Credentials选择刚才添加的accessToken,然后[	Branches to build] 填写develop(或者其他想要build的分支)</p>
+                  <p>[构建触发器]勾选[GitHub hook trigger for GITScm polling]</p>
+                  <p>[构建环境] 勾选 [Use secret text(s) or file(s)] 将一开始添加的secretText添加绑定</p>
+                  <p>[构建]: 添加自动部署测试版的脚本, 此处不提供示例代码</p>
+
+                  <h4>6. 配置develop分支部署后如果失败则发送通知</h4>
+                  <p>在jenkins添加一个新的自动项目,什么都不用配置,直接选择[构建]添加构建shell</p>
+                  <p>示例shell在文末</p>
+                  <p>保存后回到第五步添加的任务,在[构建后操作]操作选择[构建其他工程],填入第六步新建的任务</p>
+                  <p>所有配置至此结束</p>
+
+                  <h3>请回到[主要步骤]再读一遍</h3>
+
+                  <h3>以下是示例代码</h3>
+                  <p>pull request build shell</p>
+                    <pre><code>
+#!/bin/bash
+set -e
+# run lint test
+echo "run lint test"
+echo ${sha1}
+prnum=$(echo ${sha1} | cut -d "/" -f 3)
+url="https://api.github.com/repos/[MyOrg]/[my-repo]/pulls/$prnum?access_token=[githubAccessToken]&state=all"
+infos=$(curl -X GET ${url} | jq '.base.ref , .head.ref, .user.login')
+echo ${infos}
+base=$(echo ${infos} | cut -d " " -f 1)
+head=$(echo ${infos} | cut -d " " -f 2)
+name=$(echo ${infos} | cut -d " " -f 3)
+echo ${base}
+echo ${head}
+echo ${name}
+headbranch=$(echo $head | cut -d "\"" -f 2)
+
+if [[ $base =~ ^\"[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}\"|\"master\"$ ]]; then
+     curl -X POST \
+     'https://api.github.com/repos/[MyOrg]/[my-repo]/pulls?access_token=[githubAccessToken]' \
+     -H 'cache-control: no-cache' \
+     -H 'content-type: application/json' \
+     -d '{  "title": "ci auto merge '$headbranch' into develop", "body": "ci auto merge", "head": '$head', "base": "develop" }'
+
+     info=$(curl -X POST \
+    'https://api.github.com/repos/[MyOrg]/[my-repo]/merges?access_token=[githubAccessToken]' \
+    -H 'cache-control: no-cache' \
+    -H 'content-type: application/json' \
+    -d '{  "head": '$head',"base": "develop" }')
+
+    echo $info
+    merged=$(echo $info | jq '.merged')
+    # notify
+    realname=$(echo ${name} | cut -d '"' -f 2)
+    # 这个js脚本是根据github昵称获取对应邮箱的方法,需要自己维护
+    email=$(node '/home/jenkins/shells/notifyfe.js' $realname)
+    echo $realname
+    echo $email
+    if [[ $merged == null ]] || [[ $merged == false ]] || [[ $merged == undefined ]] || [[ !$merged ]]; then
+        echo error
+        curl -X POST \
+          https://qingflow.com/api/qsource/[qingflowQSourceAccessToken] \
+          -H 'cache-control: no-cache' \
+          -H 'content-type: application/json' \
+          -d '{  "user": '$email', "base": '$base', "head": '$head' }'
+    else
+        echo success
+    fi
+fi
+
+
+
+echo "SUCCESS"
+                    </code></pre>
+                  <p>after build develop notify shell</p>
+                    <pre><code>
+#!/bin/bash
+echo 'after-build-dev'
+# 获取部署测试版任务最后一次运行的结果
+info=$(curl -X GET \
+  http://[jenkinsUrl]/job/[build-deb-job-name]/lastBuild/api/json \
+  -H 'authorization: Basic [authorization-info(username&password -base64)]' \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' )
+  echo $info
+  result=$(echo $info | jq ".result")
+  echo $result
+  author=$(echo $info | jq ".changeSet.items[0].author.fullName" | cut -d '"' -f 2)
+  # 这个js脚本是根据github昵称获取对应邮箱的方法,需要自己维护
+  email=$(node '/home/jenkins/shells/notifyfe.js' $author)
+  echo $author
+  echo $email
+  if [[ $result != null ]]; then
+      echo notnull
+      if [[ $result == '"FAILURE"' ]]; then
+          echo failure
+          curl -X POST \
+            https://qingflow.com/api/qsource/[qingflowQSourceAccessToken] \
+            -H 'cache-control: no-cache' \
+            -H 'content-type: application/json' \
+            -d '{project: "fe"}'
+      fi
+  fi
+  echo "notify end"
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
