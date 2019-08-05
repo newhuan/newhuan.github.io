@@ -1,0 +1,2 @@
+# 重新下载公钥即可
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys [无法验证的公钥]

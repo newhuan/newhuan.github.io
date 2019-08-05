@@ -1,0 +1,26 @@
+#change root password
+mysqladmin -u root  -p password 
+
+================================================
+#run .sql file
+mysql -u root -p test[db name] < ~/db/sqls/mysql_scripts/create.sql
+
+===================================================
+default port: 3306
+
+==============================================
+#browser all databases:
+show databases;
+
+#browser tables after [use] a database;
+show tables;
+#browser all columns in a table
+show columns from [tableName];
+or: describe [tableName];
+
+==============================================
+select DISTINCT(distinct): broswe unique values
+
+============================================
+
+

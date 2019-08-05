@@ -1,0 +1,40 @@
+"ACCESSKEY": "LTAIOr9Mabxkc6Ac",
+"SECRETKEY": "DgAec3MT6ATK0FpkRPipEXMegDDykx",
+"ENDPOINT": "https://devcdn.mitures.com/",
+"BUCKETNAME": "hwpuyvkn",
+
+
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-bottom: 10px;
+    color: #999;
+
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-bottom: 10px;
+    color: #999;
+
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 8px;
+
+    position: absolute;
+    width: 102px;
+    height: 140px;
+    top: 27px;
+    left: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding-top: 14px;

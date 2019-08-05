@@ -1,0 +1,96 @@
+我们信任您已经从系统管理员那里了解了日常注意事项。
+总结起来无外乎这三点：
+
+    #1) 尊重别人的隐私。
+    #2) 输入前要先考虑(后果和风险)。
+    #3) 权力越大，责任越大。
+
+add user:
+root: adduser [userName]; 
+!root: sudo adduser [userName];
+
+---------------------------------
+授予用户Sudo权限:
+root: visudo
+!root: sudo visudo
+```
+# User privilege specification
+root        ALL=(ALL:ALL) ALL
+newuser    ALL=(ALL:ALL) ALL
+```
+为了将用户添加到新组:
+usermod -aG sudo(groupName) [userName]
+
+-----------
+change user:
+su - newuser
+
+------------------
+delete user:(该--remove-home选项将删除用户的主目录中)
+sudo deluser --remove-home username
+
+------------------------
+show groups user belong to:
+groups [userName]
+
+--------------------
+show out ip address
+sudo curl ifconfig.me
+
+-------------------------
+rsync:
+copy local files:
+rsync -a  ./test.c  /backup
+
+transpot file from local to remote server using ssh:
+rsync -a [local file path] [user]@[ip]:~/www[remote file path]
+
+transpot file from remote to local using ssh:
+rsync -avz [user]@[ip]:[remote file path]  [local file path]
+
+list remote server's file list:(fail)
+rsync -v rsync://172.16.78.192  /www 
+
+---------------------
+mv
+change directory's name or move files
+    mv [选项] 源文件或目录 目标文件或目录
+    
+---------------------
+show the largest 10 files in ~
+du -a ~ | sort -n -r | head -n 10
+
+----------------------------------------
+reboot & poweroff // must use sudo
+sudo reboot -h now // options can be changed to set reboot time
+sudo poweroff -h now
+suod shutdown -h now
+
+----------------------------
+PATH=$PATH:~/softwares  :set env variables ,spliter is :
+
+---------------------------------------
+复制oldname的主目录到/home/newname，同时将/home/newhuan设置为用户newhuan的主目录&&将oldname group修改为newname group
+usermod -l newname -d /home/newname -m oldname && groupmod -n newname oldname
+
+---------------------------------
+系统更新
+sudo apt-get update
+sudo apt-get upgrade//系统将现有的Package升级,如果有相依性的问题,而此相依性需要安装其它新的Package或影响到其它Package的相依性时,此Package就不会被升级,会保留下来. 
+sudo apt-get dist-upgrade//可以聪明的解决相依性的问题,如果有相依性问题,需要安装/移除新的Package,就会试着去安装/移除它. (所以通常这个会被认为是有点风险的升级) 
+-------------------
+清理缓存
+sudo apt-get autoremove
+sudo apt-get autoclean
+sudo apt-get clean
+-------------------------
+创建用户，设置密码，将用户添加到sudo
+useradd -m newName
+passwd newName
+usermod -a -G sudo newName 
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+ desktop short配置目录：
+ 公共： usr/share/applications
+ 当前用户： ~/.local/share/applications
+
+ 如果需要新增桌面快捷方式，在上述任一目录下新增[new-shortcut].desktop文件
+ 文件示例：
+[Desktop Entry]
+# 文件归类
+Categories=Development;IDE; 
+Comment[zh_CN]=The Drive to Develop
+Comment=The Drive to Develop
+# 点击icon执行的文件
+Exec="/opt/idea/bin/idea.sh" %f
+GenericName[zh_CN]=
+GenericName=
+# 快捷方式icon图片路径
+Icon=/opt/idea/bin/idea.png
+MimeType=
+# 快捷方式名称
+Name[zh_CN]=IntelliJ IDEA
+Name=IntelliJ IDEA
+Path=
+StartupNotify=true
+StartupWMClass=jetbrains-idea
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

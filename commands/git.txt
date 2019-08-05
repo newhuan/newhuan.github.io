@@ -1,0 +1,103 @@
+ 变基原则：
+ 只对尚未推送或分享给别人的本地修改执行变基操作清理历史，从不对已推送至别处的提交执行变基操作
+  -------------------------
+git 区域结构
+工作目录 --add->  暂存区 --commit->  本地仓库 <=fetch == push=> 远程仓库
+- commit时只检查暂存区
+-------------------------
+diff workspace和stage area:
+git diff
+diff latest commit 和stage area:
+git diff --staged
+-------------------------
+meger操作有冲突时，中断merge
+git merge --abort
+-------------------------
+ HEAD
+ 指向当前所在的本地分支
+ -------------------------
+ 同步他人创建的远程分支或tag
+ git fetch
+ -------------------------
+ 当前修改不够作为一次commit但是需要切换分支时，暂存区的修改保存到stash中
+ git stash save
+ 返回原分支是应用stash中暂存的diff
+ git stash apply
+  -------------------------
+ 修改commit message：
+ git commit --amend
+ -------------------------
+ 撤销对某文件的修改
+ git checkout -- <file>
+  -------------------------
+  将本地分支推送到远程仓库同时将本地分支追踪到该远程分支
+  git push --set-upstream [origin] [remoteBranch]
+  --set-upstream 也可以用 -u替换，两者等效
+  [origin]: 远程仓库的名字 可通过git remote -v 查看
+  [remoteBranch]: 如果是要创建新的远程分支，用这种方法只能使用和要推送的本地分支一样的名字
+  -------------------------
+  创建tag
+  git tag -a [tagName] -m [tagMessage] [commit sha/branch name]
+  不加最后的commit sha或branch name 则根据当前HEAD指针的指向创建tag，否则根据对应的commit或branch的最后一个指针创建tag
+   -------------------------
+   根据tag/commit创建并切换到新的本地分支
+  git checkout -b [newBranchName] [tagName/commitSHA]
+   -------------------------
+   取消对暂存区和仓库中对某文件的追踪
+   git rm <file>
+   此后再创建和被删除的文件的同名文件就不会和此前被删除的文件有关系了
+    -------------------------
+    取消对某文件的暂存：
+    git reset HEA -- <file>
+   -------------------------
+   展示但前分支的路径：
+   git log --graph
+    -------------------------
+ 
+ 
+git remote add mirror[pathName] git@github.com:newhuan/testMirror.git[path]
+
+git remote remove origin[pathName]
+
+git remote -v //show all paths can push
+
+git push --set-upstream mirror master //set remote branch for current local branch  
+
+Command line instructions
+
+Git global setup
+git config --global user.name "newhuan"
+git config --global user.email "newhuan2017@gmail.com"
+
+Create a new repository
+git clone 
+https://gitlab.com/newhuan/test.git
+
+cd test
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+
+Existing folder
+cd existing_folder
+git init
+git remote add origin 
+https://gitlab.com/newhuan/test.git
+
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+Existing Git repository
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin 
+https://gitlab.com/newhuan/test.git
+git push -u origin --all
+git push -u origin --tags
+
+//local branch
+git push origin [local branch name]//push local branch to remote
+git push --set-upstream origin [remote branch name]//connect cur local branch with remote branch
+

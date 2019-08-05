@@ -1,0 +1,75 @@
+ 
+ssh -qTfnNC -L 15432:127.0.0.1:5432 mituresdev2@106.14.12.233   
+
+password: KCpyJCtJFJ7KzhA ( old : F7sKy8WWXRvC6ak )
+postgres://mituresdev2:WhzHcW2P46FNpPX@106.14.12.233:5432/mituresdev2( old:Vvaa9cHSUGgksWY )
+( pwd add v )
+
+psql -U [userName] -d [dbName] -h 127.0.0.1 -p 5432(-h: host)(-p: port) //connect to pg
+sudo -u postgres createdb -O [userName] [dbName] //create pg user
+
+ssh -qTfnNC -L 5432( local port=> can be other port ):127.0.0.1:5432(server port) mituresdev2(userName)@106.14.12.233   
+pwd: F7sKy8WWXRvC6ak
+ --------------------------------------------------------------------------------------------------------------
+ sudo su - postgres 
+=> change to user: postgres
+
+sudo -u postgres -p 5434
+
+pg_lsclusters : show ports used by postgreSQL
+
+psql - U [pg_username] -d [pg_dbName] -h 127.0.0.1 -p [prot] 
+(default is 5432, in this pc is 5434, check with command "pg_lsclusters");
+
+pg_dump -h 127.0.0.1 -p 15432 -U mituresdev2 -o -f ~/baks/mituresdev2_bak_10_20 => make a bak of database
+
+create user [userName] with password '[userPwd]';
+// create a dbUser with password; 
+
+create database [dbName] owner [dbUserName]; 
+//create a database and sign it to a dbsuer
+
+grant all privileges on database [dbName] to [dbUserName]; 
+//gran all privileges of a database to a dbuser
+
+------------------------------------------------------------
+ssh -qTfnNC -L 15432:127.0.0.1:5001 proxy@106.14.12.233
+ssh://proxy:KwN4zA5XtFfCPb2@106.14.12.233
+postgresql://mituresdev:p7gghpTn3rw4PcD@106.14.12.233:5001/mituresdev
+
+ssh -qTfnNC -L 15432:127.0.0.1:5001 mituresdev@106.15.199.117
+ssh://mituresdev:Fv94sKuHFeAHjFJ@106.15.199.117
+redis://106.14.12.233:6001
+postgresql://mituresdev:p7gghpTn3rw4PcD@106.14.12.233:5001/mituresdev
+
+
+----------------------------------------------
+ssh://mituresdev:Fv94sKuHFeAHjFJ@106.15.199.117
+redis://127.0.0.1:6001
+postgresql://mituresdev:QaLEtzZGUXp3cCg@127.0.0.1:5001/mituresdev
+
+-----------------------------------------------------
+delete from beautyavatars a1 using beautyavatars a2
+where a1.ctid < a2.ctid and a1.avatar = a2.avatar;
+//delete duplicated avatar
+
+-------------------------------------------
+mituresrb: ZeW88z6RYN4VuyZ 106.15.199.117
+ssh-copy-id -i [local pubkey path] [userName]@[remote ipAddress]
+
+
+postgresql://mituresdev:QaLEtzZGUXp3cCg@127.0.0.1:5000/mituresdev
+
+
+psql -U mituresdev -h 127.0.0.1 -p 15432 -d mituresdev [QaLEtzZGUXp3cCg]
+
+ssh -p 222 mituresrb@106.15.199.117 ==> robot machine:10.0.0.11
+
+delete from robot_square_moment_data t1 using robot_square_moment_data t2 where t1.id < t2.id and t1.srcs = t2.srcs and t1.srcs <> '[]' and t2.srcs <> '[]';
+select count(*) from robot_square_moment_data group by srcs having count(srcs)>1 and srcs <> '[]' order by srcs;
+select count(*)from robot_square_moment_data where topic='搞笑';
+
+106.15.202.29
+psql -U mituresrb -h 127.0.0.1 -p 5000 -d mituresrb [qUvG3x7HZUrZCvp]
+ssh -qTfnNC -L 5000:127.0.0.1:5000 mituresdev@106.15.202.29[uUhVYJ8FGar5V3y]
+ssh mituresrb@106.15.202.29
