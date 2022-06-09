@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>06程序员的修炼之道（第二版）总结</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h3 id='程序员的修炼之道第二版）总结'><span>程序员的修炼之道（第二版）总结</span></h3><p><span>2021-06-05</span></p><p><span>你要为自己的人生做主，精心营造，与人分享，为之喝彩，好好享受把。</span></p><h4 id='第二版看了之后新的收获主要有'><span>第二版看了之后新的收获主要有</span></h4><ol start='' ><li><span>什么是优秀的设计(价值观，指导方法)：更易于修改：ETC (Easier To Change)</span></li><li><span>版本管理能用尽量用</span></li><li><span>项目术语表是个好东西</span></li><li><span>用户并不真的知道自己的需求是什么，程序员的工作就是帮助客户理清楚真正的需求是什么</span></li><li><span>提问，澄清，决策和演示。讨论，做笔记，思考，编码的同一时刻提问和讨论</span></li><li><span>按照代码期待的样子来组织团队</span></li><li><span>敏捷有关你如何做事，谈的是对变化的响应：弄清楚你在哪里，朝想去的方向迈出有意义的最小一步，评估在哪里终结，把弄坏的东西修好</span></li><li><span>不持续对流程做实验的团队不是敏捷团队：持续对流程做实验</span></li><li><span>版本控制，测试和自动化</span></li><li><span>团队的工作：旧系统的维护，流程的反思和精炼，实验新技术，学习和提升技能,即时的沟通，组织全功能的团队，将一切自动化</span></li><li><span>环境不同需要应用的方法不同，创立方法的团队也会在演进中更新方法，变通、更新、与环境俱进才是方法生效的原因（调整）</span></li><li><span>版本控制，回归测试，完全自动化</span></li><li><span>使用版本控制来驱动构建、测试和发布</span></li><li><span>取悦用户，用户只是想要在预算范围内解决遇到的业务问题，而不是需要代码。</span></li><li><span>在生产环境尽可能多的收集信息</span></li><li><span>复用的追求就是，复用，灵活拓展，不付出额外的东西：接口和协议，委托，mixin</span></li><li><span>解决问题的前提是找到问题的所有环境变量，找到真正的限制是什么</span></li><li><span>维持小而稳定的团队</span></li><li><span>测试追求的时状态的覆盖率，而不是代码的覆盖率</span></li><li><span>自动化非常重要，能自动做的事情让机器自动做（搞清楚机器做了什么）</span></li><li><span>程序员被老板要求做坏事也是会被追责的</span></li><li><span>传达信息的过程才算交流：对方的反应即沟通的意义</span></li><li><span>日记本</span></li><li><span>尽早崩溃</span></li><li><span>通过分析工作流来提高并发性</span></li><li><span>测试的主要收益来自于思考和编写测试期间，这期间会如何思考问题</span></li><li><span>感觉有问题或者有什么地方不对的时候，给自己一点时间，让大脑自我组织。</span></li></ol><p>&nbsp;</p><h4 id='重温已经看过的仍觉得很有价值'><span>重温已经看过的，仍觉得很有价值:</span></h4><ol start='' ><li><span>做推动变革的催化剂</span></li><li><span>永远留意着大局，持续不断的审视你身边发生的事情，而不要只专注个人正在做的事情</span></li><li><span>安排时间学习一些看起来有趣的新东西，只有为此加班才是合理的。</span></li><li><span>不要害怕承认无知和错误</span></li><li><span>我现在不知道，但是我会去搞清楚</span></li><li><span>项目中你觉得就这样吧的代码，不要让他就这样下去。</span></li><li><span>交流：根据听众的类型挑选风格和叙述方式，理清楚自己要说的，选择时机，漂亮的格式，初稿的时候让听众参与进来收获反馈，听别人说（否则别人也不会听你说），记得回复别人</span></li><li><span>把代码和文档绑在一起</span></li><li><span>不要重复</span></li><li><span>nothing is final, nothing is static,也不要依赖自己无法控制的东西</span></li><li><span>不要恐慌</span></li><li><span>小步前进，检查反馈，在推进前不断调整，反馈的频率就是速度限制</span></li><li><span>宽松灵活的代码</span></li><li><span>解耦让变更变得容易（ETC）</span></li><li><span>不要链式调用不可靠的东西</span></li><li><span>编程应该深思熟虑：现在能工作了，最好不要碰这块-&gt; 不要产生这样的想法，找到恰好能用的答案和找到正确的答案不是一回事</span></li><li><span>最快的算法并不总是最适合的代码</span></li><li><span>批评要针对代码，而不要针对人。“我们来看看这块”听起来比“你搞错了”好得多</span></li><li><span>观点不同不是错误，倾听他人的观点并试着理解</span></li><li><span>频繁的进行回顾，为下一次做好准备</span></li><li><span>不要一个人埋头钻进代码中</span></li></ol><p>&nbsp;</p><h4 id='有关学习和投资自己构建知识组合'><span>有关学习和投资自己：构建知识组合</span></h4><ol start='' ><li><span>定期投资：安排固定的时间和地点构建</span></li><li><span>多样化：知道的越多，自己的价值就越大：至少要知道目前工作中特定技术的来龙去脉，然后更深入一步。熟悉的技能越多，越能适应变化</span></li><li><span>风险管理：不要把鸡蛋都放在一个篮子里</span></li><li><span>低买高卖：在一项新兴技术变得流行之前就开始学习</span></li><li><span>重新评估调整：技术更新换代很快，流行也是个轮回</span></li><li><span>目标：每年学习一门新语言，每个月读一本技术书，非技术书也要读（软技能很硬核），上课，加入本地的用户组和交流群，尝试不同的环境，与时俱进</span></li><li><span>最后：持续投资，进入舒适区就要再进一步</span></li></ol><p><span>ps: Clojure,Elixir,Elm,F#,Go,Haskell,Python,R,ReasonML,Ruby,Rust,Scala,Swift,Typescript</span></p><p>&nbsp;</p><h4 id='关于批判性思维接受之前先问几个问题'><span>关于批判性思维，接受之前先问几个问题</span></h4><ol start='' ><li><span>至少问五次为什么</span></li><li><span>谁从中受益</span></li><li><span>上下文是什么，背景是什么，后果是什么</span></li><li><span>什么情况下可以生效</span></li><li><span>为什么是这个问题</span></li></ol><p>&nbsp;</p><h4 id='关于估算'><span>关于估算：</span></h4><ol start='' ><li><span>时间单位：1-15天，3-6周，8-20周（月），20+周（说出估算前再好好想想）</span></li><li><span>估算的时候可以问问已经做过的人</span></li><li><span>开始估算前，先搞清楚需要估算的问题的上下文</span></li><li><span>将整个问题建立模型，拆分成组件，确定参数，然后计算答案</span></li><li><span>记录自己的估算，如果估算有误差，找到原因在哪</span></li><li><span>推进过程中，根据实际进度及时更新进度表</span></li><li><span>暂时估算不出来：我等下答复你</span></li></ol><p>&nbsp;</p><h4 id='如何深思熟虑的编程'><span>如何深思熟虑的编程</span></h4><ol start='' ><li><span>时刻注意你在做什么</span></li><li><span>考虑如何向一个更初级的程序员详细解释一下代码</span></li><li><span>不要构建自己没有完全掌握的系统，如果你不知道它为什么能用，就不知道它为什么会出错</span></li><li><span>按计划推进</span></li><li><span>只依赖可靠的东西：如果不知道某件事是否可靠，就做最坏的打算</span></li><li><span>将假设文档化</span></li><li><span>不要猜，实际去试一下</span></li><li><span>为你的精力投放安排一个优先级</span></li><li><span>不要让现有的代码支配未来的代码，确保所有代码在不再适用的时候都是可以替换的</span></li></ol><p>&nbsp;</p><h4 id='关于重构'><span>关于重构</span></h4><ol start='' ><li><span>重构有规范，不要随意为之</span></li><li><span>重构时，保证外部行为不表，不要添加功能</span></li><li><span>需要有良好的单元测试作为验证代码行为的保证</span></li><li><span>没时间重构？现在不重构以后就要投入更多的时间来解决问题。</span></li><li><span>尽早重构，经常重构</span></li><li><span>重构的核心是重新设计</span></li><li><span>采取简短而慎重的步骤</span></li><li><span>要有良好的回归测试</span></li></ol><p>&nbsp;</p><h4 id='关于安全'><span>关于安全：</span></h4><ol start='' ><li><span>不要自己做加密</span></li><li><span>尽早打上安全补丁</span></li><li><span>保持代码简洁，让攻击面最小</span></li><li><span>不要限制密码长度（256位最佳）</span></li><li><span>不要截断用户的密码</span></li><li><span>不要限制特殊字符</span></li><li><span>不要向未经认证的用户提供密码提示</span></li><li><span>不要禁用粘贴功能：会促使用户创建更简单的密码</span></li><li><span>不要强制用户定时修改密码</span></li><li><span>不要强加其他组合规则</span></li></ol><p>&nbsp;</p><h4 id='关于需求'><span>关于需求</span></h4><ol start='' ><li><span>沟通需求的过程就是解释客户所说的话，并向他们反馈其中的含义</span></li><li><span>没有人确切的知道自己想要什么</span></li><li><span>梳理需求就是帮助别人理解他们想要什么</span></li><li><span>需求是从反馈循环中学到的，而不是收集来的：你是不是这个意思，是不是更像这样</span></li><li><span>客户从不阅读规范</span></li><li><span>需求文档是为开发人员写的</span></li><li><span>以用户场景的形式描述需求</span></li><li><span>需求就是需要的东西，不是架构，需求无关设计，也不是用户界面</span></li><li><span>维护一张项目术语表：保证每个人用相同的名称来称呼相同的事务。</span></li><li><span>不要害怕，大胆的提出改变需求的建议</span></li></ol><p>&nbsp;</p><h4 id='东北乱炖'><span>东北乱炖：</span></h4><ol start='' ><li><span>有限状态机：所有的状态和状态间所有存在的变换和变换结果</span></li><li><span>观察者默认：注册，发布/订阅</span></li><li><span>tail命令相对的是head命令：取文件尾/头的内容</span></li><li><span>find . -type f | xargs wc -l | sort -n | tail -6 | head -5</span></li><li><span>wc -l  计算文件行数</span></li><li><span>find . -type f  向标准输出写入当前目录及其以下的所有文件</span></li><li><span>策略一般一个问题只有一种策略处理，责任链是链式调用</span></li><li><span>计算机科学中只有两件难事：缓存失效和命名</span></li><li><span>注意力分散的人在解决复杂问题的时候比有意识的人做的更好：先放空自己，晚一点再继续</span></li></ol><p>&nbsp;</p><h4 id='可以咀嚼'><span>可以咀嚼：</span></h4><ol start='' ><li><span>自责中往往有种奢侈，我们自责时，总觉得别人无权再责备我们</span></li><li><span>心中要有一个目的地，否则就会原地打转</span></li><li><span>亚历山大大帝的绳节，三线四点问题，网线框事件：一些看起来好像很明显的约束条件并非真的约束条件，找到真正的边框和约束在哪里</span></li></ol><p>&nbsp;</p><h4 id='拓展书籍'><span>拓展书籍：</span></h4><p><span>人月神话，人件，设计模式：可复用面向对象软件的基础，设计模式，程序设计实践</span></p><p>&nbsp;</p><h4 id='拓展方法'><span>拓展方法</span></h4><p><span>Scrum,极限编程，看板，精益技术</span></p></div></div>
+</body>
+</html>
