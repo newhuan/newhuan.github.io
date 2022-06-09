@@ -15,7 +15,7 @@
 */
 
 
-var root = 'http://www.newhuan.name/';
+var root = 'https://newhuan.github.io/';
 var nodes = [
     { type: "meta", attributes: { name: "description", content: 'newhuan' } },
     { type: "meta", attributes: { "http-equiv": "X-UA-Compatible", content: 'IE=edge' } },
@@ -39,7 +39,7 @@ document.getElementsByTagName( 'head' )[0].append( fragment );
         <div class="container">
             <div class="copyright">
                 © 2017&nbsp;
-                <a href="http://www.newhuan.name/note/" target="_blank">newhuan</a>&nbsp;by&nbsp;
+                <a href="https://newhuan.github.io/note/" target="_blank">newhuan</a>&nbsp;by&nbsp;
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@ document.getElementsByTagName( 'head' )[0].append( fragment );
  * <div class="full-header">
         <div class="container">
             <div class="logo">
-                <a href="http://www.newhuan.name/index.html" title="newhuan" alt="newhuan">首頁</a>
+                <a href="https://newhuan.github.io/index.html" title="newhuan" alt="newhuan">首頁</a>
             </div>
             <div class="nav">
             </div>
@@ -68,8 +68,8 @@ var CHILD_TYPE = {
     NODE: "node"
 }
 var $nav = { type: "div", attributes: { "class": "nav" } },
-    $a_copyright = { type: "a", attributes: { "href": "http://www.newhuan.name/note/", "target": "_blank" }, text: "newhuan" },
-    $a_logo = { type: "a", attributes: { "href": "http://www.newhuan.name/index.html", "title": "newhuan", alt: "newhuan" }, text: "首页" },
+    $a_copyright = { type: "a", attributes: { "href": "https://newhuan.github.io/note/", "target": "_blank" }, text: "newhuan" },
+    $a_logo = { type: "a", attributes: { "href": "https://newhuan.github.io/index.html", "title": "newhuan", alt: "newhuan" }, text: "首页" },
     $copyright = {
         type: "div",
         attributes: { "class": "copyright" },
