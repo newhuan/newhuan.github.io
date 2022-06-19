@@ -1,598 +1,1554 @@
 <!doctype html>
 <html>
 <head>
-<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
 
-<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
-.mac-os-11 { --title-bar-height: 28px; }
-html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
-iframe { margin: auto; }
-a.url { word-break: break-all; }
-a:active, a:hover { outline: 0px; }
-.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
-#write.first-line-indent p { text-indent: 2em; }
-#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
-#write.first-line-indent li { margin-left: 2em; }
-.for-image #write { padding-left: 8px; padding-right: 8px; }
-body.typora-export { padding-left: 30px; padding-right: 30px; }
-.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
-.typora-export .task-list-item input { pointer-events: none; }
-@media screen and (max-width: 500px) {
-  body.typora-export { padding-left: 0px; padding-right: 0px; }
-  #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
-}
-#write li > figure:last-child { margin-bottom: 0.5rem; }
-#write ol, #write ul { position: relative; }
-img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
-button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
-input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
-*, ::after, ::before { box-sizing: border-box; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
-p { line-height: inherit; }
-h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
-p { orphans: 4; }
-h1 { font-size: 2rem; }
-h2 { font-size: 1.8rem; }
-h3 { font-size: 1.6rem; }
-h4 { font-size: 1.4rem; }
-h5 { font-size: 1.2rem; }
-h6 { font-size: 1rem; }
-.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
-.hidden { display: none; }
-.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
-a { cursor: pointer; }
-sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
-sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
-#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
-figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
-figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
-thead { display: table-header-group; }
-table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
-table.md-table td { min-width: 32px; }
-.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
-.CodeMirror-linenumber { }
-.CodeMirror { text-align: left; }
-.CodeMirror-placeholder { opacity: 0.3; }
-.CodeMirror pre { padding: 0px 4px; }
-.CodeMirror-lines { padding: 0px; }
-div.hr:focus { cursor: none; }
-#write pre { white-space: pre-wrap; }
-#write.fences-no-line-wrapping pre { white-space: pre; }
-#write pre.ty-contain-cm { white-space: normal; }
-.CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
-.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
-#write .md-fences.mock-cm { white-space: pre-wrap; }
-.md-fences.md-fences-with-lineno { padding-left: 0px; }
-#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
-.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
-.CodeMirror-line, twitterwidget { break-inside: avoid; }
-.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
-.footnotes + .footnotes { margin-top: 0px; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
-li div { padding-top: 0px; }
-blockquote { margin: 1rem 0px; }
-li .mathjax-block, li p { margin: 0.5rem 0px; }
-li blockquote { margin: 1rem 0px; }
-li { margin: 0px; position: relative; }
-blockquote > :last-child { margin-bottom: 0px; }
-blockquote > :first-child, li > :first-child { margin-top: 0px; }
-.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
-#write .footnote-line { white-space: pre-wrap; }
-@media print {
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
-  .typora-export * { print-color-adjust: exact; }
-  .typora-export #write { break-after: avoid; }
-  .typora-export #write::after { height: 0px; }
-  .is-mac table { break-inside: avoid; }
-  .typora-export-show-outline .typora-export-sidebar { display: none; }
-}
-.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
-a img, img a { cursor: pointer; }
-pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
-p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
-#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
-p > .md-image:only-child { display: inline-block; width: 100%; }
-#write .MathJax_Display { margin: 0.8em 0px 0px; }
-.md-math-block { width: 100%; }
-.md-math-block:not(:empty)::after { display: none; }
-.MathJax_ref { fill: currentcolor; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
-.md-task-list-item { position: relative; list-style-type: none; }
-.task-list-item.md-task-list-item { padding-left: 0px; }
-.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
-.math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
-.md-toc-content { position: relative; margin-left: 0px; }
-.md-toc-content::after, .md-toc::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); }
-.md-toc-item a { text-decoration: none; }
-.md-toc-inner:hover { text-decoration: underline; }
-.md-toc-inner { display: inline-block; cursor: pointer; }
-.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
-.md-toc-h2 .md-toc-inner { margin-left: 2em; }
-.md-toc-h3 .md-toc-inner { margin-left: 4em; }
-.md-toc-h4 .md-toc-inner { margin-left: 6em; }
-.md-toc-h5 .md-toc-inner { margin-left: 8em; }
-.md-toc-h6 .md-toc-inner { margin-left: 10em; }
-@media screen and (max-width: 48em) {
-  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
-  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
-  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
-  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
-}
-a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
-.footnote-line a:not(.reversefootnote) { color: inherit; }
-.md-attr { display: none; }
-.md-fn-count::after { content: "."; }
-code, pre, samp, tt { font-family: var(--monospace); }
-kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
-code { text-align: left; }
-a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
-.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
-.md-diagram-panel > svg { max-width: 100%; }
-[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
-[lang="mermaid"] .node text { font-size: 1rem; }
-table tr th { border-bottom-width: 0px; }
-video { max-width: 100%; display: block; margin: 0px auto; }
-iframe { max-width: 100%; width: 100%; border: none; }
-.highlight td, .highlight tr { border: 0px; }
-mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
-.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
-.md-expand mark .md-meta { opacity: 0.3 !important; }
-mark .md-meta { color: rgb(0, 0, 0); }
-@media print {
-  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
-}
-.md-diagram-panel .messageText { stroke: none !important; }
-.md-diagram-panel .start-state { fill: var(--node-fill); }
-.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
-.md-fences.md-fences-math { font-size: 1em; }
-.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
-.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
-.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
-.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
-.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
-.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
-@media screen and (max-width: 1024px) {
-  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
-}
-@media screen and (max-width: 800px) {
-  .typora-export-sidebar { display: none; }
-}
-.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
-.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
-.outline-content strong { font-weight: 400; }
-.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
-.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
-.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
-.outline-expander:hover::before { content: ""; }
-.outline-h1 > .outline-item { padding-left: 0px; }
-.outline-h2 > .outline-item { padding-left: 1em; }
-.outline-h3 > .outline-item { padding-left: 2em; }
-.outline-h4 > .outline-item { padding-left: 3em; }
-.outline-h5 > .outline-item { padding-left: 4em; }
-.outline-h6 > .outline-item { padding-left: 5em; }
-.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
-.outline-label:hover { text-decoration: underline; }
-.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
-.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
-.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
-.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
-.outline-children { display: none; }
-.info-panel-tab-wrapper { display: none; }
-.outline-item-open > .outline-children { display: block; }
-.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
-.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
-.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
-.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
-.typora-export-collapse-outline .outline-children { display: none; }
-.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
-.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
-.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
-.md-inline-math-container mjx-container { zoom: 0.95; }
+    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext'
+          rel='stylesheet' type='text/css'/>
+    <style type='text/css'>html {
+        overflow-x: initial !important;
+    }
+
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --select-text-bg-color: #B5D6FC;
+        --select-text-font-color: auto;
+        --monospace: "Lucida Console", Consolas, "Courier", monospace;
+        --title-bar-height: 20px;
+    }
+
+    .mac-os-11 {
+        --title-bar-height: 28px;
+    }
+
+    html {
+        font-size: 14px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        height: auto;
+        inset: 0px;
+        font-size: 1rem;
+        line-height: 1.42857143;
+        overflow-x: hidden;
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        tab-size: 4;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    iframe {
+        margin: auto;
+    }
+
+    a.url {
+        word-break: break-all;
+    }
+
+    a:active, a:hover {
+        outline: 0px;
+    }
+
+    .in-text-selection, ::selection {
+        text-shadow: none;
+        background: var(--select-text-bg-color);
+        color: var(--select-text-font-color);
+    }
+
+    #write {
+        margin: 0px auto;
+        height: auto;
+        width: inherit;
+        word-break: normal;
+        word-wrap: break-word;
+        position: relative;
+        white-space: normal;
+        overflow-x: visible;
+        padding-top: 36px;
+    }
+
+    #write.first-line-indent p {
+        text-indent: 2em;
+    }
+
+    #write.first-line-indent li p, #write.first-line-indent p * {
+        text-indent: 0px;
+    }
+
+    #write.first-line-indent li {
+        margin-left: 2em;
+    }
+
+    .for-image #write {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body.typora-export {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .typora-export .footnote-line, .typora-export li, .typora-export p {
+        white-space: pre-wrap;
+    }
+
+    .typora-export .task-list-item input {
+        pointer-events: none;
+    }
+
+    @media screen and (max-width: 500px) {
+        body.typora-export {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        #write {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .CodeMirror-sizer {
+            margin-left: 0px !important;
+        }
+
+        .CodeMirror-gutters {
+            display: none !important;
+        }
+    }
+
+    #write li > figure:last-child {
+        margin-bottom: 0.5rem;
+    }
+
+    #write ol, #write ul {
+        position: relative;
+    }
+
+    img {
+        max-width: 100%;
+        vertical-align: middle;
+        image-orientation: from-image;
+    }
+
+    button, input, select, textarea {
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        font-style: inherit;
+        font-variant-caps: inherit;
+        font-weight: inherit;
+        font-stretch: inherit;
+        line-height: inherit;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        line-height: normal;
+        padding: 0px;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
+        width: inherit;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p {
+        position: relative;
+    }
+
+    p {
+        line-height: inherit;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        break-after: avoid-page;
+        break-inside: avoid;
+        orphans: 4;
+    }
+
+    p {
+        orphans: 4;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    h4 {
+        font-size: 1.4rem;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+
+    .md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .md-blockmeta {
+        color: rgb(204, 204, 204);
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    sup.md-footnote {
+        padding: 2px 4px;
+        background-color: rgba(238, 238, 238, 0.7);
+        color: rgb(85, 85, 85);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    sup.md-footnote a, sup.md-footnote a:hover {
+        color: inherit;
+        text-transform: inherit;
+        text-decoration: inherit;
+    }
+
+    #write input[type="checkbox"] {
+        cursor: pointer;
+        width: inherit;
+        height: inherit;
+    }
+
+    figure {
+        overflow-x: auto;
+        margin: 1.2em 0px;
+        max-width: calc(100% + 16px);
+        padding: 0px;
+    }
+
+    figure > table {
+        margin: 0px;
+    }
+
+    tr {
+        break-inside: avoid;
+        break-after: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0px;
+        width: 100%;
+        overflow: auto;
+        break-inside: auto;
+        text-align: left;
+    }
+
+    table.md-table td {
+        min-width: 32px;
+    }
+
+    .CodeMirror-gutters {
+        border-right-width: 0px;
+        background-color: inherit;
+    }
+
+    .CodeMirror-linenumber {
+    }
+
+    .CodeMirror {
+        text-align: left;
+    }
+
+    .CodeMirror-placeholder {
+        opacity: 0.3;
+    }
+
+    .CodeMirror pre {
+        padding: 0px 4px;
+    }
+
+    .CodeMirror-lines {
+        padding: 0px;
+    }
+
+    div.hr:focus {
+        cursor: none;
+    }
+
+    #write pre {
+        white-space: pre-wrap;
+    }
+
+    #write.fences-no-line-wrapping pre {
+        white-space: pre;
+    }
+
+    #write pre.ty-contain-cm {
+        white-space: normal;
+    }
+
+    .CodeMirror-gutters {
+        margin-right: 4px;
+    }
+
+    .md-fences {
+        font-size: 0.9rem;
+        display: block;
+        break-inside: avoid;
+        text-align: left;
+        overflow: visible;
+        white-space: pre;
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        position: relative !important;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    .md-fences-adv-panel {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        padding-top: 0px;
+        padding-bottom: 8px;
+        overflow-x: auto;
+    }
+
+    #write .md-fences.mock-cm {
+        white-space: pre-wrap;
+    }
+
+    .md-fences.md-fences-with-lineno {
+        padding-left: 0px;
+    }
+
+    #write.fences-no-line-wrapping .md-fences.mock-cm {
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    .md-fences.mock-cm.md-fences-with-lineno {
+        padding-left: 8px;
+    }
+
+    .CodeMirror-line, twitterwidget {
+        break-inside: avoid;
+    }
+
+    .footnotes {
+        opacity: 0.8;
+        font-size: 0.9rem;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .footnotes + .footnotes {
+        margin-top: 0px;
+    }
+
+    .md-reset {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        outline: 0px;
+        vertical-align: top;
+        text-decoration: none;
+        text-shadow: none;
+        float: none;
+        position: static;
+        width: auto;
+        height: auto;
+        white-space: nowrap;
+        cursor: inherit;
+        line-height: normal;
+        font-weight: 400;
+        text-align: left;
+        box-sizing: content-box;
+        direction: ltr;
+        background-position: 0px 0px;
+    }
+
+    li div {
+        padding-top: 0px;
+    }
+
+    blockquote {
+        margin: 1rem 0px;
+    }
+
+    li .mathjax-block, li p {
+        margin: 0.5rem 0px;
+    }
+
+    li blockquote {
+        margin: 1rem 0px;
+    }
+
+    li {
+        margin: 0px;
+        position: relative;
+    }
+
+    blockquote > :last-child {
+        margin-bottom: 0px;
+    }
+
+    blockquote > :first-child, li > :first-child {
+        margin-top: 0px;
+    }
+
+    .footnotes-area {
+        color: rgb(136, 136, 136);
+        margin-top: 0.714rem;
+        padding-bottom: 0.143rem;
+        white-space: normal;
+    }
+
+    #write .footnote-line {
+        white-space: pre-wrap;
+    }
+
+    @media print {
+        body, html {
+            border: 1px solid transparent;
+            height: 99%;
+            break-after: avoid;
+            break-before: avoid;
+            font-variant-ligatures: no-common-ligatures;
+        }
+
+        #write {
+            margin-top: 0px;
+            padding-top: 0px;
+            border-color: transparent !important;
+        }
+
+        .typora-export * {
+            print-color-adjust: exact;
+        }
+
+        .typora-export #write {
+            break-after: avoid;
+        }
+
+        .typora-export #write::after {
+            height: 0px;
+        }
+
+        .is-mac table {
+            break-inside: avoid;
+        }
+
+        .typora-export-show-outline .typora-export-sidebar {
+            display: none;
+        }
+    }
+
+    .footnote-line {
+        margin-top: 0.714em;
+        font-size: 0.7em;
+    }
+
+    a img, img a {
+        cursor: pointer;
+    }
+
+    pre.md-meta-block {
+        font-size: 0.8rem;
+        min-height: 0.8rem;
+        white-space: pre-wrap;
+        background-color: rgb(204, 204, 204);
+        display: block;
+        overflow-x: hidden;
+    }
+
+    p > .md-image:only-child:not(.md-img-error) img, p > img:only-child {
+        display: block;
+        margin: auto;
+    }
+
+    #write.first-line-indent p > .md-image:only-child:not(.md-img-error) img {
+        left: -2em;
+        position: relative;
+    }
+
+    p > .md-image:only-child {
+        display: inline-block;
+        width: 100%;
+    }
+
+    #write .MathJax_Display {
+        margin: 0.8em 0px 0px;
+    }
+
+    .md-math-block {
+        width: 100%;
+    }
+
+    .md-math-block:not(:empty)::after {
+        display: none;
+    }
+
+    .MathJax_ref {
+        fill: currentcolor;
+    }
+
+    [contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus {
+        outline: 0px;
+        box-shadow: none;
+    }
+
+    .md-task-list-item {
+        position: relative;
+        list-style-type: none;
+    }
+
+    .task-list-item.md-task-list-item {
+        padding-left: 0px;
+    }
+
+    .md-task-list-item > input {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        margin-left: -1.2em;
+        margin-top: calc(1em - 10px);
+        border: none;
+    }
+
+    .math {
+        font-size: 1rem;
+    }
+
+    .md-toc {
+        min-height: 3.58rem;
+        position: relative;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+
+    .md-toc-content {
+        position: relative;
+        margin-left: 0px;
+    }
+
+    .md-toc-content::after, .md-toc::after {
+        display: none;
+    }
+
+    .md-toc-item {
+        display: block;
+        color: rgb(65, 131, 196);
+    }
+
+    .md-toc-item a {
+        text-decoration: none;
+    }
+
+    .md-toc-inner:hover {
+        text-decoration: underline;
+    }
+
+    .md-toc-inner {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .md-toc-h1 .md-toc-inner {
+        margin-left: 0px;
+        font-weight: 700;
+    }
+
+    .md-toc-h2 .md-toc-inner {
+        margin-left: 2em;
+    }
+
+    .md-toc-h3 .md-toc-inner {
+        margin-left: 4em;
+    }
+
+    .md-toc-h4 .md-toc-inner {
+        margin-left: 6em;
+    }
+
+    .md-toc-h5 .md-toc-inner {
+        margin-left: 8em;
+    }
+
+    .md-toc-h6 .md-toc-inner {
+        margin-left: 10em;
+    }
+
+    @media screen and (max-width: 48em) {
+        .md-toc-h3 .md-toc-inner {
+            margin-left: 3.5em;
+        }
+
+        .md-toc-h4 .md-toc-inner {
+            margin-left: 5em;
+        }
+
+        .md-toc-h5 .md-toc-inner {
+            margin-left: 6.5em;
+        }
+
+        .md-toc-h6 .md-toc-inner {
+            margin-left: 8em;
+        }
+    }
+
+    a.md-toc-inner {
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+    }
+
+    .footnote-line a:not(.reversefootnote) {
+        color: inherit;
+    }
+
+    .md-attr {
+        display: none;
+    }
+
+    .md-fn-count::after {
+        content: ".";
+    }
+
+    code, pre, samp, tt {
+        font-family: var(--monospace);
+    }
+
+    kbd {
+        margin: 0px 0.1em;
+        padding: 0.1em 0.6em;
+        font-size: 0.8em;
+        color: rgb(36, 39, 41);
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(173, 179, 185);
+        border-radius: 3px;
+        box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+
+    .md-comment {
+        color: rgb(162, 127, 3);
+        opacity: 0.6;
+        font-family: var(--monospace);
+    }
+
+    code {
+        text-align: left;
+    }
+
+    a.md-print-anchor {
+        white-space: pre !important;
+        border: none !important;
+        display: inline-block !important;
+        position: absolute !important;
+        width: 1px !important;
+        right: 0px !important;
+        outline: 0px !important;
+        text-shadow: initial !important;
+        background-position: 0px 0px !important;
+    }
+
+    .os-windows.monocolor-emoji .md-emoji {
+        font-family: "Segoe UI Symbol", sans-serif;
+    }
+
+    .md-diagram-panel > svg {
+        max-width: 100%;
+    }
+
+    [lang="flow"] svg, [lang="mermaid"] svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    [lang="mermaid"] .node text {
+        font-size: 1rem;
+    }
+
+    table tr th {
+        border-bottom-width: 0px;
+    }
+
+    video {
+        max-width: 100%;
+        display: block;
+        margin: 0px auto;
+    }
+
+    iframe {
+        max-width: 100%;
+        width: 100%;
+        border: none;
+    }
+
+    .highlight td, .highlight tr {
+        border: 0px;
+    }
+
+    mark {
+        background-color: rgb(255, 255, 0);
+        color: rgb(0, 0, 0);
+    }
+
+    .md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong {
+        color: inherit;
+    }
+
+    .md-expand mark .md-meta {
+        opacity: 0.3 !important;
+    }
+
+    mark .md-meta {
+        color: rgb(0, 0, 0);
+    }
+
+    @media print {
+        .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 {
+            break-inside: avoid;
+        }
+    }
+
+    .md-diagram-panel .messageText {
+        stroke: none !important;
+    }
+
+    .md-diagram-panel .start-state {
+        fill: var(--node-fill);
+    }
+
+    .md-diagram-panel .edgeLabel rect {
+        opacity: 1 !important;
+    }
+
+    .md-fences.md-fences-math {
+        font-size: 1em;
+    }
+
+    .md-fences-advanced:not(.md-focus) {
+        padding: 0px;
+        white-space: nowrap;
+        border: 0px;
+    }
+
+    .md-fences-advanced:not(.md-focus) {
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    .typora-export-show-outline .typora-export-content {
+        max-width: 1440px;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .typora-export-sidebar {
+        width: 300px;
+        font-size: 0.8rem;
+        margin-top: 80px;
+        margin-right: 18px;
+    }
+
+    .typora-export-show-outline #write {
+        --webkit-flex: 2;
+        flex: 2 1 0%;
+    }
+
+    .typora-export-sidebar .outline-content {
+        position: fixed;
+        top: 0px;
+        max-height: 100%;
+        overflow: hidden auto;
+        padding-bottom: 30px;
+        padding-top: 60px;
+        width: 300px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .typora-export-sidebar, .typora-export-sidebar .outline-content {
+            width: 240px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .typora-export-sidebar {
+            display: none;
+        }
+    }
+
+    .outline-content li, .outline-content ul {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        list-style: none;
+    }
+
+    .outline-content ul {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .outline-content strong {
+        font-weight: 400;
+    }
+
+    .outline-expander {
+        width: 1rem;
+        height: 1.428571429rem;
+        position: relative;
+        display: table-cell;
+        vertical-align: middle;
+        cursor: pointer;
+        padding-left: 4px;
+    }
+
+    .outline-expander::before {
+        content: "";
+        position: relative;
+        font-family: Ionicons;
+        display: inline-block;
+        font-size: 8px;
+        vertical-align: middle;
+    }
+
+    .outline-item {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        cursor: pointer;
+    }
+
+    .outline-expander:hover::before {
+        content: "";
+    }
+
+    .outline-h1 > .outline-item {
+        padding-left: 0px;
+    }
+
+    .outline-h2 > .outline-item {
+        padding-left: 1em;
+    }
+
+    .outline-h3 > .outline-item {
+        padding-left: 2em;
+    }
+
+    .outline-h4 > .outline-item {
+        padding-left: 3em;
+    }
+
+    .outline-h5 > .outline-item {
+        padding-left: 4em;
+    }
+
+    .outline-h6 > .outline-item {
+        padding-left: 5em;
+    }
+
+    .outline-label {
+        cursor: pointer;
+        display: table-cell;
+        vertical-align: middle;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .outline-label:hover {
+        text-decoration: underline;
+    }
+
+    .outline-item:hover {
+        border-color: rgb(245, 245, 245);
+        background-color: var(--item-hover-bg-color);
+    }
+
+    .outline-item:hover {
+        margin-left: -28px;
+        margin-right: -28px;
+        border-left-width: 28px;
+        border-left-style: solid;
+        border-left-color: transparent;
+        border-right-width: 28px;
+        border-right-style: solid;
+        border-right-color: transparent;
+    }
+
+    .outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before {
+        display: none;
+    }
+
+    .outline-item-open > .outline-item > .outline-expander::before {
+        content: "";
+    }
+
+    .outline-children {
+        display: none;
+    }
+
+    .info-panel-tab-wrapper {
+        display: none;
+    }
+
+    .outline-item-open > .outline-children {
+        display: block;
+    }
+
+    .typora-export .outline-item {
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    .typora-export .outline-item:hover {
+        margin-right: -8px;
+        border-right-width: 8px;
+        border-right-style: solid;
+        border-right-color: transparent;
+    }
+
+    .typora-export .outline-expander::before {
+        content: "+";
+        font-family: inherit;
+        top: -1px;
+    }
+
+    .typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before {
+        content: "−";
+    }
+
+    .typora-export-collapse-outline .outline-children {
+        display: none;
+    }
+
+    .typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children {
+        display: block;
+    }
+
+    .typora-export-no-collapse-outline .outline-expander::before {
+        content: "" !important;
+    }
+
+    .typora-export-show-outline .outline-item-active > .outline-item .outline-label {
+        font-weight: 700;
+    }
+
+    .md-inline-math-container mjx-container {
+        zoom: 0.95;
+    }
 
 
-:root {
-    --side-bar-bg-color: #fafafa;
-    --control-text-color: #777;
-}
+    :root {
+        --side-bar-bg-color: #fafafa;
+        --control-text-color: #777;
+    }
 
-@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+    @include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
 
-/* open-sans-regular - latin-ext_latin */
-  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-regular - latin-ext_latin */
+    /* open-sans-italic - latin-ext_latin */
     /* open-sans-700 - latin-ext_latin */
     /* open-sans-700italic - latin-ext_latin */
-  html {
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-}
-
-body {
-    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
-    color: rgb(51, 51, 51);
-    line-height: 1.6;
-}
-
-#write {
-    max-width: 860px;
-  	margin: 0 auto;
-  	padding: 30px;
-    padding-bottom: 100px;
-}
-
-@media only screen and (min-width: 1400px) {
-	#write {
-		max-width: 1024px;
-	}
-}
-
-@media only screen and (min-width: 1800px) {
-	#write {
-		max-width: 1200px;
-	}
-}
-
-#write > ul:first-child,
-#write > ol:first-child{
-    margin-top: 30px;
-}
-
-a {
-    color: #4183C4;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    line-height: 1.4;
-    cursor: text;
-}
-h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor {
-    text-decoration: none;
-}
-h1 tt,
-h1 code {
-    font-size: inherit;
-}
-h2 tt,
-h2 code {
-    font-size: inherit;
-}
-h3 tt,
-h3 code {
-    font-size: inherit;
-}
-h4 tt,
-h4 code {
-    font-size: inherit;
-}
-h5 tt,
-h5 code {
-    font-size: inherit;
-}
-h6 tt,
-h6 code {
-    font-size: inherit;
-}
-h1 {
-    font-size: 2.25em;
-    line-height: 1.2;
-    border-bottom: 1px solid #eee;
-}
-h2 {
-    font-size: 1.75em;
-    line-height: 1.225;
-    border-bottom: 1px solid #eee;
-}
-
-/*@media print {
-    .typora-export h1,
-    .typora-export h2 {
-        border-bottom: none;
-        padding-bottom: initial;
-    }
-
-    .typora-export h1::after,
-    .typora-export h2::after {
-        content: "";
-        display: block;
-        height: 100px;
-        margin-top: -96px;
-        border-top: 1px solid #eee;
-    }
-}*/
-
-h3 {
-    font-size: 1.5em;
-    line-height: 1.43;
-}
-h4 {
-    font-size: 1.25em;
-}
-h5 {
-    font-size: 1em;
-}
-h6 {
-   font-size: 1em;
-    color: #777;
-}
-p,
-blockquote,
-ul,
-ol,
-dl,
-table{
-    margin: 0.8em 0;
-}
-li>ol,
-li>ul {
-    margin: 0 0;
-}
-hr {
-    height: 2px;
-    padding: 0;
-    margin: 16px 0;
-    background-color: #e7e7e7;
-    border: 0 none;
-    overflow: hidden;
-    box-sizing: content-box;
-}
-
-li p.first {
-    display: inline-block;
-}
-ul,
-ol {
-    padding-left: 30px;
-}
-ul:first-child,
-ol:first-child {
-    margin-top: 0;
-}
-ul:last-child,
-ol:last-child {
-    margin-bottom: 0;
-}
-blockquote {
-    border-left: 4px solid #dfe2e5;
-    padding: 0 15px;
-    color: #777777;
-}
-blockquote blockquote {
-    padding-right: 0;
-}
-table {
-    padding: 0;
-    word-break: initial;
-}
-table tr {
-    border: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 0;
-}
-table tr:nth-child(2n),
-thead {
-    background-color: #f8f8f8;
-}
-table th {
-    font-weight: bold;
-    border: 1px solid #dfe2e5;
-    border-bottom: 0;
-    margin: 0;
-    padding: 6px 13px;
-}
-table td {
-    border: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 6px 13px;
-}
-table th:first-child,
-table td:first-child {
-    margin-top: 0;
-}
-table th:last-child,
-table td:last-child {
-    margin-bottom: 0;
-}
-
-.CodeMirror-lines {
-    padding-left: 4px;
-}
-
-.code-tooltip {
-    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
-    border-top: 1px solid #eef2f2;
-}
-
-.md-fences,
-code,
-tt {
-    border: 1px solid #e7eaed;
-    background-color: #f8f8f8;
-    border-radius: 3px;
-    padding: 0;
-    padding: 2px 4px 0px 4px;
-    font-size: 0.9em;
-}
-
-code {
-    background-color: #f3f4f4;
-    padding: 0 2px 0 2px;
-}
-
-.md-fences {
-    margin-bottom: 15px;
-    margin-top: 15px;
-    padding-top: 8px;
-    padding-bottom: 6px;
-}
-
-
-.md-task-list-item > input {
-  margin-left: -1.3em;
-}
-
-@media print {
     html {
-        font-size: 13px;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
     }
-    table,
-    pre {
-        page-break-inside: avoid;
+
+    body {
+        font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+        color: rgb(51, 51, 51);
+        line-height: 1.6;
     }
-    pre {
-        word-wrap: break-word;
+
+    #write {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 30px;
+        padding-bottom: 100px;
     }
-}
 
-.md-fences {
-	background-color: #f8f8f8;
-}
-#write pre.md-meta-block {
-	padding: 1rem;
-    font-size: 85%;
-    line-height: 1.45;
-    background-color: #f7f7f7;
-    border: 0;
-    border-radius: 3px;
-    color: #777777;
-    margin-top: 0 !important;
-}
+    @media only screen and (min-width: 1400px) {
+        #write {
+            max-width: 1024px;
+        }
+    }
 
-.mathjax-block>.code-tooltip {
-	bottom: .375rem;
-}
+    @media only screen and (min-width: 1800px) {
+        #write {
+            max-width: 1200px;
+        }
+    }
 
-.md-mathjax-midline {
-    background: #fafafa;
-}
+    #write > ul:first-child,
+    #write > ol:first-child {
+        margin-top: 30px;
+    }
 
-#write>h3.md-focus:before{
-	left: -1.5625rem;
-	top: .375rem;
-}
-#write>h4.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-#write>h5.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-#write>h6.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-.md-image>.md-meta {
-    /*border: 1px solid #ddd;*/
-    border-radius: 3px;
-    padding: 2px 0px 0px 4px;
-    font-size: 0.9em;
-    color: inherit;
-}
+    a {
+        color: #4183C4;
+    }
 
-.md-tag {
-    color: #a7a7a7;
-    opacity: 1;
-}
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        position: relative;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-weight: bold;
+        line-height: 1.4;
+        cursor: text;
+    }
 
-.md-toc { 
-    margin-top:20px;
-    padding-bottom:20px;
-}
+    h1:hover a.anchor,
+    h2:hover a.anchor,
+    h3:hover a.anchor,
+    h4:hover a.anchor,
+    h5:hover a.anchor,
+    h6:hover a.anchor {
+        text-decoration: none;
+    }
 
-.sidebar-tabs {
-    border-bottom: none;
-}
+    h1 tt,
+    h1 code {
+        font-size: inherit;
+    }
 
-#typora-quick-open {
-    border: 1px solid #ddd;
-    background-color: #f8f8f8;
-}
+    h2 tt,
+    h2 code {
+        font-size: inherit;
+    }
 
-#typora-quick-open-item {
-    background-color: #FAFAFA;
-    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
-    border-style: solid;
-    border-width: 1px;
-}
+    h3 tt,
+    h3 code {
+        font-size: inherit;
+    }
 
-/** focus mode */
-.on-focus-mode blockquote {
-    border-left-color: rgba(85, 85, 85, 0.12);
-}
+    h4 tt,
+    h4 code {
+        font-size: inherit;
+    }
 
-header, .context-menu, .megamenu-content, footer{
-    font-family: "Segoe UI", "Arial", sans-serif;
-}
+    h5 tt,
+    h5 code {
+        font-size: inherit;
+    }
 
-.file-node-content:hover .file-node-icon,
-.file-node-content:hover .file-node-open-state{
-    visibility: visible;
-}
+    h6 tt,
+    h6 code {
+        font-size: inherit;
+    }
 
-.mac-seamless-mode #typora-sidebar {
-    background-color: #fafafa;
-    background-color: var(--side-bar-bg-color);
-}
+    h1 {
+        font-size: 2.25em;
+        line-height: 1.2;
+        border-bottom: 1px solid #eee;
+    }
 
-.md-lang {
-    color: #b4654d;
-}
+    h2 {
+        font-size: 1.75em;
+        line-height: 1.225;
+        border-bottom: 1px solid #eee;
+    }
 
-/*.html-for-mac {
-    --item-hover-bg-color: #E6F0FE;
-}*/
+    /*@media print {
+        .typora-export h1,
+        .typora-export h2 {
+            border-bottom: none;
+            padding-bottom: initial;
+        }
 
-#md-notification .btn {
-    border: 0;
-}
+        .typora-export h1::after,
+        .typora-export h2::after {
+            content: "";
+            display: block;
+            height: 100px;
+            margin-top: -96px;
+            border-top: 1px solid #eee;
+        }
+    }*/
 
-.dropdown-menu .divider {
-    border-color: #e5e5e5;
-    opacity: 0.4;
-}
+    h3 {
+        font-size: 1.5em;
+        line-height: 1.43;
+    }
 
-.ty-preferences .window-content {
-    background-color: #fafafa;
-}
+    h4 {
+        font-size: 1.25em;
+    }
 
-.ty-preferences .nav-group-item.active {
-    color: white;
-    background: #999;
-}
+    h5 {
+        font-size: 1em;
+    }
 
-.menu-item-container a.menu-style-btn {
-    background-color: #f5f8fa;
-    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
-}
+    h6 {
+        font-size: 1em;
+        color: #777;
+    }
+
+    p,
+    blockquote,
+    ul,
+    ol,
+    dl,
+    table {
+        margin: 0.8em 0;
+    }
+
+    li > ol,
+    li > ul {
+        margin: 0 0;
+    }
+
+    hr {
+        height: 2px;
+        padding: 0;
+        margin: 16px 0;
+        background-color: #e7e7e7;
+        border: 0 none;
+        overflow: hidden;
+        box-sizing: content-box;
+    }
+
+    li p.first {
+        display: inline-block;
+    }
+
+    ul,
+    ol {
+        padding-left: 30px;
+    }
+
+    ul:first-child,
+    ol:first-child {
+        margin-top: 0;
+    }
+
+    ul:last-child,
+    ol:last-child {
+        margin-bottom: 0;
+    }
+
+    blockquote {
+        border-left: 4px solid #dfe2e5;
+        padding: 0 15px;
+        color: #777777;
+    }
+
+    blockquote blockquote {
+        padding-right: 0;
+    }
+
+    table {
+        padding: 0;
+        word-break: initial;
+    }
+
+    table tr {
+        border: 1px solid #dfe2e5;
+        margin: 0;
+        padding: 0;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #f8f8f8;
+    }
+
+    table th {
+        font-weight: bold;
+        border: 1px solid #dfe2e5;
+        border-bottom: 0;
+        margin: 0;
+        padding: 6px 13px;
+    }
+
+    table td {
+        border: 1px solid #dfe2e5;
+        margin: 0;
+        padding: 6px 13px;
+    }
+
+    table th:first-child,
+    table td:first-child {
+        margin-top: 0;
+    }
+
+    table th:last-child,
+    table td:last-child {
+        margin-bottom: 0;
+    }
+
+    .CodeMirror-lines {
+        padding-left: 4px;
+    }
+
+    .code-tooltip {
+        box-shadow: 0 1px 1px 0 rgba(0, 28, 36, .3);
+        border-top: 1px solid #eef2f2;
+    }
+
+    .md-fences,
+    code,
+    tt {
+        border: 1px solid #e7eaed;
+        background-color: #f8f8f8;
+        border-radius: 3px;
+        padding: 0;
+        padding: 2px 4px 0px 4px;
+        font-size: 0.9em;
+    }
+
+    code {
+        background-color: #f3f4f4;
+        padding: 0 2px 0 2px;
+    }
+
+    .md-fences {
+        margin-bottom: 15px;
+        margin-top: 15px;
+        padding-top: 8px;
+        padding-bottom: 6px;
+    }
 
 
- @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
-</style><title>07人月神话</title>
+    .md-task-list-item > input {
+        margin-left: -1.3em;
+    }
+
+    @media print {
+        html {
+            font-size: 13px;
+        }
+
+        table,
+        pre {
+            page-break-inside: avoid;
+        }
+
+        pre {
+            word-wrap: break-word;
+        }
+    }
+
+    .md-fences {
+        background-color: #f8f8f8;
+    }
+
+    #write pre.md-meta-block {
+        padding: 1rem;
+        font-size: 85%;
+        line-height: 1.45;
+        background-color: #f7f7f7;
+        border: 0;
+        border-radius: 3px;
+        color: #777777;
+        margin-top: 0 !important;
+    }
+
+    .mathjax-block > .code-tooltip {
+        bottom: .375rem;
+    }
+
+    .md-mathjax-midline {
+        background: #fafafa;
+    }
+
+    #write > h3.md-focus:before {
+        left: -1.5625rem;
+        top: .375rem;
+    }
+
+    #write > h4.md-focus:before {
+        left: -1.5625rem;
+        top: .285714286rem;
+    }
+
+    #write > h5.md-focus:before {
+        left: -1.5625rem;
+        top: .285714286rem;
+    }
+
+    #write > h6.md-focus:before {
+        left: -1.5625rem;
+        top: .285714286rem;
+    }
+
+    .md-image > .md-meta {
+        /*border: 1px solid #ddd;*/
+        border-radius: 3px;
+        padding: 2px 0px 0px 4px;
+        font-size: 0.9em;
+        color: inherit;
+    }
+
+    .md-tag {
+        color: #a7a7a7;
+        opacity: 1;
+    }
+
+    .md-toc {
+        margin-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .sidebar-tabs {
+        border-bottom: none;
+    }
+
+    #typora-quick-open {
+        border: 1px solid #ddd;
+        background-color: #f8f8f8;
+    }
+
+    #typora-quick-open-item {
+        background-color: #FAFAFA;
+        border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+        border-style: solid;
+        border-width: 1px;
+    }
+
+    /** focus mode */
+    .on-focus-mode blockquote {
+        border-left-color: rgba(85, 85, 85, 0.12);
+    }
+
+    header, .context-menu, .megamenu-content, footer {
+        font-family: "Segoe UI", "Arial", sans-serif;
+    }
+
+    .file-node-content:hover .file-node-icon,
+    .file-node-content:hover .file-node-open-state {
+        visibility: visible;
+    }
+
+    .mac-seamless-mode #typora-sidebar {
+        background-color: #fafafa;
+        background-color: var(--side-bar-bg-color);
+    }
+
+    .md-lang {
+        color: #b4654d;
+    }
+
+    /*.html-for-mac {
+        --item-hover-bg-color: #E6F0FE;
+    }*/
+
+    #md-notification .btn {
+        border: 0;
+    }
+
+    .dropdown-menu .divider {
+        border-color: #e5e5e5;
+        opacity: 0.4;
+    }
+
+    .ty-preferences .window-content {
+        background-color: #fafafa;
+    }
+
+    .ty-preferences .nav-group-item.active {
+        color: white;
+        background: #999;
+    }
+
+    .menu-item-container a.menu-style-btn {
+        background-color: #f5f8fa;
+        background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
+    }
+
+
+    @media print {
+        @page {
+            margin: 0 0 0 0;
+        }
+
+        body.typora-export {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        #write {
+            padding: 0;
+        }
+    }
+    </style>
+    <title>07人月神话</title>
 </head>
-<body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='人月神话观后感'><span>人月神话观后感</span></h1><p><span>2021-07-25</span></p><h2 id='助于理解的句子原文摘抄'><span>助于理解的句子原文摘抄</span></h2><ol start='' ><li><span>将体系结构和设计实现、物理实现相分离。为了使结构师的关键任务更加可行，有必要将用户所感知的产品定义——体系结构，与它的实现相分离。体系机构和实现的划分在各个设计任务中形成了清晰的边界，边界两边都有大量的工作。</span></li><li><span>一个人无法完成所有体系结构的工作，有必要由一位主结构师把系统分解成子系统，系统边界应该划分在使子系统间接口最小化和最容易严格定义的地方，每个部分拥有自己的结构师，他必须就体系结构向主结构师回报。（重复递归这个过程）</span></li></ol><h2 id='名词解释'><span>名词解释</span></h2><h5 id='体系结构'><span>体系结构</span></h5><p><span>用户所感知的产品定义。看起来这个体系结构就是所谓的</span><strong><span>概念</span></strong><span>。</span></p><h5 id='结构师'><span>结构师</span></h5><p><span>负责设计体系结构的人。（想到了中国的总设计师制度（钱学森等））</span></p><h5 id='原型'><span>原型</span></h5><p><span>仅仅反映了概念模型准备过程中所做的设计决策的一个程序版本，它并未反映受实现考虑所驱使的设计决策。有助于获取用户的早期反馈。</span></p><h2 id='核心观点'><span>核心观点</span></h2><ol start='' ><li><strong><span>概念</span></strong><span>：我理解的本书中的概念，更偏向于产品级别，而非开发级别。即概念指的是用户可以感知到的，可以实际接触的上的，比如各种交互、可以使用的功能、使用功能解决自己问题的方式等。其和技术实际、技术开发的时候架构师等角色做的技术架构不是一回事。技术架构是编码实现</span><strong><span>概念</span></strong><span>时需要做的事，技术架构和</span><strong><span>概念</span></strong><span>结构应该是完全分离的。产品的</span><strong><span>概念结构</span></strong><span>不应该指定</span><strong><span>技术架构</span></strong><span>的实现细节，技术实现的时候只要可以完全覆盖产品的</span><strong><span>概念结构</span></strong><span>即可。（即技术重构项目时，不需要考虑技术实现产的，没有在</span><strong><span>产品概念</span></strong><span>中定义的，这些部分——信息隐藏用在这里似乎也可以）</span></li><li><span>一个软件必须保证在整个软件中的</span><strong><span>概念完整性</span></strong><span>，保证概念完整性可以带来易用性、一致性，进而可以提高生产效率。</span></li><li><span>概念完整性是产品质量的核心。</span></li><li><span>为了得到</span><strong><span>概念完整性</span></strong><span>，书中的观点是：由一人（结构师）或者2-3人的小组（结构师小组——具有共识）（尽可能的少——思维的连贯性）负责产品所有方面的概念完整性。结构师开发用于向用户解释使用的产品概念模型，概念模型包括所有功能的详细说明以及调用和控制的方法。</span></li><li><span>软件的困难的根源在于软件固有的</span><strong><span>概念复杂性</span></strong><span>，以及概念性要素的设计和调试。</span></li><li><strong><span>新增人员</span></strong><span>，带来的除了新的人力之外还有额外的：交流成本、培训成本、重新划分职责范围、任务分配本身和所造成的工作中断。所以总会使进度更加落后。</span></li></ol><p>&nbsp;</p><h2 id='如何获得概念完整性'><span>如何获得概念完整性</span></h2><p><span>书中列出了几种方式</span></p><ol start='' ><li><p><span>定义用户群。用户画像会影响每个结构决策，因此有必要使整个设计队伍共享一幅相同的用户画像：</span></p><ul><li><span>他们是谁</span></li><li><span>他们需要什么</span></li><li><span>他们认为自己需要什么</span></li><li><span>他们想要的是什么</span></li></ul></li><li><p><span>频率：这个不是很理解，仅列出原文：</span></p><ul><li><span>任何软件产品，任何用户群属性实际都是一种概率分布，每个属性具有若干可能的值，每个值都有自己的发生频率。</span></li><li><span>为用户群的属性明确地记载各种猜测，清晰和错误都比模糊不清要好得多。</span></li></ul></li><li><p><span>通过类比来获得概念完整性。图形界面和桌面的类比、轻流的表单流程组件和乐高的类比。通过采用大家非常熟悉的概念模型的比喻来获得概念的完整性。</span></p></li></ol><h2 id='交流'><span>交流</span></h2><ol start='' ><li><span>交流是成本（项目管理中）</span></li><li><span>尽早交流和持续沟通能使结构师有更高的成本意识。</span></li><li><span>对其他人的各种假设，团队成员之间的理解开始出现偏差。</span></li><li><span>为了减少交流（成本），组织结构包括了人力划分和限定职责范围。</span></li><li><span>信息隐藏（见下文）</span></li><li><span>交流的结果产生组织：组织的目标是为了减少必要的交流和协作量。</span></li><li><span>多沟通才能保证所有人向着相同的方向走。</span></li></ol><p>&nbsp;</p><h2 id='增量开发'><span>增量开发</span></h2><p><span>一句话：先让程序跑起来，不管每个部分是否实际生效，然后在跑起来的程序上不断增加功能。鼓舞士气、提高效率等方面非常有效。</span></p><p>&nbsp;</p><h2 id='信息隐藏'><span>信息隐藏</span></h2><p><span>即模块定义良好的接口，保证接口的可靠性，模块内部的实现部分不对外部可见。</span></p><p>&nbsp;</p><h2 id='人就是一切或者说几乎就是一切）'><span>人就是一切（或者说，几乎就是一切）</span></h2><p><span>团队质量是项目成功最大的决定因素。</span></p><p><span>项目的转移，就是重新开始，成功率很低，尽量避免。</span></p><p>&nbsp;</p><h2 id='放弃权利的力量'><span>放弃权利的力量</span></h2><p><span>创造力来自于个人。如何设计架构和流程，来提高而不是压制主动性和创造力。</span></p><p><span>通过权利向下委派，中心的权威实际上是得到了加强（如何把握度，即增强又防止尾大不掉）。</span></p><p>&nbsp;</p><h2 id='文档'><span>文档</span></h2><ol start='' ><li><span>程序修改人员所使用的文档中，除了描述事情如何，还应阐述它</span><strong><span>为什么</span></strong><span>那样。对于加深理解，</span><strong><span>目的</span></strong><span>是非常关键的，即使是高级语言的语法，也不能表达目的。</span></li><li><span>自文档技术。</span></li><li><span>描述将要达到的目标，仔细定义规定什么的同时，定义未规定什么。</span></li><li><span>保证不要对一件事情有两份文档，如果有多份，那么规定好多份文档不一致时，以什么为准。</span></li><li><span>文档交由测试部门检查</span></li><li><span>需要包含目的、环境（上下文，背景）、输入输出范围（解决的问题范围？）、输入输出格式（配置项格式？）、操作指令（完整的交互路径？）、选项（用户有哪些选择？）、精度和校验（？）、运行时间（指定配置下，解决特定规模问题所需要的时间）</span></li><li><span>文档时我们和前人都不曾成功背负的重担。作为基本目标，我们必须试图把他的负担降到最小。</span></li><li></li></ol><h2 id='如何培养杰出的设计人员'><span>如何培养杰出的设计人员</span></h2><p><span>系统的学习和交流。</span></p><ol start='' ><li><span>为他指派职业导师，仔细的为他们规划职业生涯</span></li><li><span>为每个方面制定和维护一份职业计划</span></li><li><span>为成长中的设计人员提供相互交流和激励的机会。</span></li></ol><p>&nbsp;</p><h2 id='其他'><span>其他</span></h2><ol start='' ><li><span>从系统整体出发和面向用户的态度是软件编程管理人员最重要的职能。</span></li><li><span>数据的表现（数据结构）是编程的根本。</span></li><li><span>开发人员交付的是用户满意度，而不仅仅是实际的产品。</span></li><li><span>版本控制的文档化。</span></li><li><span>里程碑必须是具体的、特定的和可度量的时间，能进行清晰的定义。（如测试全部通过、接口定义完全等）</span></li><li><span>慢性进度偏离是士气杀手，不要连续错过ddl.</span></li><li><span>追求完美（进取）是各行各业可以做好的重要品质。做到最好，做到更好。</span></li><li><strong><span>目的</span></strong><span>非常重要。解释目的有助于对方理解。</span></li><li><span>软件生产率在代码行数上通常是个常量，生产率的提高往往来自一条语句做了更多的事情，即使用更高级的语言（组件调用？）。</span></li><li><span>唯一不变的就是变化本身，变化才是常态，事先为变化做好准备：目标的变化，设计策略和技术上的变化，随着学习的过程更改设计。</span></li><li><span>设计文档化——得到更多团队成员的反馈。</span></li><li><span>规范化并不会减少创造性。</span></li><li><span>体系结构 -&gt; 设计实现 -&gt; 物理实现</span></li><li><span>做第二个项目的时候，会想往项目中添加太多的东西，导致画蛇添足。</span></li><li><span>现有逻辑和文档不一致：根据文档调整逻辑和根据逻辑调整文档 -&gt; 两种都可以，按成本来决定用哪一种。</span></li><li><span>人必须和顽固的戒心做斗争。</span></li><li><span>连续的精力集中带来高效。</span></li><li><span>功能拓展的压力来自那些习惯基本功能，又对软件提出了很多新用法的用户们。</span></li><li><span>质量决定成本</span></li></ol><p>&nbsp;</p></div></div>
+<body class='typora-export'>
+<div class='typora-export-content'>
+    <div id='write' class=''><h1 id='人月神话观后感'><span>人月神话观后感</span></h1>
+        <p><span>2021-07-25</span></p>
+        <h2 id='助于理解的句子原文摘抄'><span>助于理解的句子原文摘抄</span></h2>
+        <ol start=''>
+            <li><span>将体系结构和设计实现、物理实现相分离。为了使结构师的关键任务更加可行，有必要将用户所感知的产品定义——体系结构，与它的实现相分离。体系机构和实现的划分在各个设计任务中形成了清晰的边界，边界两边都有大量的工作。</span>
+            </li>
+            <li><span>一个人无法完成所有体系结构的工作，有必要由一位主结构师把系统分解成子系统，系统边界应该划分在使子系统间接口最小化和最容易严格定义的地方，每个部分拥有自己的结构师，他必须就体系结构向主结构师回报。（重复递归这个过程）</span>
+            </li>
+        </ol>
+        <h2 id='名词解释'><span>名词解释</span></h2><h5 id='体系结构'><span>体系结构</span></h5>
+        <p><span>用户所感知的产品定义。看起来这个体系结构就是所谓的</span><strong><span>概念</span></strong><span>。</span></p><h5 id='结构师'><span>结构师</span>
+        </h5>
+        <p><span>负责设计体系结构的人。（想到了中国的总设计师制度（钱学森等））</span></p><h5 id='原型'><span>原型</span></h5>
+        <p><span>仅仅反映了概念模型准备过程中所做的设计决策的一个程序版本，它并未反映受实现考虑所驱使的设计决策。有助于获取用户的早期反馈。</span></p>
+        <h2 id='核心观点'><span>核心观点</span></h2>
+        <ol start=''>
+            <li><strong><span>概念</span></strong><span>：我理解的本书中的概念，更偏向于产品级别，而非开发级别。即概念指的是用户可以感知到的，可以实际接触的上的，比如各种交互、可以使用的功能、使用功能解决自己问题的方式等。其和技术实际、技术开发的时候架构师等角色做的技术架构不是一回事。技术架构是编码实现</span><strong><span>概念</span></strong><span>时需要做的事，技术架构和</span><strong><span>概念</span></strong><span>结构应该是完全分离的。产品的</span><strong><span>概念结构</span></strong><span>不应该指定</span><strong><span>技术架构</span></strong><span>的实现细节，技术实现的时候只要可以完全覆盖产品的</span><strong><span>概念结构</span></strong><span>即可。（即技术重构项目时，不需要考虑技术实现产的，没有在</span><strong><span>产品概念</span></strong><span>中定义的，这些部分——信息隐藏用在这里似乎也可以）</span>
+            </li>
+            <li>
+                <span>一个软件必须保证在整个软件中的</span><strong><span>概念完整性</span></strong><span>，保证概念完整性可以带来易用性、一致性，进而可以提高生产效率。</span>
+            </li>
+            <li><span>概念完整性是产品质量的核心。</span></li>
+            <li><span>为了得到</span><strong><span>概念完整性</span></strong><span>，书中的观点是：由一人（结构师）或者2-3人的小组（结构师小组——具有共识）（尽可能的少——思维的连贯性）负责产品所有方面的概念完整性。结构师开发用于向用户解释使用的产品概念模型，概念模型包括所有功能的详细说明以及调用和控制的方法。</span>
+            </li>
+            <li><span>软件的困难的根源在于软件固有的</span><strong><span>概念复杂性</span></strong><span>，以及概念性要素的设计和调试。</span></li>
+            <li><strong><span>新增人员</span></strong><span>，带来的除了新的人力之外还有额外的：交流成本、培训成本、重新划分职责范围、任务分配本身和所造成的工作中断。所以总会使进度更加落后。</span>
+            </li>
+        </ol>
+        <p>&nbsp;</p>
+        <h2 id='如何获得概念完整性'><span>如何获得概念完整性</span></h2>
+        <p><span>书中列出了几种方式</span></p>
+        <ol start=''>
+            <li><p><span>定义用户群。用户画像会影响每个结构决策，因此有必要使整个设计队伍共享一幅相同的用户画像：</span></p>
+                <ul>
+                    <li><span>他们是谁</span></li>
+                    <li><span>他们需要什么</span></li>
+                    <li><span>他们认为自己需要什么</span></li>
+                    <li><span>他们想要的是什么</span></li>
+                </ul>
+            </li>
+            <li><p><span>频率：这个不是很理解，仅列出原文：</span></p>
+                <ul>
+                    <li><span>任何软件产品，任何用户群属性实际都是一种概率分布，每个属性具有若干可能的值，每个值都有自己的发生频率。</span></li>
+                    <li><span>为用户群的属性明确地记载各种猜测，清晰和错误都比模糊不清要好得多。</span></li>
+                </ul>
+            </li>
+            <li><p><span>通过类比来获得概念完整性。图形界面和桌面的类比、轻流的表单流程组件和乐高的类比。通过采用大家非常熟悉的概念模型的比喻来获得概念的完整性。</span></p></li>
+        </ol>
+        <h2 id='交流'><span>交流</span></h2>
+        <ol start=''>
+            <li><span>交流是成本（项目管理中）</span></li>
+            <li><span>尽早交流和持续沟通能使结构师有更高的成本意识。</span></li>
+            <li><span>对其他人的各种假设，团队成员之间的理解开始出现偏差。</span></li>
+            <li><span>为了减少交流（成本），组织结构包括了人力划分和限定职责范围。</span></li>
+            <li><span>信息隐藏（见下文）</span></li>
+            <li><span>交流的结果产生组织：组织的目标是为了减少必要的交流和协作量。</span></li>
+            <li><span>多沟通才能保证所有人向着相同的方向走。</span></li>
+        </ol>
+        <p>&nbsp;</p>
+        <h2 id='增量开发'><span>增量开发</span></h2>
+        <p><span>一句话：先让程序跑起来，不管每个部分是否实际生效，然后在跑起来的程序上不断增加功能。鼓舞士气、提高效率等方面非常有效。</span></p>
+        <p>&nbsp;</p>
+        <h2 id='信息隐藏'><span>信息隐藏</span></h2>
+        <p><span>即模块定义良好的接口，保证接口的可靠性，模块内部的实现部分不对外部可见。</span></p>
+        <p>&nbsp;</p>
+        <h2 id='人就是一切或者说几乎就是一切）'><span>人就是一切（或者说，几乎就是一切）</span></h2>
+        <p><span>团队质量是项目成功最大的决定因素。</span></p>
+        <p><span>项目的转移，就是重新开始，成功率很低，尽量避免。</span></p>
+        <p>&nbsp;</p>
+        <h2 id='放弃权利的力量'><span>放弃权利的力量</span></h2>
+        <p><span>创造力来自于个人。如何设计架构和流程，来提高而不是压制主动性和创造力。</span></p>
+        <p><span>通过权利向下委派，中心的权威实际上是得到了加强（如何把握度，即增强又防止尾大不掉）。</span></p>
+        <p>&nbsp;</p>
+        <h2 id='文档'><span>文档</span></h2>
+        <ol start=''>
+            <li>
+                <span>程序修改人员所使用的文档中，除了描述事情如何，还应阐述它</span><strong><span>为什么</span></strong><span>那样。对于加深理解，</span><strong><span>目的</span></strong><span>是非常关键的，即使是高级语言的语法，也不能表达目的。</span>
+            </li>
+            <li><span>自文档技术。</span></li>
+            <li><span>描述将要达到的目标，仔细定义规定什么的同时，定义未规定什么。</span></li>
+            <li><span>保证不要对一件事情有两份文档，如果有多份，那么规定好多份文档不一致时，以什么为准。</span></li>
+            <li><span>文档交由测试部门检查</span></li>
+            <li><span>需要包含目的、环境（上下文，背景）、输入输出范围（解决的问题范围？）、输入输出格式（配置项格式？）、操作指令（完整的交互路径？）、选项（用户有哪些选择？）、精度和校验（？）、运行时间（指定配置下，解决特定规模问题所需要的时间）</span>
+            </li>
+            <li><span>文档时我们和前人都不曾成功背负的重担。作为基本目标，我们必须试图把他的负担降到最小。</span></li>
+            <li></li>
+        </ol>
+        <h2 id='如何培养杰出的设计人员'><span>如何培养杰出的设计人员</span></h2>
+        <p><span>系统的学习和交流。</span></p>
+        <ol start=''>
+            <li><span>为他指派职业导师，仔细的为他们规划职业生涯</span></li>
+            <li><span>为每个方面制定和维护一份职业计划</span></li>
+            <li><span>为成长中的设计人员提供相互交流和激励的机会。</span></li>
+        </ol>
+        <p>&nbsp;</p>
+        <h2 id='其他'><span>其他</span></h2>
+        <ol start=''>
+            <li><span>从系统整体出发和面向用户的态度是软件编程管理人员最重要的职能。</span></li>
+            <li><span>数据的表现（数据结构）是编程的根本。</span></li>
+            <li><span>开发人员交付的是用户满意度，而不仅仅是实际的产品。</span></li>
+            <li><span>版本控制的文档化。</span></li>
+            <li><span>里程碑必须是具体的、特定的和可度量的时间，能进行清晰的定义。（如测试全部通过、接口定义完全等）</span></li>
+            <li><span>慢性进度偏离是士气杀手，不要连续错过ddl.</span></li>
+            <li><span>追求完美（进取）是各行各业可以做好的重要品质。做到最好，做到更好。</span></li>
+            <li><strong><span>目的</span></strong><span>非常重要。解释目的有助于对方理解。</span></li>
+            <li><span>软件生产率在代码行数上通常是个常量，生产率的提高往往来自一条语句做了更多的事情，即使用更高级的语言（组件调用？）。</span></li>
+            <li><span>唯一不变的就是变化本身，变化才是常态，事先为变化做好准备：目标的变化，设计策略和技术上的变化，随着学习的过程更改设计。</span></li>
+            <li><span>设计文档化——得到更多团队成员的反馈。</span></li>
+            <li><span>规范化并不会减少创造性。</span></li>
+            <li><span>体系结构 -&gt; 设计实现 -&gt; 物理实现</span></li>
+            <li><span>做第二个项目的时候，会想往项目中添加太多的东西，导致画蛇添足。</span></li>
+            <li><span>现有逻辑和文档不一致：根据文档调整逻辑和根据逻辑调整文档 -&gt; 两种都可以，按成本来决定用哪一种。</span></li>
+            <li><span>人必须和顽固的戒心做斗争。</span></li>
+            <li><span>连续的精力集中带来高效。</span></li>
+            <li><span>功能拓展的压力来自那些习惯基本功能，又对软件提出了很多新用法的用户们。</span></li>
+            <li><span>质量决定成本</span></li>
+        </ol>
+        <p>&nbsp;</p></div>
+</div>
 </body>
 </html>

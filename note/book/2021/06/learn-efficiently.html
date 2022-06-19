@@ -1,598 +1,1678 @@
 <!doctype html>
 <html>
 <head>
-<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
 
-<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
-.mac-os-11 { --title-bar-height: 28px; }
-html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
-iframe { margin: auto; }
-a.url { word-break: break-all; }
-a:active, a:hover { outline: 0px; }
-.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
-#write.first-line-indent p { text-indent: 2em; }
-#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
-#write.first-line-indent li { margin-left: 2em; }
-.for-image #write { padding-left: 8px; padding-right: 8px; }
-body.typora-export { padding-left: 30px; padding-right: 30px; }
-.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
-.typora-export .task-list-item input { pointer-events: none; }
-@media screen and (max-width: 500px) {
-  body.typora-export { padding-left: 0px; padding-right: 0px; }
-  #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
-}
-#write li > figure:last-child { margin-bottom: 0.5rem; }
-#write ol, #write ul { position: relative; }
-img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
-button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
-input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
-*, ::after, ::before { box-sizing: border-box; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
-p { line-height: inherit; }
-h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
-p { orphans: 4; }
-h1 { font-size: 2rem; }
-h2 { font-size: 1.8rem; }
-h3 { font-size: 1.6rem; }
-h4 { font-size: 1.4rem; }
-h5 { font-size: 1.2rem; }
-h6 { font-size: 1rem; }
-.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
-.hidden { display: none; }
-.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
-a { cursor: pointer; }
-sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
-sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
-#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
-figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
-figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
-thead { display: table-header-group; }
-table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
-table.md-table td { min-width: 32px; }
-.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
-.CodeMirror-linenumber { }
-.CodeMirror { text-align: left; }
-.CodeMirror-placeholder { opacity: 0.3; }
-.CodeMirror pre { padding: 0px 4px; }
-.CodeMirror-lines { padding: 0px; }
-div.hr:focus { cursor: none; }
-#write pre { white-space: pre-wrap; }
-#write.fences-no-line-wrapping pre { white-space: pre; }
-#write pre.ty-contain-cm { white-space: normal; }
-.CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
-.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
-#write .md-fences.mock-cm { white-space: pre-wrap; }
-.md-fences.md-fences-with-lineno { padding-left: 0px; }
-#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
-.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
-.CodeMirror-line, twitterwidget { break-inside: avoid; }
-.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
-.footnotes + .footnotes { margin-top: 0px; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
-li div { padding-top: 0px; }
-blockquote { margin: 1rem 0px; }
-li .mathjax-block, li p { margin: 0.5rem 0px; }
-li blockquote { margin: 1rem 0px; }
-li { margin: 0px; position: relative; }
-blockquote > :last-child { margin-bottom: 0px; }
-blockquote > :first-child, li > :first-child { margin-top: 0px; }
-.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
-#write .footnote-line { white-space: pre-wrap; }
-@media print {
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
-  .typora-export * { print-color-adjust: exact; }
-  .typora-export #write { break-after: avoid; }
-  .typora-export #write::after { height: 0px; }
-  .is-mac table { break-inside: avoid; }
-  .typora-export-show-outline .typora-export-sidebar { display: none; }
-}
-.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
-a img, img a { cursor: pointer; }
-pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
-p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
-#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
-p > .md-image:only-child { display: inline-block; width: 100%; }
-#write .MathJax_Display { margin: 0.8em 0px 0px; }
-.md-math-block { width: 100%; }
-.md-math-block:not(:empty)::after { display: none; }
-.MathJax_ref { fill: currentcolor; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
-.md-task-list-item { position: relative; list-style-type: none; }
-.task-list-item.md-task-list-item { padding-left: 0px; }
-.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
-.math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
-.md-toc-content { position: relative; margin-left: 0px; }
-.md-toc-content::after, .md-toc::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); }
-.md-toc-item a { text-decoration: none; }
-.md-toc-inner:hover { text-decoration: underline; }
-.md-toc-inner { display: inline-block; cursor: pointer; }
-.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
-.md-toc-h2 .md-toc-inner { margin-left: 2em; }
-.md-toc-h3 .md-toc-inner { margin-left: 4em; }
-.md-toc-h4 .md-toc-inner { margin-left: 6em; }
-.md-toc-h5 .md-toc-inner { margin-left: 8em; }
-.md-toc-h6 .md-toc-inner { margin-left: 10em; }
-@media screen and (max-width: 48em) {
-  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
-  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
-  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
-  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
-}
-a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
-.footnote-line a:not(.reversefootnote) { color: inherit; }
-.md-attr { display: none; }
-.md-fn-count::after { content: "."; }
-code, pre, samp, tt { font-family: var(--monospace); }
-kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
-code { text-align: left; }
-a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
-.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
-.md-diagram-panel > svg { max-width: 100%; }
-[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
-[lang="mermaid"] .node text { font-size: 1rem; }
-table tr th { border-bottom-width: 0px; }
-video { max-width: 100%; display: block; margin: 0px auto; }
-iframe { max-width: 100%; width: 100%; border: none; }
-.highlight td, .highlight tr { border: 0px; }
-mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
-.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
-.md-expand mark .md-meta { opacity: 0.3 !important; }
-mark .md-meta { color: rgb(0, 0, 0); }
-@media print {
-  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
-}
-.md-diagram-panel .messageText { stroke: none !important; }
-.md-diagram-panel .start-state { fill: var(--node-fill); }
-.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
-.md-fences.md-fences-math { font-size: 1em; }
-.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
-.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
-.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
-.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
-.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
-.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
-@media screen and (max-width: 1024px) {
-  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
-}
-@media screen and (max-width: 800px) {
-  .typora-export-sidebar { display: none; }
-}
-.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
-.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
-.outline-content strong { font-weight: 400; }
-.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
-.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
-.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
-.outline-expander:hover::before { content: ""; }
-.outline-h1 > .outline-item { padding-left: 0px; }
-.outline-h2 > .outline-item { padding-left: 1em; }
-.outline-h3 > .outline-item { padding-left: 2em; }
-.outline-h4 > .outline-item { padding-left: 3em; }
-.outline-h5 > .outline-item { padding-left: 4em; }
-.outline-h6 > .outline-item { padding-left: 5em; }
-.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
-.outline-label:hover { text-decoration: underline; }
-.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
-.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
-.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
-.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
-.outline-children { display: none; }
-.info-panel-tab-wrapper { display: none; }
-.outline-item-open > .outline-children { display: block; }
-.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
-.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
-.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
-.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
-.typora-export-collapse-outline .outline-children { display: none; }
-.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
-.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
-.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
-.md-inline-math-container mjx-container { zoom: 0.95; }
+    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext'
+          rel='stylesheet' type='text/css'/>
+    <style type='text/css'>html {
+        overflow-x: initial !important;
+    }
+
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --select-text-bg-color: #B5D6FC;
+        --select-text-font-color: auto;
+        --monospace: "Lucida Console", Consolas, "Courier", monospace;
+        --title-bar-height: 20px;
+    }
+
+    .mac-os-11 {
+        --title-bar-height: 28px;
+    }
+
+    html {
+        font-size: 14px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        height: auto;
+        inset: 0px;
+        font-size: 1rem;
+        line-height: 1.42857143;
+        overflow-x: hidden;
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        tab-size: 4;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    iframe {
+        margin: auto;
+    }
+
+    a.url {
+        word-break: break-all;
+    }
+
+    a:active, a:hover {
+        outline: 0px;
+    }
+
+    .in-text-selection, ::selection {
+        text-shadow: none;
+        background: var(--select-text-bg-color);
+        color: var(--select-text-font-color);
+    }
+
+    #write {
+        margin: 0px auto;
+        height: auto;
+        width: inherit;
+        word-break: normal;
+        word-wrap: break-word;
+        position: relative;
+        white-space: normal;
+        overflow-x: visible;
+        padding-top: 36px;
+    }
+
+    #write.first-line-indent p {
+        text-indent: 2em;
+    }
+
+    #write.first-line-indent li p, #write.first-line-indent p * {
+        text-indent: 0px;
+    }
+
+    #write.first-line-indent li {
+        margin-left: 2em;
+    }
+
+    .for-image #write {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body.typora-export {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .typora-export .footnote-line, .typora-export li, .typora-export p {
+        white-space: pre-wrap;
+    }
+
+    .typora-export .task-list-item input {
+        pointer-events: none;
+    }
+
+    @media screen and (max-width: 500px) {
+        body.typora-export {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        #write {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .CodeMirror-sizer {
+            margin-left: 0px !important;
+        }
+
+        .CodeMirror-gutters {
+            display: none !important;
+        }
+    }
+
+    #write li > figure:last-child {
+        margin-bottom: 0.5rem;
+    }
+
+    #write ol, #write ul {
+        position: relative;
+    }
+
+    img {
+        max-width: 100%;
+        vertical-align: middle;
+        image-orientation: from-image;
+    }
+
+    button, input, select, textarea {
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        font-style: inherit;
+        font-variant-caps: inherit;
+        font-weight: inherit;
+        font-stretch: inherit;
+        line-height: inherit;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        line-height: normal;
+        padding: 0px;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
+        width: inherit;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p {
+        position: relative;
+    }
+
+    p {
+        line-height: inherit;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        break-after: avoid-page;
+        break-inside: avoid;
+        orphans: 4;
+    }
+
+    p {
+        orphans: 4;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    h4 {
+        font-size: 1.4rem;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+
+    .md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .md-blockmeta {
+        color: rgb(204, 204, 204);
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    sup.md-footnote {
+        padding: 2px 4px;
+        background-color: rgba(238, 238, 238, 0.7);
+        color: rgb(85, 85, 85);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    sup.md-footnote a, sup.md-footnote a:hover {
+        color: inherit;
+        text-transform: inherit;
+        text-decoration: inherit;
+    }
+
+    #write input[type="checkbox"] {
+        cursor: pointer;
+        width: inherit;
+        height: inherit;
+    }
+
+    figure {
+        overflow-x: auto;
+        margin: 1.2em 0px;
+        max-width: calc(100% + 16px);
+        padding: 0px;
+    }
+
+    figure > table {
+        margin: 0px;
+    }
+
+    tr {
+        break-inside: avoid;
+        break-after: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0px;
+        width: 100%;
+        overflow: auto;
+        break-inside: auto;
+        text-align: left;
+    }
+
+    table.md-table td {
+        min-width: 32px;
+    }
+
+    .CodeMirror-gutters {
+        border-right-width: 0px;
+        background-color: inherit;
+    }
+
+    .CodeMirror-linenumber {
+    }
+
+    .CodeMirror {
+        text-align: left;
+    }
+
+    .CodeMirror-placeholder {
+        opacity: 0.3;
+    }
+
+    .CodeMirror pre {
+        padding: 0px 4px;
+    }
+
+    .CodeMirror-lines {
+        padding: 0px;
+    }
+
+    div.hr:focus {
+        cursor: none;
+    }
+
+    #write pre {
+        white-space: pre-wrap;
+    }
+
+    #write.fences-no-line-wrapping pre {
+        white-space: pre;
+    }
+
+    #write pre.ty-contain-cm {
+        white-space: normal;
+    }
+
+    .CodeMirror-gutters {
+        margin-right: 4px;
+    }
+
+    .md-fences {
+        font-size: 0.9rem;
+        display: block;
+        break-inside: avoid;
+        text-align: left;
+        overflow: visible;
+        white-space: pre;
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        position: relative !important;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    .md-fences-adv-panel {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        padding-top: 0px;
+        padding-bottom: 8px;
+        overflow-x: auto;
+    }
+
+    #write .md-fences.mock-cm {
+        white-space: pre-wrap;
+    }
+
+    .md-fences.md-fences-with-lineno {
+        padding-left: 0px;
+    }
+
+    #write.fences-no-line-wrapping .md-fences.mock-cm {
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    .md-fences.mock-cm.md-fences-with-lineno {
+        padding-left: 8px;
+    }
+
+    .CodeMirror-line, twitterwidget {
+        break-inside: avoid;
+    }
+
+    .footnotes {
+        opacity: 0.8;
+        font-size: 0.9rem;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .footnotes + .footnotes {
+        margin-top: 0px;
+    }
+
+    .md-reset {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        outline: 0px;
+        vertical-align: top;
+        text-decoration: none;
+        text-shadow: none;
+        float: none;
+        position: static;
+        width: auto;
+        height: auto;
+        white-space: nowrap;
+        cursor: inherit;
+        line-height: normal;
+        font-weight: 400;
+        text-align: left;
+        box-sizing: content-box;
+        direction: ltr;
+        background-position: 0px 0px;
+    }
+
+    li div {
+        padding-top: 0px;
+    }
+
+    blockquote {
+        margin: 1rem 0px;
+    }
+
+    li .mathjax-block, li p {
+        margin: 0.5rem 0px;
+    }
+
+    li blockquote {
+        margin: 1rem 0px;
+    }
+
+    li {
+        margin: 0px;
+        position: relative;
+    }
+
+    blockquote > :last-child {
+        margin-bottom: 0px;
+    }
+
+    blockquote > :first-child, li > :first-child {
+        margin-top: 0px;
+    }
+
+    .footnotes-area {
+        color: rgb(136, 136, 136);
+        margin-top: 0.714rem;
+        padding-bottom: 0.143rem;
+        white-space: normal;
+    }
+
+    #write .footnote-line {
+        white-space: pre-wrap;
+    }
+
+    @media print {
+        body, html {
+            border: 1px solid transparent;
+            height: 99%;
+            break-after: avoid;
+            break-before: avoid;
+            font-variant-ligatures: no-common-ligatures;
+        }
+
+        #write {
+            margin-top: 0px;
+            padding-top: 0px;
+            border-color: transparent !important;
+        }
+
+        .typora-export * {
+            print-color-adjust: exact;
+        }
+
+        .typora-export #write {
+            break-after: avoid;
+        }
+
+        .typora-export #write::after {
+            height: 0px;
+        }
+
+        .is-mac table {
+            break-inside: avoid;
+        }
+
+        .typora-export-show-outline .typora-export-sidebar {
+            display: none;
+        }
+    }
+
+    .footnote-line {
+        margin-top: 0.714em;
+        font-size: 0.7em;
+    }
+
+    a img, img a {
+        cursor: pointer;
+    }
+
+    pre.md-meta-block {
+        font-size: 0.8rem;
+        min-height: 0.8rem;
+        white-space: pre-wrap;
+        background-color: rgb(204, 204, 204);
+        display: block;
+        overflow-x: hidden;
+    }
+
+    p > .md-image:only-child:not(.md-img-error) img, p > img:only-child {
+        display: block;
+        margin: auto;
+    }
+
+    #write.first-line-indent p > .md-image:only-child:not(.md-img-error) img {
+        left: -2em;
+        position: relative;
+    }
+
+    p > .md-image:only-child {
+        display: inline-block;
+        width: 100%;
+    }
+
+    #write .MathJax_Display {
+        margin: 0.8em 0px 0px;
+    }
+
+    .md-math-block {
+        width: 100%;
+    }
+
+    .md-math-block:not(:empty)::after {
+        display: none;
+    }
+
+    .MathJax_ref {
+        fill: currentcolor;
+    }
+
+    [contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus {
+        outline: 0px;
+        box-shadow: none;
+    }
+
+    .md-task-list-item {
+        position: relative;
+        list-style-type: none;
+    }
+
+    .task-list-item.md-task-list-item {
+        padding-left: 0px;
+    }
+
+    .md-task-list-item > input {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        margin-left: -1.2em;
+        margin-top: calc(1em - 10px);
+        border: none;
+    }
+
+    .math {
+        font-size: 1rem;
+    }
+
+    .md-toc {
+        min-height: 3.58rem;
+        position: relative;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+
+    .md-toc-content {
+        position: relative;
+        margin-left: 0px;
+    }
+
+    .md-toc-content::after, .md-toc::after {
+        display: none;
+    }
+
+    .md-toc-item {
+        display: block;
+        color: rgb(65, 131, 196);
+    }
+
+    .md-toc-item a {
+        text-decoration: none;
+    }
+
+    .md-toc-inner:hover {
+        text-decoration: underline;
+    }
+
+    .md-toc-inner {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .md-toc-h1 .md-toc-inner {
+        margin-left: 0px;
+        font-weight: 700;
+    }
+
+    .md-toc-h2 .md-toc-inner {
+        margin-left: 2em;
+    }
+
+    .md-toc-h3 .md-toc-inner {
+        margin-left: 4em;
+    }
+
+    .md-toc-h4 .md-toc-inner {
+        margin-left: 6em;
+    }
+
+    .md-toc-h5 .md-toc-inner {
+        margin-left: 8em;
+    }
+
+    .md-toc-h6 .md-toc-inner {
+        margin-left: 10em;
+    }
+
+    @media screen and (max-width: 48em) {
+        .md-toc-h3 .md-toc-inner {
+            margin-left: 3.5em;
+        }
+
+        .md-toc-h4 .md-toc-inner {
+            margin-left: 5em;
+        }
+
+        .md-toc-h5 .md-toc-inner {
+            margin-left: 6.5em;
+        }
+
+        .md-toc-h6 .md-toc-inner {
+            margin-left: 8em;
+        }
+    }
+
+    a.md-toc-inner {
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+    }
+
+    .footnote-line a:not(.reversefootnote) {
+        color: inherit;
+    }
+
+    .md-attr {
+        display: none;
+    }
+
+    .md-fn-count::after {
+        content: ".";
+    }
+
+    code, pre, samp, tt {
+        font-family: var(--monospace);
+    }
+
+    kbd {
+        margin: 0px 0.1em;
+        padding: 0.1em 0.6em;
+        font-size: 0.8em;
+        color: rgb(36, 39, 41);
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(173, 179, 185);
+        border-radius: 3px;
+        box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+
+    .md-comment {
+        color: rgb(162, 127, 3);
+        opacity: 0.6;
+        font-family: var(--monospace);
+    }
+
+    code {
+        text-align: left;
+    }
+
+    a.md-print-anchor {
+        white-space: pre !important;
+        border: none !important;
+        display: inline-block !important;
+        position: absolute !important;
+        width: 1px !important;
+        right: 0px !important;
+        outline: 0px !important;
+        text-shadow: initial !important;
+        background-position: 0px 0px !important;
+    }
+
+    .os-windows.monocolor-emoji .md-emoji {
+        font-family: "Segoe UI Symbol", sans-serif;
+    }
+
+    .md-diagram-panel > svg {
+        max-width: 100%;
+    }
+
+    [lang="flow"] svg, [lang="mermaid"] svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    [lang="mermaid"] .node text {
+        font-size: 1rem;
+    }
+
+    table tr th {
+        border-bottom-width: 0px;
+    }
+
+    video {
+        max-width: 100%;
+        display: block;
+        margin: 0px auto;
+    }
+
+    iframe {
+        max-width: 100%;
+        width: 100%;
+        border: none;
+    }
+
+    .highlight td, .highlight tr {
+        border: 0px;
+    }
+
+    mark {
+        background-color: rgb(255, 255, 0);
+        color: rgb(0, 0, 0);
+    }
+
+    .md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong {
+        color: inherit;
+    }
+
+    .md-expand mark .md-meta {
+        opacity: 0.3 !important;
+    }
+
+    mark .md-meta {
+        color: rgb(0, 0, 0);
+    }
+
+    @media print {
+        .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 {
+            break-inside: avoid;
+        }
+    }
+
+    .md-diagram-panel .messageText {
+        stroke: none !important;
+    }
+
+    .md-diagram-panel .start-state {
+        fill: var(--node-fill);
+    }
+
+    .md-diagram-panel .edgeLabel rect {
+        opacity: 1 !important;
+    }
+
+    .md-fences.md-fences-math {
+        font-size: 1em;
+    }
+
+    .md-fences-advanced:not(.md-focus) {
+        padding: 0px;
+        white-space: nowrap;
+        border: 0px;
+    }
+
+    .md-fences-advanced:not(.md-focus) {
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    .typora-export-show-outline .typora-export-content {
+        max-width: 1440px;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .typora-export-sidebar {
+        width: 300px;
+        font-size: 0.8rem;
+        margin-top: 80px;
+        margin-right: 18px;
+    }
+
+    .typora-export-show-outline #write {
+        --webkit-flex: 2;
+        flex: 2 1 0%;
+    }
+
+    .typora-export-sidebar .outline-content {
+        position: fixed;
+        top: 0px;
+        max-height: 100%;
+        overflow: hidden auto;
+        padding-bottom: 30px;
+        padding-top: 60px;
+        width: 300px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .typora-export-sidebar, .typora-export-sidebar .outline-content {
+            width: 240px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .typora-export-sidebar {
+            display: none;
+        }
+    }
+
+    .outline-content li, .outline-content ul {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        list-style: none;
+    }
+
+    .outline-content ul {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .outline-content strong {
+        font-weight: 400;
+    }
+
+    .outline-expander {
+        width: 1rem;
+        height: 1.428571429rem;
+        position: relative;
+        display: table-cell;
+        vertical-align: middle;
+        cursor: pointer;
+        padding-left: 4px;
+    }
+
+    .outline-expander::before {
+        content: "";
+        position: relative;
+        font-family: Ionicons;
+        display: inline-block;
+        font-size: 8px;
+        vertical-align: middle;
+    }
+
+    .outline-item {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        cursor: pointer;
+    }
+
+    .outline-expander:hover::before {
+        content: "";
+    }
+
+    .outline-h1 > .outline-item {
+        padding-left: 0px;
+    }
+
+    .outline-h2 > .outline-item {
+        padding-left: 1em;
+    }
+
+    .outline-h3 > .outline-item {
+        padding-left: 2em;
+    }
+
+    .outline-h4 > .outline-item {
+        padding-left: 3em;
+    }
+
+    .outline-h5 > .outline-item {
+        padding-left: 4em;
+    }
+
+    .outline-h6 > .outline-item {
+        padding-left: 5em;
+    }
+
+    .outline-label {
+        cursor: pointer;
+        display: table-cell;
+        vertical-align: middle;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .outline-label:hover {
+        text-decoration: underline;
+    }
+
+    .outline-item:hover {
+        border-color: rgb(245, 245, 245);
+        background-color: var(--item-hover-bg-color);
+    }
+
+    .outline-item:hover {
+        margin-left: -28px;
+        margin-right: -28px;
+        border-left-width: 28px;
+        border-left-style: solid;
+        border-left-color: transparent;
+        border-right-width: 28px;
+        border-right-style: solid;
+        border-right-color: transparent;
+    }
+
+    .outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before {
+        display: none;
+    }
+
+    .outline-item-open > .outline-item > .outline-expander::before {
+        content: "";
+    }
+
+    .outline-children {
+        display: none;
+    }
+
+    .info-panel-tab-wrapper {
+        display: none;
+    }
+
+    .outline-item-open > .outline-children {
+        display: block;
+    }
+
+    .typora-export .outline-item {
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    .typora-export .outline-item:hover {
+        margin-right: -8px;
+        border-right-width: 8px;
+        border-right-style: solid;
+        border-right-color: transparent;
+    }
+
+    .typora-export .outline-expander::before {
+        content: "+";
+        font-family: inherit;
+        top: -1px;
+    }
+
+    .typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before {
+        content: "−";
+    }
+
+    .typora-export-collapse-outline .outline-children {
+        display: none;
+    }
+
+    .typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children {
+        display: block;
+    }
+
+    .typora-export-no-collapse-outline .outline-expander::before {
+        content: "" !important;
+    }
+
+    .typora-export-show-outline .outline-item-active > .outline-item .outline-label {
+        font-weight: 700;
+    }
+
+    .md-inline-math-container mjx-container {
+        zoom: 0.95;
+    }
 
 
-:root {
-    --side-bar-bg-color: #fafafa;
-    --control-text-color: #777;
-}
+    :root {
+        --side-bar-bg-color: #fafafa;
+        --control-text-color: #777;
+    }
 
-@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+    @include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
 
-/* open-sans-regular - latin-ext_latin */
-  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-regular - latin-ext_latin */
+    /* open-sans-italic - latin-ext_latin */
     /* open-sans-700 - latin-ext_latin */
     /* open-sans-700italic - latin-ext_latin */
-  html {
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-}
-
-body {
-    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
-    color: rgb(51, 51, 51);
-    line-height: 1.6;
-}
-
-#write {
-    max-width: 860px;
-  	margin: 0 auto;
-  	padding: 30px;
-    padding-bottom: 100px;
-}
-
-@media only screen and (min-width: 1400px) {
-	#write {
-		max-width: 1024px;
-	}
-}
-
-@media only screen and (min-width: 1800px) {
-	#write {
-		max-width: 1200px;
-	}
-}
-
-#write > ul:first-child,
-#write > ol:first-child{
-    margin-top: 30px;
-}
-
-a {
-    color: #4183C4;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    line-height: 1.4;
-    cursor: text;
-}
-h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor {
-    text-decoration: none;
-}
-h1 tt,
-h1 code {
-    font-size: inherit;
-}
-h2 tt,
-h2 code {
-    font-size: inherit;
-}
-h3 tt,
-h3 code {
-    font-size: inherit;
-}
-h4 tt,
-h4 code {
-    font-size: inherit;
-}
-h5 tt,
-h5 code {
-    font-size: inherit;
-}
-h6 tt,
-h6 code {
-    font-size: inherit;
-}
-h1 {
-    font-size: 2.25em;
-    line-height: 1.2;
-    border-bottom: 1px solid #eee;
-}
-h2 {
-    font-size: 1.75em;
-    line-height: 1.225;
-    border-bottom: 1px solid #eee;
-}
-
-/*@media print {
-    .typora-export h1,
-    .typora-export h2 {
-        border-bottom: none;
-        padding-bottom: initial;
-    }
-
-    .typora-export h1::after,
-    .typora-export h2::after {
-        content: "";
-        display: block;
-        height: 100px;
-        margin-top: -96px;
-        border-top: 1px solid #eee;
-    }
-}*/
-
-h3 {
-    font-size: 1.5em;
-    line-height: 1.43;
-}
-h4 {
-    font-size: 1.25em;
-}
-h5 {
-    font-size: 1em;
-}
-h6 {
-   font-size: 1em;
-    color: #777;
-}
-p,
-blockquote,
-ul,
-ol,
-dl,
-table{
-    margin: 0.8em 0;
-}
-li>ol,
-li>ul {
-    margin: 0 0;
-}
-hr {
-    height: 2px;
-    padding: 0;
-    margin: 16px 0;
-    background-color: #e7e7e7;
-    border: 0 none;
-    overflow: hidden;
-    box-sizing: content-box;
-}
-
-li p.first {
-    display: inline-block;
-}
-ul,
-ol {
-    padding-left: 30px;
-}
-ul:first-child,
-ol:first-child {
-    margin-top: 0;
-}
-ul:last-child,
-ol:last-child {
-    margin-bottom: 0;
-}
-blockquote {
-    border-left: 4px solid #dfe2e5;
-    padding: 0 15px;
-    color: #777777;
-}
-blockquote blockquote {
-    padding-right: 0;
-}
-table {
-    padding: 0;
-    word-break: initial;
-}
-table tr {
-    border: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 0;
-}
-table tr:nth-child(2n),
-thead {
-    background-color: #f8f8f8;
-}
-table th {
-    font-weight: bold;
-    border: 1px solid #dfe2e5;
-    border-bottom: 0;
-    margin: 0;
-    padding: 6px 13px;
-}
-table td {
-    border: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 6px 13px;
-}
-table th:first-child,
-table td:first-child {
-    margin-top: 0;
-}
-table th:last-child,
-table td:last-child {
-    margin-bottom: 0;
-}
-
-.CodeMirror-lines {
-    padding-left: 4px;
-}
-
-.code-tooltip {
-    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
-    border-top: 1px solid #eef2f2;
-}
-
-.md-fences,
-code,
-tt {
-    border: 1px solid #e7eaed;
-    background-color: #f8f8f8;
-    border-radius: 3px;
-    padding: 0;
-    padding: 2px 4px 0px 4px;
-    font-size: 0.9em;
-}
-
-code {
-    background-color: #f3f4f4;
-    padding: 0 2px 0 2px;
-}
-
-.md-fences {
-    margin-bottom: 15px;
-    margin-top: 15px;
-    padding-top: 8px;
-    padding-bottom: 6px;
-}
-
-
-.md-task-list-item > input {
-  margin-left: -1.3em;
-}
-
-@media print {
     html {
-        font-size: 13px;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
     }
-    table,
-    pre {
-        page-break-inside: avoid;
+
+    body {
+        font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+        color: rgb(51, 51, 51);
+        line-height: 1.6;
     }
-    pre {
-        word-wrap: break-word;
+
+    #write {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 30px;
+        padding-bottom: 100px;
     }
-}
 
-.md-fences {
-	background-color: #f8f8f8;
-}
-#write pre.md-meta-block {
-	padding: 1rem;
-    font-size: 85%;
-    line-height: 1.45;
-    background-color: #f7f7f7;
-    border: 0;
-    border-radius: 3px;
-    color: #777777;
-    margin-top: 0 !important;
-}
+    @media only screen and (min-width: 1400px) {
+        #write {
+            max-width: 1024px;
+        }
+    }
 
-.mathjax-block>.code-tooltip {
-	bottom: .375rem;
-}
+    @media only screen and (min-width: 1800px) {
+        #write {
+            max-width: 1200px;
+        }
+    }
 
-.md-mathjax-midline {
-    background: #fafafa;
-}
+    #write > ul:first-child,
+    #write > ol:first-child {
+        margin-top: 30px;
+    }
 
-#write>h3.md-focus:before{
-	left: -1.5625rem;
-	top: .375rem;
-}
-#write>h4.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-#write>h5.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-#write>h6.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-.md-image>.md-meta {
-    /*border: 1px solid #ddd;*/
-    border-radius: 3px;
-    padding: 2px 0px 0px 4px;
-    font-size: 0.9em;
-    color: inherit;
-}
+    a {
+        color: #4183C4;
+    }
 
-.md-tag {
-    color: #a7a7a7;
-    opacity: 1;
-}
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        position: relative;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-weight: bold;
+        line-height: 1.4;
+        cursor: text;
+    }
 
-.md-toc { 
-    margin-top:20px;
-    padding-bottom:20px;
-}
+    h1:hover a.anchor,
+    h2:hover a.anchor,
+    h3:hover a.anchor,
+    h4:hover a.anchor,
+    h5:hover a.anchor,
+    h6:hover a.anchor {
+        text-decoration: none;
+    }
 
-.sidebar-tabs {
-    border-bottom: none;
-}
+    h1 tt,
+    h1 code {
+        font-size: inherit;
+    }
 
-#typora-quick-open {
-    border: 1px solid #ddd;
-    background-color: #f8f8f8;
-}
+    h2 tt,
+    h2 code {
+        font-size: inherit;
+    }
 
-#typora-quick-open-item {
-    background-color: #FAFAFA;
-    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
-    border-style: solid;
-    border-width: 1px;
-}
+    h3 tt,
+    h3 code {
+        font-size: inherit;
+    }
 
-/** focus mode */
-.on-focus-mode blockquote {
-    border-left-color: rgba(85, 85, 85, 0.12);
-}
+    h4 tt,
+    h4 code {
+        font-size: inherit;
+    }
 
-header, .context-menu, .megamenu-content, footer{
-    font-family: "Segoe UI", "Arial", sans-serif;
-}
+    h5 tt,
+    h5 code {
+        font-size: inherit;
+    }
 
-.file-node-content:hover .file-node-icon,
-.file-node-content:hover .file-node-open-state{
-    visibility: visible;
-}
+    h6 tt,
+    h6 code {
+        font-size: inherit;
+    }
 
-.mac-seamless-mode #typora-sidebar {
-    background-color: #fafafa;
-    background-color: var(--side-bar-bg-color);
-}
+    h1 {
+        font-size: 2.25em;
+        line-height: 1.2;
+        border-bottom: 1px solid #eee;
+    }
 
-.md-lang {
-    color: #b4654d;
-}
+    h2 {
+        font-size: 1.75em;
+        line-height: 1.225;
+        border-bottom: 1px solid #eee;
+    }
 
-/*.html-for-mac {
-    --item-hover-bg-color: #E6F0FE;
-}*/
+    /*@media print {
+        .typora-export h1,
+        .typora-export h2 {
+            border-bottom: none;
+            padding-bottom: initial;
+        }
 
-#md-notification .btn {
-    border: 0;
-}
+        .typora-export h1::after,
+        .typora-export h2::after {
+            content: "";
+            display: block;
+            height: 100px;
+            margin-top: -96px;
+            border-top: 1px solid #eee;
+        }
+    }*/
 
-.dropdown-menu .divider {
-    border-color: #e5e5e5;
-    opacity: 0.4;
-}
+    h3 {
+        font-size: 1.5em;
+        line-height: 1.43;
+    }
 
-.ty-preferences .window-content {
-    background-color: #fafafa;
-}
+    h4 {
+        font-size: 1.25em;
+    }
 
-.ty-preferences .nav-group-item.active {
-    color: white;
-    background: #999;
-}
+    h5 {
+        font-size: 1em;
+    }
 
-.menu-item-container a.menu-style-btn {
-    background-color: #f5f8fa;
-    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
-}
+    h6 {
+        font-size: 1em;
+        color: #777;
+    }
+
+    p,
+    blockquote,
+    ul,
+    ol,
+    dl,
+    table {
+        margin: 0.8em 0;
+    }
+
+    li > ol,
+    li > ul {
+        margin: 0 0;
+    }
+
+    hr {
+        height: 2px;
+        padding: 0;
+        margin: 16px 0;
+        background-color: #e7e7e7;
+        border: 0 none;
+        overflow: hidden;
+        box-sizing: content-box;
+    }
+
+    li p.first {
+        display: inline-block;
+    }
+
+    ul,
+    ol {
+        padding-left: 30px;
+    }
+
+    ul:first-child,
+    ol:first-child {
+        margin-top: 0;
+    }
+
+    ul:last-child,
+    ol:last-child {
+        margin-bottom: 0;
+    }
+
+    blockquote {
+        border-left: 4px solid #dfe2e5;
+        padding: 0 15px;
+        color: #777777;
+    }
+
+    blockquote blockquote {
+        padding-right: 0;
+    }
+
+    table {
+        padding: 0;
+        word-break: initial;
+    }
+
+    table tr {
+        border: 1px solid #dfe2e5;
+        margin: 0;
+        padding: 0;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #f8f8f8;
+    }
+
+    table th {
+        font-weight: bold;
+        border: 1px solid #dfe2e5;
+        border-bottom: 0;
+        margin: 0;
+        padding: 6px 13px;
+    }
+
+    table td {
+        border: 1px solid #dfe2e5;
+        margin: 0;
+        padding: 6px 13px;
+    }
+
+    table th:first-child,
+    table td:first-child {
+        margin-top: 0;
+    }
+
+    table th:last-child,
+    table td:last-child {
+        margin-bottom: 0;
+    }
+
+    .CodeMirror-lines {
+        padding-left: 4px;
+    }
+
+    .code-tooltip {
+        box-shadow: 0 1px 1px 0 rgba(0, 28, 36, .3);
+        border-top: 1px solid #eef2f2;
+    }
+
+    .md-fences,
+    code,
+    tt {
+        border: 1px solid #e7eaed;
+        background-color: #f8f8f8;
+        border-radius: 3px;
+        padding: 0;
+        padding: 2px 4px 0px 4px;
+        font-size: 0.9em;
+    }
+
+    code {
+        background-color: #f3f4f4;
+        padding: 0 2px 0 2px;
+    }
+
+    .md-fences {
+        margin-bottom: 15px;
+        margin-top: 15px;
+        padding-top: 8px;
+        padding-bottom: 6px;
+    }
 
 
- @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
-</style><title>高效学习</title>
+    .md-task-list-item > input {
+        margin-left: -1.3em;
+    }
+
+    @media print {
+        html {
+            font-size: 13px;
+        }
+
+        table,
+        pre {
+            page-break-inside: avoid;
+        }
+
+        pre {
+            word-wrap: break-word;
+        }
+    }
+
+    .md-fences {
+        background-color: #f8f8f8;
+    }
+
+    #write pre.md-meta-block {
+        padding: 1rem;
+        font-size: 85%;
+        line-height: 1.45;
+        background-color: #f7f7f7;
+        border: 0;
+        border-radius: 3px;
+        color: #777777;
+        margin-top: 0 !important;
+    }
+
+    .mathjax-block > .code-tooltip {
+        bottom: .375rem;
+    }
+
+    .md-mathjax-midline {
+        background: #fafafa;
+    }
+
+    #write > h3.md-focus:before {
+        left: -1.5625rem;
+        top: .375rem;
+    }
+
+    #write > h4.md-focus:before {
+        left: -1.5625rem;
+        top: .285714286rem;
+    }
+
+    #write > h5.md-focus:before {
+        left: -1.5625rem;
+        top: .285714286rem;
+    }
+
+    #write > h6.md-focus:before {
+        left: -1.5625rem;
+        top: .285714286rem;
+    }
+
+    .md-image > .md-meta {
+        /*border: 1px solid #ddd;*/
+        border-radius: 3px;
+        padding: 2px 0px 0px 4px;
+        font-size: 0.9em;
+        color: inherit;
+    }
+
+    .md-tag {
+        color: #a7a7a7;
+        opacity: 1;
+    }
+
+    .md-toc {
+        margin-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .sidebar-tabs {
+        border-bottom: none;
+    }
+
+    #typora-quick-open {
+        border: 1px solid #ddd;
+        background-color: #f8f8f8;
+    }
+
+    #typora-quick-open-item {
+        background-color: #FAFAFA;
+        border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+        border-style: solid;
+        border-width: 1px;
+    }
+
+    /** focus mode */
+    .on-focus-mode blockquote {
+        border-left-color: rgba(85, 85, 85, 0.12);
+    }
+
+    header, .context-menu, .megamenu-content, footer {
+        font-family: "Segoe UI", "Arial", sans-serif;
+    }
+
+    .file-node-content:hover .file-node-icon,
+    .file-node-content:hover .file-node-open-state {
+        visibility: visible;
+    }
+
+    .mac-seamless-mode #typora-sidebar {
+        background-color: #fafafa;
+        background-color: var(--side-bar-bg-color);
+    }
+
+    .md-lang {
+        color: #b4654d;
+    }
+
+    /*.html-for-mac {
+        --item-hover-bg-color: #E6F0FE;
+    }*/
+
+    #md-notification .btn {
+        border: 0;
+    }
+
+    .dropdown-menu .divider {
+        border-color: #e5e5e5;
+        opacity: 0.4;
+    }
+
+    .ty-preferences .window-content {
+        background-color: #fafafa;
+    }
+
+    .ty-preferences .nav-group-item.active {
+        color: white;
+        background: #999;
+    }
+
+    .menu-item-container a.menu-style-btn {
+        background-color: #f5f8fa;
+        background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
+    }
+
+
+    @media print {
+        @page {
+            margin: 0 0 0 0;
+        }
+
+        body.typora-export {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        #write {
+            padding: 0;
+        }
+    }
+    </style>
+    <title>高效学习</title>
 </head>
-<body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='高效学习'><span>高效学习</span></h1><p><span>2021-06-10</span></p><p><a href='https://time.geekbang.org/column/article/14271' target='_blank' class='url'>https://time.geekbang.org/column/article/14271</a></p><ol start='' ><li><p><span>被动学习：如听讲、阅读、视听、演示，学习内容的平均留存率为 5%、10%、20% 和 30%。主动学习：如通过讨论、实践、教授给他人，会将原来被动学习的内容留存率从 5% 提升到 50%、75% 和 90%。</span></p></li><li><p><span>只有你开始自己思考，开始自己总结和归纳，开始找人交流讨论，开始践行，并开始对外输出，你才会掌握到真正的学习能力。</span></p></li><li><p><span>学习不是努力读更多的书，盲目追求阅读的速度和数量，这会让人产生低层次的勤奋和成长的感觉，这只是在使蛮力。</span><strong><span>要思辨，要践行，要总结和归纳</span></strong><span>，否则，你只是在机械地重复某件事，而不会有质的成长的。</span></p></li><li><p><span>他们在训练自己获取知识的能力，</span><strong><span>他们到源头查看第一手的资料，然后，深度钻研，并通过自己的思考后，生产更好的内容</span></strong><span> -&gt; 先问是不是，再问怎么回事</span></p></li><li><p><span>如何深度学习</span></p><ul><li><span>高质量的信息源和第一手的知识。</span></li><li><strong><span>把知识连成地图，将自己的理解反述出来</span></strong><span>。</span></li><li><strong><span>不断地反思和思辨，与不同年龄段的人讨论。</span></strong></li><li><span>举一反三，并</span><strong><span>践行</span></strong><span>之，把知识转换成</span><strong><span>技能</span></strong><span>。</span></li></ul></li><li><p><span>换言之，学习有三个步骤。</span></p><ul><li><span>知识采集。信息源是非常重要的，获取信息源头、破解表面信息的内在本质、多方数据印证，是这个步骤的关键。</span></li><li><span>知识缝合。所谓缝合就是把信息组织起来，成为结构体的知识。这里，</span><strong><span>连接记忆，逻辑推理，知识梳理</span></strong><span>是很重要的三部分。</span></li><li><span>技能转换。通过</span><strong><span>举一反三、实践和练习，以及传授教导，把知识转化成自己的技能</span></strong><span>。这种技能可以让你进入更高的阶层。</span></li></ul></li><li><p><span>关于学习的观点</span></p><ul><li><span>学习是为了找到方法</span></li><li><span>学习是为了找到原理</span></li><li><span>学习是为了了解自己</span></li><li><span>学习是为了改变自己</span></li></ul></li><li><p><span>这就好像，你要去登一座山，一种方法是通过别人修好的路爬上去，一种是通过自己的技能找到路（或是自己修一条路）爬上去。也就是说，需要有路才爬得上山的人，和没有路能造路的人相比，后者的能力就会比前者大得多得多。</span><b><span>学习是为了找到通往答案的路径和方法，是为了拥有无师自通的能力。</span></b></p></li><li><p><b><span> 学习不仅仅是为了知道，而更是为了思考和理解</span></b></p></li><li><p><span>在学习的过程中，我们要不断地问自己，这个技术出现的初衷是什么？是要解决什么样的问题？为什么那个问题要用这种方法解？为什么不能用别的方法解？为什么不能简单一些？</span></p></li><li><p><span>开拓眼界的目的就是</span><strong><span>发现自己的不足和上升空间</span></strong><span>，从而才能让自己成长。</span></p></li><li><p><span>学习是为了</span><strong><span>改变自己的思考方式，改变自己的思维方式，改变自己与生俱来的那些垃圾和低效的算法</span></strong><span>。总之，学习让我们改变自己，行动和践行，反思和改善，从而获得成长。</span></p></li></ol><p>&nbsp;</p><h4 id='端正学习态度'><span>端正学习态度</span></h4><ol start='' ><li><span>学习是一件“逆人性”的事，就像锻炼身体一样，需要人持续付出，但会让人痛苦，并随时可能找理由放弃。如果你不能克服自己 DNA 中的弱点，</span><strong><span>不能端正自己的态度，不能自律，不能坚持，不能举一反三，不能不断追问等</span></strong><span>，那么，无论有多好的方法，你都不可能学好。因此，有正确的态度很重要</span></li><li><span>还要拥有正确的学习观念：学习不仅仅是为了找到答案，而更是为了</span><strong><span>找到方法</span></strong><span>；学习不仅仅是为了知道，而更是为了思考和理解；学习不仅仅是为了开拓眼界，而更是为了找到自己的未知，为了了解自己；学习不仅仅是为了成长，而更是为了改变自己，改变自己的思考方式，改变自己的思维方式，改变自己与生俱来的那些垃圾和低效的算法。</span></li></ol><h4 id='源头原理和知识地图'><span>源头、原理和知识地图</span></h4><ol start='' ><li><p><span>挑选知识和信息源</span></p><ul><li><span>应该是第一手资料，不是被别人理解过、消化过的二手资料。尤其对于知识性的东西来说，更是这样。应该是原汁原味的，不应该是被添油加醋的。应该是有佐证、有数据、有引用的，或是有权威人士或大公司生产系统背书的资料。应该是被时间和实践检验过的，或是小心求证过的，不是拍脑袋野路子或是道听途说出来的资料。应该是加入了一些自己的经验和思考，可以引发人深思的，是所谓信息的密集很大的文章。</span></li><li><span>Medium</span></li></ul></li><li><p><span>注重基础和原理</span></p><ul><li><span>很多人并不是学得不够快，而他们的基础真的不行。基础不行，会影响你对事物的理解，甚至会让你不能理解为什么是这样。当你对事物的出现有不理解的东西时，通常来说，是因为你的基础知识没有跟上。</span></li></ul></li><li><p><span>使用知识图</span></p><ul><li><span>于是，我通过“顺藤摸瓜”的方式，</span><strong><span>从知识树的主干开始做广度或是深度遍历</span></strong><span>，于是我就得到了一整棵的知识树。</span></li><li><span>当出现一些我不知道的知识点时，我就会往这棵知识树上挂，而这样一来，也使得我的学习更为系统和全面。</span></li><li><span>这种画知识图的方式可以让你从一个技术最重要最主干的地方出发开始遍历所有的技术细节，也就是画地图的方式。如果你不想在知识的海洋中迷路，你需要有一份地图，所以，</span><strong><span>学习并不是为了要记忆那些知识点，而是为了要找到一个知识的地图，你在这个地图上能通过关键路径找到你想要的答案</span></strong><span>。</span></li></ul></li></ol><h4 id='深度归纳和坚持实践'><span>深度，归纳和坚持实践</span></h4><ol start='' ><li><p><span>学习模板</span></p><ul><li><span>这个技术出现的背景、初衷和要达到什么样的目标或是要解决什么样的问题</span></li><li><span>这个技术的优势和劣势分别是什么，或者说，这个技术的 trade-off （权衡，要什么和不要什么）是什么</span></li><li><span>这个技术适用的场景。所谓场景一般分别两个，一个是业务场景，一个是技术场景。</span></li><li><span>技术的组成部分和关键点</span></li><li><span>技术的底层原理和关键实现。</span></li><li><span>已有的实现和它之间的对比。</span></li></ul></li><li><p><span>举一反三。一个人的举一反三能力，可以分解成如下三种基本能力。</span></p><ul><li><span>联想能力。这种能力的锻炼需要你平时就在不停地思考同一个事物的不同的用法，或是联想与之有关的其他事物。对于软件开发和技术学习也一样。</span></li><li><span>抽象能力。抽象能力是举一反三的基本技能。平时你解决问题的时候，如果你能对这个问题进行抽象，你就可以获得更多的表现形式。抽象能力需要找到解决问题的通用模型，比如数学就是对现实世界的一种抽象。只要我们能把现实世界的各种问题建立成数据模型（如，建立各种维度的向量），我们就可以用数学来求解，这也是机器学习的本质。</span></li><li><span>自省能力。所谓自省能力就是自己找自己的难看。</span><strong><span>当你得到一个解的时候，要站在自己的对立面来找这个解的漏洞</span></strong><span>。有点像左右手互博。这种自己和自己辩论的能力又叫思辨能力。将自己分裂成正反方，左右方，甚至多方，站在不同的立场上来和自己辩论，从而做到不漏过一个 case，从而获得完整全面的问题分析能力。</span></li></ul></li><li><p><span>在这方面，我对自己的</span><strong><span>训练</span></strong><span>如下。</span></p><ul><li><span>对于一个场景，</span><strong><span>制造出各种不同的问题或难题</span></strong><span>。</span></li><li><span>对于一个问题，努力寻找</span><strong><span>尽可能多的解</span></strong><span>，并比较这些解的优劣。</span></li><li><span>对于一个解，努力寻找</span><strong><span>各种不同的测试案例</span></strong><span>，以图让其健壮。</span></li></ul><p><span>除了你要</span><strong><span>很喜欢思考和找其它人来辩论或讨论</span></strong><span>以外，还要看你自己是否真的</span><strong><span>善于思考</span></strong><span>，是否有好奇心，是否喜欢</span><strong><span>打破沙锅问到底</span></strong><span>，是否喜欢关注细节，</span><strong><span>做事是否认真</span></strong><span>，是否</span><strong><span>严谨</span></strong></p></li><li><p><span>总结和归纳</span></p><ul><li><span>而想要提高总结归纳的能力，</span><strong><span>首先要多阅读，多积累素材，扩大自己的知识面，多和别人讨论，多思辨，从而见多识广。</span></strong></li><li><span>如果只学了部分知识或者还没有学透，就开始对知识进行总结归纳，那么总结归纳出来的知识结构也只能是混乱和幼稚的</span></li><li><strong><span>学习的开始阶段，可以不急于总结归纳，不急于下判断，做结论，而应该保留部分知识的不确定性，保持对知识的开放状态</span></strong></li><li><span>当对整个知识的理解更深入，自己站的位置更高以后，总结和归纳才会更有条理。</span><strong><span>总结归纳更多是在复习中对知识的回顾和重组，而不是一边学习一边就总结归纳。</span></strong></li><li><span>我们来总结一下做总结归纳的方法：</span><strong><span>把你看到和学习到的信息，归整好，排列好，关联好，总之把信息碎片给结构化掉，然后在结构化的信息中，找到规律，找到相通之处，找到共同之处，进行简化、归纳和总结，最终形成一种套路，一种模式，一种通用方法。</span></strong></li><li><span>要训练自己这方面的能力，你需要</span><strong><span>多看一些经典的方法论图书，看看别人是怎样总结和归纳知识的</span></strong><span>。你可以在一开始模仿并把自己的理解的知识给写出来，</span><strong><span>写博客</span></strong><span>会是一种很好的方式。另外一种更好的方式是</span><strong><span>讲一遍给别人听</span></strong><span>。总之，你</span><strong><span>需要把你总结归纳的知识公开出来，给别人看，接受别人的批评和反馈，这样你才能成长得更快。</span></strong></li><li><span>你需要像我一样扩大自己的知识面，然后学会写博客，就能慢慢地拥有这种能力了。这种将信息删减、精炼和归纳的方法，可以让你的学习能力得到快速的提升。当你这么做的时候，一方面是在锻炼你</span><strong><span>抓重点</span></strong><span>的能力，另一方面是在锻炼你</span><strong><span>化繁为简</span></strong><span>的能力</span></li><li><span>一般来说，拥有这样能力的人，都需要有在更高的维度上思考问题的能力。比如一些名人的金句，就是这种能力的体现。这种能力需要你非常深入的思考，需要你的阅历和经验，当然，和聪明人在一起也是提升这种能力的最有效的选择。</span></li></ul></li><li><p><span>实践出真知，也就是学以致用</span></p><ul><li><span>好的软件？不吃自己的狗粮，不养自己的孩子，他们就不会有痛苦，没有痛苦，就不会想改进，没有改进的诉求也就不会有学习的动力，没有学习，就不会进步，没有进步就只会开发很烂的软件……不断地恶性循环下去。=&gt; 用自己的软件</span></li><li><span>实践是很累很痛苦的事，但</span><strong><span>只有痛苦才会让人反思，而反思则是学习和改变自己的动力</span></strong><span>。Grow up through the pain， 是非常有道理的。</span></li></ul></li><li><p><span>坚持不懈</span></p><ul><li><span>人不怕笨，怕的是懒，怕的是找到各种理由放弃。</span></li><li><span>坚持也不是要苦苦地坚持，</span><strong><span>有循环有成就感的坚持</span></strong><span>才是真正</span><strong><span>可以持续的</span></strong></li><li><strong><span>一方面你要把你的坚持形成成果晒出来，让别人来给你点赞，另一方面，你还要把坚持变成一种习惯，就像吃饭喝水一样，你感觉不到太多的成本付出</span></strong><span>。只有做到这两点，你才能够真正坚持。</span></li></ul></li></ol><p>&nbsp;</p><h4 id='如何学习和阅读代码'><span>如何学习和阅读代码</span></h4><ol start='' ><li><p><span>如果你想知道人为什么要这么搞，那么应该去看书（像 Effective C++、Code Complete、Design Pattern、Thinking in Java 等），看文档。</span></p></li><li><p><span>如果你要知道让机器干了什么？那你应该看代码！（就像 Linus 去看 zlib 的代码来找性能问题。）</span></p></li><li><p><span>阅读文档还是阅读代码，关键看你的目的是什么</span></p><ul><li><span>如果你想了解一种思想，一种方法，一种原理，一种思路，一种经验，恐怕，读书和读文档会更有效率一些</span></li><li><span>如果你想了解的就是具体细节，比如某协程的实现，某个模块的性能，某个算法的实现，那么你还是要去读代码的</span></li></ul><h5 id='如何阅读源代码'><span>如何阅读源代码</span></h5><ol start='' ><li><span>软件的代码是由哪些部分构成</span></li></ol><ul><li><p><span>接口抽象定义。任何代码都会有很多接口或抽象定义，其描述了代码需要处理的数据结构或者业务实体，以及它们之间的关系，理清楚这些关系是非常重要的。</span></p></li><li><p><span>模块粘合层。我们的代码有很多都是用来粘合代码的，比如中间件（middleware）、Promises 模式、回调（Callback）、代理委托、依赖注入等。这些代码模块间的粘合技术是非常重要的，因为它们会把本来平铺直述的代码给分裂开来，让你不容易看明白它们的关系。</span></p></li><li><p><span>业务流程。这是代码运行的过程。一开始，我们不要进入细节，但需要在高层搞清楚整个业务的流程是什么样的，在这个流程中，数据是怎么被传递和处理的。一般来说，我们需要画程序流程图或者时序处理图。</span></p></li><li><p><span>具体实现。</span></p><ul><li><span>代码逻辑。代码有两种逻辑，一种是业务逻辑，这种逻辑是真正的业务处理逻辑；另一种是控制逻辑，这种逻辑只是用控制程序流转的，不是业务逻辑。（很多代码之所以混乱就是把这两种逻辑混在一起了（详情参看《编程范式游记》）。）</span></li><li><span>出错处理。根据二八原则，20% 的代码是正常的逻辑，80% 的代码是在处理各种错误，所以，你在读代码的时候，完全可以把处理错误的代码全部删除掉，这样就会留下比较干净和简单的正常逻辑的代码。排除干扰因素，可以更高效地读代码。</span></li><li><span>数据处理。只要你认真观察，就会发现，我们好多代码就是在那里倒腾数据。比如 DAO、DTO，比如 JSON、XML，这些代码冗长无聊，不是主要逻辑，可以不理。</span></li><li><span>重要的算法。一般来说，我们的代码里会有很多重要的算法，我说的并不一定是什么排序或是搜索算法，可能会是一些其它的核心算法，比如一些索引表的算法，全局唯一 ID 的算法、信息推荐的算法、统计算法、通读算法（如 Gossip）等。这些比较核心的算法可能会非常难读，但它们往往是最有技术含量的部分。</span></li><li><span>底层交互。有一些代码是和底层系统的交互，一般来说是和操作系统或是 JVM 的交互。因此，读这些代码通常需要一定的底层技术知识，不然，很难读懂。</span></li></ul></li><li><p><span>运行时调试。</span></p></li></ul><ol start='2' ><li><p><span>总结一下，阅读代码的方法如下：</span></p><ul><li><span>一般采用自顶向下，从总体到细节的“剥洋葱皮”的读法。</span></li><li><span>画图是必要的，程序流程图，调用时序图，模块组织图……代码逻辑归一下类，排除杂音，主要逻辑才会更清楚。</span></li><li><span>debug 跟踪一下代码是了解代码在执行中发生了什么的最好方式。</span></li></ul></li></ol></li></ol><h4 id='面对枯燥和量大的知识'><span>面对枯燥和量大的知识</span></h4><h5 id='如何面对枯燥的知识'><span>如何面对枯燥的知识</span></h5><p><span>枯燥的东西通常是你不感兴趣的东西，而你不感兴趣的东西，可能是你并不知道有什么用的东西。这样的知识通常是比较底层或是抽象度比较高的知识，比如：线性代数，或者一些操作系统内部的原理……越理论的东西就越让人觉得枯燥。</span></p><p><span>我列举我的这个学习过程，就是想说，如果你发现有些知识太过于枯燥，那么可以通过下面的方法解决。</span></p><ol start='' ><li><span>这个知识对于你来说来太高级了，你可能</span><strong><span>不知道能用在什么地方</span></strong><span>。</span></li><li><span>人的认知是从感性认识向理性认识转化的，所以，你可能要</span><strong><span>先去找一下应用场景，学点更实用的，再回来学理论</span></strong><span>。</span></li><li><strong><span>学习需要有反馈，有成就感</span></strong><span>，带着相关问题去学习会更好。</span></li><li><span>当然，找到牛人来给你讲解，也是一个很不错的手段。</span></li></ol><h5 id='如何面对大量的知识'><span>如何面对大量的知识</span></h5><ol start='' ><li><span>一点一点学，一口一口吃.注重基础，画知识图，多问为什么，多动手，然后坚持住，哪怕你每周就学一个知识点，你一年也可以学到 50 个知识点。只要你在进步，总有一天可以把这些知识学到手的。</span></li><li><span>一定要学到本质，学到原理上，那些东西是不容易变的，也是经得住时间考验的。因为学无止境，你永远也学不完</span></li><li><span>带着问题去学习，带着要解决的东西去学习，带着挑战去学习，于是每当你解决了一个问题，做了一个功能，完成了一个挑战，你就会感到兴奋和有成就感。这样，你也就找到了源源不断的学习驱动力。</span></li><li><span>把你学习的心得、过程、笔记、代码分享出来，</span><strong><span>找到和你一同学习的人</span></strong><span>，因为一个人长跑很辛苦，有人同行就会好很多，就算没有人同行，</span><strong><span>你的读者，你的观众也会为你鼓掌加油，这些也是让你持续前行的动力</span></strong><span>。</span></li></ol><h5 id='认真阅读文档'><span>认真阅读文档</span></h5><ol start='' ><li><span>Unix 和 Linux 的 man，Docker 和 Kubernetes 的官方文档，Git 的操作文档</span></li></ol><h4 id='其它几个实用的技巧'><span>其它几个实用的技巧</span></h4><ol start='' ><li><span>用不同的方式来学习同一个东西。比如：通过看书，听课，创建脑图，写博客，讲课，解决实际问题，等等。</span></li><li><span>不要被打断。被打断简直就是学习的天敌，所以，你在学习的时候，最好把手机设置成勿扰模式放在一边，然后把电脑上的所有通知也关掉，最好到一个别人找不到你的地方。</span></li><li><span>总结压缩信息。当你获得太多的信息时，你需要有一个“压缩算法”。我常用的压缩算法是</span><strong><span>只关心关键点</span></strong><span>，所以，你需要使用表格、图示、笔记或者脑图来帮助你压缩信息。</span></li><li><span>把未知关联到已知。把你新学的知识点关联到已知的事物上来。比如，你在学习 Go 语言，你就把一些知识关联到自己已经学过的语言上比如 C 和 Java。通过类比，你会学得更扎实，也会思考得更多。</span></li><li><span>用教的方式来学习。你想想，如果你过几天要在公开场合对很多人讲一个技术，那么这个压力会让你学得更好。因为要教给别人，所以，这么高的标准需要你不但要把自己已掌握的东西学好，还要把周边的也一并学了，才可能做到百问不倒。你才敢去教别人，不是么？（试试教 6 岁的孩子编程，如果你掌握了这种技能，那么你一定是把知识吃得非常透彻了。）</span></li><li><span>学以致用。把学到的东西用起来，没有什么比</span><strong><span>用起来</span></strong><span>能让你的知识更巩固的了。在实践中，你才会有更为真实的体会，你才会遇到非常细节和非常具体的问题，这些都会让你重新思考，或深化学习。</span></li><li><strong><span>不要记忆</span></strong><span>。聪明的人不会记忆知识的，他们会找方法，那些</span><strong><span>可以推导出知识或答案的方法</span></strong><span>。这也是为什么外国人特别喜欢方法论。</span></li><li><strong><span>多犯错误</span></strong><span>。犯错会让你学得到更多，通过错误总结教训，你会比没有犯过错的人体会得更深。但是千万</span><strong><span>不要犯低级错误</span></strong><span>，</span><strong><span>也不要同一个错误犯两次</span></strong><span>。</span></li></ol><p>&nbsp;</p></div></div>
+<body class='typora-export'>
+<div class='typora-export-content'>
+    <div id='write' class=''><h1 id='高效学习'><span>高效学习</span></h1>
+        <p><span>2021-06-10</span></p>
+        <p><a href='https://time.geekbang.org/column/article/14271' target='_blank' class='url'>https://time.geekbang.org/column/article/14271</a>
+        </p>
+        <ol start=''>
+            <li><p><span>被动学习：如听讲、阅读、视听、演示，学习内容的平均留存率为 5%、10%、20% 和 30%。主动学习：如通过讨论、实践、教授给他人，会将原来被动学习的内容留存率从 5% 提升到 50%、75% 和 90%。</span>
+            </p></li>
+            <li><p><span>只有你开始自己思考，开始自己总结和归纳，开始找人交流讨论，开始践行，并开始对外输出，你才会掌握到真正的学习能力。</span></p></li>
+            <li><p><span>学习不是努力读更多的书，盲目追求阅读的速度和数量，这会让人产生低层次的勤奋和成长的感觉，这只是在使蛮力。</span><strong><span>要思辨，要践行，要总结和归纳</span></strong><span>，否则，你只是在机械地重复某件事，而不会有质的成长的。</span>
+            </p></li>
+            <li><p>
+                <span>他们在训练自己获取知识的能力，</span><strong><span>他们到源头查看第一手的资料，然后，深度钻研，并通过自己的思考后，生产更好的内容</span></strong><span> -&gt; 先问是不是，再问怎么回事</span>
+            </p></li>
+            <li><p><span>如何深度学习</span></p>
+                <ul>
+                    <li><span>高质量的信息源和第一手的知识。</span></li>
+                    <li><strong><span>把知识连成地图，将自己的理解反述出来</span></strong><span>。</span></li>
+                    <li><strong><span>不断地反思和思辨，与不同年龄段的人讨论。</span></strong></li>
+                    <li><span>举一反三，并</span><strong><span>践行</span></strong><span>之，把知识转换成</span><strong><span>技能</span></strong><span>。</span>
+                    </li>
+                </ul>
+            </li>
+            <li><p><span>换言之，学习有三个步骤。</span></p>
+                <ul>
+                    <li><span>知识采集。信息源是非常重要的，获取信息源头、破解表面信息的内在本质、多方数据印证，是这个步骤的关键。</span></li>
+                    <li><span>知识缝合。所谓缝合就是把信息组织起来，成为结构体的知识。这里，</span><strong><span>连接记忆，逻辑推理，知识梳理</span></strong><span>是很重要的三部分。</span>
+                    </li>
+                    <li><span>技能转换。通过</span><strong><span>举一反三、实践和练习，以及传授教导，把知识转化成自己的技能</span></strong><span>。这种技能可以让你进入更高的阶层。</span>
+                    </li>
+                </ul>
+            </li>
+            <li><p><span>关于学习的观点</span></p>
+                <ul>
+                    <li><span>学习是为了找到方法</span></li>
+                    <li><span>学习是为了找到原理</span></li>
+                    <li><span>学习是为了了解自己</span></li>
+                    <li><span>学习是为了改变自己</span></li>
+                </ul>
+            </li>
+            <li><p><span>这就好像，你要去登一座山，一种方法是通过别人修好的路爬上去，一种是通过自己的技能找到路（或是自己修一条路）爬上去。也就是说，需要有路才爬得上山的人，和没有路能造路的人相比，后者的能力就会比前者大得多得多。</span><b><span>学习是为了找到通往答案的路径和方法，是为了拥有无师自通的能力。</span></b>
+            </p></li>
+            <li><p><b><span> 学习不仅仅是为了知道，而更是为了思考和理解</span></b></p></li>
+            <li><p><span>在学习的过程中，我们要不断地问自己，这个技术出现的初衷是什么？是要解决什么样的问题？为什么那个问题要用这种方法解？为什么不能用别的方法解？为什么不能简单一些？</span></p></li>
+            <li><p><span>开拓眼界的目的就是</span><strong><span>发现自己的不足和上升空间</span></strong><span>，从而才能让自己成长。</span></p></li>
+            <li><p><span>学习是为了</span><strong><span>改变自己的思考方式，改变自己的思维方式，改变自己与生俱来的那些垃圾和低效的算法</span></strong><span>。总之，学习让我们改变自己，行动和践行，反思和改善，从而获得成长。</span>
+            </p></li>
+        </ol>
+        <p>&nbsp;</p><h4 id='端正学习态度'><span>端正学习态度</span></h4>
+        <ol start=''>
+            <li><span>学习是一件“逆人性”的事，就像锻炼身体一样，需要人持续付出，但会让人痛苦，并随时可能找理由放弃。如果你不能克服自己 DNA 中的弱点，</span><strong><span>不能端正自己的态度，不能自律，不能坚持，不能举一反三，不能不断追问等</span></strong><span>，那么，无论有多好的方法，你都不可能学好。因此，有正确的态度很重要</span>
+            </li>
+            <li><span>还要拥有正确的学习观念：学习不仅仅是为了找到答案，而更是为了</span><strong><span>找到方法</span></strong><span>；学习不仅仅是为了知道，而更是为了思考和理解；学习不仅仅是为了开拓眼界，而更是为了找到自己的未知，为了了解自己；学习不仅仅是为了成长，而更是为了改变自己，改变自己的思考方式，改变自己的思维方式，改变自己与生俱来的那些垃圾和低效的算法。</span>
+            </li>
+        </ol>
+        <h4 id='源头原理和知识地图'><span>源头、原理和知识地图</span></h4>
+        <ol start=''>
+            <li><p><span>挑选知识和信息源</span></p>
+                <ul>
+                    <li><span>应该是第一手资料，不是被别人理解过、消化过的二手资料。尤其对于知识性的东西来说，更是这样。应该是原汁原味的，不应该是被添油加醋的。应该是有佐证、有数据、有引用的，或是有权威人士或大公司生产系统背书的资料。应该是被时间和实践检验过的，或是小心求证过的，不是拍脑袋野路子或是道听途说出来的资料。应该是加入了一些自己的经验和思考，可以引发人深思的，是所谓信息的密集很大的文章。</span>
+                    </li>
+                    <li><span>Medium</span></li>
+                </ul>
+            </li>
+            <li><p><span>注重基础和原理</span></p>
+                <ul>
+                    <li><span>很多人并不是学得不够快，而他们的基础真的不行。基础不行，会影响你对事物的理解，甚至会让你不能理解为什么是这样。当你对事物的出现有不理解的东西时，通常来说，是因为你的基础知识没有跟上。</span>
+                    </li>
+                </ul>
+            </li>
+            <li><p><span>使用知识图</span></p>
+                <ul>
+                    <li><span>于是，我通过“顺藤摸瓜”的方式，</span><strong><span>从知识树的主干开始做广度或是深度遍历</span></strong><span>，于是我就得到了一整棵的知识树。</span>
+                    </li>
+                    <li><span>当出现一些我不知道的知识点时，我就会往这棵知识树上挂，而这样一来，也使得我的学习更为系统和全面。</span></li>
+                    <li>
+                        <span>这种画知识图的方式可以让你从一个技术最重要最主干的地方出发开始遍历所有的技术细节，也就是画地图的方式。如果你不想在知识的海洋中迷路，你需要有一份地图，所以，</span><strong><span>学习并不是为了要记忆那些知识点，而是为了要找到一个知识的地图，你在这个地图上能通过关键路径找到你想要的答案</span></strong><span>。</span>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <h4 id='深度归纳和坚持实践'><span>深度，归纳和坚持实践</span></h4>
+        <ol start=''>
+            <li><p><span>学习模板</span></p>
+                <ul>
+                    <li><span>这个技术出现的背景、初衷和要达到什么样的目标或是要解决什么样的问题</span></li>
+                    <li><span>这个技术的优势和劣势分别是什么，或者说，这个技术的 trade-off （权衡，要什么和不要什么）是什么</span></li>
+                    <li><span>这个技术适用的场景。所谓场景一般分别两个，一个是业务场景，一个是技术场景。</span></li>
+                    <li><span>技术的组成部分和关键点</span></li>
+                    <li><span>技术的底层原理和关键实现。</span></li>
+                    <li><span>已有的实现和它之间的对比。</span></li>
+                </ul>
+            </li>
+            <li><p><span>举一反三。一个人的举一反三能力，可以分解成如下三种基本能力。</span></p>
+                <ul>
+                    <li><span>联想能力。这种能力的锻炼需要你平时就在不停地思考同一个事物的不同的用法，或是联想与之有关的其他事物。对于软件开发和技术学习也一样。</span></li>
+                    <li><span>抽象能力。抽象能力是举一反三的基本技能。平时你解决问题的时候，如果你能对这个问题进行抽象，你就可以获得更多的表现形式。抽象能力需要找到解决问题的通用模型，比如数学就是对现实世界的一种抽象。只要我们能把现实世界的各种问题建立成数据模型（如，建立各种维度的向量），我们就可以用数学来求解，这也是机器学习的本质。</span>
+                    </li>
+                    <li>
+                        <span>自省能力。所谓自省能力就是自己找自己的难看。</span><strong><span>当你得到一个解的时候，要站在自己的对立面来找这个解的漏洞</span></strong><span>。有点像左右手互博。这种自己和自己辩论的能力又叫思辨能力。将自己分裂成正反方，左右方，甚至多方，站在不同的立场上来和自己辩论，从而做到不漏过一个 case，从而获得完整全面的问题分析能力。</span>
+                    </li>
+                </ul>
+            </li>
+            <li><p><span>在这方面，我对自己的</span><strong><span>训练</span></strong><span>如下。</span></p>
+                <ul>
+                    <li><span>对于一个场景，</span><strong><span>制造出各种不同的问题或难题</span></strong><span>。</span></li>
+                    <li><span>对于一个问题，努力寻找</span><strong><span>尽可能多的解</span></strong><span>，并比较这些解的优劣。</span></li>
+                    <li><span>对于一个解，努力寻找</span><strong><span>各种不同的测试案例</span></strong><span>，以图让其健壮。</span></li>
+                </ul>
+                <p>
+                    <span>除了你要</span><strong><span>很喜欢思考和找其它人来辩论或讨论</span></strong><span>以外，还要看你自己是否真的</span><strong><span>善于思考</span></strong><span>，是否有好奇心，是否喜欢</span><strong><span>打破沙锅问到底</span></strong><span>，是否喜欢关注细节，</span><strong><span>做事是否认真</span></strong><span>，是否</span><strong><span>严谨</span></strong>
+                </p></li>
+            <li><p><span>总结和归纳</span></p>
+                <ul>
+                    <li><span>而想要提高总结归纳的能力，</span><strong><span>首先要多阅读，多积累素材，扩大自己的知识面，多和别人讨论，多思辨，从而见多识广。</span></strong>
+                    </li>
+                    <li><span>如果只学了部分知识或者还没有学透，就开始对知识进行总结归纳，那么总结归纳出来的知识结构也只能是混乱和幼稚的</span></li>
+                    <li><strong><span>学习的开始阶段，可以不急于总结归纳，不急于下判断，做结论，而应该保留部分知识的不确定性，保持对知识的开放状态</span></strong></li>
+                    <li><span>当对整个知识的理解更深入，自己站的位置更高以后，总结和归纳才会更有条理。</span><strong><span>总结归纳更多是在复习中对知识的回顾和重组，而不是一边学习一边就总结归纳。</span></strong>
+                    </li>
+                    <li><span>我们来总结一下做总结归纳的方法：</span><strong><span>把你看到和学习到的信息，归整好，排列好，关联好，总之把信息碎片给结构化掉，然后在结构化的信息中，找到规律，找到相通之处，找到共同之处，进行简化、归纳和总结，最终形成一种套路，一种模式，一种通用方法。</span></strong>
+                    </li>
+                    <li><span>要训练自己这方面的能力，你需要</span><strong><span>多看一些经典的方法论图书，看看别人是怎样总结和归纳知识的</span></strong><span>。你可以在一开始模仿并把自己的理解的知识给写出来，</span><strong><span>写博客</span></strong><span>会是一种很好的方式。另外一种更好的方式是</span><strong><span>讲一遍给别人听</span></strong><span>。总之，你</span><strong><span>需要把你总结归纳的知识公开出来，给别人看，接受别人的批评和反馈，这样你才能成长得更快。</span></strong>
+                    </li>
+                    <li>
+                        <span>你需要像我一样扩大自己的知识面，然后学会写博客，就能慢慢地拥有这种能力了。这种将信息删减、精炼和归纳的方法，可以让你的学习能力得到快速的提升。当你这么做的时候，一方面是在锻炼你</span><strong><span>抓重点</span></strong><span>的能力，另一方面是在锻炼你</span><strong><span>化繁为简</span></strong><span>的能力</span>
+                    </li>
+                    <li><span>一般来说，拥有这样能力的人，都需要有在更高的维度上思考问题的能力。比如一些名人的金句，就是这种能力的体现。这种能力需要你非常深入的思考，需要你的阅历和经验，当然，和聪明人在一起也是提升这种能力的最有效的选择。</span>
+                    </li>
+                </ul>
+            </li>
+            <li><p><span>实践出真知，也就是学以致用</span></p>
+                <ul>
+                    <li><span>好的软件？不吃自己的狗粮，不养自己的孩子，他们就不会有痛苦，没有痛苦，就不会想改进，没有改进的诉求也就不会有学习的动力，没有学习，就不会进步，没有进步就只会开发很烂的软件……不断地恶性循环下去。=&gt; 用自己的软件</span>
+                    </li>
+                    <li><span>实践是很累很痛苦的事，但</span><strong><span>只有痛苦才会让人反思，而反思则是学习和改变自己的动力</span></strong><span>。Grow up through the pain， 是非常有道理的。</span>
+                    </li>
+                </ul>
+            </li>
+            <li><p><span>坚持不懈</span></p>
+                <ul>
+                    <li><span>人不怕笨，怕的是懒，怕的是找到各种理由放弃。</span></li>
+                    <li><span>坚持也不是要苦苦地坚持，</span><strong><span>有循环有成就感的坚持</span></strong><span>才是真正</span><strong><span>可以持续的</span></strong>
+                    </li>
+                    <li><strong><span>一方面你要把你的坚持形成成果晒出来，让别人来给你点赞，另一方面，你还要把坚持变成一种习惯，就像吃饭喝水一样，你感觉不到太多的成本付出</span></strong><span>。只有做到这两点，你才能够真正坚持。</span>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <p>&nbsp;</p><h4 id='如何学习和阅读代码'><span>如何学习和阅读代码</span></h4>
+        <ol start=''>
+            <li><p>
+                <span>如果你想知道人为什么要这么搞，那么应该去看书（像 Effective C++、Code Complete、Design Pattern、Thinking in Java 等），看文档。</span>
+            </p></li>
+            <li><p><span>如果你要知道让机器干了什么？那你应该看代码！（就像 Linus 去看 zlib 的代码来找性能问题。）</span></p></li>
+            <li><p><span>阅读文档还是阅读代码，关键看你的目的是什么</span></p>
+                <ul>
+                    <li><span>如果你想了解一种思想，一种方法，一种原理，一种思路，一种经验，恐怕，读书和读文档会更有效率一些</span></li>
+                    <li><span>如果你想了解的就是具体细节，比如某协程的实现，某个模块的性能，某个算法的实现，那么你还是要去读代码的</span></li>
+                </ul>
+                <h5 id='如何阅读源代码'><span>如何阅读源代码</span></h5>
+                <ol start=''>
+                    <li><span>软件的代码是由哪些部分构成</span></li>
+                </ol>
+                <ul>
+                    <li><p><span>接口抽象定义。任何代码都会有很多接口或抽象定义，其描述了代码需要处理的数据结构或者业务实体，以及它们之间的关系，理清楚这些关系是非常重要的。</span></p></li>
+                    <li><p><span>模块粘合层。我们的代码有很多都是用来粘合代码的，比如中间件（middleware）、Promises 模式、回调（Callback）、代理委托、依赖注入等。这些代码模块间的粘合技术是非常重要的，因为它们会把本来平铺直述的代码给分裂开来，让你不容易看明白它们的关系。</span>
+                    </p></li>
+                    <li><p><span>业务流程。这是代码运行的过程。一开始，我们不要进入细节，但需要在高层搞清楚整个业务的流程是什么样的，在这个流程中，数据是怎么被传递和处理的。一般来说，我们需要画程序流程图或者时序处理图。</span>
+                    </p></li>
+                    <li><p><span>具体实现。</span></p>
+                        <ul>
+                            <li><span>代码逻辑。代码有两种逻辑，一种是业务逻辑，这种逻辑是真正的业务处理逻辑；另一种是控制逻辑，这种逻辑只是用控制程序流转的，不是业务逻辑。（很多代码之所以混乱就是把这两种逻辑混在一起了（详情参看《编程范式游记》）。）</span>
+                            </li>
+                            <li><span>出错处理。根据二八原则，20% 的代码是正常的逻辑，80% 的代码是在处理各种错误，所以，你在读代码的时候，完全可以把处理错误的代码全部删除掉，这样就会留下比较干净和简单的正常逻辑的代码。排除干扰因素，可以更高效地读代码。</span>
+                            </li>
+                            <li>
+                                <span>数据处理。只要你认真观察，就会发现，我们好多代码就是在那里倒腾数据。比如 DAO、DTO，比如 JSON、XML，这些代码冗长无聊，不是主要逻辑，可以不理。</span>
+                            </li>
+                            <li><span>重要的算法。一般来说，我们的代码里会有很多重要的算法，我说的并不一定是什么排序或是搜索算法，可能会是一些其它的核心算法，比如一些索引表的算法，全局唯一 ID 的算法、信息推荐的算法、统计算法、通读算法（如 Gossip）等。这些比较核心的算法可能会非常难读，但它们往往是最有技术含量的部分。</span>
+                            </li>
+                            <li><span>底层交互。有一些代码是和底层系统的交互，一般来说是和操作系统或是 JVM 的交互。因此，读这些代码通常需要一定的底层技术知识，不然，很难读懂。</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><p><span>运行时调试。</span></p></li>
+                </ul>
+                <ol start='2'>
+                    <li><p><span>总结一下，阅读代码的方法如下：</span></p>
+                        <ul>
+                            <li><span>一般采用自顶向下，从总体到细节的“剥洋葱皮”的读法。</span></li>
+                            <li><span>画图是必要的，程序流程图，调用时序图，模块组织图……代码逻辑归一下类，排除杂音，主要逻辑才会更清楚。</span></li>
+                            <li><span>debug 跟踪一下代码是了解代码在执行中发生了什么的最好方式。</span></li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+        </ol>
+        <h4 id='面对枯燥和量大的知识'><span>面对枯燥和量大的知识</span></h4><h5 id='如何面对枯燥的知识'><span>如何面对枯燥的知识</span></h5>
+        <p><span>枯燥的东西通常是你不感兴趣的东西，而你不感兴趣的东西，可能是你并不知道有什么用的东西。这样的知识通常是比较底层或是抽象度比较高的知识，比如：线性代数，或者一些操作系统内部的原理……越理论的东西就越让人觉得枯燥。</span>
+        </p>
+        <p><span>我列举我的这个学习过程，就是想说，如果你发现有些知识太过于枯燥，那么可以通过下面的方法解决。</span></p>
+        <ol start=''>
+            <li><span>这个知识对于你来说来太高级了，你可能</span><strong><span>不知道能用在什么地方</span></strong><span>。</span></li>
+            <li>
+                <span>人的认知是从感性认识向理性认识转化的，所以，你可能要</span><strong><span>先去找一下应用场景，学点更实用的，再回来学理论</span></strong><span>。</span>
+            </li>
+            <li><strong><span>学习需要有反馈，有成就感</span></strong><span>，带着相关问题去学习会更好。</span></li>
+            <li><span>当然，找到牛人来给你讲解，也是一个很不错的手段。</span></li>
+        </ol>
+        <h5 id='如何面对大量的知识'><span>如何面对大量的知识</span></h5>
+        <ol start=''>
+            <li><span>一点一点学，一口一口吃.注重基础，画知识图，多问为什么，多动手，然后坚持住，哪怕你每周就学一个知识点，你一年也可以学到 50 个知识点。只要你在进步，总有一天可以把这些知识学到手的。</span>
+            </li>
+            <li><span>一定要学到本质，学到原理上，那些东西是不容易变的，也是经得住时间考验的。因为学无止境，你永远也学不完</span></li>
+            <li><span>带着问题去学习，带着要解决的东西去学习，带着挑战去学习，于是每当你解决了一个问题，做了一个功能，完成了一个挑战，你就会感到兴奋和有成就感。这样，你也就找到了源源不断的学习驱动力。</span>
+            </li>
+            <li><span>把你学习的心得、过程、笔记、代码分享出来，</span><strong><span>找到和你一同学习的人</span></strong><span>，因为一个人长跑很辛苦，有人同行就会好很多，就算没有人同行，</span><strong><span>你的读者，你的观众也会为你鼓掌加油，这些也是让你持续前行的动力</span></strong><span>。</span>
+            </li>
+        </ol>
+        <h5 id='认真阅读文档'><span>认真阅读文档</span></h5>
+        <ol start=''>
+            <li><span>Unix 和 Linux 的 man，Docker 和 Kubernetes 的官方文档，Git 的操作文档</span></li>
+        </ol>
+        <h4 id='其它几个实用的技巧'><span>其它几个实用的技巧</span></h4>
+        <ol start=''>
+            <li><span>用不同的方式来学习同一个东西。比如：通过看书，听课，创建脑图，写博客，讲课，解决实际问题，等等。</span></li>
+            <li><span>不要被打断。被打断简直就是学习的天敌，所以，你在学习的时候，最好把手机设置成勿扰模式放在一边，然后把电脑上的所有通知也关掉，最好到一个别人找不到你的地方。</span></li>
+            <li><span>总结压缩信息。当你获得太多的信息时，你需要有一个“压缩算法”。我常用的压缩算法是</span><strong><span>只关心关键点</span></strong><span>，所以，你需要使用表格、图示、笔记或者脑图来帮助你压缩信息。</span>
+            </li>
+            <li>
+                <span>把未知关联到已知。把你新学的知识点关联到已知的事物上来。比如，你在学习 Go 语言，你就把一些知识关联到自己已经学过的语言上比如 C 和 Java。通过类比，你会学得更扎实，也会思考得更多。</span>
+            </li>
+            <li><span>用教的方式来学习。你想想，如果你过几天要在公开场合对很多人讲一个技术，那么这个压力会让你学得更好。因为要教给别人，所以，这么高的标准需要你不但要把自己已掌握的东西学好，还要把周边的也一并学了，才可能做到百问不倒。你才敢去教别人，不是么？（试试教 6 岁的孩子编程，如果你掌握了这种技能，那么你一定是把知识吃得非常透彻了。）</span>
+            </li>
+            <li><span>学以致用。把学到的东西用起来，没有什么比</span><strong><span>用起来</span></strong><span>能让你的知识更巩固的了。在实践中，你才会有更为真实的体会，你才会遇到非常细节和非常具体的问题，这些都会让你重新思考，或深化学习。</span>
+            </li>
+            <li><strong><span>不要记忆</span></strong><span>。聪明的人不会记忆知识的，他们会找方法，那些</span><strong><span>可以推导出知识或答案的方法</span></strong><span>。这也是为什么外国人特别喜欢方法论。</span>
+            </li>
+            <li><strong><span>多犯错误</span></strong><span>。犯错会让你学得到更多，通过错误总结教训，你会比没有犯过错的人体会得更深。但是千万</span><strong><span>不要犯低级错误</span></strong><span>，</span><strong><span>也不要同一个错误犯两次</span></strong><span>。</span>
+            </li>
+        </ol>
+        <p>&nbsp;</p></div>
+</div>
 </body>
 </html>
