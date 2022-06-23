@@ -1,0 +1,680 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; }
+.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc {
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
+}
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>图解设计模式读书笔记</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='图解设计模式读书笔记'><span>图解设计模式读书笔记</span></h1><h2 id='名词解释'><span>名词解释：</span></h2><ul><li><p><span>一致性</span></p><ul><li><span>可以将不同的东西当作同一种东西看待。</span></li></ul></li></ul><h2 id='iterator迭代器）模式'><span>Iterator（迭代器）模式</span></h2><p><span>可以无视集合的实现，完成对集合的遍历。可以透明的变更集合的实现。</span></p><blockquote><p><span>为了弱化类之间的耦合，进而使得类更容易作为组件被复用，我们需要引入抽象类和接口。</span></p><p><span>不要只使用具体类来编程，要优先使用抽象类和接口来编程。</span></p></blockquote><p>&nbsp;</p><h2 id='adapter适配器）模式'><span>Adapter（适配器）模式</span></h2><p><span>适配器位于实际情况和需求之间，使实际情况转换为需求所需的模样。</span></p><p><span>Adapter模式有以下两种：</span></p><ul><li><span>类适配器模式（使用继承的适配器）</span></li><li><span>对象适配器模式（使用委托的适配器）</span></li></ul><h3 id='什么时候使用adapter模式'><span>什么时候使用Adapter模式</span></h3><p><span>将，现有的已经经过充分测试的类，进行适配，生成新的类以满足新的需求。</span></p><p>&nbsp;</p><h2 id='template-method模版方法）方法'><span>Template Method（模版方法）方法</span></h2><p><span>在父类中确定处理的流程，然后将具体处理交给子类。</span></p><p><span>在父类中定义处理流程的框架，在子类中实现具体处理的模式称为TemplateMethod模式。</span></p><p><span>模版方法类中的模版方法一般被声明为</span><code>final</code><span>,用于不允许被子类覆盖。</span></p><p>&nbsp;</p><h2 id='factory-method工厂方法）模式'><span>Factory Method（工厂方法）模式</span></h2><p><span>将Template Method模式用于实例的生成就是Factory Method模式。</span></p><p><span>抽象类不能用</span><code>new</code><span>生成实例。</span></p><p><span>建议在程序注释和开发文档中记录所使用的设计模式的名称和意图，以免后续维护人员做出违背设计者初衷的改动。</span></p><p><span>分析设计模式的时候，主要是分析多个类和多个接口之间的相互关系，不应当只看其中的某个类。</span></p><p>&nbsp;</p><h2 id='singleton单例）模式'><span>Singleton（单例）模式</span></h2><p><span>确保任何情况下都绝对只存在一个实例的模式被称为Singleton模式。</span></p><p><span>Singleton模式需要确保不因人的失误出现意外情况，不能靠通过口口相传或者注释的方式要求其他所有人自觉做到不实例化出多个实例。</span></p><p>&nbsp;</p><h2 id='prototype模式'><span>Prototype模式</span></h2><p><span>通过复制生成实例：不根据类生成实例，而是通过实例生成新实例。</span></p><p><span>可以用</span><code>java.lang.Cloneable</code><span>接口</span></p><p><span>面向对象编程的目标之一：作为组件复用。</span></p><p><span>一旦在代码中出现要使用的类的名字，就无法与该类分离开来，也就无法实现复用。即使没有Java文件也能复用该类才是关键。</span></p><p>&nbsp;</p><h2 id='builder构造器）模式'><span>Builder（构造器）模式</span></h2><p><span>组装复杂的实例。</span></p><p><span>模式中的角色：</span></p><ul><li><p><span>Builder（建造者）</span></p><ul><li><span>负责定义用于生成实例的接口</span></li></ul></li><li><p><span>ConcreteBulder（具体的建造者）</span></p><ul><li><span>Impl了Builder接口的具体的类。</span></li></ul></li><li><p><span>Director（监工）</span></p><ul><li><span>负责使用Builder角色的接口来生成实例。其只调用Builder角色中被定义的方法。</span></li><li><span>一般有个</span><code>construct</code><span>方法用于生成实例。</span></li></ul></li></ul><blockquote><p><span>只有不知道子类才能替换。</span></p><p><span>正因为不知道才能够替换，正因为可以替换，组件才具有高价值。</span></p></blockquote><p>&nbsp;</p><h2 id='abstract-factory抽象工厂）模式'><span>Abstract Factory（抽象工厂）模式</span></h2><blockquote><p><span>将关联零件组装成产品。</span></p><p><span>抽象工厂的工作是将“抽象零件”组装成“抽象产品”。</span></p><p><span>“抽象”这个词的含义是指“不考虑具体怎样实现，而是仅关注接口”</span></p><p><span>我们不关注零件的具体实现，而是只关心接口。我们仅使用接口将零件组装成为产品。</span></p></blockquote><p><span>Abstract Factory中的登场角色：</span></p><ul><li><p><span>AbstractProduct（抽象产品）</span></p><ul><li><span>负责定义AbstractFactory角色所生成的抽象零件和产品的接口。</span></li></ul></li><li><p><span>AbstractFactory（抽象工厂）</span></p><ul><li><span>负责定义用于生成抽象产品的接口</span></li></ul></li></ul><p><span>java的文件夹名称全小写。</span></p><p>&nbsp;</p><h2 id='bridge桥接）模式'><span>Bridge（桥接）模式</span></h2><p><span>设计时，将</span><strong><span>类的功能层次结构</span></strong><span>和</span><strong><span>类的实现层次结构</span></strong><span>分离，然后使用Bridge模式将二者连接起来。</span></p><p><span>层次结构：类的继承结构。</span></p><h3 id='类的功能层次结构'><span>类的功能层次结构：</span></h3><p><span>继承的目的是为了增加功能而产生的层次结构。</span></p><h3 id='类的实现层次结构'><span>类的实现层次结构</span></h3><ul><li><span>父类通过声明抽象方法来定义接口</span></li><li><span>子类通过实现具体方法来实现接口</span></li></ul><blockquote><p><span>AbstractClass</span></p><ul><li><span>ConcreteClass1</span></li><li><span>ConcreteClass2</span></li></ul></blockquote><h3 id='实现方式'><span>实现方式</span></h3><p><span>通过在</span><strong><span>功能层次的类</span></strong><span>中增加一个</span><strong><span>实现层次结构的类</span></strong><span>的成员属性，需要使用相关方法时，委托该成员属性调用方法实现。</span></p><p><span>注意，两个层次不源自同一个接口或类，即</span><strong><span>实现层次结构的类</span></strong><span>的祖先接口和</span><strong><span>功能层次的类</span></strong><span>祖先类之前没有继承和实现关系。</span></p><blockquote><p><span>编写子类的时候要先确认自己的意图：我是要增加功能呢，还是要增加实现呢？</span></p></blockquote><p>&nbsp;</p><h2 id='strategy策略）模式'><span>Strategy（策略）模式</span></h2><p><span>整体的替换算法的实现部分，可以轻松的用不同的算法去解决同一个问题。</span></p><blockquote><p><span>Strategy模式和State模式很相似，但是二者的目的不同：</span></p><p><span>策略模式的意图：定义一系列算法，把它们一个个封装起来，并且相互之间可以替换。</span>
+<span>状态模式的意图：允许一个对象在其内部状态改变的情况下，改变其行为。</span></p><p><span>Strategy模式是可以方便的用不同的算法解决同一个问题；State模式是关注状态的变更，具体操作都在state接口的具体实现类里（即表示具体状态的类）</span></p></blockquote><p>&nbsp;</p><h2 id='composite组合复合物）模式'><span>Composite（组合/复合物）模式</span></h2><p><span>保证容器（比如文件夹）和内容（比如文件）（的外在表现）的一致性。</span></p><p><span>比如文件类有size方法，文件夹类也有size方法，两个方法调用后的外在表现是一致的（文件夹类的size方法调用文件夹类里所有内容（包括子文件和子文件夹）的size方法获取总size），这样就可以忽略容器和内容在处理上的差异。</span></p><blockquote><p><span>登场角色：</span></p><ul><li><p><span>Leaf</span></p><ul><li><span>表示内容的角色（比如文件）</span></li></ul></li><li><p><span>Composite(复合物)</span></p><ul><li><span>表示容器的角色，可以在其中放入Leaf和Composite角色（比如文件夹）</span></li></ul></li><li><p><span>Component</span></p><ul><li><span>接口/父类；使Leaf和Composite角色具有一致性的角色。</span></li></ul></li></ul></blockquote><p><span>树结构的数据结构都适用Composite模式。</span></p><p>&nbsp;</p><h2 id='decorator装饰器）模式'><span>Decorator（装饰器）模式</span></h2><p><span>装饰边框和被装饰物的一致性。</span></p><p><span>即【被装饰物】（蛋糕）被【装饰器】（奶油装饰-奶油蛋糕｜巧克力再装饰-巧克力奶油蛋糕｜草莓再装饰-草莓巧克力奶油蛋糕-都还是蛋糕）装饰之后的产物和【被装饰物】是同一类东西（类/接口）。</span></p><p><span>【装饰器类】和【被装饰物类】继承同一个父类/接口，以达到【装饰边框和被装饰物的一致性】的效果。</span></p><p><strong><span>Decorator模式的主要目的是通过增加装饰物来增加对象的功能。在不改变被装饰物的前提下增加功能</span></strong></p><p><strong><span>java.io.Reader的各个实现类是装饰器模式的一个比较典型的实现。</span></strong></p><p>&nbsp;</p><h2 id='visitor模式'><span>Visitor模式</span></h2><p><span>目的是：把处理从数据结构中分离出来。</span></p><p><span>把对数据的处理和数据结构本身分隔开，数据结构类只关注数据结构，对数据的处理都封装在Visitor类中。</span></p><p><span>数据结构类的</span><code>accpet</code><span>方法，用于“接受”各种不同的数据处理</span><code>Visitor</code><span>类（对数据的不同处理算法），</span><code>accept</code><span>之后(即在数据结构的</span><code>accpet</code><span>方法中)调用</span><code>Visitor</code><span>类的</span><code>visit</code><span>方法用于处理该数据。</span></p><p><span>使用重载定义处理不同数据的</span><code>visit</code><span>方法;</span></p><blockquote><p><span>延伸：双重分发：element和visitor两个角色共同决定了实际进行的处理的分发机制。</span></p><p><span>开闭原则：面向扩展开放，面向修改关闭：</span><strong><span>在不改变现有代码（类）的前提下进行拓展</span></strong></p></blockquote><p>&nbsp;</p><h2 id='chain-of-responsibility责任链）模式'><span>Chain of Responsibility（责任链）模式</span></h2><p><span>把多个对象组成一条责任链，然后按照他们在责任链上的顺序一个一个的找出应该谁来负责处理</span></p><p><span>链条上的一个节点接收到需求，判断自己能不能做，能做则自己处理，不能做就转交下一个节点；下一个节点也是一样的处理；</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="java" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="java"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">public</span> <span class="cm-keyword">abstract</span> <span class="cm-keyword">class</span> <span class="cm-def">Node</span> {</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">private</span> <span class="cm-variable">Node</span> <span class="cm-variable">next</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// setNext(next).setNext(nextNext).....</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">private</span> <span class="cm-variable">Node</span> <span class="cm-variable">setNext</span>(<span class="cm-variable">Node</span> <span class="cm-variable">next</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">this</span>.<span class="cm-variable">next</span> <span class="cm-operator">=</span> <span class="cm-variable">next</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">next</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// 模板方法，被申明为final</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">public</span> <span class="cm-keyword">final</span> <span class="cm-variable-3">void</span> <span class="cm-variable">support</span>(<span class="cm-variable">Trouble</span> <span class="cm-variable">trouble</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">if</span> (<span class="cm-variable">resolve</span>(<span class="cm-variable">trouble</span>)) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-variable">done</span>(<span class="cm-variable">trouble</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  } <span class="cm-keyword">else</span> <span class="cm-keyword">if</span> (<span class="cm-variable">next</span> <span class="cm-operator">!=</span> <span class="cm-atom">null</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-variable">next</span>.<span class="cm-variable">support</span>(<span class="cm-variable">trouble</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  } <span class="cm-keyword">else</span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-variable">fail</span>(<span class="cm-variable">trouble</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// 解决问题的方法，不能解决返回false</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">protected</span> <span class="cm-keyword">abstract</span> <span class="cm-variable-3">boolean</span> <span class="cm-variable">resolve</span>(<span class="cm-variable">Trouble</span> <span class="cm-variable">trouble</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 484px;"></div><div class="CodeMirror-gutters" style="display: none; height: 484px;"></div></div></div></pre><p><span>责任链模式弱化了发出请求的人和处理请求的人之间的关系，如果不用这种模式，则需要有一个“伟大的角色”知道“谁应该处理什么请求”。</span></p><p><span>责任链模式不可避免的会导致处理延迟，所以如果请求和处理者之间的关系是确定的，而且对处理速度有较高要求，则不使用责任链模式会更好；（策略/请求和处理者之间的关系表）</span></p><p>&nbsp;</p><h2 id='facade模式'><span>Facade模式</span></h2><p><span>“你调用这个方法前要先调用这个方法，然后必须再调用那个方法，不然就会报错”——此时需要简单窗口。</span></p><p><span>使用Facade模式可以为互相关联在一起的（错综复杂）的类整理出高层接口（API）。其中的Facade角色可以让系统对外只有一个简单的接口（比如：造一栋楼()）</span></p><p><span>Facade模式可以让复杂的东西“看起来简单”（看起来只有一个接口）。</span></p><p>&nbsp;</p><h2 id='mediator仲裁者）模式'><span>Mediator（仲裁者）模式</span></h2><p><span>所有组员之间不互相交流，所有组员都只向仲裁者报告，仲裁者向组员下达指令。</span></p><p><span>需要协调多个对象之间的关系时，可以用仲裁者模式。</span></p><p><span>例子：登陆框中各个按钮和输入框是组员，其有各种禁用、错误提示等状态，各个状态的产生原因错综复杂，此时可以有个仲裁者在所有组件状态发生变更的时候检查所有组员的状态，调整所有组员的状态。</span></p><p><span>充当Mediator角色的类很难复用。</span></p><p>&nbsp;</p><h2 id='observer观察者）模式publish-subscribe发布订阅）模式'><span>Observer（观察者）模式/Publish-Subscribe（发布订阅）模式</span></h2><p><span>发送状态变化通知；</span></p><p><span>Observer模式中，当观察对象的状态发生变更的时候，会通知给观察者。Observer模式适用于根据对象状态进行相应处理的场景。</span></p><p><span>【观察者】角色观察【被观察对象（Subject对象）】角色；【被观察对象】角色在状态变更的时候，给所有已注册的【观察者】角色发送通知；</span></p><p><span>说是“观察”，其实是【被观察者】主动向【观察者】发送通知。</span></p><p><strong><span>和Mediator模式的差别：</span></strong></p><ul><li><span>Mediator模式中，发送通知是为了对Colleague角色进行仲裁</span></li><li><span>Observer模式中，将Subject角色的状态变化通知给Observer角色的目的则主要是为了使Subject角色和Observer角色同步。</span></li></ul><p>&nbsp;</p><h2 id='memento备忘录）模式'><span>Memento（备忘录）模式</span></h2><blockquote><p><span>保存对象状态。</span></p><p><span>Memento模式通过引入表示实例状态的角色，可以在保存和恢复实例时，有效的防止对象的封装性遭到破坏。</span></p><p><span>使用Memento模式可以实现应用程序的以下功能：</span></p><ul><li><span>Undo（撤销）</span></li><li><span>Redo（重做）</span></li><li><span>History（历史记录）</span></li><li><span>Snapshot（快照）</span></li></ul></blockquote><p><span>得抽出关键状态（类似Angular中的组件参数），保存快照，恢复快照。</span></p><h3 id='模式中的角色'><span>模式中的角色：</span></h3><h4 id='originator生成者）角色'><span>Originator（生成者）角色</span></h4><p><span>Originator角色会在保存自己的最新状态的时候生成Memento角色。当把以前保存的Memento角色传递给Originator角色时，它会将自己恢复至生成该Memento角色时的状态。</span></p><h4 id='memento备忘录）角色'><span>Memento（备忘录）角色</span></h4><p><span>Memento角色提供两种接口：提供两种接口：</span></p><ul><li><p><span>Wide interface（宽接口）：</span></p><ul><li><span>指所有用于获取恢复对象状态信息的方法的集合。因为宽接口会暴露Memento角色的内部信息，所以只有Originator角色可以使用宽接口</span></li></ul></li><li><p><span>Narrow interface（窄接口）</span></p><ul><li><span>Memento角色为外部调用者提供了窄接口，可以通过窄接口获取有限的内部信息，以防止信息泄露。</span></li></ul></li></ul><p>&nbsp;</p><h2 id='state状态）模式'><span>State（状态）模式</span></h2><p><span>用类表示状态，通过切换类来方便的改变对象的状态。</span></p><h3 id='state模式中的登场角色'><span>State模式中的登场角色</span></h3><h4 id='state状态）'><span>State（状态）</span></h4><p><span>State角色表示状态，定义了根据不同状态进行不同处理的接口。该接口时</span><strong><span>那些处理内容依赖于状态的方法的集合。</span></strong></p><h4 id='context上下文）'><span>Context（上下文）</span></h4><p><span>Context持有State角色（的实现类）。同时定义了供外部调用者使用State模式的接口。</span></p><p><span>需要注意：谁来管理状态迁移：</span></p><ol><li><span>State的实现类中，每个实现类处理从当前状态转换为其他状态的所有情况</span></li></ol><ol start='2' ><li><span>Context模式中，管理所有状态的转换（Mediator模式）</span></li><li><span>状态迁移表记录所有状态的变换条件</span></li></ol><p>&nbsp;</p><h2 id='flyweight轻量级）模式'><span>Flyweight（轻量级）模式</span></h2><p><span>共享对象，避免浪费（线程池）。</span></p><p><span>Flyweight模式，一言以蔽之就是，“通过尽量共享实例来避免new出新实例（以节约内存）”，即尽量共用已经存在的实例。</span></p><p><span>Flyweight模式会导致Flyweight角色被共享，所以为了避免被共享角色发生变更导致所有使用共享角色的地方都受到影响，我们只将那些真正应该在多个地方共享的字段定义在Flyweight角色中即可。</span></p><blockquote><ul><li><p><span>Intrinsic（本质的、固有的）信息</span></p><ul><li><span>不依赖于位置与状况，可以共享</span></li></ul></li><li><p><span>Extrinsic（外在的、非本质的）信息</span></p><ul><li><span>依赖于位置和状况，不能共享</span></li></ul></li></ul></blockquote><p>&nbsp;</p><h2 id='proxy模式'><span>Proxy模式</span></h2><p><span>只在必要时生成实例。</span></p><p><span>为了加快游戏启动速度，启动游戏时只创建最低限度的实例，其他的初始化比较耗时的实例在需要使用时才创建。为了达到此目的，需要Proxy可以代替真实对象完成一些基础操作，直到真实对象不得不出马处理的时候才初始化真实对象。</span></p><p><span>比如打印机的Proxy对象可以实现设置/获取打印机名称等基础操作，但是需要【打印】操作的时候，Proxy对象就无能为力，必须实例化真实的打印机对象以完成【打印】操作。</span></p><p><span>Proxy对象和真实对象之间，涉及Proxy对象代理的属性的变更时，需要注意两个对象持有的属性值的一致性(可以使用synchronized关键字)。</span></p><p>&nbsp;</p><h2 id='command模式'><span>Command模式</span></h2><p><span>命令也是类。</span></p><p><span>把每个独立操作（命令）的处理抽象成一个类，这些类可以在对应的操作（命令）发生时重复执行，同时可以组合起来成为新的操作（命令）。</span></p><p><span>命令（Command）有时候也被称为事件（event）,和“事件驱动编程”中的“事件”是一个意思。</span></p><p>&nbsp;</p><h2 id='interpreter翻译解释器）模式'><span>Interpreter（翻译/解释器）模式</span></h2><p><span>语法规则也是类。</span></p><blockquote><p><span>设计模式的目的之一就是提高类的可复用性。可复用性是指不用做太大的修改（甚至不做任何修改）就可以在多种应用场景使用之前编写的类。</span></p><p><span>Interpreter模式中，程序要解决的的问题会被用非常简单的“迷你语言”表述出来，即用“迷你语言”编写的“迷你程序”把具体的问题表述出来。（公式）</span></p></blockquote><p>&nbsp;</p><h2 id='其他'><span>其他</span></h2><blockquote><p><span>protected关键字主要是同一包下的类可以访问，可以用于由各种抽象类/接口组成的设计模式类的封装。</span></p></blockquote><p>&nbsp;</p><blockquote><p><span>使用设计模式的目的之一就是使类成为可复用的组件。</span></p><ul><li><strong><span>利用抽象类和接口从具体类中抽象出抽象方法；</span></strong></li></ul><ul><li><strong><span>在将实例作为参数传递至类中，或者再类的字段中保存实例时，（类型定义）不使用具体类型，而是使用抽象类型和接口</span></strong></li></ul><p><span>——这两点组合起来可以帮助我们轻松替换具体类；</span></p></blockquote><p>&nbsp;</p><blockquote><p><span>MVC:</span></p><ul><li><span>Model指操作“不依赖与显示形式的内部模型”的部分</span></li><li><span>View是管理Model“怎么显示”的部分</span></li><li><span>通常情况下，一个Model对应多个View</span></li></ul></blockquote><p>&nbsp;</p><blockquote><p><span>从“设计模式”的角度去看程序：抽象类和接口的作用、继承和委托的使用方法、类和方法的可见性、类的可替换性、不用修改代码即可将类作为组件复用的方法。</span></p></blockquote><p>&nbsp;</p><p><span>如何选择合适的设计模式？</span></p><p><span>首先要明确的知道自己的程序中存在什么样的问题。如果问题不够明确，是无法选择出合适的设计模式的。</span></p><p><span>学习设计模式时，我们要注意该模式“可以解决什么问题”。</span></p><p>&nbsp;</p><p><span>设计模式就是开发人员对反复遇到的问题总结出来的解决方法。</span></p><p>&nbsp;</p><p><span>学习设计模式的重点是理解设计模式是怎么样解决问题的。</span></p><p>&nbsp;</p><p>&nbsp;</p></div></div>
+</body>
+</html>
