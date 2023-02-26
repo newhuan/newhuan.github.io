@@ -1,0 +1,602 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>心安与大学之我见</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='心安与大学之我见'><span>心安与大学之我见</span></h1><blockquote><p><span>大学之道，在明明德，在亲民，在止于至善。</span>
+<span>知止而后有定，定而后能静，静而后能安，安而后能虑，虑而后能得。物有本末，事有终始，知所先后，则近道矣。</span></p><p><span>古之欲明明德于天下者，先治其国，欲治其国者，先齐其家；欲齐其家者，先修其身；欲修其身者，先正其心；欲正其心者，先诚其意；欲诚其意者，先致其知，致知在格物。</span>
+<span>物格而后知至，知至而后意诚，意诚而后心正，心正而后身修，身修而后家齐，家齐而后国治，国治而后天下平。自天子以至于庶人，壹是皆以修身为本。</span>
+<span>其本乱而末治者，否矣。</span>
+<span>其所厚者薄，而其所薄者厚，未之有也。</span>
+<span>此谓知本，此谓知之至也。</span></p></blockquote><p><span>孟子说：“学问之道无他，求其放心而已”，这里的“放”，是指“安放，安顿”的意思。也就是说，学问之道，就是在安顿好自己的心。</span></p><p><span>那么什么叫“放心”呢？</span></p><p><span>首先先说“心”，心是什么？李清照的《一剪梅·红藕香残玉簟秋》中写道：“此情无计可消除，才下眉头，却上心头”，“眉头”就是指脑子，也可以认为是“理智”，理智告诉自己，不该相思，相思无益，但是理智好像说服了自己，好像放下了，这份相思，又涌上了“心”头，“放心”的“心”，就是这里“却上心头”的“心”。此心与理智无关，与聪明无关，心不心安，扪心自问，自然知晓。常说的：道理是这个道理，但是我就是放不下。这里放不下的，就是自己的“心”。</span></p><p><span>那什么又叫“放”呢？我的理解是，“放”就是“安”。《大学》有言：“知止而后有定，定而后能静，静而后能安”，我的理解是，“止”就是停止，知止就是知道在哪停止，这个“哪”是指人生的终极目标，也就是说，知道自己的人生应该达到哪个地步的时候，就能目标坚定。目标坚定之后，就能镇静不焦躁，镇静不焦躁之后，就能内心安定。所以“安”就是明确了自己人生终极目标之后的镇静不躁。心不安顿，就会不静、不定，也就是时常焦躁，觉得人生没有方向，不知道自己要什么。</span></p><p><span>另一个理解是，知止是指“知道了至善的人生状态是什么样子”，知道之后，坚定的去追寻这个“止”。</span></p><p><strong><span>我的止，一是求心安，我所求的心安是，拿起后再放下的心安；拿起和放下的过程中，都要牢记我所求的是心安；二是得智慧，智慧是实事求是以明理、行德以养大我心，因为心有多大就容得下多大的智慧。</span></strong><span>心大到装得下自己，装得下家人，装得下所有我在乎的人，也可能哪一天能装得下国，装得下天下，最后装得下宇宙，达到“吾心即宇宙，宇宙即吾心”，在这个过程中能看到更多的本质，得到谋全局、谋万世的智慧，同时“此心光明，亦复何言”。</span><strong><span>心安需要智慧，智慧可以安心。</span></strong><span>心安与智慧都无止境，所以追求不止。</span></p><p><span>至善的止，是“天理”，是“此心光明，亦复何言”，是“大本大源”，是“真理”。此至善可近不可达，所以努力不止。</span></p><p><span>那么知道了自己的“止”或者“至善的止”之后，如何达到这个“止境”呢？《大学》里提供了一条完整的路径。</span></p><p><span>“大学之道，在明明德，在亲民，在止于至善。”《大学》开篇，讲了大学的“三纲”：“明明德、亲民、止于至善”。</span></p><p><span>这三纲，我的理解是：“明白什么是美好的德行、品德，亲近人民，在追求至善的修行中永不停息”。</span></p><p><span>先说“明明德”，“明德”是指美好的德行和品德，比如：仁，是指良知，是己所不欲，勿施于人，说的通俗点，就是把别人当人看，把Ta（他/她/它）当己看。义，宜也，是指做应当做的事，见义勇为，见到自己应当做的事，就勇于承担。应当做的事情有多大取决于自己的心有多大，是自己、家人、国人、天下人还是整个宇宙。比如智，我对智的理解就是“实事求是”，也就是《大学》里说的“物有本末，事有终始，知所先后，则近道矣”，也就是毛泽东所说的《实践论》和《矛盾论》，也就是搞清楚一件事的来龙去脉，分析主次矛盾，得到理性认识，然后以认识指导实践，在实践中检验和迭代认识。践行这些“明德”可以让自己的心保持澄澈，愈发光明，同时可以让自己的心能容得下更多人，这就叫</span><strong><span>养心</span></strong><span>。所以为什么说“太上有立德”，“立德”就是“明明德于天下”，告诉天下人一条新的“养心之道”。《大学》第一纲，就是要先知道都有哪些“明德”，也就是知道有哪些“养心之道”。</span></p><p><span>再说“亲民”，“亲民”就是亲近人民，此人民包含家人、国人、天下人。“亲民”是要破除“我他之别”，如此才能“正心诚意”地在心中放入更多人。那如何破除”我他之别“呢？佛家说”众生皆有佛性“，所以”众生平等“，所以要“普度众生”。我的理解是：每个人一个可成长的人，每个人都有血有肉有感情有思想，每个人都是自己人生的主角；人与人之间的区别只在于，当前所处的成长阶段不同，所以”我“和”他“之间，并无本质区别，所以“平等”，所以接纳，所以推己及人，所以可以为天下人谋，于是可得智慧。同时亲近人民也是所谓的“入红尘”，是实践，是“从群众中来，到群众中去”，在亲近人民的实践中得到认识，并在亲近人民的实践中验证认识，此过程中，只有“正心诚意”的“亲民”才能君子不惧独，才有可能得到真理，才能不止于“聪明”得到“智慧”。</span></p><p><span>最后的“止于至善”，“至善“是什么，上面已经说过了。“至善”只能接近，不可达到，所以追求不止，努力不止，永不停息。</span></p><p><span>明此三纲，明确自己的目标，可得心安。“安而后能虑，虑而后能得”，虑是思考，是领悟，虑而后能得，我的理解是，只有自己悟出来的，才真的是自己的，只有心安之后，才能体悟世事，才能从世事中体悟出真正属于自己的真理。</span></p><p><span>物有本末，事有终始，知所先后，则近道矣。一个概念有它的根本和旁枝末节、主要矛盾和次要矛盾，一件事情有它的起因结果，来龙去脉，知道先关注什么后关注什么，就接近真理了。这里的理解是，从一件事的来龙去脉中，分析其主次矛盾，就能得到理性认识，就能知其所以然，即本为何为本，末为何为末。</span></p><p><span>“古之欲明明德于天下者，先治其国;欲治其国者，先齐其家;欲齐其家者，先修其身;欲修其身者，先正其心;欲正其心者，先诚其意;欲诚其意者，先致其知;致知在格物；物格而后知至，知至而后意诚，意诚而后心正，心正而后身修，身修而后家齐，家齐而后国治，国治而后天下平。”</span></p><p><span>先说“格物致知”，两种解释，一说“穷究事物的原理法则而总结为理性知识。” 即在实践中总结认识，用认识指导实践，再在实践中验证、迭代认识，最后逐渐接近绝对真理。另外一种是“良知是天理之昭明灵觉处，故天理即良知”，所以致知是致良知，致良知就是听良知，在经历世事的过程中，听自己的良知然后明天理。我个人倾向第一种，但是子曰：“仁者安仁，知者利仁”，“求仁得仁”，殊途同归，听良知中可以感悟到真理，总结理性认识的过程中，也会意识到，听从自己的良知是必须要做的事情，所以不妨把格物致知理解为：</span><strong><span>“在实践中总结理性认识，实践的过程要遵从良知，理性认识的运用也要遵从良知，那么既能知道真理是什么，也能知道该如何运用真理来改造世界”</span></strong><span>，因为不遵从良知就会心不安，心不安就谈不上虑，更谈不上得，心安不安，自己知晓。</span></p><p><span>再说诚意，“所谓诚其意者，毋自欺也”，也就是不要欺骗自己。“诚于中，形于外”，自己的所言所行都是由心而发，如果不是由心而发，那么自己独处的时候，往事种种都会涌上心头，这也就是“君子慎独”。</span></p><p><span>然后是正心。正心我的理解是一部分是”不迁怒“，是 “胸有激雷而面如平湖”，是自己心中有愤怒、恐惧、贪恋、忧患但是不会因为这些影响自己的判断、行为或者发泄到其他人身上。另一部分是“心不在焉，视而不见，听而不闻，食而不知其味”，是要端正自己的心，有句话叫“态度决定一切”，人做不到往往是自己不愿意做，正心，就是端正态度，正视重视自己的心。</span></p><p><span>修身，文字解释是“修持身性”，“身”与“心”的关系是，“心”是“身”之主，正心之后，把心中所想体现在“身”上，即用行动践行自己正心、诚意、致知、格物，就是一个修身的过程，也就是做到的过程。</span></p><p><span>齐家，就是父慈然后子孝，兄友而后弟恭，夫妻之间恩爱。所谓身修而后家齐，是因为人会因为自己的喜、恶、敬、怜等情绪而行事有失偏颇，所谓“人莫知其子之恶，莫知其苗之硕”，因为心有所偏，就会体现于“身”，言传身教，身教大于言传，你的行动更会被家人尤其是子女看在眼里记在心里，而后成为这样的人，所以身不修，家就不齐。</span></p><p><span>治国，就是心里先装的下自己的家，然后老吾老以及人之老，幼吾幼以及人之幼，于是一家仁，一国兴仁。</span></p><p><span>至于平天下，《孙子兵法》有云“故经之以五事，校之以计而索其情：一曰道，二曰天，三曰地，四曰将，五曰法。道者，令民与上同意也，故可以与之死，可以与之生，而不畏危。”，国治则国有道，国有道则上下一心，攻无不克。</span></p><p><span>平天下后，天下人才会听你所明示的明德。</span></p><p><span>总的来说就是：实事中求是，明白真理；而后不自欺、不迁怒，诚实的面对自己同时不因为自己的情绪影响自己的行为和判断；再之后不断地修正自己的行为，言传身教对待家人，老吾老以及人之老地，幼吾幼以及人之幼地对待国人，而后举国同心攻无不克战无不胜，最终可平天下、明明德于天下。不到此至善，不止，又因此至善不可至，所以追求不止。</span></p><p><span>在这八目中，以修身为本，也就是践行是根本。</span></p><p><span>其本乱而末治者，否矣。根本的事情没做好，却追求次要的事情，那就是本末倒置，坏菜了。</span>
+<span>其所厚者薄，而其所薄者厚，未之有也。一个人重视的地方却做的不好，不重视的地方却做得好，没有这样的事，所以越是根本之事，就是越要重视。</span>
+<span>此谓知本，此谓知之至也。这之上的全文，就是知道根本、知道本质，这就是认知的极致。</span></p><p><span>这就是“大学”，大人之学，穷一生追求修行之学。</span></p><p>&nbsp;</p><hr /><p><a href='http://www.guoxuemeng.com/guoxue/15393.html'><span>大学之道，在明明德，在亲民，在止于至善。</span></a><a href='http://www.guoxuemeng.com/guoxue/15394.html'><span>知止而后有定，定而后能静，静而后能安，安而后能虑，虑而后能得。</span></a><a href='http://www.guoxuemeng.com/guoxue/15395.html'><span>物有本末，事有终始，知所先后，则近道矣。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15396.html'><span>古之欲明明德于天下者，先治其国;欲治其国者，先齐其家;欲齐其家者，先修其身;欲修其身者，先正其心;欲正其心者，先诚其意;欲诚其意者，先致其知;致知在格物；</span></a><a href='http://www.guoxuemeng.com/guoxue/15397.html'><span>物格而后知至，知至而后意诚，意诚而后心正，心正而后身修，身修而后家齐，家齐而后国治，国治而后天下平。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15398.html'><span>自天子以至于庶人，壹是皆以修身为本，</span></a><a href='http://www.guoxuemeng.com/guoxue/15399.html'><span>其本乱而末治者，否矣;其所厚者薄，而其所薄者厚，未之有也。此谓知本，此谓知之至也。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15400.html'><span>所谓诚其意者，毋自欺也。如恶恶臭，如好好色，此之谓自谦。故君子必慎其独也。</span></a><a href='http://www.guoxuemeng.com/guoxue/15401.html'><span>小人闲居为不善，无所不至;见君子而后厌然，掩其不善而著其善。人之视己，如见其肺肝然，则何益矣?此谓诚于中，形于外。故君子必慎其独也。</span></a><a href='http://www.guoxuemeng.com/guoxue/15402.html'><span>曾子曰：“十目所视，十手所指，其严乎!”富润屋，德润身，心广体胖。故君子必诚其意。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15403.html'><span>《诗》云：“瞻彼淇澳，菉竹猗猗，有斐君子，如切如磋，如琢如磨;瑟兮僩兮，赫兮喧兮;有斐君子，终不可諠兮。”如切如磋者，道学也;如琢如磨者，自修也;瑟兮僩兮者，恂栗也;赫兮喧兮者，威仪也;有斐君子，终不可諠兮者，道盛德至善，民之不能忘也。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15404.html'><span>《诗》云：“於戏前王不忘。”君子贤其贤而亲其亲，小人乐其乐而利其利，此以没世不忘也。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15405.html'><span>《康诰》曰：“克明德。”《大甲》曰：“顾諟天之明命。”《帝典》曰：“克明峻德。”皆自明也。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15406.html'><span>汤之《盘铭》曰：“苟日新，日日新，又日新。”</span></a><a href='http://www.guoxuemeng.com/guoxue/15407.html'><span>《康诰》曰：“作新民。”</span></a><a href='http://www.guoxuemeng.com/guoxue/15408.html'><span>《诗》曰：“周虽旧邦，其命惟新。”</span></a><a href='http://www.guoxuemeng.com/guoxue/15409.html'><span>是故君子无所不用其极。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15410.html'><span>《诗》云：“邦畿千里，惟民所止。”《诗》云：“缗蛮黄鸟，止于丘隅。”子曰：“于止，知其所止，可以人而不如鸟乎?”</span></a><a href='http://www.guoxuemeng.com/guoxue/15411.html'><span>《诗》云：“穆穆文王，於缉熙敬止。”为人君，止于仁;为人臣，止于敬;为人子，止于孝;为人父，止于慈;与国人交，止于信。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15412.html'><span>子曰：“听讼，吾犹人也;必也使无讼乎!”无情者不得尽其辞，大畏民志。此谓知本。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15413.html'><span>所谓修身在正其心者，身有所忿懥，则不得其正;有所恐惧，则不得其正;有所好乐，则不得其正;有所忧患，则不得其正。</span></a><a href='http://www.guoxuemeng.com/guoxue/15414.html'><span>心不在焉，视而不见，听而不闻，食而不知其味。此谓修身在正其心。</span></a><span>（胸有惊涛，而面若平湖，心有所感，但不迁怒，不形于身）（心为身之主，心正即心在焉，身有主，才能见到一切）</span></p><p><a href='http://www.guoxuemeng.com/guoxue/15415.html'><span>所谓齐其家在修其身者：人，之其所亲爱而辟焉，之其所贱恶而辟焉，之其所畏敬而辟焉，之其所哀矜而辟焉，之其所敖惰而辟焉。故好而知其恶，恶而知其美者，天下鲜矣。</span></a><a href='http://www.guoxuemeng.com/guoxue/15416.html'><span>故谚有之曰：“人莫知其子之恶，莫知其苗之硕。”此谓身不修，不可以齐其家。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15417.html'><span>所谓治国必先齐其家者：其家不可教，而能教人者，无之。故君子不出家而成教于国。孝者，所以事君也;弟者，所以事长也;慈者，所以使众也。</span></a><a href='http://www.guoxuemeng.com/guoxue/15418.html'><span>《康诰》曰：“如保赤子。”心诚求之，虽不中，不远矣。未有学养子而后嫁者也。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15419.html'><span>一家仁，一国兴仁;一家让，一国兴让;一人贪戾，一国作乱。</span></a><a href='http://www.guoxuemeng.com/guoxue/15420.html'><span>其机如此。此谓一言偾事，一人定国。尧舜率天下以仁，而民从之;桀纣率天下以暴，而民从之。其所令反其所好，而民不从。是故君子有诸己，而后求诸人;无诸己，而后非诸人。所藏乎身不恕，而能喻诸人者，未之有也。故治国在齐其家。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15421.html'><span>《诗》云：“桃之夭夭，其叶蓁蓁。之子于归，宜其家人。”宜其家人，而后可以教国人。</span></a><a href='http://www.guoxuemeng.com/guoxue/15422.html'><span>《诗》云：“宜兄宜弟。”宜兄宜弟，而后可以教国人。</span></a><a href='http://www.guoxuemeng.com/guoxue/15423.html'><span>《诗》云：“其仪不忒，正是四国。”其为父子兄弟足法，而后民法之也，此谓治国在齐其家。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15424.html'><span>所谓平天下在治其国者：上老老，而民兴孝;上长长，而民兴弟;上恤孤，而民不倍。是以君子有絜矩之道也。</span></a><a href='http://www.guoxuemeng.com/guoxue/15425.html'><span>所恶于上，毋以使下;所恶于下，毋以事上;所恶于前，毋以先后;所恶于后，毋以从前;所恶于右，毋以交于左;所恶于左，毋以交于右。此之谓絜矩之道。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15426.html'><span>《诗》云：“乐只君子，民之父母。”民之所好好之，民之所恶恶之，此之谓民之父母。</span></a><a href='http://www.guoxuemeng.com/guoxue/15427.html'><span>《诗》云：“节彼南山，维石岩岩。赫赫师尹，民具尔瞻。”有国者不可以不慎，辟则为天下僇矣。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15428.html'><span>《诗》云：“殷之未丧师，克配上帝。仪监于殷，峻命不易。”道得众则得国，失众则失国。</span></a><a href='http://www.guoxuemeng.com/guoxue/15429.html'><span>是故君子先慎乎德。有德此有人，有人此有土，有土此有财，有财此有用。</span></a><a href='http://www.guoxuemeng.com/guoxue/15430.html'><span>德者本也，财者末也。外本内末，争民施夺。</span></a><a href='http://www.guoxuemeng.com/guoxue/15431.html'><span>是故财聚则民散，财散则民聚。</span></a><a href='http://www.guoxuemeng.com/guoxue/15432.html'><span>是故言悖而出者，亦悖而入;货悖而入者，亦悖而出。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15433.html'><span>《康诰》曰：“惟命不于常。”道善则得之，不善则失之矣。</span></a><a href='http://www.guoxuemeng.com/guoxue/15434.html'><span>《楚书》曰：“楚国无以为宝，惟善以为宝。”舅犯曰：“亡人无以为宝，仁亲以为宝。”</span></a><a href='http://www.guoxuemeng.com/guoxue/15435.html'><span>《秦誓》曰：“若有一介臣，断断兮无他技，其心休休焉，其如有容焉。人之有技，若己有之;人之彦圣，其心好之;不啻若自其口出，寔能容之，以能保我子孙黎民，尚亦有利哉!人之有技，媢嫉以恶之，人之彦圣，而违之俾不通，寔不能容，以不能保我子孙黎民，亦曰殆哉!”</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15436.html'><span>唯仁人放流之，迸诸四夷，不与同中国。此谓唯仁人为能爱人，能恶人。</span></a><a href='http://www.guoxuemeng.com/guoxue/15437.html'><span>见贤而不能举，举而不能先，命也;见不善而不能退，退而不能远，过也。</span></a><a href='http://www.guoxuemeng.com/guoxue/15438.html'><span>好人之所恶，恶人之所好，是谓拂人之性，灾必逮夫身。</span></a><a href='http://www.guoxuemeng.com/guoxue/15439.html'><span>是故君子有大道，必忠信以得之，骄泰以失之。</span></a></p><p><a href='http://www.guoxuemeng.com/guoxue/15440.html'><span>生财有大道，生之者众，食之者寡，为之者疾，用之者舒，则财恒足矣。</span></a><a href='http://www.guoxuemeng.com/guoxue/15441.html'><span>仁者以财发身，不仁者以身发财。</span></a><a href='http://www.guoxuemeng.com/guoxue/15442.html'><span>未有上好仁，而下不好义者也;未有好义，其事不终者也;未有府库财，非其财者也。</span></a><a href='http://www.guoxuemeng.com/guoxue/15443.html'><span>孟献子曰：“畜马乘不察于鸡豚;伐冰之家不畜牛羊;百乘之家不畜聚敛之臣;与其有聚敛之臣，宁有盗臣。”此谓国不以利为利，以义为利也。</span></a><a href='http://www.guoxuemeng.com/guoxue/15444.html'><span>长国家而务财用者，必自小人矣，彼为善之。小人之使为国家，灾害并至，虽有善者，亦无如之何矣。此谓国不以利为利，以义为利也。</span></a></p></div></div>
+</body>
+</html>
