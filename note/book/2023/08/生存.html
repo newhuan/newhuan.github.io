@@ -1,0 +1,709 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { -webkit-user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>生存</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='生存'><span>生存</span></h1><h2 id='目标'><span>目标</span></h2><ul><li><p><span>衣食无忧，先搞到500万；</span></p></li><li><p><span>不工作每个月固定也能有1万收入</span></p></li></ul><h2 id='指导思想'><span>指导思想</span></h2><ul><li><p><span>本质还是要保持自己的稀缺性，能解决困难的问题，很少有人做的到（困难的事情，护城河）。</span></p></li><li><p><span>做自己擅长的事情</span></p></li><li><p><span>不盲目扩张，严格控制成本</span></p></li><li><p><span>成本论有两方面，一方面是有需求就要有成本载体，对应固定成本；另一方面是需求发展（质变）和冲突，需要成本发展（质变）和转嫁，或削弱需求。</span></p><p><span>转嫁成本，让别人完成自己的战略目标 —— 外交如此，和别人的合作也是如此 —— 为什么要和别人合作 —— 自己需要的是别人富裕的，自己富裕的是别人需要的，互相承载对方的成本，互相满足对方的需求，或者至少要单方面让别人承载自己的成本。</span></p></li><li><p><span>第一种，无杠杆卖时间，即单位时间只能卖一次，且只能卖给一个人；第二种，有杠杆卖时间，即单位时间可以卖多次，而且可以卖给很多人，卖出的份数和客户数与杠杆比例有关，杠杆比例基本受制于其个人品牌；第三种，花钱买时间，可以通过利用“他人的时间和他人的金钱”实现获利；第四种，花钱买“厉害的人”的时间（本质上和第三种相似）。</span></p></li><li><p><span>潜龙在渊，见龙在田，终日乾乾，或跃在渊，飞龙在天，亢龙有悔，群龙无首</span>
+<span>顺序，积蓄力量，以待天时</span></p></li><li><p><span>有问题的地方就有机遇 —— 非洲、一带一路</span></p></li><li><p><span>人精力有限，一辈子做好一件事就不得了了，至少要做好一件事</span></p></li><li><p><span>其所厚者薄，其所薄者厚，未之有也，着重投入的，不会是薄弱项，投入的少的，不会是强项。</span></p></li><li><p><span>改造我们的学习和六大以来的效果区别，说明说理无用，摆出事实才能讲明白道理</span></p></li><li><p><span>生产资料归谁所有，掌握生产资料和使用生产资料的人之间的关系，产物最终归谁分配</span></p></li><li><p><span>自知者英，自胜者雄</span></p></li><li><p><span>有了更多的不在乎，也就有了更多的坚持。</span></p></li><li><p><span>抽象化、简化、标准化、自动化、规模化、多样化</span></p></li><li><p><span>等风来、借势。</span></p></li><li><p><span>连接本身就能创造价值：公路、数据孤岛、产业链打通等。—— 大部分团体都更能满足自己的需求，或者能得到性价比更高的成本载体。</span></p></li><li><p><span>人不是因为变老了才没有热情，而是因为没有热情才会变老.有的人说我老了，我学不动了。不是的，因为你学不动，你才变老了；不是你老了，你才学不动。这个世界上有大量这样本末倒置的因果关系的逻辑，如果你学得动，或者你还对这个事情充满憧憬，有想法，愿意去奋斗的话，70 岁你都不老。</span></p></li><li><p><span>经济基础决定上层建筑；没搞到钱的，老老实实先搞钱</span></p></li><li><p>&nbsp;</p></li></ul><h2 id='判断'><span>判断</span></h2><ul><li><p><span>劳动能力不能直接转化为商品的时候，就只能出卖劳动力本身</span></p></li><li><p><span>现在的世界，是美国开始不自信的时代，美国的衰落，多极化的未来是个时代的机会，机会在国际化，对国外的了解。</span></p></li><li><p><span>跟着一带一路。</span></p></li><li><p><span>广告和卖货，资本主义社会永恒不变的工作</span></p></li><li><p><span>健康强壮的身体，会带来绝对的红利，尤其是在这个亚健康泛滥的时代，健康强壮本身就是一种稀缺</span></p></li><li><p><span>矛盾永远存在，唯有发展可以暂时掩盖矛盾</span></p></li><li><p><span>社会的资金和资源流向什么领域，这个领域势必会得到成长和发展，会逐渐形成趋势，进而成为未来。我们遵循这样的规律，就能很容易地判断出未来的，最起码是近几年的，技术流向了。</span></p></li><li><p><span>世界上有大量这样本末倒置的因果关系的逻辑，不要被表象影响对本质的判断</span></p></li></ul><h2 id='路径'><span>路径</span></h2><ol start='' ><li><p><span>做一件自己擅长的事情，做到能解决这个领域很少有人能解决的困难的问题的程度。需要沉住气地长时间沉淀。</span></p></li><li><p><span>售卖自己的时间，然后单位时间能卖多次，然后打造个人品牌让自己的时间卖的价更高。之后购买别人的时间赚差价，购买更厉害的人的时间赚更高比例的差价。在此期间，控制好成本，不要盲目扩张。</span></p></li><li><p><span>等风来，借势。这个世界现象上是有周期，螺旋上升、波浪式前进，虽然每个周期都有不同，但是周期的同一阶段之间，还是有相似性。</span></p></li></ol><hr /><ol start='' ><li><p><span>免费输入换来流量，流量变现：广告、卖货、平台抽水。</span></p></li></ol><hr /><ol start='' ><li><p><span>把思维工具，转换为物理工具，并固化下来</span></p></li></ol><p>&nbsp;</p><h2 id='实现路径'><span>实现路径</span></h2><p><span>问题和解决方案</span></p><p><span>《中华人民共和国政务工作全书》</span></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p><span>技术</span>
+<span>产品</span>
+<span>编制</span>
+<span>学习——自我投资</span>
+<span>小说</span>
+<span>输出——影响力——培训</span>
+<span>现金流——跨越周期</span>
+<span>房产，土地</span>
+<span>天塌下来也能赚钱的生意</span>
+<span>做熟不做生</span>
+<span>卖给更多客户，卖给客户更多，卖给更好的客户</span>
+<span>范围经济——城镇化——危机主要爆发在城市地区（本质还是生产过剩）</span>
+<span>——</span></p><p><span>不要做不擅长的事情</span></p><p><span>不盲目扩张，严格控制成本</span></p><p><span>——</span></p><p><span>中文资料真的太少了，是发展的过于快速的代价，只是做到了，但是没经历为什么这么做的那些阶段。</span></p><p><span>需要很多“为什么”的工作方法和技巧，即最佳实践背后的取舍。</span></p><p><span>——</span></p><p><span>创业，给轻流做二开</span>
+<span>——</span>
+<span>先以创业为目标去学习</span>
+<span>——</span></p><p><span>——</span>
+<span>计算机行业的历史和建筑设计行业的历史必然是相似的——职业史</span>
+<span>商业是满足需要——马洛斯需求——衣食住行安全社交娱乐自我实现及其延伸需求</span></p><p><span>——</span></p><p><span>业务咨询：大部分企业没有经营意识：</span></p><p><span>——</span></p><p><span>一个行业N家客户，再拓展行业</span></p><p><span>计算机行业的历史和建筑设计行业的历史必然是相似的——职业史</span></p><p><span>商业是满足需要——马洛斯需求——衣食住行安全社交娱乐自我实现及其延伸需求</span>
+<span>——</span>
+<span>饮食文化，非常能吸引人，经久不衰</span></p><p><span>——</span>
+<span>计算机这类工具，是绝对价值的成本载体，因为工具只要一个集体有，其他集体也都容易有，所以在利润和效率之争中，工具能导致的相对价值比较小（除非垄断），更多的是能提高绝对效率和绝对价值。</span>
+<span>——</span>
+<span>在自己有实力时，适当的退让是吉利的；在处于穷极的困境时，顺从、退让往往会给自己带来危险。</span>
+<span>——</span></p><p><span>学习其他道下的术 —— 结交不同观点不同领域的人</span></p><p><span>——</span></p><p><span>因为可以开辟新市场、互通有无、成本/产业转移的双赢（落后的得到技术和对自身来说可观的收益，领先的把看不上的低收益的转移出去）、减少重复建设（复用）</span></p><p><span>会带来集中效应，再下一步就是多样化。</span></p><p><span>——</span></p><p><span>新思路，新能力，解决既有困难</span></p><p><strong><span>这些产品瞄准的是客户的既有困难，用的却是新思路、新能力，这类产品的诞生激发出了新需求。</span></strong></p><p><span>——</span></p><p><strong><span>介入客户业务，不满足提高客户企业的管理效率。</span></strong><span>相对提高管理和流程效率（大企业也需要），中国企业更需要业务上的帮助，例如：市场教育、获得订单、提升产品、提升服务。</span></p><p><span>——</span></p><p><strong><span>生态位：不与平台竞争，只做“补位”。</span></strong><span>喊着要与平台公司拼命的事，只是笑谈中过往的年少轻狂。</span></p><p><span>优秀的战略应该多想想如何帮平台补位，如何融入生态，如何做平台公司不愿意、不擅长做的事情。</span></p><p><span>——</span></p><p><strong><span>发挥第一曲线的优势，才能进入第二曲线。</span></strong><span>我们要相信第一曲线的成功中，虽然有努力、有天赋，但主要是靠运气。因为同一个赛道中，别人也有天赋和努力；我们能胜出也许还多了点天时（Timing）和机遇。1%的事情经不起叠加，从概率上来说，两次不相关1%概率事件连续出现的几率只有万分之一。</span></p><p><span>我们需要让这两个曲线强相关，而以下这些并不在此列：同一个客户群、对同一个行业的认知、有经验的团队......</span><strong><span>真正强相关的只是产品和产品积累出的数据。</span></strong></p><p><span>——</span></p><p><strong><span>等风来、借势。</span></strong><span>当我们的路径确定了，但大势风头未起，不要急于事功；而要有耐心等待。即便增长在放缓、营收在减少，只要我们能够通过精细化经营保持高人效和长期现金安全，都可以忍耐。这时强行把增速提上去，多半只是花了高代价获得一批低质量的客户而已。</span></p><p><span>什么叫“战略定力”？就是在前提假设没有变化时，行动中遇到再大的困难也固执地坚持。</span></p><p><span>——</span></p><p><span>跟大哥，师门、大哥、小弟、同志，这个社会一直是一个“社会”，社会讲究的是大多数，群体性。在独立性和群体的力量之间做权衡，一个人走的快，一群人走的远，但不是非此即彼，快和远之间做权衡，比如人数控制住，同志向的人，以及找到成本承载项，比如交通工具（工具的开发维护成本要低于工具节约的成本。需要工具的规模化带来成本的削减），比如让别人背着，比如顺着风顺着水（大势），比如搭个顺风车（大哥）</span></p><p><span>——</span></p><p><span>重病的第一件事，应该是搬家和换饮食结构，疾病是一种状态，而非结果，这种状态的变化必然是有原因的，即，为什么生病。</span></p><p><span>——</span></p><p><span>可口可乐的竞争对手，从来都不是其他软饮料公司。</span>
+<span>那是什么呢？</span>
+<span>咖啡、茶、牛奶、水等其他饮品，公司所处的行业也不再是软饮这个成熟市场，而是一个更大的市场。</span>
+<span>于是，可口可乐从考虑如何卖可乐，转变成思考如何满足人类胃的需求，也就是卖给客户更多的产品。</span>
+<span>这句话什么意思呢？</span>
+<span>如果我们将目标聚焦在一个特定的客户身上，我们可以深入了解他每年在食品上的消费情况。</span>
+<span>比如说，假设客户每年在食品上花费1万块钱，而在我们这里购买的商品仅占500块。</span></p><p><span>——</span></p><p><span>《定位》，抢占用户心智</span></p><p><span>——</span></p><p><span>未来，一定要把组织能力提升起来，甚至要做好掉三层皮的打算。</span>
+<span>想要把产品卖给更多的客户，一定是快鱼吃慢鱼，以快打快。</span>
+<span>绞尽脑汁，想尽一切办法，不断拓展思维边界，去执行，去试错，去开拓市场。</span>
+<span>这，就是卖给更多的客户。</span></p><p><span>——</span></p><p><span>一个有远见的中层，可以不买豪车、名牌，但一定不会“节省”有效的资本开支？有效资本开支，是指有助于提供生产效率和生产力的、能转化为资产并释放现金流的、有助于提高竞争优势的、有助于拉长久期的各种支出。</span>
+<span>比如，在能力所及的范围内、以合理的价格在大城市买房就算有效资本开支。因为有了房，就会让你和你的家庭更有稳定感和幸福感，也会让自己有更强的拼搏动力。再比如，在自己身上多做些有意义的自我投资，提升技能和认知，拓展自己的视野和圈层，让自己拥有更多抵御风险的能力和资源，在遇到时代或行业的冲击时，多一份抵御的手段和底气。</span></p><p><span>——</span></p><p><span>大公司用得越多，就一定会有标准化的东西出来，比如 Java、C 和 C++，很多公司都在用，就有一个标准化组织。第三个，社区很重要，必须要有社区。第四个它必须要有杀手级应用。杀手级应用的意思就是它必须要有个成功案例，没有成功案例不行。  所以这 4 个因素：门槛低、有大公司撑着、好的社区，还有杀手级应用，决定这个技术会不会成功，会不会爆。</span></p><p><span>——</span></p><p><span>“我没想过做演员要做多久，如果有一天我被观众讨厌了，被市场淘汰了，我也不会选择再花多少年重返回来，因为我还可以靠别的来养活自己。”</span></p><p><span>——</span></p><p><span>商品货币资本是一体三面但三面皆存？</span></p><p><span>——</span></p><p><span>人和人本质的不同，是不是除了遗（激素）传之外，还有食谱范围的区别？</span></p><p><span>——</span>
+<span>小学可以理解为谋生手段，即经济基础。大学是上层建筑。小学是大学的基础，因为经济基础决定上层建筑，上层建筑对经济基础也有反作用。</span>
+<span>跳过小学直接到大学，好比别人帮你拿了起来，省力但是你不知其中轻重。</span></p><p><span>——</span></p><p><span>习，经常训练，刻意练习</span></p><p><span>——</span></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h2 id='原始物料'><span>原始物料</span></h2><p><span>09.14 20:30</span>
+<span>生存</span>
+<span>本质还是要稀缺——质量好，能解决困难的问题，很少有人做的到——困难的事情</span>
+<span>技术</span>
+<span>产品</span>
+<span>编制</span>
+<span>学习——自我投资</span>
+<span>小说</span>
+<span>米兰·昆德拉说过一句非常出色的话：“小说是干什么的？小说是告诉你人类生活的可能性的。”</span>
+<span>但是小说中的这种可能性是作者想象出来的。而人类学和社会学告诉你的可能性是真实发生的一种东西。</span>
+<span>输出——影响力——培训</span>
+<span>现金流——跨越周期</span>
+<span>房产，土地</span>
+<span>天塌下来也能赚钱的生意</span>
+<span>做熟不做生</span>
+<span>卖给更多客户，卖给客户更多，卖给更好的客户</span>
+<span>范围经济——城镇化——危机主要爆发在城市地区（本质还是生产过剩）</span>
+<span>——</span>
+<span>一个行业N家客户，再拓展行业</span>
+<span>——</span>
+<span>创业，给轻流做二开</span>
+<span>——</span>
+<span>先以创业为目标去学习</span>
+<span>——</span>
+<span>广告和卖货，资本主义社会永恒不变的工作</span>
+<span>——</span>
+<span>计算机行业的历史和建筑设计行业的历史必然是相似的——职业史</span>
+<span>商业是满足需要——马洛斯需求——衣食住行安全社交娱乐自我实现及其延伸需求</span>
+<span>——</span>
+<span>饮食文化，非常能吸引人，经久不衰</span>
+<span>——</span>
+<span>计算机这类工具，是绝对价值的成本载体，因为工具只要一个集体有，其他集体也都容易有，所以在利润和效率之争中，工具能导致的相对价值比较小（除非垄断），更多的是能提高绝对效率和绝对价值。</span>
+<span>——</span>
+<span>在自己有实力时，适当的退让是吉利的；在处于穷极的困境时，顺从、退让往往会给自己带来危险。</span>
+<span>——</span>
+<span>潜龙在渊，见龙在田，终日乾乾，或跃在渊，飞龙在天，亢龙有悔，群龙无首</span>
+<span>顺序，积蓄力量，以待天时</span>
+<span>——</span>
+<span>第一种，无杠杆卖时间，即单位时间只能卖一次，且只能卖给一个人；第二种，有杠杆卖时间，即单位时间可以卖多次，而且可以卖给很多人，卖出的份数和客户数与杠杆比例有关，杠杆比例基本受制于其个人品牌；第三种，花钱买时间，可以通过利用“他人的时间和他人的金钱”实现获利；第四种，花钱买“厉害的人”的时间（本质上和第三种相似）。</span>
+<span>——</span>
+<span>成本论有两方面，一方面是有需求就要有成本载体，对应固定成本；另一方面是需求发展（质变）和冲突，需要成本发展（质变）和转嫁，或削弱需求。</span>
+<span>——</span>
+<span>擅长读懂代码，理解别人的意思。</span>
+<span>擅长理解，擅长逻辑。</span>
+<span>擅长技术方案设计。</span>
+<span>取悦，行动，回顾，审慎，责任，学习。</span>
+<span>——</span>
+<span>一、如何通过创业和积累经验来实现财务自由。强调了道的重要性，而不是术。同时，提供了一些实用的建议和思路。</span>
+<span>00:01 - 手把手教你如何从一无所有到财务自由</span>
+<span>02:32 - 道轻易不会变，要有基础支撑</span>
+<span>05:07 - 历经劫难是创业成功的第一大道道</span>
+<span>二、一个创业项目失败的原因，包括不能重复消费的物品通过经营模式的腾挪变成可以重复消费等思路，同时提供了选择合伙人的建议和项目运营的建议。</span>
+<span>07:49 - 项目通过经营模式的腾挪变成可重复消费</span>
+<span>09:51 - 寻找合适的人来做合适的事</span>
+<span>12:37 - 项目的侧重点不同，管理者的能力也不尽相同</span>
+<span>三、赚几百万、几千万和几个亿的不同境界，以及选择合伙人的三个标准，以及如何培养捆绑住人才。</span>
+<span>四、作者操作具体项目的经验，强调了要找到适合自己的项目，坚持信念并利用各种资源，同时忽悠他人加入自己的项目。</span>
+<span>23:24 - 创业需要找到有潜力的项目，而不是随便找个事情做</span>
+<span>24:23 - 装饰性墙壁开关是小众产品，需要对小众消费人群有绝对的杀伤力</span>
+<span>29:43 - 领袖必须具备的两大智慧:坚持现在的痛苦和追求未来的收益</span>
+<span>五、如何通过降低预期来提高人们的信心，特别是在面对困难时保持冷静和信心，以及如何选择具有前途的项目。</span>
+<span>31:13 - 使用举例子和讲故事的方法，说服他人接受你的观点和观念</span>
+<span>34:19 - 项目的立项之本是产品能在短期内重复消费</span>
+<span>37:08 - 创业要选择自己感兴趣的事情，才能成功</span>
+<span>--本内容由AI视频小助理生成，关注解锁AI助理，由@TT是勇者哦 召唤发送</span>
+<span>——</span>
+<span>让世道人心更好些</span>
+<span>——</span>
+<span>你绝对要求很多解释，这些解释能够使外部社会在你的脑子里有了秩序，不再是混沌的。</span>
+<span>——</span></p><p><span>——</span>
+<span>太多人知道而不信道，只有事才能让人信道，也就是吹亏之后，才能信“邪”，才能行道，得道。而守道需要一点兴趣，一点喜欢，一点“傻”，因为理智总会告诉你，守道的利润率太低啦，要守到质变太难啦，就算到了质变，又有什么“用”呢？所以守道才如此艰难，需要热爱来帮一把自己。</span>
+<span>——</span></p><p><span>穷人容易听话，是因为他们的需要的层次还比较低，在生存阶段，只需要钱就能激发斗志。</span>
+<span>合伙人：穷，开朗一些，聪明（学习），谦逊，靠得住（道德）</span>
+<span>——</span>
+<span>人的行为动机：追求快乐，逃避痛苦（为主）</span></p><p><span>——</span></p><p><span>看好看的故事、读小说、看动漫。</span></p><ul><li><p><span>小说和戏剧又啥区别呢？就是内涵的多与少，揭示的道理和规律的多与少的区别，而不是有或无的区别。</span></p></li></ul><p><span>——</span></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></div></div>
+</body>
+</html>

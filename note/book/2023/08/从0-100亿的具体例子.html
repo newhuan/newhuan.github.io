@@ -1,0 +1,599 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { -webkit-user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>从0-100亿的具体例子</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='从0-100亿的具体例子'><span>从0-100亿的具体例子</span></h1><h2 id='互联网社区'><span>互联网社区</span></h2><h3 id='社区'><span>社区</span></h3><p><span>从历史来看：</span></p><p><span>身份认同即归属感是在生存和安全需求被满足后，人最先产生的需求，也就是说这类需求的群体最广泛，且往后更高级别的需求的满足也都需要前置需求被满足。</span></p><h4 id='初期'><span>初期</span></h4><p><span>早期团体性、地域性、领域性社区，如校园论坛、本地论坛、体育/摄影/二次元等论坛。</span></p><p><span>这些社区的基础都是一定的【身份认同】，营造【认同感和归属感】，也就是说这部分社区的群众基本都是满足了生存和安全需求，进而在追求爱与归属。</span></p><blockquote><p><span>把人连接起来，除了社交需求之外，还扩大了一个技能的资深掌握者的辐射范围，能提高群体的绝对价值，资深者个体也因为最初的相对价值而获得更多的收益。</span></p></blockquote><p><span>社区的维护，纯靠自觉是不可能的，所以社区创立之初会有创始人作为维护者/管理员，创始人和管理员需要把一些自然而然正确的做法明确为规则，并用条文或机制维护下来，比如区分</span><strong><span>精华贴、普通贴和水贴</span></strong><span>、区分内容产出者和伸手党、在社区中创建</span><strong><span>细分的小版块</span></strong><span>，</span><strong><span>再在细分的小版块中区分内容和群众</span></strong><span>。</span></p><blockquote><p><span>这里面会有很多细节的坑，各种规则、机制和模糊主观的地方，以及搞事闹事的</span></p></blockquote><p><span>规则的维护需要成本，此时的成本主要由创始人的人力承载，创始人一般会把人力的质量和规模的</span><strong><span>成本</span></strong><span>转嫁到</span><strong><span>工具</span></strong><span>上，比如设置规则自动粗分，然后人工校准等。（工具本身是效率壁垒，也可以包装出售）</span></p><p><span>此时创始人本身的生存、工具、社区维护成本需要有承载体，因为这些都是钱/资源，所以需要收费，一般是：【价值来源：流量、内容（知识）、影响力（身份认同归属）、规则制定的权力】</span></p><ul><li><p><span>时代/时机的红利</span></p></li><li><p><span>资金输入（投资/拨款）</span></p></li><li><p><span>成员捐款、会员费（区分产出者和伸手党收费（Notion大使））</span></p></li><li><p><span>收费贴（订阅费）、精品内容输出版权费（付费课程）、培训费（分成）、咨询费（付费解决方案）</span></p></li><li><p><span>广告费（流量卖外部商家的货）、自营商城（流量卖内部商家的货）、流量转渠道做发行（游戏等）、转平台（拼团、外卖、打车、租房等）、共享专业设备、二手交易</span></p></li><li><p><span>总结出生产力工具降本增效，工具收费</span></p></li><li><p><span>立住品牌、收品牌溢价（身份认同）</span></p></li><li><p><span>制定行业标准，收授权费；垄断获得定价权</span></p></li></ul><h4 id='中期'><span>中期</span></h4><p><span>每个人都是多样的，会同时有多种身份认同，随着社区中人数规模变大，总会有更多种身份认同的人变得多起来。同时伸手党增长的速度肯定会远远高于内容产出者的增长速度。</span></p><p><span>此时社区群众横向和纵向都会有拆分，横向会有更多种不同身份认同的人，纵向同一种身份认同的人会分级：活跃程度、产出质量都会成为分级的因素。</span></p><p><span>这样社区的【文化】和【人群】就会越来越多样化，量变逐渐积累为质变，一开始的新生文化可能还都是和平台最初文化相似的相邻文化，然后会慢慢和最初文化的距离越来越远，随着社区人数越来越多，最初的文化的比例也就越来越被稀释。</span></p><blockquote><p><span>私有圈子，全民/纳新委员会投票纳新，定期轮替（最近3个月内容最受喜欢的人？）?</span></p></blockquote><p><span>而后整个社区整体的文化，必然要代表整个社区大多数群体/文化，也就会慢慢的</span><strong><span>泛化</span></strong><span>、</span><strong><span>同质化</span></strong><span>，就像工业化后的工厂，城市化下的城市，有自己独特的部分，同时看起来越来越相似。</span></p><blockquote><p><span>坚持独特文化，就吸引不到更广泛的人，想吸引更广泛的人，就必须要让文化的特色没有那么鲜明（这是一个概率问题）。最广泛的文化就是平凡的日常生活了。</span></p><p><span>同时吸引了一部分人的同时必然会排斥另一部分人，被排斥的人大概率都是特色鲜明的人，特色鲜明的人里，出现天才和疯子的概率更高</span></p></blockquote><p><span>而后形成的平台就是都有一些自己的特色，自己的特色部分自己做的最好，同时也能做很多其他的事情，各个不同的平台之间，除了自己做的最好的那块之外，能做的事情的范围会越来越相同，最后就全都是</span><strong><span>一专多能或者多专多能的超级平台</span></strong><span>。</span></p><p>&nbsp;</p><h2 id='公司组织体系'><span>公司组织体系</span></h2><p><span> </span><strong><span>创业公司的发展，一般至少经历三个阶段：产品阶段、商业化阶段、全组织功能阶段</span></strong><span>。</span></p><p><span>  </span><strong><span>在产品阶段，一般只有5-50个人</span></strong><span>。这个阶段人员结构单一，一般来讲都是创始人的熟悉区。一个招聘专员可能就够了，甚至一个行政专员就够了。</span></p><p><span>  在商业化阶段，会迎来第一次组织能力升级挑战，就是建立商业化团队或者销售团队。销售团队和产研团队的特性可以说相差万里，截然不同的人员结构、思考模式、工作模式、和激励模式。</span><strong><span>这个阶段公司一般会有50-150人，销售团队如果起步错了，重建一次队伍的代价非常高昂</span></strong><span>。</span></p><p><span>  如果创业公司有幸闯过前面两关，会迎来第三次组织能力升级，就是建立中后台团队，比如GR、PR、Legal，还有运营、财务、人力、审计等等。各个职能都有自己的思考方式、专业框架、甚至亚文化。</span><strong><span>这个阶段公司可能会有100-300人，全组织体系基本出现。如果磨合不好，要么前台得不到专业支持，要么前台被中后台困住</span></strong><span>。</span></p><p><span>  CEO往往觉得HR在很多方面不及预期，细致的不够高度、专业的不够温暖、灵活的不够框架、招聘的不会薪酬、薪酬的不会人际关系、人际关系的拿不到结果......。总之一句话，有没有更好的HR推荐一下。</span></p><p><span>  其实HR对CEO也有很多吐槽，战略不清晰、业务增长乏力、薪酬缺乏竞争力、不在乎员工流失和雇主品牌、对人不够尊重、自己不懂专业也不愿意学习、对HR只派任务缺乏支持、出去听了个概念回来就搞一阵风......。千言万语到最后，有没有更好的公司推荐一下。</span></p><p><span>  CEO期望HR能够，懂业务、懂专业、懂人性、能招聘、会考核、懂激励、懂组织、懂文化、懂战略......。有时候CEO还提到自己就喜欢抓业务，和人相关的事情希望HR都抓起来。这个时候如果问一句，你给HR薪酬待遇有多高，往往就把天聊死了。</span></p><p><span>  </span><strong><span>这个过程充满了错配，包括发展阶段的错配、人员能力的错配、薪酬水平与期望值的错配、CEO自己的认知盲区</span></strong><span>。</span></p><p><span>  绝大多数创业公司要向职业化公司转型，总要经历一任“</span><strong><span>造车</span></strong><span>”的HR，之后就可以接受“</span><strong><span>开车</span></strong><span>”的HR。</span></p><p><span>  “造车”的HR一般来说最好是专业的，当然也有华为那样的模式。“开车”的HR可以是专业的，也可以是来自业务的，专业要求就不再那么高。</span></p><p><span>  也有一些公司的HR自始至终都是水平一般的，但是业务的蓬勃发展掩盖了特定部门专业性的不足。</span></p><p>&nbsp;</p><p><strong><span>2. HR的画像</span></strong></p><p><span>  创业公司在早期阶段，</span><strong><span>HR的核心矛盾就是招聘</span></strong><span>，可能招聘经理就是合适的。招聘经理的培养期一般是3-5年，薪酬在20-50万之间。</span></p><p><span>  在创业公司的成长期，</span><strong><span>HR的核心矛盾是建立全HR模块</span></strong><span>，包括招聘、薪酬、员工关系、组织发展、培训发展，开始需要有HR全模块认知和领导力的HRD。HRD的培养期一般需要5-10年，薪酬在50-150万之间。</span></p><p><span>  在创业公司的规模阶段，</span><strong><span>HR的核心矛盾是建立全组织体系</span></strong><span>，包括前台业务团队、中台专业团队、和后台职能团队，需要对组织全功能规划和文化塑造有认知和领导力的HRVP。HRVP的培养期一般需要10-15年，薪酬在200-1500万。</span></p><p><span>  </span><strong><span>理想的HR，是“见过+*</span></strong><span>*建过</span><strong></strong><span>+适配”的HR。**</span></p><p><span>  “</span><strong><span>见过</span></strong><span>”，就是在大型组织体系中，对组织的岗位分工、流程协作、人才水平、HR分工协作，有认知、有观察、有思考。</span></p><p><span>  “</span><strong><span>建过</span></strong><span>”，就是参与过大型组织体系建设，参与过组织规划、文化建设、人才建设、HR团队建设，有实操经验和反思。</span><strong><span>设计专业体系和落地专业体系，本质上不是一个能力。设计专业体系是个专业能力，落地专业体系是领导力</span></strong><span>。</span></p><p><span>  “</span><strong><span>适配</span></strong><span>”，就是阶段适配、价值适配、价值观适配。</span></p><p><span>  </span><strong><span>理想的HR，是“好学校+好公司+高绩效+稳定+年富力强+性别”</span></strong><span>。</span></p><p><span>  “</span><strong><span>好学校</span></strong><span>”，目的是筛选逻辑智力和持续的内驱力，主要是看持续学习的潜力和悟性。</span></p><p><span>  “</span><strong><span>好公司</span></strong><span>”，目的是筛选价值观和方法论，主要是看专业基础训练和基本价值观训练。好公司，一般是指行业内或者相关专业的头部公司或者目标公司。</span></p><p><span>  “</span><strong><span>高绩效</span></strong><span>”+“</span><strong><span>稳定</span></strong><span>”，如果在好公司是高绩效和稳定的，是一种很好的综合能力的背书。稳定，一般指在目标公司里有三年以上经历。</span></p><p><span>  “</span><strong><span>年富力强</span></strong><span>”，精力充沛还是做事情的基础，有精力才能成为顶梁柱。精力一般和年龄有相关性。</span></p><p><span>  “</span><strong><span>性别</span></strong><span>”，没有一定之规，核心是看人生发展阶段，职业或者事业在当期是否是优先顺序，以及性别特质是否适合组织当期关键矛盾。</span></p><p><span>  </span><strong><span>理想的HR，是“商业敏感性+组织敏感性+人际敏感性”。</span></strong></p><p><span>  “</span><strong><span>商业敏感性</span></strong><span>”，是指HR要有商业视角和财务视角。商业视角，往往包括行业理解、战略认知、竞争视角。财务视角，主要是指对于收入、利润、成本的理解，尤其人工成本对于收入和利润的影响。商业敏感性的培养，最好的路径是类似商学院的课程结构。</span></p><p><span>  “</span><strong><span>组织敏感性</span></strong><span>”，是指HR对组织的全功能模块有认知、对组织的跨功能合作有认知，核心是组织诊断与设计能力，包括岗位设计、架构设计、流程设计。组织敏感性的培养，可以通过社会学和政治学的阅读学习。</span></p><p><span>  “</span><strong><span>人际敏感性</span></strong><span>”，是指HR对于人性幽微的洞察，对“字里行间”的解读，尤其在招聘、薪酬、辞退场景下的政策设计和落地能力。人际敏感性的培养，可以通过心理学、组织行为学、哲学、和宗教的理解。</span></p><p><span>  </span><strong><span>理想的HR，可以是“0.75 HR”或者“3.0 HR”</span></strong></p><p><span>  “</span><strong><span>0.75 HR</span></strong><span>”，是相对于“1.0 HR”而言的。如果“1.0 HR”是见过+建过+适配，那“0.75 HR”就是见过+适配。0.75 HR可能是个非常好的策略，性价比可能更高，但是组织需要有共同成长和包容的文化。</span></p><p><span>  “</span><strong><span>3.0 HR</span></strong><span>”，是牛刀杀鸡的策略，是基于未来组织规模的策略。但是“3.0 HR”直接成本和间接成本都很高，除非组织对自己的未来增长极具信心、对自己的成本结构极具信心，否则不一定是好的策略。</span></p><p><strong><span>3. CEO的画像</span></strong></p><p><span>  </span><strong><span>HR既然是人才专家、组织专家、商业专家，当然也会识别和筛选CEO</span></strong><span>。专业人员有自己的个人品牌，CEO也有自己的个人品牌。</span></p><p><span>  </span><strong><span>理想的CEO，应该是“志向远大+快速增长+认知清晰+情绪稳定+尊重人+愿意分享”。</span></strong></p><p><span>  “</span><strong><span>志向远大</span></strong><span>”，就是愿力极强、驱动力极强、目标高远且可信。</span></p><p><span>  “</span><strong><span>快速增长</span></strong><span>”，业务快速增长、愿景清晰、路径清晰、进度表清晰。</span></p><p><span>  “</span><strong><span>认知清晰</span></strong><span>”，知道自己知道的，也知道自己不知道的，对于自己不知道自己不知道的窗口也有认知，而且有学习意愿和方法。</span></p><p><span>  “</span><strong><span>情绪稳定</span></strong><span>”，CEO善于管理自己的能量和情绪，不会随意倾泻自己的负面情绪给周围的人。</span></p><p><span>  “</span><strong><span>尊重人</span></strong><span>”，不仅是基本的礼仪，还包括愿意认可人的发展需求，并愿意提供时间、资源和环境。很多CEO对待高管和员工的口头语经常是“干掉”，这样的职业素养以及由此体现的人文素养都代表了企业对待员工的天花板。</span></p><p><span>  “</span><strong><span>愿意分享</span></strong><span>”，正确评估和认可贡献，合理分配价值创造。</span></p><p><span>  </span><strong><span>优秀的HR，不会愿意向非CEO岗位汇报</span></strong><span>。中间隔一个岗位，看似一个岗位，实际增加的沟通障碍和降低的影响力以10倍计算。同时也说明CEO并没有把组织和人力资源当做自己的优先顺序。</span></p><p><span>  </span><strong><span>优秀的CEO，不会认为和人相关的事情，都是HR的事情</span></strong><span>。人才、组织、和文化，第一责任人都是CEO。没有CEO的认知和推动，HR不可能成功。</span></p><p><span>  </span><strong><span>组织的各级业务主管，都是各自业务单元和专业序列的人才、组织、和文化的第一责任人</span></strong><span>。HR不可能是组织中各专业序列和业务单元的专家，没有人是，CEO也做不到。CEO对此要有正确的认知，而且要为CXO们和HR提供正确的引导，而不是错误的站在CXO一边认为“</span><strong><span>人的事情都是HR的事情</span></strong><span>”。</span></p><p><span>  </span><strong><span>HR不可能具体指导运营CXO、研发CXO、供应链CXO、财务CXO如何建设他们的人才队伍和文化</span></strong><span>。CEO和HR可以诊断他们的能力、选拔合适的人选、提供目标和评价、帮助一定程度的能力建设。但是创业公司的CEO和HR，没有能力具体指导他们的工作，成熟公司有时候可以。</span></p><p><span>  </span><strong><span>杰出的CEO会在大量的组织矛盾中做出识别和判断，并和HR一起聚焦关键矛盾</span></strong><span>。</span></p><p><span>  这其中包括大量“</span><strong><span>对与对的选择</span></strong><span>”，而不是“</span><strong><span>对与错的选择</span></strong><span>”，比如：规模与利润、速度与质量、过程与结果、效率与公平、平等与权力、人才密度与规模、包容与淘汰、领先与跟随、自由与责任、Context与Control......。</span></p><p><span>  很多CEO对组织的关键矛盾没有认知，没有认知框架，也没有学习意愿，甚至经常把对与对的选择错误的陈述为对与错的选择，比如“去KPI”、“去组织”、“去流程”。这种错误和不专业的认知和表述，经常把优质的候选人拒之于千里之外。</span></p><p>&nbsp;</p><hr /><p>&nbsp;</p><p>&nbsp;</p><p><span>Spring等框架的价值：降低入门劳动力的培训成本，即使没有经过很充分的培训，使用框架也能开发出满足最低生产使用标准的代码。</span></p><p>&nbsp;</p><h2 id='idea-editor-tab配置'><span>IDEA Editor Tab配置</span></h2><p><span>默认模式是Top，因为一开始使用的时候只有个位数的tab，此时顶部Tab，比较符合直觉，也比较好用。</span></p><p><span>后面当规模上去之后，同时需要展示十个乃至数十个Tab的时候，Left左侧展示就变得更符合直觉，也更好用。</span></p><p><span>Top模式的【群组】也是一种当规模上去之后的解决方案。</span></p><p><span>但是因为文字书写的习惯主要是左右书写，所以文字相关的展示，天然的是会对宽度的要求大于高度的要求，再此情况下，放在左侧（从左往右书写的地区），会比放在上方更便于使用。</span></p><p><span>台湾地区（从上往下书写），伊斯兰地区（从右往左书写），可能在Top和Right模式更符合其地区用户的直觉。</span></p><p>&nbsp;</p><p>&nbsp;</p><h2 id='团队建设'><span>团队建设</span></h2><p>&nbsp;</p><p>&nbsp;</p><p><span>做事就完了</span></p><p><span>信任、冲突、承诺、追责、结果</span></p><p><span>抽象建模分工、简化、标准化、自动化、规模化</span></p><p><span>devOps就是用合的方法解决分产生的矛盾：辩证法</span></p><p><span>技术建设感觉就是在分分合合</span></p><p><span>分是效率和资本剥削的必然性</span></p><p><span>合时解决分产生问题的主要方向</span></p><p>&nbsp;</p><p>&nbsp;</p><h2 id='商业化限制的实现'><span>商业化限制的实现</span></h2><p><span>ws_vip</span></p><p><span>ws_limit_package</span></p><p><span>wsLevel</span></p><p><span>跟随版本</span></p><p><span>不同的私有化</span></p><h2 id='权限设计'><span>权限设计</span></h2><p><span>每个被设置权限的实体单独被设置</span></p><p><span>段落字段</span></p><p><span>系统管理员和子管理员</span></p><p><span>权限包/权限体系</span></p><p><span>RBAC</span></p><p><span>数据权限</span></p><p><span>带条件的权限设置</span></p><h2 id='成员实现'><span>成员实现</span></h2><p><span>简单实现</span></p><p><span>内存筛选</span></p><p><span>拼音查找</span></p><p><span>规模上去之后，拼音全拼、多音字、拼音首字母提前存在数据库中</span></p><p><span>上ES；ES分词的思想：读取多、更新少；提前筛选好</span></p><p>&nbsp;</p><h2 id='数据模块'><span>数据模块</span></h2><p><span>列表：data</span></p><p><span>json格式：data_json</span></p><p><span>宽表：large_data_n</span></p><p><span>不同类型的字段放在不同的表里</span></p><p>&nbsp;</p><h2 id='表单流程配置'><span>表单/流程配置</span></h2><p><span>每个应用配置</span></p><p><span>总店设置好流程模板，分店只能用，不能改，所以表单和流程都要复用</span></p><p><span>数量上去之后，数量本身就成了主要矛盾</span></p><p>&nbsp;</p><h2 id='连接模板'><span>连接模板</span></h2><p><span>单独配置</span></p><p><span>工作区模板</span></p><p><span>连接中心模板</span></p><h2 id='数据库'><span>数据库</span></h2><p><span>单库单表</span></p><p><span>分库分表</span></p><p><span>OLAP\OLTP：业务库和数据仓库</span></p><p><span>分布式数据库</span></p><p><span>TIDB</span></p><p>&nbsp;</p><h2 id='私有化部署'><span>私有化部署</span></h2><ul><li><p><span>docker</span></p></li><li><p><span>k8s</span></p></li><li><p><span>sku:服务器</span></p></li><li><p><span>加密：数据库是谁的</span></p></li><li><p><span>代运维、自运维</span></p></li><li><p><span>安全背书、性能测试</span></p></li><li><p><span>view</span></p></li><li><p><span>nginx</span></p></li><li><p><span>数据库封装、升级包、初始化数据库</span></p></li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h2 id='总结'><span>总结</span></h2></div></div>
+</body>
+</html>
