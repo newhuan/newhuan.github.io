@@ -1,0 +1,639 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { -webkit-user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>《论文与治学》书摘</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='论文与治学书摘'><span>《论文与治学》书摘</span></h1><p><span>论文与治学</span></p><p><span>郑也夫</span></p><p><span>599个笔记</span></p><p><span>第一讲 读社会学有什么用</span></p><p>&nbsp;</p><p><span>怎么论证这是我的真实想法</span></p><p><span>传统社会的特征是确信，准确地说，传统社会的精神领域里的特征是确信。而近现代社会的特征是怀疑精神的崛起，人们不像过去那么确信了。</span></p><p><span>怀疑精神给怀疑者带来的最大变化是什么呢？就是使怀疑者们的精神处于一种悬置的状态，上不着天，下不着地，其实这个滋味不算太好受。</span></p><p><span>曼海姆接着说，多数人一生当中，总有一个时段，其精神处于悬置状态。哪个时段呢？青春期。那时其精神处于狂飙期，他不愿意领受父辈告诉他的很多道理。</span></p><p><span>当青春期度过以后，当他们找到了一份比较体面的工作以后，他们就走出了那个悬置的状态。可能成了一个体面的白领，过循规蹈矩的生活，思想不再像以前那么疯狂，那么好怀疑。那一段岁月对他们有什么用呢？那段精神狂飙期，拓宽了他们认知的视野。尽管以后会循规蹈矩，但那段精神上不安分的岁月，帮助他们吸收了很多异质性的知识营养，对他们一生好处莫大。</span></p><p><span>在座的诸位精神上同样处于悬置状态。</span></p><p><span>上天赋予你们这段时期，你们不太容易相信，愿意重新思考一些事情。</span></p><p><span>我们把我们的一生放这里，跟你们的一个时段相契合。</span></p><p><span>我到这儿来，不是工作，到这儿来像游戏一样高兴。</span></p><p><span>硕博们，随年龄的增长，城府越来越深，童言无忌在他们身上消磨得越来越厉害，求知的天真也贬值得很厉害</span></p><p>&nbsp;</p><p><span>转 读博也是此三件事啊：读书、思考、写作！读书，输入；思考，反应、转化；写作，输出。读书是基础，思考是关键，写作是检验。</span></p><p><span>我觉得大学，特别是文科的大学，主要教同学们三样东西：读书，思考，写作。</span></p><p><span>读书，思考，写作。</span>
+<span>一、喜欢和有用</span></p><p>&nbsp;</p><p><span>喜欢和有用往往可以成为某种行为的动力。</span></p><p><span>喜欢是没有为什么的。这么问实际上是接近于一种愚昧。</span></p><p>&nbsp;</p><p><span>地喜欢。</span></p><p><span>我身不由己</span></p><p><span>我身不由己</span></p><p><span>大人告诉你有什么什么用，胡说八道，当事者做这件事不是因为有用，是因为喜好。</span></p><p>&nbsp;</p><p><span>感性起，理性得，再感性守</span></p><p><span>其实最愿意执着地追问的人，或者是不喜欢的人，或者是局外人。局外人很冷静。</span></p><p><span>其实最愿意执着地追问的人，或者是不喜欢的人，或者是局外人。局外人很冷静。</span></p><p><span>相反，某个行当说起来还挺有用，可是自己想来想去还是不喜欢，能不干尽量不干。换句话说，喜欢才能做好，不喜欢就转行吧，有行可转，别在这儿委屈了。</span></p><p><span>什么叫哲学？哲学就是明白学。</span>
+<span>二、社会学有什么用</span></p><p>&nbsp;</p><p><span>我们把前面那个有用没用的问题转化成两个问题：一个是，社会学对社会有什么用处？另一个是，学习社会学对扮演别的社会角色，比如企业家、官员、新闻人，有什么帮助？</span></p><p><span>我想说，学习社会学是在学习一种思考方式，分析问题的方法。</span></p><p><span>曼海姆说传统社会的基本特征是确信，近现代社会的基本特征是怀疑精神，而且这个基本特征越来越突出，不确信了，和传统社会告别了。</span></p><p><span>在一个变迁很小的社会里面，父辈的经验大致上说可以指导你的生活，因为你所生活的社会和你的父辈生活的社会没什么大的变化，没什么大的差别。就像一台戏，戏词不变，演员越老戏词越熟。戏词老变，老演员就没什么优势可言。</span></p><p><span>有句俗语早就走入学术界了，特别是经济学家很爱说：“阳光底下没有新鲜事。”这句话放在传统社会里面正确的程度更大一些，放在近现代社会里面，就不再是这么回事了。我们在阳光底下越来越遭遇到一些新鲜事，</span></p><p><span>同学们动脑筋想一想，能想出一些新鲜程度非常大的事情。阳光底下有新鲜事。正因为阳光底下有新鲜事，所以呢，传统社会中父辈的一些教导不能完全地指导我们的生活。于是我们不得不对他们的教导产生怀疑，不是他们的教导错了，而是社会变了。剧变的社会导致人们的思想方式、价值观念发生变化。</span></p><p><span>社会学捕捉和认识这种变化，强化了一个概念叫反思</span></p><p><span>我们在走一条前人没有走过的路，不知道该怎么走。那么怎么办呢？走几步回头看一下，反思一下走对了没有。要是走错了赶紧换路。</span></p><p><span>反思是因为没有现成道路可走了</span></p><p><span>有太多可讨论的是因为有疑问，社会剧变造成了太大的疑问，这些疑问从祖宗的书里找不到解答。</span></p><p><span>《为争论辩护——驳王蒙“不争论的智慧”》</span></p><p><span>这个社会没有一个定论告诉我们前面的路该怎么走。我们不得不张望、徘徊、议论，乃至争吵。</span></p><p><span>社会学是一门帮助我们解释周围的事情的学问。马克思说过一句名言：哲学家们只是用不同的方式解释世界，而问题在于改变世界。</span></p><p><span>哲学家的任务是解释世界，社会学家的工作同样是解释世界，解释这个社会。</span></p><p><span>你绝对要求很多解释，这些解释能够使外部社会在你的脑子里有了秩序，不再是混沌的。</span></p><p><span>如果这个人有哲学家的癖好，他需要的解释就太多了。</span></p><p><span>不知道解释对人是何等的重要，不懂得人性。人有病不是光靠吃药的，还需要解释。药物和解释一起，作用于你。这样务实的一件事情——看病，你都要讨得一个解释。</span></p><p>&nbsp;</p><p><span>转 这就是喜欢社会学的原因了，本质上自己还是想把混沌的社会有规则的装入自己的大脑中，寻求对生活世界的一种解释力，让自己做个明眼人。还记得在理论课上的欣喜、激动，后来听到更好的一句话，理论建构的目的就是找到自身行动的合理性，颇为所动。放大到国家来看，国家也需要有合法性，这可能需要依托意识形态的建构，已经马克思主义理论，要继续学习啦~~~</span></p><p><span>这里提供大的解释给你，这里的解释可以让你高屋建瓴，这里的解释可以让你醍醐灌顶，这里专门干这个的，这里有深入的研究。</span></p><p><span>这里提供大的解释给你，这里的解释可以让你高屋建瓴，这里的解释可以让你醍醐灌顶，这里专门干这个的，这里有深入的研究。</span></p><p><span>我们是学院派，我们跟他们的差别是我们不光要给说法，我们的说法要有更多的根据，我们要提供一些更扎实、有根据的说法。</span></p><p><span>要学会论证。要有参照系，看待社会现象，要有很多参照系。比如说离婚问题，今年离婚率高还是低？何以见得？今年离婚率和20世纪70年代离婚率比，跟50年代离婚率比，跟美国离婚率比，跟韩国离婚率比，跟我们同血脉的台湾、香港的离婚率来比，这样一比，不说别的话，你就获得了一定的认识。</span></p><p><span>我说你慢慢来吧，这事苦思苦想也想不出来，最好是随着时间的过去，有一天不知不觉地豁然开朗了，看到了喜欢的东西。认识自己是一件挺不容易的事情，要慢慢地认识自己。</span></p><p>&nbsp;</p><p><span>长时间的积累，以及痛苦的触发—卵化为蛹，破茧成蝶</span></p><p><span>认识自己是一件挺要紧的事，认识自己不是非常容易的事情。认识自己，凭的不是智力，凭的是什么东西？说不清楚。</span></p><p><span>认识自己是一件挺要紧的事，认识自己不是非常容易的事情。认识自己，凭的不是智力，凭的是什么东西？说不清楚。</span></p><p><span>亚当·斯密说要做一个扣针有多种分工，自然提高了效率。可是最终造成人们眼光的短浅，这个弊病也是很大的。</span></p><p><span>调查的本领是社会学的看家本事。</span></p><p><span>他们要应对美国学术界，要生存</span></p><p><span>社会调查，这是看家的本领</span>
+<span>三、学进去，就是改行也有收获</span></p><p>&nbsp;</p><p><span>所谓共同的东西就是它教会了你读书，教会了你思考，教会了你写作</span></p><p><span>学会了自己找书读</span>
+<span>四、为无用之学辩护</span></p><p>&nbsp;</p><p><span>数学学科今天的前沿成果，500年以后才能应用呢，做它干什么？</span></p><p><span>我们如果只搞立竿见影的学问，我们的知识，我们整个的文化积累，将是何等的狭窄。我们上不了天，入不了地，不通古今，就知道眼下身前。我们大学是干这个的吗？</span></p><p><span>科学研究的动力是什么？科学家走入科学殿堂的动力是什么？我说不是追求有用，乃至于不是为了经世济民，是受他的好奇心驱使。</span></p><p><span>直接做这个事服务于科学系统，服务于数学系统，使数学宝库里面的知识越来越丰富，数学体系越来越严整。</span></p><p><span>有些东西看起来没有直接的用途，其演绎出来的副产品不得了。</span></p><p><span>最后为人类文明做出重大贡献的往往都是副产品，而不是产品，不是直接的目的。</span>
+<span>第二讲 怎么读书</span></p><p>&nbsp;</p><p><span>最重要的素质是你有强烈的愿望要写一篇好论文</span></p><p><span>能做好一件事情，最大的愿望就是强烈地想做好这件事</span>
+<span>一、读书兴趣之开发</span></p><p>&nbsp;</p><p><span>没人逼着我，我自愿，我热爱。一个被迫，一个热爱。我们看过去，他们的行为好像是一样的，其实大不一样。这个被强迫的，短期成果可能还不错，但他过后很可能会厌学。自愿的那位，动力与日俱增。</span></p><p><span>第一点，天赋条件，这孩子博闻强记</span></p><p><span>第二点就是热爱。</span>
+<span>二、偏重与搭配</span></p><p>&nbsp;</p><p><span>平常读书，要搭配。什么叫搭配？有兴趣的和没兴趣的，要搭配。不能这一段时间，一直在读老师要求的、我无兴趣的书。这样能把你的精神状态读得非常沉闷，效率就非常低了。读书的时候，要处于一种兴奋值比较高的状态，吸收才比较好。但是有些书你又不能不读，虽然你不喜欢，也要达到要求啊。你自己好好搭配。绝对不要在一周内读的都是自己很不愿意读的书，读得昏昏欲睡。要很好地搭配。这搭配由你自己来进行。</span>
+<span>三、博与专</span></p><p>&nbsp;</p><p><span>为什么这些学问属于经济学，那些学问叫社会学？是人为的划分，没有当然的道理。</span></p><p><span>真正的学者要从问题出发，不要画地为牢，将自己卖给某个学科。</span>
+<span>五、两种笔记</span></p><p>&nbsp;</p><p><span>要记两种笔记，一种是读书笔记，一种是观察生活的笔记</span>
+<span>一、命题与选题</span></p><p>&nbsp;</p><p><span>命题作文和选题作文的差距其实就是中学和大学的差别的缩影。</span></p><p><span>到了大学就不一样了。你要完成老师要求你学的这些书。但除此之外，你还要自己选很多书，选一些他没有给你指定的书。</span></p><p><span>这应该成为大学读书的一大特征。要自己选，要自己决定自己的兴趣方向，要自己选一些自己爱读的书。</span></p><p><span>我们不仅学习如何写论文，而且首先要学习如何选题。今后如果做研究工作，再不会有中学时代老师那样的指令，告诉你做什么题目。一个研究者，第一步首先应该选个适合自己的题目。也就是说要自己发现问题，而后自己解答这个问题。</span></p><p><span>现在中学的特点是什么呢？我认为是同学们学习上用力过猛</span></p><p><span>本来中学应该有一点余力留给自己。比如说读书，有一部分书是你自己选择的，读课外书。我觉得在中学的时候，同学们应该有“东张西望”的空间和时间。</span></p><p><span>实际上很多成才的人，其后一生的选择就得益于在中学时的东张西望。应该有余力东张西望，这一东张西望不要紧，就找到了自己的乐趣，终生的乐趣。</span></p><p><span>自己选题、自己找问题的能力。</span>
+<span>二、选题的重要性</span></p><p>&nbsp;</p><p><span>选题太重要了。选题甚至可以决定成败。这个选题如果不行，没有高人告诉你，闷头就开始做起来了，那么失败从选题的时候就开始了。</span></p><p><span>选题选错了，不光是重复了别人的研究</span></p><p><span>选的题目是个假问题还是真问题。题目选得太大了，做起来必然是空洞的。选的题目难度太大了，同学根本做不动的，时间也不允许。</span></p><p><span>选题能不能决定成功呢？当然不能。但是好的选题是成功的一半。选题是一种智慧，我希望大家能理解这种说法。不要以为能力都体现在写论文上面，不是的。选，看来也没动手脚，就动动脑子。但是选，是很见功力、很见才智的一件事情。我们一定要开发自己的这样一种能力。会选题，会做题，不尽然是同样的一种能力。同样一个社会学的题目，两个人做出来肯定会不一样。但我觉得选题，有的时候更能体现一个人的眼光，更能体现个性，一种独到的东西。</span></p><p><span>追求优美那应该是年轻人的做法。到了相当的年龄，就不再追求优美，应该追求一种味道了。</span></p><p><span>提出一个问题比解决一个问题更重要。</span></p><p><span>他看到了大家司空见惯、认为很和谐的事物中有矛盾。</span></p><p><span>这很可能推动一种科学范式的变化。</span></p><p><span>选题是一种智慧，对同学们是这样，对前沿的科学家也是这样。所以我们要注意开发自己的选题能力。</span>
+<span>三、同学们选题中的问题</span></p><p>&nbsp;</p><p><span>转 不同人也许有不同想法，我想一定也有其他的学者认为学生应该先学习、模仿别人的研究选题和方法吧？就像先学会走再学跑一样。</span></p><p><span>我觉得我们这个阶段，应该注意的是开发自己选题的眼光，不是开发自己的模仿能力，不是开发自己观察和模仿别人的选题。</span></p><p><span>我觉得我们这个阶段，应该注意的是开发自己选题的眼光，不是开发自己的模仿能力，不是开发自己观察和模仿别人的选题。</span></p><p><span>照说我们这个年龄段的优势，是敏感，</span></p><p><span>眼光是开发出来的、锻炼出来的。老模仿别人，就坏了，你就想不出一个别致的题目来，你的创造力就没有了。</span></p><p><span>老扎堆儿，做的方式又接近，就变得风格单一。</span></p><p>&nbsp;</p><p><span>因为多样的利润率没有单一的最优品高</span></p><p><span>多样需要追求吗？多样原本是不需要刻意追求的，多样是一种自然的状态，树木长起来，花草长起来，它们怎么可能不多样呢？</span></p><p><span>多样需要追求吗？多样原本是不需要刻意追求的，多样是一种自然的状态，树木长起来，花草长起来，它们怎么可能不多样呢？</span></p><p><span>多样本来就是自然的产物。</span></p><p><span>都挺好，可惜都是一个模子里出来的，而且大部分是中文系的。</span></p><p><span>人家没受到中文系这一套训练，风格迥异。最后评委讨论的时候，有同感，这些人都很好，好得都一样，咱们就把这个优胜给那个数学系的学生吧，数学系的演讲者以压倒性优势获胜。</span></p><p><span>什么是敏锐？就是你能看到的别人看不到，在别人看来这不是题目，在你看来是题目；在别人看来这挺公正，在你看来这不公正。</span>
+<span>四、什么是好论文？</span></p><p>&nbsp;</p><p><span>我认为一篇好的论文应该是言人所不知。</span></p><p><span>言人所不知，可以从两个方面来实现。一个方面是你能讲出人所不知的道理，另一个方面呢是你能讲出人所不知的事实。可以从这两个途径上去实现，言人所不知。</span></p><p><span>而这两个方面又可以从更细的方面来讲。先说道理，可以讲出一些人所不知的大道理，也可以讲出一些人所不知的小道理。能讲出一些人所不知的小道理也很好，也是很不容易的。</span></p><p><span>就事实来说呢，可以讲出一些人所不知的表层的事实，还可以讲出一些人所不知的深层事实。</span></p><p><span>在同学们的这个阶段，我鼓励大家，在选题时的追求是讲出一些人所不知的深层的事实，从中能提炼出一些人所不知的小道理。</span></p><p><span>这两位同学做这个题目的时候，我说，你要只访孩子，这个题目就不用做了，你一定要访到孩子后面的大人，他对你张口，配合你的调查，这个题目就做成了。</span></p><p><span>你可怜她上不起学，那你给她学费、生活费啊，我马上带她回村，干吗要让她在这儿受罪呢？所以我给那篇文章写的评论就是：实际上，铲除卖花童只是解决一个首善之区的面子问题，深层次的问题我们解决得了吗？让农村的穷孩子们都念上书，不再帮助父母打工、挣钱，我们解决得了吗？这说远了，我所要说的呢，就是找到个大人，搞明白深层事实。</span></p><p><span>微观的合作关系：大人干什么，小孩干什么，大人给小孩解决什么</span></p><p><span>我们社会中有很多很多的新生事物，有很多很多的新生角色，包括城市里的卖花儿童。人们想知道，但不知道。怎么知道？要费多大力气啊！如果有人搞明白了，人们很愿意阅读。不要小瞧这个，这是一个贡献，从这里面可以提升出一两点小道理。</span></p><p><span>？首先讲出了一些正在发生的别人不知道的事情，就是这个舞会是怎么运作的。这些事实包含着一个道理。这个事实帮助我们透视今天社会的状态，就是市民社会在发育。</span></p><p><span>市民社会的萌芽</span></p><p><span>我们可以自己组织去搞一些娱乐活动，我们可以自组织了。“自组织”，这是个很大的词。我们过去都是被组织，生产被组织，经营被组织，政治参与被组织</span></p><p>&nbsp;</p><p><span>历史的发展阶段是无法跳过的，可以加速，但是绝对时间太短的话，无法得到很多认识，无法教育民众。</span></p><p><span>美国民间有更大的组织能力，能组织一场奥运会。我们要想组织一个自治小区，一个业主委员会都组织不了，会打得不可开交啊。为什么？因为我们的市民社会历史太短了</span></p><p><span>美国民间有更大的组织能力，能组织一场奥运会。我们要想组织一个自治小区，一个业主委员会都组织不了，会打得不可开交啊。为什么？因为我们的市民社会历史太短了</span></p><p><span>他们是各自独立的，不是一个公司的，毫无疑问竞争是非常激烈的，但他们之间竟然能弄出一个行规来，没有一辆车不遵守。为什么？用黑社会的话说，就是你做初一，我做十五，你今天使坏，我明天使坏，这点把戏谁不会啊？所以久而久之就建立了一个基本的秩序。</span></p><p><span>这个同学首先把一个小故事讲清楚了，讲细致了，有细节。而后从这里还可以用几句话提升出一个道理来。</span></p><p><span>别以为秩序都是长官制定的，假以时日，自发的经济当中，乱哄哄里面能产生秩序。</span></p><p><span>要挣钱，而且天天挣钱，只有双赢才能稳定平衡。</span>
+<span>五、做经验研究，不做理论题目</span></p><p>&nbsp;</p><p><span>转 这就是在哲学论文写作中最大的困惑…因为哲学形而上纯理论的学科特性，在论文选题上，无论是选什么题都是被前人所重复论述的，而我们所做的工作好像就是对这些已经陈述过数遍的观点进行梳理，再按自己的逻辑重新编排一遍。理论研究也太难太难，从古希腊至今哲学史上真正提出新观点，新见解的人又有多少呢？没有新的观点，没有新的发现，这样的论文对于社会来说意义又在哪呢？</span></p><p><span>做经验研究，不做理论题目</span></p><p><span>做经验研究，不做理论题目</span></p><p><span>纯理论性的题目就是从概念和文本出发，比如说讨论一下什么是价值中立，价值中立在研究中的作用与可能性；或者说研究一下杜尔凯姆的理论。</span></p><p><span>为什么学了那么多理论不让写理论？因为你写不了。你能想到的几乎任何一个纯理论性的题目，都被很多人做过，你不能重复，这个东西要有价值必然不是重复</span></p><p><span>或许可以锻炼你的某些能力，但不能锻炼你的另一种能力，就是去发现一个别人没做过的题目</span></p><p><span>你一定要高度警觉：不能做别人做过的，除非在借鉴别人的成果的基础上超越别人。超不过别人，就只有跟别人有所不同才成。</span></p><p><span>比如做这个论文，你要读完韦伯关于理性的全部论述，你光看韦伯的理论还不成，因为还有很多前辈研究过韦伯的理性观。</span></p><p><span>你不知道这些东西，就开始评价的话，很可能重复别人，甚至是低水平地重复，人家说得比你好。</span></p><p><span>加在一块，文献数量大得不得了。因此博士论文可以做纯理论的，而硕士以下的论文不适合。</span></p><p><span>做经验性的研究就能对社会有意义吗？能。当然能做出些东西对社会有意义。能做出谁也没做过的东西。</span></p><p><span>那个“小公共”做好了是个东西，对谁而言都是个好东西。对大学者来说，也能给他提供些信息，帮助他从这个窗口、这个案例去认识今天社会的某些方面。</span></p><p><span>从学习分析社会生活中的案例开始，去锻炼、提高自己的理论水平。</span></p><p><span>提高理论水平的方法不是复述别人的理论，而是学习深入地分析问题，</span>
+<span>六、不做批判，不谈应该，努力发现</span></p><p>&nbsp;</p><p><span>不做批判，不谈应该，努力发现</span></p><p><span>经验研究不是去批评什么，而是去发现些什么。</span></p><p><span>学术能缺少了批评吗？缺少不了的。但是那批判是在学者之间的，比如甲学者批判乙学者的某个观点、某个命题。也可以批驳某学者的某项调查，遗漏了什么，失误在哪里等，但是我们不提倡批判调查对象。</span></p><p><span>既然谁都能做，学院派就应该将之留给他人，自己拣选更艰难的事情，别人做不来的事情。就是搞明这些勾当的来龙去脉，细致地描述其运转方式，认识其情境的复杂性。</span></p><p>&nbsp;</p><p><span>即规律是如何的，自己如何应用这些规律，能不能转换为工具提升思考效率或社会生产力</span></p><p><span>我们是研究社会的。我们的论文却不是要讨论被调查的事物应该如何，而是致力于搞清事实如何，揭示被调查的事物是如何运转的。</span></p><p><span>我们是研究社会的。我们的论文却不是要讨论被调查的事物应该如何，而是致力于搞清事实如何，揭示被调查的事物是如何运转的。</span></p><p><span>为什么“谈论应该如何”不是我们的角色？“</span></p><p><span>应该”是一种社会成见，是一种“政治正确”。被调查研究的对象越是值得调查研究，“应该”在那里就越是不大起作用</span></p><p><span>学术虽然不谈“应该”，但并非和“应该”毫无关联。当我们揭示出该事物深层不被人知的因素，在一定程度上也就否定了过去习以为常的“应该”，同时也为探讨新的“应该”建立了基础。</span></p><p><span>但是说到根本，“应该”是社会管理者的事情。社会学家从基础上帮助他们深入理解该事物，间接地帮助他们重建“应该”，而不是越俎代庖，自己大谈“应该”</span></p><p><span>科学无禁区，学者的智力探讨中没有“政治正确”。</span></p><p><span>当你进入角色，从事调查研究的时候，追求的是搞明白该事物如何运转。人的行为是深奥的，众人间的博弈更扑朔迷离。当解析它们占据了你的心思和兴趣，常人性情躲到边缘时，你才是称职的学者。你的研究和论文才上了轨道。</span>
+<span>七、题目选得小一些</span></p><p>&nbsp;</p><p><span>为什么要选得小一些？题目大一些，要想凑合着完成，其实是最容易的，但是不可能写出好的论文来。道理很简单，一个题目非常小，边界非常明确，要你讲一万字，不许重复，容易吗？</span></p><p><span>要讲一万字的话，你得知道它的方方面面，它的全过程，它的每一个枝节、末梢，它的背景、它的潜台词，它的深层事实。这就会迫使你深入地调查和考虑这个问题，即使有人曾涉及这个问题，也还值得做，他不过是以一个记者的方式，而你深入得多了</span></p><p><span>所以题目大了不行，大了就会非常肤浅。小了就能促使、逼迫自己下功夫调查，要不然连字数都达不到。</span></p><p><span>陈寅恪</span></p><p><span>题目想得小一些，逼使你做得深一些。选题本身就很别致，然后有一个很好的结构，有一个很好的入口，一定能做得很好，一定能成功。</span></p><p><span>可不可以以大见大？可以。但那不是我们现阶段的事情。比如汤因比、斯宾格勒可以，那不是我们现阶段的事情，我们现阶段要从那里下手的话，就是好高骛远，得不偿失，做无用功，浪费时间，既没有开发出自己选题的能力，也没有开发出做题的能力。</span></p><p><span>以一些事实透视出一些道理，那些道理其实挺要紧的，那些道理和我们今天这个社会的大变迁息息相关。由我们所叙述的这些小段子里头，能够认识社会结构的变化，认识社会趋势，也就是说，从我们选题的时候，我们心里已经明确了这个题目的位置和意义，这种位置和意义不必挂在嘴上，可以不行诸文字，但是在我们心里是有把握的。我们感觉到这一点，所以才要选这个题目。</span></p><p><span>唯其不把它挂在嘴上，才更显出制作结构上的一种美感。</span>
+<span>八、考虑可行性</span></p><p>&nbsp;</p><p><span>最后要说的一点是，选题的时候要充分考虑可行性。要考虑主客观条件的约束，自己的能力、时间、财力，题目的难度，等等。</span></p><p><span>在严格的约束下选择题目，像走钢丝，打梅花桩。有了这番锻炼，日后走平地，还不容易？</span>
+<span>第五讲 叙事与理论</span></p><p>&nbsp;</p><p><span>论文范式</span></p><p><span>怎样一个范式呢？简单说，是要你们讲一个好故事，找一个理论去解释这个故事。这个故事当然不是让你虚构，而是要你去搞一个调查，将调查到的东西描述出来，然后找一个合适的理论去解释它。</span></p><p><span>怎样一个范式呢？简单说，是要你们讲一个好故事，找一个理论去解释这个故事。这个故事当然不是让你虚构，而是要你去搞一个调查，将调查到的东西描述出来，然后找一个合适的理论去解释它。</span></p><p><span>教师们企图通过这一范式迫使同学们不完全从书本、从概念出发，而是关注社会。另一方面呢，又要求你们不要把调查做得像一些搞实际工作的人做的那样、像一个非学院派的人做的那样，完全没有理论色彩，看不到你所受到的学科训练。</span></p><p><span>希望这种范式在这两方面能促进你们：一方面不要脱离社会，另一方面要学习理论，并且能贯彻到你的课题研究、论文写作当中去。</span></p><p><span>普遍的毛病是什么？我认为，就是这个经验性的调查与寻找到的理论，结合得不好，勉强、生硬，油水不相融。</span></p><p><span>实际上在吓唬人的过程中，你放弃了你自己本来可以进行的深入分析。</span></p><p><span>对你那项调查的结果，对你的描述，你本来可以做深入的分析，而你没有做，却搬来一个大家伙来吓唬大家。少数人做得比较成功，也就是说他找的那个理论和他所做的经验调查的分析比较对路。多数都是不成功的。</span></p><p><span>实际上最不能体现理论水平的就是“贴标签”。为什么最不能体现理论水平呢？因为这样做最简单，这样做不需要自己的思考。</span>
+<span>二、侍奉问题，而非理论</span></p><p>&nbsp;</p><p><span>侍奉问题，而非理论</span></p><p><span>我们写论文，应该是从问题出发，不是从某家理论出发。我们所侍奉的应该是问题，不是侍奉某家大理论。</span></p><p><span>它既然是针对那个问题，就要进入你的视野，乃至于即使不是学院派学者，即使是围绕那个问题的一些政策性研究，也应该引起你的注意。</span></p><p><span>那些不够格的文章不应该进入你的文献综述，你看了但你认为那是垃圾，不必进入你的文献综述。</span></p><p><span>到答辩会的时候，人家问你还有某个文献啊，你可以回答说：看过了，不认为有价值。</span></p><p><span>有没有这样的情况呢，刚巧有一支理论并且只有一支理论，可以用来分析这项经验性调查？我认为这个概率太小了。如果你做了一项调查研究，刚巧有一支理论像一把钥匙一样打开你的问题，我觉得，多半你不是从问题出发，很大程度上你是要侍奉一个理论，不是从企图解决的那个问题出发的。要不然就是狐假虎威，“傍大款”。一个微观的小问题，傍一个大款，傍得越大越显得滑稽。我曾经看过一个研究生的论文，老实说那个调查做得很不错，他非要用帕森斯的理论来解释，非常之滑稽。我很为他惋惜，我说要是能花点时间，重新分析，那篇论文还是不错的。</span>
+<span>三、理论与叙事</span></p><p>&nbsp;</p><p><span>对立统一？</span></p><p><span>叙事和理论应该属于一个横轴上的两极。</span></p><p><span>叙事和理论应该属于一个横轴上的两极。</span></p><p><span>理论就是从具体到抽象，从个别到一般。叙事就不用讲了，就是我们所说的，说出一个故事来。</span></p><p><span>局部叙事有什么优势呢？如果你的调查下了一定功夫的话，局部叙事可能背离事实较少。</span></p><p><span>满足于符合那个糟糕的范式，满足于找一只老虎来吓唬人，不重视从自己的调查中得到一些独到的小发现，也就不会有所发现。</span></p><p><span>比如说社会学理论，它包括结构功能论、冲突论等等，</span></p><p><span>我们所能说出的太简单了，简单到比较乏味，我们所能说的嘛，就是从个别到一般，从具体到抽象。理论应该是人类把握外界（无论是自然还是社会）的一种方式，求知的一种方式，理解外界的一种方式，思想的一种方式。</span></p><p><span>那些人都在干什么呢？这些基础理论能够帮助我们对社会生活有一个基本的了解，给我们提出一个框架，但是框架只是框架，那个框架不会对我们的微观研究提供直接的帮助。这就像我们的城市交通，我们有高速公路，高速公路能够不要吗？肯定不能。但是高速公路能到你家门口吗？到不了。高速公路太好了，但是它到不了你家，要到你家，还要有别的路径依赖，还要从高速公路下来，下来还要跑一段呢。要到你家，要解决你所调查的那个事情、那个问题，要做出独到的理解、独到的分析，要靠你自己，高速公路是靠不成的。你自己走，自己分析。在我们这个阶段，我们可望做到的有价值、有意义的研究，是一个局部叙事，或者中型叙事，最可望有收获。因为这样的风格我们驾驭得了。换一个成年学者又怎样？如果我们做得成功，他做也不过如此，何况少年人有自己的眼光、自己的优势。做一个纯理论题目，我们和一个合格的成年学者的差距就会很大。</span></p><p><span>我们要做的题目不能是一个伪问题或者一个伪研究，明知道这是一个低级重复，那就不要做了，这么做了就把手做坏了，以后再上手什么事都做不好，因为从一开始做就不能养成做低级重复的坏习惯。</span></p><p>&nbsp;</p><p><span>叙事体</span></p><p><span>要避开低级重复，避开没有意义的劳动，同学们目前的水平决定了现在做的只能是这种中小型的叙事风格的东西。除了有可能做出不错的成果外，我们现在需要以这样的叙事体的东西来锻炼自己，就像美术系的学生有个阶段要写生，不管日后你画什么，但有一个阶段要练写生。</span></p><p><span>要避开低级重复，避开没有意义的劳动，同学们目前的水平决定了现在做的只能是这种中小型的叙事风格的东西。除了有可能做出不错的成果外，我们现在需要以这样的叙事体的东西来锻炼自己，就像美术系的学生有个阶段要写生，不管日后你画什么，但有一个阶段要练写生。</span></p><p><span>除此还有一个意义，叙事体最容易走进大众，最容易被外行人阅读和理解。学院派那些纯理论，外行人是看不懂的、不愿看的。当然不是说外行人不愿看的东西就没有意义了，那些东西是为什么而写？为少数人写的，那些东西有的时候是为学科写的。那么学科跟社会有没有关系？如果学科跟社会没关系，只为学科做的，那就荒诞了。这些人做的研究是为这个学科中其他人做的，其他人很可能跟社会发生直接关联。这个问题的思考很重要，这个问题的思考关系到你要想明白我们是干什么的。人家做了一些实际的劳动，生产出粮食，造出鞋子，盖出大楼，直接地作用于社会，都是为了满足社会需求；你这劳动只是为学科自身服务的，为学科自身服务又是干什么的？一定在你的学科中还有一些人把你的东西通俗化地输出，去作用社会，而你不是那样直接地作用社会，你是为学科服务的人。我们都学过一点历史，虽然我们不是历史专业的。我们知道有很多历史学的精深研究，大众是看不了的，只是为学科内部服务的，这些成果主要体现于论文。相反，通史是通俗的，当然，通俗跟通俗比也有质量的高下之分，但通俗本身是这个性质，是为学科之外的整个社会服务的。那么就是说，有一部分人做了考据，搞明白此前不清楚的一些历史事实，在这方面有了新的进展，写出了很专业的文章，这些东西可以被史学界的其他同事吸收，他们吸收以后就可以把通史水平更新提高。1990年完成了一部通史，经过我们的深入研究，推翻了一些东西，在这个基础上就可以产生新水准的2000年的通史。专业研究不断深入，通俗读物也会不断更新。与之类似，我们社会学有一些基础理论，它不会直接作用于社会的。基础理论为少数人、专业人士或者对理论有癖好的爱好者，提供了一个思想框架，帮助他们去理解社会。</span></p><p><span>叙事与理论有高下之分吗？理论就高过叙事一头？没有这回事，这是两种不同的文体，同一种文体可以直接比较，不同的文体没有太直接的可比性。叙事可以表达很丰富的东西，理论当然也可以帮我们很好地去透视、去把握对象，两者是不同的东西。实际上，叙事还有一个非常精彩的地方，就是叙事有的时候会更有助于读者去参与，因为叙事大多都留着思考的空间呢。不是说理论本身没有留空间，但理论做得越严密，越细致，就越是没有留下很大的思考空间。留下很大的思考空间，这是顶尖高手的作品，一般的人把道理说得逻辑缜密、推理细致，一小步一小步地往前推导，干净利索，看完了以后觉得雄辩，就是很好的东西了。但你看古代大师的东西，里面有巨大的讨论空间在那搁着呢，那不是一般人干得了的事情。我自己写得比较满意的东西，就是论述得比较严密，比较干净，我写不出那种留出很大空间的东西，能吸引人们来参与、讨论、争辩，那是另一种境界，一种很高的境界。</span>
+<span>四、叙事：文学、新闻报道与社会学</span></p><p>&nbsp;</p><p><span>叙事：文学、新闻报道与社会学</span></p><p><span>接下来还要说，搞叙事体的东西不要自惭形秽，这样的东西是拿得出手的。有人说，搞单纯的叙事不成文学了吗？不错，文学也是一种叙事体，但我们的叙事和文学是有差别的，差别就在于文学是虚构。你要进入西方的图书馆，第一大划分是：虚构和非虚构。</span></p><p><span>文学是虚构，我们是发现和讲述事实。二者只是在叙述的风格上相似。还有，文学不太讲逻辑，而我们讲究逻辑推理。</span></p><p><span>但是有一点我是不太赞同的，就是有一些文章不讲逻辑，这是我全然不能接受的。</span></p><p><span>后现代理论的有些风格是文学化的，我觉得社会科学与文学的一大差别是我们要讲逻辑，如果学术作品文学化到不太讲逻辑了，那是我无法接受的。</span></p><p><span>我们与文学的再一个差别就是非理性和理性。</span></p><p><span>我们要遵循理性。我们跟经济学的差别之一是经济学认为经济人是高度理性的，而我们认为那样的经济人只存在于假设，这在很大程度上背离了现实中的个人，生活中现实个人的动机有理性的成分，也有非理性的成分。</span></p><p><span>我们是这样看待我们的研究对象的，我们不愿狭窄地把我们的研究对象假定为理性人。我觉得以理性人为前提的研究虽然不失为一种研究，但是实在是很狭窄的，因为和现实的背离太大了，以至于其解释的有效性是很小的。</span></p><p><span>我们的研究对象的动机包括非理性成分，但是我们的研究绝对是遵循理性的，我们要靠理性去推导他的非理性行为、非理性动机。更准确地说，我们充分承认人的非理性，但是作为研究主体，我们的研究方式是理性的。事实与理性就是我们这种叙事体和文学的差别。</span></p><p><span>只是这本书稍微浅了一点，因为这都是学生的作业，连学生的论文都不是，受时间的限制，但是同学们发现了很多微观的事实，所以他们给予较高的评价。</span></p><p><span>但那个问题也是我必须面对的：这和记者做的东西有什么差别？我觉得我们与记者的差别在于二者的眼光。</span></p><p><span>不是要做记者吗？那为什么要来几个社会学的学生？报社领导认为，受过社会学的训练，和受了四年新闻学训练的人有一种不同的眼光。</span></p><p><span>你所受到的训练给了你很多理论营养，这些理论营养将影响你的观察，影响你的调查。</span>
+<span>五、理论与观察</span></p><p>&nbsp;</p><p><span>关于理论能不能影响观察，是个很有深度的问题，引起过许多纯学院派人士的争论。有些人认为，观察从来都是受观察者的理论的影响的，举一个例子，布拉赫论证地心说，哥白尼提出日心说，他俩看到的对象有什么差别吗？没什么差别，二人所建构的理论是不一样的，在各自理论指导下分别去找到一些观察材料。不是观察影响了理论，而是理论影响了观察。这是认为理论能够影响观察的一个例子，还有好多例子</span></p><p><span>还有人提出，理论影响不了观察，观察是独立的感觉范畴，一个感觉的精神领地。</span></p><p><span>人的感觉是独立的，是不受理论影响的，人的观察是不受理论影响的。</span></p><p><span>我还想强调前者，理论将影响观察。我不从认识的基础说起，我是从其他地方论证，理论会影响观察的。我认为理论首先影响选题，受过社会学训练的人和没受过社会学训练的记者在选题上是有差别的。</span></p><p><span>换句话说，什么样的选题更有价值，在这个认识上社会学家和记者是不一样的。</span></p><p><span>其次，就是进入同样一个选题，在筛选事实上也是有差别的，二者的侧重点是不一样的，有人认为这个事实是最要紧的，而另一些人认为那个事实是最要紧的，这种差别受个体的影响，但同时也与此前二人所受到的不同的训练有关系。</span></p><p><span>观察完了，调查完了，最终每人要开始他的叙事。进入叙事也受每个人原有的理论的影响。</span></p><p><span>所谓叙事，实际上需要完成的是把你调查得到的事实串起来，获得连贯性和可读性，成为一种结构。</span></p><p><span>理论有结构，叙事毫无疑问也有结构。没有结构，别人不愿意听，听了之后也不能把握，没有结构连叙事者自己都把握不了。</span></p><p><span>《麦当劳在北京：美国文化的地方化》，典型的叙事体。</span></p><p><span>记者重视的是事件的脉络。而社会学家在做一个同样的经验研究，然后用叙事体表达出来的时候，他除了把事情说出来，还要解释这些人为什么要做，也就是说要解释这事件中行为者自己心中的那个意义。</span></p><p><span>也就是meaning（意义），韦伯的理论。</span></p><p><span>重视韦伯的理论就是重视行为人、当事者的那个意义。</span></p><p><span>我们做一项调查的时候，觉得找到这个东西了，在学术追求上就算是找到依托了。不然就会觉得不踏实。记者不是那样的，记者找到事件的脉络就可以了，就对得起读者了。</span></p><p><span>你可以分析得很不错的，不用“傍大款”。要把你此前所学到的那些理论融化到你的脑子里，然后按照你自己的思路走出来。</span>
+<span>六、小道理与杂学问</span></p><p>&nbsp;</p><p><span>齐美尔</span></p><p><span>马克思除了学者以外，兼扮其他角色。熊彼特其实是非常钦佩马克思的，用熊彼特的话说，马克思是披着科学外衣的巫师。他的思想穿透力是比不了的。</span></p><p><span>四大古典理论——结构功能、冲突、交换、符号互动，后面三支的源头都是齐美尔的思想。</span></p><p><span>《论时尚》</span></p><p><span>对大家的再一个告诫就是要融会多家理论。我觉得好的社会学必须是跨学科的。</span></p><p><span>第一个解释好像很俗，似乎很贬低我们，就是社会科学的分工越来越细，还没被别人分走的，就是社会学。经济研究非常热门，被别人分走了变成经济学；权力研究也是比较热门的东西，被分走了变成政治学。一个一个分走了以后，还剩下那些没被别人分走的东西，就叫社会学了。</span></p><p><span>再一个说法，似乎很抬高我们。说社会学的理论是最基本的、最整体的</span></p><p><span>要做好社会学的研究，就必须跨学科。</span></p><p><span>既然此前大块的领地已经让人分走了，而自己仍然是最基本的、最整体的，分走了以后你还如何获得整体性和基本性呢？让人家分走了大块江山，剩下的这一块能完成别人所做不到的整体和基本？其实是有矛盾的。第一，这是人家剩余的，第二，却是要完成那么高大的目标。怎么办呢？完成这个目标，眼睛就必须看着别人的研究，要东张西望。</span></p><p><span>成了杂家之后，我们还要扩大，你的领域我们也要看一看，我们就更杂了，更丰富了。这样我们才有可能去胜任这个更基础、更整体的理论追求。</span></p><p><span>我不信一个没有跨学科追求的人能把社会学做好。</span></p><p><span>熊彼特的《经济分析史》</span>
+<span>七、走自己的路</span></p><p>&nbsp;</p><p><span>一本读物是我们系的谢立中老师翻译的、瑞泽尔写的《后现代社会理论》这本书的第一章。还有一本书是塞德曼写的《有争议的知识》这本书的绪言和结论。再有一本书，哲学家陈嘉映写的《无法还原的象》里的一篇文章《何为理论》。我前边说“什么是理论”，不太好说清楚。</span></p><p><span>实际是拿自己的调查给人家的理论做注脚</span></p><p><span>而且做得很蹩脚，因为你那个调查跟那个理论之间隔得很远。</span></p><p><span>不是掉书袋，引用别人的理论就说明你有理论水平了，完全不是。</span></p><p><span>罗素给哲学下定义说，在神学和科学之间的东西叫作哲学。</span></p><p><span>边燕杰</span></p><p>&nbsp;</p><p><span>转 自己所推崇信服的东西也得等自己小有名气后才能更顺畅得向外推荐令人信服</span></p><p><span>过几年，我的这种言论成了点气候，可能会好办一点。</span></p><p><span>过几年，我的这种言论成了点气候，可能会好办一点。</span></p><p><span>我的核心思想是，展开你的分析，能借鉴大师的思想就借鉴，千万别硬来，硬来在我眼里水准太低了。</span></p><p>&nbsp;</p><p><span>否定之否定，历史是个轮回，矫枉必过正，等待时代。</span></p><p><span>我的思想和潮流肯定是不合的，你看对你能有什么帮助，综合地去考虑你的行事方式、你的论文方式，别耽误你的前程。如果你跟我一样是个异类，就按自己的路数走；如果你想更实惠一点，更稳健一些，我的话能给你点营养就可以，你自己去想你的路数。</span></p><p><span>我的思想和潮流肯定是不合的，你看对你能有什么帮助，综合地去考虑你的行事方式、你的论文方式，别耽误你的前程。如果你跟我一样是个异类，就按自己的路数走；如果你想更实惠一点，更稳健一些，我的话能给你点营养就可以，你自己去想你的路数。</span></p><p><span>但在此一阶段，我的观点是鲜明的，大家写叙事体，练出好文笔，在叙事里面渗透出你的理论涵养。</span>
+<span>第六讲 深度访谈</span></p><p>&nbsp;</p><p><span>我鼓励大家做经验研究，经验研究又可分为定性和定量。</span></p><p><span>定性研究主要就是依赖深度访谈来获取第一手材料。我要强调的是，其实对定量研究来说，深度访谈也是非常重要的。因为定量研究大多要设计问卷，而深度访谈是问卷设计的基础，没有深度访谈，问卷设计从何而来呢？如果仅根据一般常识就搞出一个设计来，必然太一般化，缺少目的性。</span></p><p>&nbsp;</p><p><span>各行各业，目的性都很关键。</span></p><p><span>缺少目的性</span></p><p>&nbsp;</p><p><span>问卷，区分哪种差别？</span></p><p><span>设计问卷时必须对该问题有相当的了解，这了解源于两个途径。一个是自己在生活经历中对此有切身的体会、感受，因此知道从哪儿下手，知道要通过问卷来区分出哪种差别，那些东西是从反省生活经历中提出的，通过问卷来分解。如果你没有切身的生活经历，那设计问卷之前就必须对相关人做深度访谈，在深度访谈的基础上设计问卷。不然的话，设计会流于表面。问卷设计不到位、不细致、不精妙，调查必然质量低下。常搞调查的人设计问卷都很慎重，如履薄冰。因为实际上每次调查都会留下遗憾。但如果我们具备了相关的知识，掌握了这些原则，就可以极大地减少遗憾。</span></p><p><span>设计问卷时必须对该问题有相当的了解，这了解源于两个途径。一个是自己在生活经历中对此有切身的体会、感受，因此知道从哪儿下手，知道要通过问卷来区分出哪种差别，那些东西是从反省生活经历中提出的，通过问卷来分解。如果你没有切身的生活经历，那设计问卷之前就必须对相关人做深度访谈，在深度访谈的基础上设计问卷。不然的话，设计会流于表面。问卷设计不到位、不细致、不精妙，调查必然质量低下。常搞调查的人设计问卷都很慎重，如履薄冰。因为实际上每次调查都会留下遗憾。但如果我们具备了相关的知识，掌握了这些原则，就可以极大地减少遗憾。</span>
+<span>一、赢得机会</span></p><p>&nbsp;</p><p><span>首先谈赢得机会，赢得与你要调查的对象接触的机会。赢得机会不外乎靠两点：一个是利用你的关系，一个是没关系可找了，打“遭遇战”。</span></p><p><span>这职业癖好就是能够感知、洞察你所关心的那些材料在哪儿，千方百计地通过访谈将它们搞出来，经常注意把耳朵竖起来。</span></p><p><span>你要能感觉到他那个钱包是鼓的还是扁的，要是他钱包很鼓，就要琢磨他，跟他接触上，跟他称兄道弟。</span></p><p><span>熟人、生人那儿都要下手</span></p><p>&nbsp;</p><p><span>本质还是流量换广告</span></p><p><span>导游的生财之道，是把一车一车的人带到商店去，比如拉到药店来看中药，拉到卖宝石的公司，商店给导游开钱。</span></p><p><span>导游的生财之道，是把一车一车的人带到商店去，比如拉到药店来看中药，拉到卖宝石的公司，商店给导游开钱。</span></p><p><span>就必须认识一些导游把这个事情搞明白，那就要看你的熟人里头是否有这样的人脉。你的熟人里关于社会信息的种种资源，你都要注意。因为有熟人介绍，比你自己去找一个陌生人套近乎，要容易得多。</span></p><p><span>很多事情只要稍微有个人介绍，就容易多了、融洽多了。</span></p><p><span>平时要敏锐地、有意无意地注意你的朋友，有什么人际资源可供你利用。</span></p><p><span>中国人没有什么不可更改的原则。很多事没个关系就搞不出来，有关系就搞出来了。</span></p><p><span>写的是监狱的管理，主要是监狱的收支问题。国家给监狱的钱不多。监狱的人也不甘于收入太低，监狱的资源就是有大批劳动力。监狱经济上的收支如何？监狱是怎么创收的？这门槛比较高，一般人做不了，他有个叔叔是监狱的领导，什么材料都可以搞到。这个论文就完成了。</span></p><p><span>“不怕贼偷，就怕贼惦记”，你一直惦记，就可能成为一个出色的调查者。</span></p><p><span>和生人就要打“遭遇战”了</span></p><p>&nbsp;</p><p><span>还是脱离不了经验学科呀</span></p><p><span>当然有人给过他指点。他曾经常年泡在大医院门诊室的门口，过往的病人，他都仔细端详。病人在医院里做了种种的化验、影像检查等，病人一出来，他就跟上去问什么病呀，他很热心，病人一般也很愿意跟他人倾诉。人家的面貌特征已经被他牢记，然后就跟病人聊，验证原来的判断对不对，一次一次地验证。</span></p><p><span>当然有人给过他指点。他曾经常年泡在大医院门诊室的门口，过往的病人，他都仔细端详。病人在医院里做了种种的化验、影像检查等，病人一出来，他就跟上去问什么病呀，他很热心，病人一般也很愿意跟他人倾诉。人家的面貌特征已经被他牢记，然后就跟病人聊，验证原来的判断对不对，一次一次地验证。</span></p><p><span>他在医院门口待了好多年，眼光很厉害了，这个能力的发育就在于他有这种癖好。这种癖好为他赢得了这样的锻炼机会，用试错法，一次一次地验证。</span></p><p><span>说到赢得机会，我们的调查肯定会涉及各阶层的人。一般情况下我们有一种感觉，就是底层的人，特别是一些异类、脱离常轨的人不好采访，门槛高。</span></p><p><span>比如说乞丐，你看他的身形就有些奇怪，有的仅有一条腿，或者有这样那样的毛病，和常人不一样。你心里多少有一点恐惧，望而生畏，不太敢跟他接触，以致最后形成顽固的印象：这样的人不好采访。</span></p><p><span>我要告诉你，这样的人都不难接触。说实在的，做底层的人的研究，也是个好题目。因为多数人都觉得门槛较高，因而变得稀缺。</span></p><p><span>要是太容易的话，你的调查还有什么稀缺性？还有什么独到之处？他觉得望而生畏，正是你下手的时候。你应该记住这堂课我给你的告诫，就是选这样的题目其实是比较容易得手的。</span></p><p><span>相反，比较难得手的是上层的人。上层的人你真的是围不上摊儿。地位很高的人，人家家门口有高墙、电网、警卫，你是绝对围不上摊儿的。要是入户采访，你敲敲门，一个局长理你吗？不要说再高的，比如副部长、政治局委员。就是一个局长，你敲门，说我来调查一下住房问题，调查一下收入问题，调查什么生活习惯问题，他根本、绝对不理你：该干什么干什么去，走远点，快走。其实上层人和底层人都是少数，中间的普通人比较多。普通人应该是最容易接触的，上层跟下层比起来，下层要容易得多，上层是最难的。</span></p><p><span>为什么个别的人比较不愿意接受呢？因为个别的人知道自己比较个别。跟人都一样了，张嘴说什么都无所顾忌；跟人不一样了，说话有点忌讳。而上层人跟下层人在这一点上都深知自己跟一般人不一样，他们在这一点是一致的。比起上层人，下层人更好接近，无论是有形的还是心理的防线，下层人都没有上层人那么强。加上上层人更有条件将你拒之门外，下层人没有这样的能力和条件。心里像贼一样惦记着，今天不成明天，琢磨他不成，琢磨他弟弟、他身边的人，就一定能得逞。所以我们看到，好多优秀的社会学研究都是做底层社会的。其实底层社会相对容易一点，它比普通人要难一些，比上层人要容易。所以你要有机会能跟上层套近乎，有什么关系之类的，可别放过。</span>
+<span>二、学会聊天</span></p><p>&nbsp;</p><p><span>阅读过关于采访技巧、口述史的著作</span></p><p><span>有人聊天很有乐子，有人聊天没什么乐子，因为没有开发出来。</span></p><p><span>聊天能力与善于阅读、写作是一样的，是很要紧的东西。</span></p><p>&nbsp;</p><p><span>真诚的真诚</span></p><p><span>除了开发性格之外，还要注意心灵，和陌生人接触的时候总能拿出朋友的姿态，所取的姿态不要高人一头。这不是教你做戏，而是说从内心做起，尊重人。</span></p><p><span>除了开发性格之外，还要注意心灵，和陌生人接触的时候总能拿出朋友的姿态，所取的姿态不要高人一头。这不是教你做戏，而是说从内心做起，尊重人。</span></p><p><span>一定要学会和人平等相处。</span></p><p><span>我一张嘴说出来，就和人家有了距离，没有距离才好，大家可以聊天。</span></p><p><span>自在</span></p><p><span>少年时代遭遇了不平等，特别善于体察底层人的心理，因为我曾经是底层人。</span></p><p><span>你要有两个长处，一个是在心灵上能够和他们沟通，没有摆出高于他们的姿态。同时，你又非常会和人聊天，就没有任何问题了。</span></p><p><span>就因为他具备两个优势，甭谈什么技巧，法无法。他有卓越的聊天本领，他是心灵、心态都非常好的一个人。比如说去大红门的浙江村，他到了一个服装摊，往前一凑，与摊主本来相互不认识，该保持一米的距离，他凑到一尺的距离，大脑袋往前一凑，满脸笑容，极其诚恳，提的问题都是刺到别人的不该问的领地。可人家看这老哥这么诚恳，就聊开了，没几句话他就问：“做生意要本钱，你的本钱哪来的？”上来就问人家实质问题，人家看他极其诚恳，一愣就告诉他了：“我借不来，是我爸借的。”“那你爸怎么弄来的？”就谈开了。我跟史铁生关系非常好，那年跟孝正兄一块儿去铁生家，我也算是慕名而来。家里有老父亲，到吃饭的钟点我们该告退了。他不走，我就捅他一下说：“老周，咱们该走了，12点半了。”他说你这人层次怎么这么低呢，这怕什么呢，大家不都挺高兴的吗？又聊了一会儿，他就跟人家说：“铁生，我到外边买点面包、香肠，在你们家一起吃一口，成吗？”人家就说：“你们要不计较的话，挂面我们管够，咱们就吃炸酱面吧。”一会儿就吃上面条了。如果像我这么拘谨，这次交往肯定不深，日后我们大约不会成为铁哥们儿。就是因为他不按常规出牌，你11点钟到人家，到12点半，一小时刚寒暄完，就该告辞了。可他不走，吃上饭了就不一样了，甭管掏没掏钱。吃完饭，又聊了两个钟头，相互极为投机。以后，我们半年看铁生一趟，成了哥们儿。后来再去看见他的墙上贴着一张纸，说会客人只谈一刻钟，铁生见我们看见纸条，就马上说这跟你们无关。</span></p><p><span>周孝正能找来一个小妓女，坐下来跟她聊，听她讲她的妓女生涯。他跟她说，工作时间不能耽误你挣钱，钱给你，占用你时间，但今天来的不是嫖客，来的是教师，然后就先介绍自己：我以前不是教师，以前是农民啊什么的，介绍自己的家底，说我们原来都是底层人，咱们都一样。我们不怎么了解你们，你们也很不容易的，我们就这个意图，想知道知道。</span></p><p><span>你说究竟是哪句话让人家打开了封闭的心门，说不清楚。是综合力量，往大点说就是人格魅力，其实就是心灵好。</span></p><p><span>我现在搞消费研究，消费是为什么呢？不就是为找乐子吗？找乐子不是光砸钱就行的，不是一掷千金就能找来乐子的。很多游戏能带来乐子，就像我刚才说的什么唱戏呀、打球呀、玩牌呀，还有很多，这需要锻炼的，不是一上来就会，就喜欢。聊天也是一个找乐子的来源，聊天可以聊得极风趣，但聊天也是锻炼出来的。</span></p><p><span>过去老北京也是一样，有茶馆，这是一种乐子，现在没有了。还想恢复茶馆？恢复不了，人变了，没有那样一群泡茶馆的人了</span></p><p>&nbsp;</p><p><span>因为你也愿意聊天</span></p><p><span>聊天可不简单，你到咖啡馆里聊天，那是三教九流，你不是想跟人家聊天吗？你得有聊天资本。人家聊足球你懂吗？说歌星你懂吗？你得什么人都能应对。你到这来就是找乐子了。你为什么喜欢这里？因为你也愿意聊天。</span></p><p><span>聊天可不简单，你到咖啡馆里聊天，那是三教九流，你不是想跟人家聊天吗？你得有聊天资本。人家聊足球你懂吗？说歌星你懂吗？你得什么人都能应对。你到这来就是找乐子了。你为什么喜欢这里？因为你也愿意聊天。</span>
+<span>三、正式与非正式谈话</span></p><p>&nbsp;</p><p><span>访谈技巧要谈的第二点就是，访谈的展开，分为两类，一类是正式的访谈，一类是非正式的访谈。正式访谈，开宗明义：打扰您，我想占用您一点时间，就某个问题向您请教，请您帮助。这是正式的。还有非正式的，跟人随便聊天，就把一些东西得到了，非正式的既可以在熟人中展开，也可以在生人中展开。熟人也是这样，比如调查本村的计划生育的实施情况，调查本村的土地流转情况，都可以通过非正式的调查了解很多事情。正式的跟非正式的，互见短长，互有利弊。非正式的可以得到正式的访谈得不到的一些东西，但你不跟人家开门见山，有些东西也得不到。并且，你虽然能得到很多东西，你付出的时间成本也比较大。因为这种聊天漫无边际，只能在只言片语中发现一些东西。它的优势在于说的事情真实性可能比较大，因为不是你问人家，人家说的时候不会琢磨你要干什么，人家无意识就说出来了，非常宝贵。但有些东西你不正式问，人家也不会说及。正式的好处就是效率比较高，</span></p><p><span>但正式访谈，需要通过一次、两次不同时间的采访，以及对不同对象的采访，相互对照，判断有些话是不是不实之词，也就说正式采访有这个问题要警惕</span></p><p><span>非正式的相对好一点，但非正式的也不排除有的人爱吹牛什么的，但他至少没有因为你问而歪曲。正式访谈，他有可能故意歪曲。</span>
+<span>四、访谈前的准备</span></p><p>&nbsp;</p><p><span>访谈前的准备</span></p><p><span>调查前，要做文献搜索，要通过文献对你所要调查的问题尽可能地多一点了解。做点案头工作，能为你的调查带来很多便利，能够让你少走弯路。而且通过文献，你也会看到别人做过的研究或记者对此做过的报道，会在你脑子里形成一些问题，这样在调查时，你就有了一点方向，当然这个方向在调查当中还会不断地调整。</span></p><p><span>访谈前，要通过文献以及其他办法，能够对这个人群、这桩事情有大致的了解，准备出质量比较高的问题。能掌握一些术语和行话更好，这样利于沟通，还能赢得尊重。</span></p><p><span>其实“尊重”是一个含义非常宽的词。在社会生活中有很多手段和原因能赢得他人的尊重。你要跟人家聊某个行业的事，你知道一点，人家就挺尊重你，觉得你懂行。当然这像滚雪球，你会知道得越来越多。在一定程度上，你跟人说话不是因为地位高赢得别人尊重，是因为你会说话，说话风趣，因为你尊重人，还因为对人家的事情你知道得挺多，人家就高看你了。</span></p><p><span>要好好准备。聊天这事可不像写文章能改，是要张嘴就把话说出来，比如你准备了一些问题，那些问题你要反复想，牢牢记住，到时候这个问题谈完，下个问题你能够脱口而出，显得不生硬，不拖沓，把一个个问题融入聊天中，很自然地就出来了。不像正儿八经地提问，你也是问了，但不是那么生硬。相反，说着说着，掏出提纲看看，就不好了。你要准备的是腹稿，事先一直在温习，然后找人家谈，尽量像聊天一样，一掏提纲就出了隔阂，不到万不得已不要那样。</span>
+<span>五、提问的技巧</span></p><p>&nbsp;</p><p><span>我自己觉得问题要简短，不要很长。</span></p><p><span>提问题，要考虑听者，让人家一听就明白。最怕的就是在问答中形成这种模式：长问题，短回答，你这里啰啰唆唆问了半天，人家两个字就答复了。</span></p><p><span>我是觉得要尽你所能，通过语言的组织，把问题说得简短清楚、干净利索。有的问题短，但是回答得很长，那不要紧。回答长，回去后慢慢琢磨。</span></p><p><span>再有就是问题要准确。</span></p><p><span>假如你问“您经常去咖啡馆吗”，就是一个很糟糕的问题。什么叫经常？</span></p><p><span>为什么不问一个可以用量化方式回答的问题？多少天去一次？一个礼拜去几次啊？这样的问题没几个字。</span></p><p><span>你告诉我多少级，用不着你说长短，读者自己会判断台阶到底长不长。那样的记者就很拙劣，不专业，没师傅。</span></p><p><span>很多年轻演员侯宝林是看不上的，他没说什么毛病，就说一句话，没师傅。能犯这样的毛病，说明没人管教你，你没师傅。</span></p><p><span>问得准确些并不浪费时间。</span></p><p><span>提问题绝对避免提示答案，这样的提问方式在电视中经常看到，愚不可及。他们经常提出一个问题，人家稍微沉默了一会儿，他就给人提供一个答案，说是因为这个吧，你这么一说，人家就往往说是，天晓得你不说这句话人家回答的跟你提示的一样不一样。你与被采访者角色是不同的。对于你来说这是职业，是饭碗，对于人家来说是帮你一次忙，人家没像你这么投入，人家有几分应付，你都这样说了，好，那就算是这样吧。所以我们提完问题以后，一定不要对回答做出诱导。</span></p><p><span>在提出开放式问题还是选择式问题的时候，要慎重考虑，这次是问“是否”，还是“为什么”。根据所要获得的答案的性质，考虑所提问题是开放的还是选择的，多样的选择，还是是否的选择，自己要考虑清楚</span></p><p><span>要争取能够顺着这个问题的逻辑提出下一个问题。这样，谈话就显得紧凑，形成了一个谈话的结构，有了一定的起承转合，这样，双方就组成了一个有结构的对话，就不是非常松散的谈话，有助于被采访者的投入。</span></p><p><span>松散的谈话，容易使人感到乏味、沉闷。</span></p><p><span>你谈话有一种内部结构，顺着这个问题往前递进，或者转折一下，人家就能感到谈话本身的乐趣和魅力。</span></p><p><span>你要把相似的问题、有逻辑关系的搁在一起，组成谈话的结构。就像是大家一起说一桩事情，聊一个故事，这样的谈话是有趣的。</span></p><p><span>访谈的时候要学会倾听。有的时候，沉默一会儿不要紧，有时他沉默一会儿，你不要急不可待地诱导。有时候无声胜有声，有时候无声可以给他一点压力。稍微停几秒不要紧。</span></p><p><span>你等一会儿不要紧，尽量让他多说，少打断，对多数被采访对象，应该取这种姿态来与之对话。少数人例外，一般你和他谈三五分钟就能判断，这人话极多，或是啰唆，或是太能聊，说着说着就谈到别的地方去了，离题万里，讲他爱说的事，与采访毫无关系。你迅速做出一个判断，如果他是这样的人，就要与前面多数人采取不同的办法。他太能侃了，谈话不会冷场的。所以你要常常打断，把他拽回来，回到正题。有时候开个玩笑就把他拽回来了，迫使他继续在你所关心的范畴内展开你们的谈话。</span></p><p><span>要善于追问。</span></p><p><span>前面刚谈了倾听，现在又说追问，不矛盾吗？一点也不矛盾，而是说二者要有一个平衡，该听则听，当问则问。该听的时候乱问不好，该问的时候不问更不好。大致地说，追问有两种。一种是有不懂的地方，一定要问。不要不好意思说，不懂就要让他解释。我说过，经过你的准备尽量不要让人觉得你一无所知，但另一方面不要顾忌，你要让他给你解释。不懂就必须追问，不要觉得插话和追问会干扰你们的谈话。有时候你说不明白，其实给人一种高位，自己取低姿态，对他心理上是有好处的。人都有一种好为人师的心理，只是程度不同，这给了他为人师的机会。</span></p><p><span>另一种追问，是倾听的过程中，你的嗅觉告诉你这正是你感兴趣且有价值的地方，可以不断地在细部上发问，将谈话在这一维度上向深入推进。</span></p><p><span>差别在什么地方？在采访的提问中，特别是在追问中。追问反映出判断能力和学科特征。要给被采访人一个解释的空间，不光是关于事实的解释空间，还包括关于行为心理的解释空间，要不断营造这样的对话空间。采访中对话的质量，往往已经决定了论文的质量。很多初学者在采访过程中嗅觉失灵，找不到方向，不能将被采访者推向你所关注的某一重点，采访浮在表面。这既和认识能力相关，也和采访能力相关。</span></p><p><span>录音可用可不用，要善用，不要迷信录音。</span></p><p><span>有一个基本事实自己必须清楚，整理录音很耗时，如果你的采访量非常大，如果你的录音有30个小时，整理的时间恐怕要50个小时以上。当然，你要是不完全依靠录音，录音是防备脑子记不太清楚，但基本依靠脑子，那样的话录音当作另外的用途，就不会太浪费时间。现在钢笔录音机普及了，好办一点，搁在兜里别人不知道。原来都是很大的录音机，想让人不知道也不大可能，带子完了，啪的一响。你要是告诉人家，会形成障碍。有时候人家说行，录就录吧，但是对于普通人、不经常接受采访的人，录音机一搁，说话就不自然了。</span></p><p><span>先不讨论伦理问题，即使只讨论技术问题的话，也还是要重视用脑子记住。但你脑子再好使，一定要切记：采访完了立即整理，有价值的细节都要写出来，如果当时还有别的事，当天晚上务必要整理。绝对不要耽搁时间，因为信息的丢失与时间的流逝是成正比的。</span></p><p><span>我还建议大家不仅要整理出来，最好还要打印出来</span></p><p><span>因为你要根据整理出来的东西来考虑下一步的采访，提出新的问题，你已经从开始采访时的无知或少知变成有知，知道得多了就可以在此基础上问出新的问题，向深入进展。</span></p><p><span>实际上就是通过阅读他的回答来思考。打印的东西自己看得比较舒服，看得效率高，同样一页纸上如果是手写的，字数比较少，看着也没有打印的清楚。所以，打印出来的东西对你思考、设计问题效果好得多，稍微多花一点打印费。</span>
+<span>六、保持联系，顺藤摸瓜</span></p><p>&nbsp;</p><p><span>最后一点，采访结束时要为再次采访做铺垫。留下联系方法、通信方式，跟他保持友好的关系。</span></p><p><span>有一个同学调查乞丐的，我说底层比上层的门槛要低多了，但终归是有门槛的。人家出卖尊严，一般不愿与外人道。他刚开始就没谈成，人家凭什么理你啊？</span></p><p><span>后来他就编了个假话，就对上话了。其实只要人家跟你一对上话，说句假话就都无所谓了，原来心理上的距离就拉近了。</span></p><p><span>这个同学说：“求您帮个忙，我有个表哥在北京跟你们干同行，他老不回家，也不给家里个信，找不着了，家里让我来找他，麻烦您帮忙注意，看没看见这么个人。”这就等于给对方一个高位，一般都是乞丐求他人帮助，现在有人求一个乞丐帮忙，他很愿意接这个高位。就说你给我讲讲，他是哪里人，多高个儿，不光我呢，我们这里还有好多兄弟，可以帮你找找，你说吧。聊天就展开了。这个同学问“您贵姓”，就不像原来人家在乞讨，你上去问人家贵姓，人家不理你。我多次告诫同学，找底层人采访，不要靠小恩小惠。你会误导他，因为钱一出场，他就会想怎样才能拿到更多的钱，就会以这样的方式跟你博弈，就会跟你说一些谎话。所以，钱不能轻易出动，要靠别的东西。</span></p><p><span>跟一个乞丐搭上腔了，问人家贵姓，然后以平等的方式、关心的方式，多问上几句。照着这样的方式聊起来，对方不会拒绝了，以后就好办多了。他找到不止一个乞丐，因为这个乞丐叫张三，下面找到别的乞丐的时候，张嘴就说我是张三的朋友。开始找人搭腔的时候，人家表情比较僵硬，但你报出张三，人家一看你衣冠整洁，诧异你怎么认识张三，你说张三怎么怎么着，李四一看来人所言不虚，就聊上天了。这样一访就访了好几个乞丐，知道了好多事情。说到根本，底层人是好接触的。</span>
+<span>第七讲 文献搜索</span></p><p>&nbsp;</p><p><span>有了兴趣和“瘾头”，你就能成为一个优秀的“包打听”，你就能找到各种人、各种信息、各种书籍论文</span></p><p><span>要有“瘾头”。我去找相关的书的时候，“瘾头”极大，信心十足，总是相信能找到别人找不着的一些东西。</span></p><p><span>假如刚找到的这本书问世晚于你看过的该作者的那本专著，那么他很可能对这个问题有新的认识，增加了新的观点、材料，那你就有了收获。</span></p><p><span>扩大书目的第二个办法是追踪这一类别，就是进入索书号指示的那个类别。</span></p><p><span>要去图书馆，特别是那些开架图书馆。到相关类别的书架前，认真地翻看搜寻。往往会有意想不到的收获。</span></p><p><span>你要是能从直接相关搜索到间接相关，你在找文献上就挺厉害了。你对问题的理解也胜于其他同学了。</span>
+<span>二、刊物、辞书和年鉴</span></p><p>&nbsp;</p><p><span>你研究任何问题都不能只看社会学的杂志，还要看其他的杂志</span></p><p><span>翻到一个相关的杂志就是一个好的矿藏，再翻看它十年、二十年来的东西。</span></p><p><span>在这一点上，不客气地说是要竭泽而渔的。</span></p><p><span>搞社会学的人在社会学领域下手，那谁不会啊，要是光看中文的更容易了。但是便宜没好货。我们一定要扩大视角，找矿藏。不要惜力，不要懒惰，你会越干越顺，游刃有余。</span></p><p><span>互联网是挺厉害的，互联网的局限也是巨大的。要在使用互联网的同时，应用传统的方式。翻期刊，泡图书馆，在开架阅览室转悠。还是要用这种古老的方式，还是要打开一本本书。</span></p><p><span>论文的方式是从小题目写起，思想也是从小的方面去深入思考。</span></p><p><span>第一个问题是，那个作者他怎么就“见大”了？是以大见大的吗？我觉得就方法论而言，只能以小见大，以大见大是不可能的。很多优秀的作者，进行了许多非常成功的以小见小的研究，在其基础上才产生了一些宏观的理论家，他们不仅能够借鉴，而且能够融会小问题的研究，然后才在不同时代，产生了一些大人物，马克思、斯宾格勒、汤因比、韦伯。就历史学来说要有断代史，断代史做得非常好，其中的一篇篇论文将小的事情弄得非常清楚，才能有文明史研究，它是建立在前者的基础上的。这是对于作者来说的。第二个问题就是，你怎么判断它？有几百部大的作品呢。为什么你相信这部大书里的东西而不相信那部呢？为什么你接受汤因比而不接受斯宾格勒呢？你的尺度是哪里来的呢？你的尺度，你从出生以来慢慢建立起的很多尺度，是建立在你的经验之上的，它不可能彻底脱离你的生活经验。一定是以你的感知，你的痛苦快乐，你对别人遭遇的观察，逐渐地产生很多感受，很多想法，由此形成一个理性的判断，一个感情的判断。你知道的东西越来越多，思想渐渐定型了，可以判断大一点的事情了。但是实际上你还是很小的。与人类漫长的文明历史，跟全世界的文化和社会比较，你当然是很小的。而认识外界实际上是由你这里到它那里的，是一种主客关联。</span></p><p><span>米兰·昆德拉说过一句非常出色的话：“小说是干什么的？小说是告诉你人类生活的可能性的。”</span></p><p><span>但是小说中的这种可能性是作者想象出来的。而人类学和社会学告诉你的可能性是真实发生的一种东西。</span></p><p><span>毛泽东熟读二十四史</span></p><p><span>这不就是盲人摸象嘛，你怎么摸啊，怎么下手啊？你可以摸个局部，然后告诉别人，我摸到了两根毛。但是已经有上万人摸过了，有些人告诉你是这个，有些是那个，</span></p><p><span>如果你自己没有摸过，人家告诉你都不行，就是说如果你没有摸过的话，你知道什么叫皮，什么叫毛吗？你自己要有一个感性认识，知道什么是皮，什么是毛。然后你看书，知道有人摸过象牙了，有人摸过象尾巴了，有人摸到脚了。又经过认真的融会，并且你还真有这个才能，久而久之，也可能提出一个较大一点的宏观的对中国的判断了。总之，以小见大，由小及大，不能说只是一种文学的浪漫。</span></p><p>&nbsp;</p><p><span>前期的写作，虽然可能会是重复和误读，但这同时是对自己思想的梳理。</span></p><p><span>为什么此时提倡大家以小见大呢？如果你看前辈的著作就企图以大见大，并实践于论文写作，是不现实的。在这阶段你的书读不过来。那些大人物写的著作数量挺大的。相关的重要著作还没读完，就写论文，是没有意义的。因为你达不到一种高度，很可能是重复劳动，并且是一种拙劣的重复。因为你不是把它们都了解了，然后发酵，提出一些新的东西来。</span></p><p><span>为什么此时提倡大家以小见大呢？如果你看前辈的著作就企图以大见大，并实践于论文写作，是不现实的。在这阶段你的书读不过来。那些大人物写的著作数量挺大的。相关的重要著作还没读完，就写论文，是没有意义的。因为你达不到一种高度，很可能是重复劳动，并且是一种拙劣的重复。因为你不是把它们都了解了，然后发酵，提出一些新的东西来。</span></p><p><span>我倾向于宽容异类。但是必须把话说透。我们是教师，不能看着同学们盲人骑瞎马，我们连招呼都不打一声。</span>
+<span>第八讲 论文体例</span></p><p>&nbsp;</p><p><span>体我鼓励大家做论文走经验研究的路子。如果这一阶段不搞纯理论的论文，也就不要取抽象、思辨的风格。以叙事体为主，结尾可以有些讨论，中间可以有些议论，但文字主体是叙事，语言上力求平实。因为我们论文的主要追求是发现一些事实，陈述事实的最好文字风格是平实。</span></p><p><span>除了追求事实的发现，我们还希望在分析这些事实时能发现一些道理。但这些道理是在事实的基础上的，因此明智的选择是，在相当程度上要让事实说话。评论可以有，也必不可少，但要少而精。大段的事实叙述，索性可以用当事人的口吻讲出，节选采访记录就可。</span></p><p><span>如果是大段的当事者的陈述，最好字体上有区别，论文作者的叙述用宋体，凡较长的引言，无论是被采访者的话，还是文献，都用仿宋体。</span></p><p><span>文字上的另一追求是干净利索。这看似要求不高，其实是很深的一种功夫，既是思维上的功夫，又是文字上的功夫。</span></p><p><span>被调查的事物往往头绪多条，甚至一团乱麻。要不丧失重要信息，又清晰地整理出来，首先当然考验的是思维的功夫。想三遍想不干净，就想五遍。想清楚了，也就容易写得干净利索。但事实上，想和写，在很多时候是融于一体的。当然是先想后写，但而后又是看着初稿再想。从思想，到写作，再到思想，要一遍遍梳理，最终达到干净利索。内容简单，干净利索容易。内容丰富，乃至芜杂，文字上能达到干净利索，便获得了一种张力，一种均衡，达到了一种境界。这是我们的追求。</span></p><p><span>文章的层次要清楚。干净利索不仅要体现在字句上，而且要体现在层次和段落上。因此要分章，分节，各有标题。</span></p><p><span>这是一方面。但是另一方面，标题等级不要太多。我看有三级标题就够了：一是论文题目，二是每章的题目，三是章的下面分节，每节有题目。题目层次不宜更多，更多会将文字切割过碎，伤害叙事，破坏可读性。</span></p><p><span>题目层次不要太多，不是说文章不需要有较多的层次。文章的更多的层次，可以在段落转换中解决，换一个自然段就行了。眼睛是很敏感和挑剔的。换一个自然段，既跳跃，又保持紧凑。换一节，乃至设置一个标题，就是一道沟坎了</span></p><p><span>为保持文章的紧凑，就要保持较长的、没有隔断的叙述，这样标题的等级就不可太多。</span>
+<span>二、论文格式：参考书目与注释</span></p><p>&nbsp;</p><p><span>格式是形式的东西，表面的东西。当然不是最重要。它比较容易达到，但也必须达到，这是对专业人士的要求，是学院派必备的风格和规范。</span></p><p><span>标明出处的——该观点、该引文出自哪篇论文、哪部著作，放在参考书目中。做其他说明的，放在注释中。</span></p><p><span>学术论文有可能没有注释，作者将要说明的大小事情都放在正文里面了，这不新鲜。但书目不可能没有。参考书目放在正文的后面。注释可以放在页下，所谓页下注，也可以放在正文后面。</span></p><p><span>以洛克、霍布斯为代表的启蒙学者，和以韦伯、杜尔凯姆为代表的古典社会学家们</span></p><p><span>现代生活在远比通常了解的更大程度上建立在对他人诚实的信任之上。</span></p><p><span>金钱的占有所给予个人的安全感是对社会—政治组织和秩序的信任的最集中和直接的形式和体现。</span></p><p><span>一个人对某件事的发生具有信任是指，他期待这件事的出现，并且相应地采取一种行为，这种行为的结果与他的预期相反时带来的负面心理影响大于与预期相符时所带来的正面心理影响。</span></p><p><span>信任是个体特有的对他人的诚意、善意及可信性的普遍可靠性的信念。</span></p><p><span>信任是社会资本形式，可减少监督与惩罚的成本</span></p><p><span>德国社会学家卢曼在《信任与权力》中提出，信任是简化复杂性的机制之一。</span></p><p><span>吉丁斯则将信任定义为“对其他人的连续性的相信以及对客观世界的相信，它产生于儿童的早期经验”</span></p><p><span>信任作为基本的‘保护壳’而在自我与日常现实的应对中提供自我保护。”</span></p><p><span>虽然盲目照搬也行，但明白这格式的用意所在、优势所在，效仿起来才更踏实。</span></p><p><span>过去中国学者的引用说明方式是，用阿拉伯数字标出号码，关心出处的读者按照号码寻找，或在页下，或在每章后面，也有放在全文最后面的。</span></p><p>&nbsp;</p><p><span>全局视野和复用</span></p><p><span>按照中国传统方式，即阿拉伯序号标明出处的方式，如果用页下注，则该文章缺少一个总书目，显然对读者不够方便。如果放在全文后面，虽然书目集中在一起，但序号是按正文叙述顺序走的，没有内在规律可循，并且重复严重——有些书引用过多次，读者查找起来还是不方便。</span></p><p><span>按照中国传统方式，即阿拉伯序号标明出处的方式，如果用页下注，则该文章缺少一个总书目，显然对读者不够方便。如果放在全文后面，虽然书目集中在一起，但序号是按正文叙述顺序走的，没有内在规律可循，并且重复严重——有些书引用过多次，读者查找起来还是不方便。</span></p><p><span>按照西方当代的方式，正文后有一个总书目。不管一本书被引用多少次，反映在总书目中，没有任何重复。书目中每个条款按照作者姓氏的拼音顺序排列。注意，是姓，不是名。姓氏相同，才比较名字的拼音顺序。这样的书目干净、清爽，易查找。</span></p><p><span>西方当代的方式则是正文中引语后面有个括号，如果引用的是论文，括号中是作者姓名、年代，如果引用的是著作，括号中是作者姓名、年代、（引文在该书的）页码。</span></p><p>&nbsp;</p><p><span>对需求和成本的取舍</span></p><p><span>西方当代的书目方式接近完美。</span></p><p><span>西方当代的书目方式接近完美。</span></p><p><span>第一，文章后书目中常常标上阿拉伯数字做序号。这是没有任何意义的。既不能方便查找，也没有必要告诉读者书名中总共有多少文献，没有读者关心这个。</span></p><p><span>现在是全球化的时代，学者流动性很大。很多作者是双重或多重国籍。我们不可能标明其全部国籍，以及变化的轨迹，也不清楚作者的哪个身份更重要。读者要关心该作者更多的信息可以自己去寻找。</span></p><p><span>第三，常有人在书目中标明出版城市，其实只标明出版社或出版公司就够了。</span></p><p><span>第四，常有人在总书目中标上页码。正文中已经有了页码，且书目中的某些书在正文中引用多次。这样没有必要，且破坏了书目的干净清爽。</span></p><p><span>正确的格式是，每条目首行起头处左边顶格。如果该条目不止一行，其后各行左边空两格。</span></p><p><span>第六，最频繁发生的错误是，很多人排列外文文献时，搞不清姓和名的差别，常常以名字来排列。务必以姓氏排列，最好姓氏放在前面，名字放在其后，中间加一个逗号，比如：Weber，Max。同学们的这种错误得不到纠正，是因为很多教师也搞错。我系一位教师将参评教授的代表作送给我，参考书目中竟屡屡出现这种错误。不误人子弟也难。</span></p><p><span>毋庸置疑，当今学术上是西风压倒东风。西方的学术水平高，我们很多参考书目是西方著作的中译本。中译本存在两个年份，原作出版年，译作出版年。人们通常的方式，正文括号内标明的是中译本出版年份。我以为，如此就失去了此种方式的一个优势——阅读时极为便利地了解了这个观点产生的年代。我的处理方式是，查出原作年份，正文中写的是原作年份</span></p><p><span>。参考书目中做如下处理，比如：“吉登斯1991/1998：现代性与自我认同，三联书店。”1991是原作出版年份，1998是译作出版年份。这样就兼顾了两个信息，且干净利索，不多占空间。</span></p><p><span>正文中书名号有必要，不然就同其他文字混淆了。参考书目中没有多余的文字，混淆不了，</span></p><p>&nbsp;</p><p><span>追求完美</span></p><p><span>要书名号做甚？</span></p><p><span>要书名号做甚？</span></p><p><span>世间是物质的，功利的，充满缺憾。学术是精神王国，是一桩企图追求完美的游戏。格式当体现其完美之追求。艺术家可以蓬头垢面，但其手中的活计必是精雕细琢。</span></p><p><span>我在这里讲课一向便装，但我的论文及格式一丝不苟。因为衣履乃世俗之勾当，论文则是一个真正学人心智之结晶。</span>
+<span>后记</span></p><p>&nbsp;</p><p><span>我上课规矩大，正式选课的同学每次必须签到。我的博士生劝我，签到会影响同学的选课心理。我不以为然。或许签到体现了我的作风——苛刻，好在我律己之严超过待人。我的性格是少年时代，在对领袖和父亲的双重逆反中形成的。父亲是双重标准，对家人苛刻，对自身宽容。饱受压制中我暗下决心，今生绝不做这样的人。我其实也是双重标准，对己近乎自虐，与之相比，待人简直就是宽容了，虽然不逮时下多数教师那般随和放任。这些年来我课上的一份份签名录，都珍藏在一个牛皮纸口袋中。这是一份特殊的纪念，也寄托着我对自己走过的教学生涯的眷恋。</span></p><p><span>当然时间不是均摊，一番道理可以统摄一些题目，所以点评绝不草率</span></p><p>&nbsp;</p><p><span>筛选重于培养</span></p><p><span>选材其实比培养更重要，而人才往往发现于点滴之中。</span></p><p><span>选材其实比培养更重要，而人才往往发现于点滴之中。</span></p><p><span>我在人大共开过五门课：信任研究，城市社会学，消费研究，生物学对社会科学的启示，怎么写论文。</span></p><p><span>不再讲“信任研究”，新开了“幸福导论”。</span>
+<span>附录一 深圳演讲后答同学问</span></p><p>&nbsp;</p><p><span>书隔一段时间可以重复读</span></p><p><span>但读书有没有一个最佳数量，我觉得是有的。比如说我是属于中等程度的一个人，我读起书来是很疯狂的，比如我在这儿待了一个月，读书已经超过30本了，我现在每天去图书馆，一次借两三本。这30天过手了一遍《史记》，过手了半部《汉书》。但我始终觉得我不适合读太多的书，比如说要是我读了陈寅恪先生读的那么多书，我可能就傻了。你得看自己记忆的容量，但我觉得同学们中多数人根本就不是那个问题。你什么时候一个月读了30多本书？我在这就没碰到几个同学跟我交流书，比如关于消费课程方面的书。没有，见不到这样的同学。</span></p><p><span>但读书有没有一个最佳数量，我觉得是有的。比如说我是属于中等程度的一个人，我读起书来是很疯狂的，比如我在这儿待了一个月，读书已经超过30本了，我现在每天去图书馆，一次借两三本。这30天过手了一遍《史记》，过手了半部《汉书》。但我始终觉得我不适合读太多的书，比如说要是我读了陈寅恪先生读的那么多书，我可能就傻了。你得看自己记忆的容量，但我觉得同学们中多数人根本就不是那个问题。你什么时候一个月读了30多本书？我在这就没碰到几个同学跟我交流书，比如关于消费课程方面的书。没有，见不到这样的同学。</span></p><p><span>喜欢是一种感受，是一种身不由己的状态，是一种吸引与被吸引。我向你讲半天梨子也很好吃，描述那滋味，有用吗？</span></p><p><span>问：您强调读书的数量，但未详细说到读书的结构，即博与专的问题、兴趣与专业的问题、精读与细读的问题。还有，书指什么？包括报纸杂志、网络文章吗？答：不包括。问题问得很好。我前面说了，我们专业化走得太早了。国外的教育不是这样的，国外教育中跳槽、换专业是轻而易举的事情。因为认识自己的兴趣事实上是有过程的，特别是我们的中学教育已经形成这样一种风格，那时候同学们没有东张西望的余力，没有慢慢发现自己兴趣的空间，而后就盲目地进入了专业，而这个专业又过于强化。另外还有我们社会的功利思想的影响。早期的阅读是应该博杂，而后“专”是没有问题的。日后你要以这个专业为饭碗，名缰利锁之下，你岂能不专？你不要评职称吗？你不要在专业里发文章被同行承认吗？所以专的事情是不用发愁的事情。没有绝对真理，任何一种观点都是在一定时空下发生的，我这种观点就是在今天这种时空下产生的。在今天这种时空下还用提倡“专”？</span></p><p>&nbsp;</p><p><span>先博，然后发现自己的兴趣，然后专研自己的兴趣，然后想进一步专精就还得广博的学习，触类旁通，然后才能更进一步。</span></p><p><span>早期的阅读是应该博杂，而后“专”是没有问题的。</span></p><p><span>不希望一个家庭经济状况不是很好的同学去读博士读得那么苦，很多年也不能独立生活、赚钱。</span></p><p><span>一个人的选择是很综合的事情，不应该自私，不考虑赡养自己的父母。</span></p><p><span>对个人而言，中学毕业分流一次，你上大学了，有人没上；大学时候分流了一次，有些人工作了，你读研究生了；而我们现在研究生的奖学金又这样的微不足道，跟没有差不多，那样读来读去的话，你跟老同学比是最贫困的，心态就不好了。所以对个体来说，做学问毫无疑问是一件奢侈的事情。对一个国家来说也是一件奢侈的事情。而真正做得好的学术又是绝对需要的，我们本来的学术界应该是小而精的，不应该这么大规模。这么大规模在干什么？其中很多人在忙生存，在骗钱。金圣叹曾写过一个对子，上联是：“真读书人天下少。”学术是一种奢侈，社会养不起太多的学术，必须少而精。</span></p><p><span>近几年，人们对一些经济学家要么成为“御用学者”，要么成为利益集团的代言人有很多看法。您认为一个社会学者如何保持自己独立的个性和学术的自由呢？答：你从经济学家开始问，我就从经济学家开始回答你。近代经济学的鼻祖亚当·斯密的一本书，严复翻译的是古文，《国富论》，</span></p><p><span>经济学家是研究一个国家怎么富裕的，不是研究私人如何富裕的。我们很多经济学家只帮助企业和自己致富，这是辱没了经济学家这个称号。</span></p><p><span>学科划分都是件人为的事情，而问题是自然的，不是拿单一学科的知识可以透视的。</span></p><p><span>公共事务与学术是天然结合在一起的。</span></p><p><span>而经世济民是要有条件的，建议、方案，要被采纳才有效果。</span></p><p><span>你不是实践者，你不是掌权者，如果你的建议被采纳的概率很小，你当初还愿不愿意进来做这件事情？</span></p><p><span>所以说这位同学说经世济民应该是学者的最主要动力，我要给你泼冷水</span></p><p><span>，你要是抱持这样一个动机，并且是强烈而单一的动机的话，很可能你最不容易持续下去。</span></p><p><span>如果智力足够的话，你应该看到学术研究能够经世济民的概率很小，那你还要不要做？</span></p><p><span>实际上还要有一个支点，是什么呢？就是这是一个智力游戏，是为学术而学术，为艺术而艺术，贡献实现不实现到社会层面上都可以。</span></p><p><span>一个人如果只为学术而学术，不关注养育你的社会，那是没有良心，但如果仅为经世济民做学术，这人大约弱智，根本看不到如何实现，还干什么呀？我觉得有上述两个动机，才能持久下去</span></p><p><span>只是经世济民，学术将是单薄的。只有关心非功利的学术，兴趣才是广博的，视角才是宽阔的。</span></p><p><span>有些东西好像没什么用，然而在你关心了以后，你的本领不知不觉大了，你解释社会的能力强了。</span></p><p>&nbsp;</p><p><span>都在追求普遍规律</span></p><p><span>他说他的旨趣不在于认识文化的普遍规律，只在于中国，在于寻找中国的富裕之路。</span></p><p><span>他说他的旨趣不在于认识文化的普遍规律，只在于中国，在于寻找中国的富裕之路。</span></p><p><span>当读某一本经典著作时，由于读者的理解能力有限而产生诸多困难，甚至第一章就难以理解，您有何建议？答：循序渐进。先从能看懂的开始看，这书要是一点都看不懂就先放下。没别的好办法。</span></p><p>&nbsp;</p><p><span>有备而来</span></p><p><span>因为他们知道每天要在车上度过几十分钟，所以他们通常是有备而来，不是偶然地读书，偶然地读报。有备而来跟偶尔为之就大不一样。</span></p><p><span>因为他们知道每天要在车上度过几十分钟，所以他们通常是有备而来，不是偶然地读书，偶然地读报。有备而来跟偶尔为之就大不一样。</span></p><p><span>“行有余力，则以学文。”</span></p><p><span>亲身经历是深刻的、直接的、全方位感受的，但是非常有限的，而读书，虽然不是直接的、亲身的，但如果你对上下五千年有一定的了解，并能与你切身的一小段深刻理解结合起来的话，你就挺厉害了。</span></p><p><span>如果二者相背的话，或许你是一个很好的实践者，你在你有限的时空里，游刃有余，你活得可以说有血有肉，对得起你的父母亲朋，但是我们人类不是生活在短暂的瞬间，而是一种有历史的动物，我们因为有历史而获得了一种特殊的感觉，我们因为有历史、有文化积累而变得格外地智慧。所以你要完全离开了这些东西，离开了书，大概很遗憾。</span></p><p>&nbsp;</p><p><span>快速发展的代价，既然已经失去了这么多，那必然有得到的东西，可能中国的快速发展就是以这些在快速发展中发育不全的东西为代价的。</span></p><p><span>我们是干什么不吆喝什么，我们做任何事情都没有神圣感</span></p><p>&nbsp;</p><p><span>实用主义打头</span></p><p><span>我们是干什么不吆喝什么，我们做任何事情都没有神圣感</span></p><p><span>我们是干什么不吆喝什么，我们做任何事情都没有神圣感</span></p><p><span>可能外面的人更能看到，因为外面人能跟你以前比。但是内部人看到很多细节是无药可救的，是悲哀的，有什么办法呀。</span>
+<span>附录二 三校论文选编前言及相关文献</span></p><p>&nbsp;</p><p><span>在美国读博士就是下地狱，必须一本一本地、扎扎实实地阅读大批的书籍，容不得半点含糊；经历此番炼狱的人大多终生保持着认真严谨的作风</span></p><p>&nbsp;</p><p><span>屁股不同决定想法不同？</span></p><p><span>要改造一个社会的作风，首先要从它的精英开始</span></p><p>&nbsp;</p><p><span>自上而下还是自下而上？</span></p><p><span>要改造一个社会的作风，首先要从它的精英开始</span></p><p><span>要改造一个社会的作风，首先要从它的精英开始</span></p><p>&nbsp;</p><p><span>辩证法，经验、借用别人的理论、自己总结规律，感性认识和理性认识，度的拿捏，具体情况具体分析</span></p><p><span>他们大都力图避免以往社会学理论研究过于思辨空灵，和经验研究囿于实证而缺乏理论思考的缺陷，努力实现两者的相容兼顾。在我看来，这就把握住了社会学的精义。</span></p><p><span>他们大都力图避免以往社会学理论研究过于思辨空灵，和经验研究囿于实证而缺乏理论思考的缺陷，努力实现两者的相容兼顾。在我看来，这就把握住了社会学的精义。</span></p><p><span>其一，是态度问题。</span></p><p><span>其二，怎样安排时间，减少择业和考博的消耗，怎样将授课与论文写作结合起来，是我们需要认真思索的问题。</span></p><p><span>其三，我们在教学上，或曰学术上，遭遇了一个障碍，那就是一个“新八股”。</span></p><p><span>区别于未受过学院派社会学训练的那种社会调查，便要求同学们显示出理论训练和文献功夫，教育同学们以某些理论指导其对经验现象的分析。</span></p><p><span>什么是理论便成了施教者与受教者需要共同思考的东西。不管理论是什么，它都绝不是标签。我们教了这么多理论，绝不是要教你们贴标签，找护身符，而是要增长你们的分析能力。就如同你学过少林、武当等等，完全不是要你在遭遇实战时能摆出一个少林的招式，而是要你通过学习少林武功增长攻防腾挪的本领，实战时发挥自身，不可拘泥。</span></p><p><span>其实，你所以选择这个题目，所以重视这些细节，就显示出了理论修养之高下，不必贴标签。</span></p><p><span>只希望你们因理论训练而善于观察并有所发现。</span></p><p><span>好的理论必须适合于被解释的对象才是好的理论</span></p><p><span>强化另一种意识，在某一事件和问题中，努力发现一点别人没有发现的、有意义的事实和细节。</span></p><p><span>2006</span></p><p><span>而今年的就业形势，寒似秋水。学生们早就明白了，何况这感觉是传染的，是聚合裂变的。对多数学生而言，论文哪有择业要紧？于是多数学生为择业投入了大量时间，在极大程度上损伤和牺牲了论文。</span></p><p><span>论文写作是高度综合而浓缩的东西。对指导教师而言是综合性教学，对学生而言是综合性智力活动——综合了选题、文献、调查和写作</span></p><p>&nbsp;</p><p><span>诸多对手的博弈中，争夺目标对象的注意力。和现在的各种APP的争夺有些相似。</span></p><p><span>积数年之思考，我想到的制度化措施是，要求学生在最后一个寒假前完成论文。这样，教授们在筛选保送生的时候，就不是仅仅依据学习成绩，可以在更大程度上依据论文质量。这无疑可以推动相当一批学生写好论文。找工作的同学反正在最后一个学期是不可能专心学习的，以上安排可以省出了一个学期，避免了论文写作与找工作的冲突。这期间，读博的同学，乃至准备工作的同学，都可以继续读书，因为读书不需要写作论文那样的整块时间。甚至最后一个学期还可以安排课程。因为写作论文的时间是学生自由的时间，在用人方的压力下，同学们会牺牲论文去参加择业单位的实习和考察。课程如果严格点名制度，可以和用人单位抗衡。但这样选择之前，学校和教授们要想好：我们能否打过外部势力，否则学生压力太大，教师不给出路是否恰当。硕士三年制，做以上调整，应该没有太大问题。两年制中写作论文似乎只剩下半年（前一年授课），但是我认为，及早选择题目，半年时间专心致志，调查和写作是可以完成的，且胜过多方搅扰和切割下的一年时间。这方案无疑不是最好的，但我们必须意识到，我们已经不可能在静态的环境中思考教学制度了，必须在与诸多对手的博弈中安排我们的制度。</span></p><p><span>积数年之思考，我想到的制度化措施是，要求学生在最后一个寒假前完成论文。这样，教授们在筛选保送生的时候，就不是仅仅依据学习成绩，可以在更大程度上依据论文质量。这无疑可以推动相当一批学生写好论文。找工作的同学反正在最后一个学期是不可能专心学习的，以上安排可以省出了一个学期，避免了论文写作与找工作的冲突。这期间，读博的同学，乃至准备工作的同学，都可以继续读书，因为读书不需要写作论文那样的整块时间。甚至最后一个学期还可以安排课程。因为写作论文的时间是学生自由的时间，在用人方的压力下，同学们会牺牲论文去参加择业单位的实习和考察。课程如果严格点名制度，可以和用人单位抗衡。但这样选择之前，学校和教授们要想好：我们能否打过外部势力，否则学生压力太大，教师不给出路是否恰当。硕士三年制，做以上调整，应该没有太大问题。两年制中写作论文似乎只剩下半年（前一年授课），但是我认为，及早选择题目，半年时间专心致志，调查和写作是可以完成的，且胜过多方搅扰和切割下的一年时间。这方案无疑不是最好的，但我们必须意识到，我们已经不可能在静态的环境中思考教学制度了，必须在与诸多对手的博弈中安排我们的制度。</span></p><p><span>《法兰西内战》、《路易·波拿巴的雾月十八日》、《新教伦理与资本主义精神》、《礼物》《身处欧美的波兰农民》、《街角社会》和《江村经济》。题目既要反映内容，又要便于记忆和流传。要全面、充分反映研究对象、方法、观点，题目势必冗长。而题目太长显然不好，读者记不住。两个目标妥协下来，题目能反映出研究对象就不错了，你所珍爱的那些独到的方法和观点没有反映到题目上怕什么呢？不是正好构成了题目和解题、谜面和谜底的呼应吗？</span></p><p><span>现在一半以上的学生对毕业论文不投入、不认真，敷衍成篇。沈原教授说：“如果三系的论文全面滑坡，人们对整个中国社会学教育的印象将大打折扣。”</span></p><p><span>社会学的论文在难度上高于其他学科。我们的学生要读理论文献，和前辈做理论对话，又要做调查，做经验性研究。有的学科只做前者就够了，比如哲学，还有的只做后者就可以了。而我们要兼括二者。</span></p><p><span>但最终没有想出良策来避免带来的副作用，只是提出了问题。因职业道德与素质是殊难深究和改善的，所以在与会者势必缺少不了的情绪化议论后，话题还是转向了制度安排。</span></p><p><span>但当七位教授真的议论到“枪毙”几个时，还是为难，甚至担心“有跳楼的怎么办”。于是关于“严出”的讨论很快转向了另一制度安排。</span></p><p>&nbsp;</p><p><span>取舍的体现</span></p><p><span>今年论文下滑的直接原因是毕业生增加，就业艰难，找工作耗时巨大，用人单位动辄要求学生实习两三个月，与论文写作严重冲突。估计此种状况几年内不会扭转。因此，一项制度上的设想是：我们可否要求学生在最后一个学期开学前完成论文，开学后答辩，最后一个学期反正我们也很难抗争过学生与用人单位合谋的“逃学”。七教授对这一设想展开了热烈的讨论。几位教授提出，论文选题时间应该大大提前。有的说，最后一个学期白白给了用人单位，太便宜了他们，损失了我们的教学时间；尚有一个对策是，说服校方将政治课从第一学期挪到最后一个学期，这样一方面可以将两门专业课补政治课的空缺提前进行，为论文写作完成专业上的准备。另一方面，步入社会前进行政治教育，此其时也。写论文是学生的自由时间，很容易被用人单位剥夺，上课时间如果坚持点名制，则可以和用人单位抗衡。所以还可以安排一门专业课在最后一学期，如此调换都是为了“倒出空来”提前写论文。因为最后一个学期毕竟不是天天有课，到用人单位去实习还可适当进行，也算给学生留了活路。</span></p><p><span>今年论文下滑的直接原因是毕业生增加，就业艰难，找工作耗时巨大，用人单位动辄要求学生实习两三个月，与论文写作严重冲突。估计此种状况几年内不会扭转。因此，一项制度上的设想是：我们可否要求学生在最后一个学期开学前完成论文，开学后答辩，最后一个学期反正我们也很难抗争过学生与用人单位合谋的“逃学”。七教授对这一设想展开了热烈的讨论。几位教授提出，论文选题时间应该大大提前。有的说，最后一个学期白白给了用人单位，太便宜了他们，损失了我们的教学时间；尚有一个对策是，说服校方将政治课从第一学期挪到最后一个学期，这样一方面可以将两门专业课补政治课的空缺提前进行，为论文写作完成专业上的准备。另一方面，步入社会前进行政治教育，此其时也。写论文是学生的自由时间，很容易被用人单位剥夺，上课时间如果坚持点名制，则可以和用人单位抗衡。所以还可以安排一门专业课在最后一学期，如此调换都是为了“倒出空来”提前写论文。因为最后一个学期毕竟不是天天有课，到用人单位去实习还可适当进行，也算给学生留了活路。</span></p><p><span>因为不诚实与不信任，推荐信在中国发挥不了作用。</span></p><p>&nbsp;</p><p><span>方案的取舍</span></p><p><span>不约而同地又回到了刚才没有结果的“枪毙”不合格的论文上面。或许是因为虽然难办，但这个问题占据大家头脑的时间太久了，现状又太离谱了，潜意识中都希望有所突破。一个新的建议被提出来：一个系每年硕士生答辩，起码要“枪毙”一个，即“枪毙”的人数要“大于或等于一”。从严格的道理上看，这似乎不合理，这不是像反右运动一样，按名额而不尊重现实吗？今年的论文都合格，为什么要枪毙一个？明年五个不合格，为什么只“枪毙”一两个？原因在于，也是七教授所共识的，现在一个系里每年不可能一个不合格的论文都没有，此其一。其二，捅破这层窗户纸太难了，如果我们的原则还是根据实际情况判定论文通过与否，结果必是全体通过，要能真的“枪毙”一个不合格的论文，几乎必须将规矩预先定下来：至少要“枪毙”一个，这是不更改的规定。七教授怀着极大的热情讨论这一设想，越讨论，共识越大，论据越多。有人说：要事先，乃至一进这个系就告诉学生们有这个规定，你好自为之，这样老师和导师日后对学生都好交代；同时，学生有了心理准备，休克的可能性减少。当然，其实不是“枪毙”，是修改论文，半年后重答辩，半年是不合格者必须付出的代价，当然也不排除半年后仍不能通过，但大多数人通过的可能极大。还有教授说：这个规定有助于导师管束和劝告学生自动推迟半年，免得通不过。其他教授则立即补充：自动推迟可以，但决不能占据了“枪毙”名额，解放了其他所有同学，换句话说，规定的是参加答辩者中“枪毙”人数大于等于一。不然很可能退出者比不退出而通过答辩者的水平还强。“枪毙”者如何产生？大家讨论的结果是，一个系有几个答辩组，每个组报上一个人，比如四个组，共报上四个被“枪毙”候选人，系里组成终审委员会，从四人中选出大于等于一的被“枪毙”者，以此解决公正问题。甚至还可以请外系教授参加终审。当然这样的话，各系答辩会的分组方式也要与之匹配。七教授还认为，如果三系一同这么做，阻力会小一些，外部有了参照，便于内部说服大家。</span></p><p><span>不约而同地又回到了刚才没有结果的“枪毙”不合格的论文上面。或许是因为虽然难办，但这个问题占据大家头脑的时间太久了，现状又太离谱了，潜意识中都希望有所突破。一个新的建议被提出来：一个系每年硕士生答辩，起码要“枪毙”一个，即“枪毙”的人数要“大于或等于一”。从严格的道理上看，这似乎不合理，这不是像反右运动一样，按名额而不尊重现实吗？今年的论文都合格，为什么要枪毙一个？明年五个不合格，为什么只“枪毙”一两个？原因在于，也是七教授所共识的，现在一个系里每年不可能一个不合格的论文都没有，此其一。其二，捅破这层窗户纸太难了，如果我们的原则还是根据实际情况判定论文通过与否，结果必是全体通过，要能真的“枪毙”一个不合格的论文，几乎必须将规矩预先定下来：至少要“枪毙”一个，这是不更改的规定。七教授怀着极大的热情讨论这一设想，越讨论，共识越大，论据越多。有人说：要事先，乃至一进这个系就告诉学生们有这个规定，你好自为之，这样老师和导师日后对学生都好交代；同时，学生有了心理准备，休克的可能性减少。当然，其实不是“枪毙”，是修改论文，半年后重答辩，半年是不合格者必须付出的代价，当然也不排除半年后仍不能通过，但大多数人通过的可能极大。还有教授说：这个规定有助于导师管束和劝告学生自动推迟半年，免得通不过。其他教授则立即补充：自动推迟可以，但决不能占据了“枪毙”名额，解放了其他所有同学，换句话说，规定的是参加答辩者中“枪毙”人数大于等于一。不然很可能退出者比不退出而通过答辩者的水平还强。“枪毙”者如何产生？大家讨论的结果是，一个系有几个答辩组，每个组报上一个人，比如四个组，共报上四个被“枪毙”候选人，系里组成终审委员会，从四人中选出大于等于一的被“枪毙”者，以此解决公正问题。甚至还可以请外系教授参加终审。当然这样的话，各系答辩会的分组方式也要与之匹配。七教授还认为，如果三系一同这么做，阻力会小一些，外部有了参照，便于内部说服大家。</span></p><p><span>学生们很艰苦是一回事，能不能、该不该全部通过是另一回事，怎样提高质量、减少“枪毙”又是一回事。</span></p><p><span>不合格就不能通过，这是天经地义的事情。怪就怪在这样的事情在中国不能实行。</span></p><p><span>声誉靠质量建立，质量靠制度保证。</span></p><p><span>每个人首先面对而不是视而不见的，应该是自己领域的怪事。</span></p><p><span>认为对不打算搞研究的学生，可以降低一些理论要求。让他们多搞社会调查，对他们的论文也该这样要求。因为社会调查能力，以及对社会的了解，对他们日后的工作（当然会比较多样）应该比多读一些理论更有帮助</span></p><p><span>在校读书努力开阔眼界，拓宽阅读领域，提高写作能力，增长对社会的了解，学会了解社会的方式。</span></p><p>&nbsp;</p><p><span>学硕和专硕？</span></p><p><span>分流</span></p><p><span>分流</span></p><p><span>同学要学会自学，单打独斗。要寻找志同道合的同学，相互砥砺，交流思想。</span></p><p><span>教育是开发智能，不是一把钥匙开一把锁的勾当。后者属于中等技术学校。连高中都不是这样。教育中肯定是虚比实多。同学的方向，主要是自己确定。跟着别人，无论是盲目还是被迫，都不好。长期找不到研究方向的人，不适合读研究生。</span></p><p><span>将自己的综合能力提升上去，不会找不到合适的工作的。</span></p><p><span>同学们经济困难，我同意薛涌的看法，要增加奖学金，但这不是不用功的理由。读不下去，就先去打工，日后有条件了再读。或者争取到有奖学金的地方去读。唯独不用功是无理由的。</span></p><p><span>沈原、潘绥铭</span></p><p><span>我的信任基于：我们是君子之交，且我们是君子</span></p><p><span>北大杨善华、王汉生老师，人大的郭星华老师</span></p><p><span>一分耕耘一分收获，教授的投入，是优秀论文产生的至关重要的因素。但大而化之不行，重要的是当事者从细节谈起。</span></p><p><span>他今天选这个题目，我跟着读了一些书，明天变了，我又要跟着重新读书，受得了吗？</span></p><p><span>曹禺</span></p><p><span>也是因为我没有课题经费，搞家乡的问题最便宜。</span></p><p><span>师生对论文频繁深入的讨论，是论文成功不可或缺的环节。这讨论可以是师生对坐，也可以在同门中，在师父、师兄师弟之间。不少教授为其学生组织读书小组。</span></p><p><span>成功的要素之一：项目过程中师生的讨论质量高，且参与课题的同学们在其中的讨论质量也很高。良好的小氛围哺育滋养了同学，造就了优秀论文。</span></p><p><span>我的学生的读书小组我每两回出席一次，不是偷懒，是觉得每次都出席并不好。</span></p><p>&nbsp;</p><p><span>讨论、教别人</span></p><p><span>童文的一些观点是大家讨论中产生的，我必须承认，且极为欣慰，讨论中几个同学想到了我这个老师没有想到的东西。</span></p><p><span>童文的一些观点是大家讨论中产生的，我必须承认，且极为欣慰，讨论中几个同学想到了我这个老师没有想到的东西。</span></p><p>&nbsp;</p><p><span>再次证明，绝大多数人都没有到需要靠拼智力的程度</span></p><p><span>我们几位还有一个共识，写出优秀论文的同学不一定是最聪明同学，但多半是最努力的同学。以童素娟为例，她绝不是最聪明的同学。她的采访整理出几十万字，论文写了四遍，局部修改不计其数。我相信，这篇论文会令同学们对她刮目相看。前几年中选本文集的一位清华硕士生，沈原多次对我们讲他糊涂，说他被孙立平老师接二连三的批评说怕了、吓傻了。想来那也不是一位天才少年，但是他们的论文都成功了。这些案例不断地提醒师生们，态度决定一切。当然一切事情都有前提。我们说的是三校的学生。这批科举的佼佼者兼幸运儿中，不乏自甘平庸者，自作聪明者，自欺欺人者。如此世风，不这样倒令人费解了。</span></p><p><span>我们几位还有一个共识，写出优秀论文的同学不一定是最聪明同学，但多半是最努力的同学。以童素娟为例，她绝不是最聪明的同学。她的采访整理出几十万字，论文写了四遍，局部修改不计其数。我相信，这篇论文会令同学们对她刮目相看。前几年中选本文集的一位清华硕士生，沈原多次对我们讲他糊涂，说他被孙立平老师接二连三的批评说怕了、吓傻了。想来那也不是一位天才少年，但是他们的论文都成功了。这些案例不断地提醒师生们，态度决定一切。当然一切事情都有前提。我们说的是三校的学生。这批科举的佼佼者兼幸运儿中，不乏自甘平庸者，自作聪明者，自欺欺人者。如此世风，不这样倒令人费解了。</span></p><p>&nbsp;</p><p><span>你是什么人决定了你和什么样的人交朋友，你选择和什么人交朋友，又影响了你是什么人</span></p><p><span>于是关键的问题是，热爱学术的教师，须潜心经营自己的小环境。社会的氛围，学校的制度，都不是我们管得了的。我们对它不存奢望，它不过分干扰我们就该庆幸。成功的小环境该如何打造，是绝大的、成败攸关的问题。或许热爱学术的学者在今天的学界并非多数，但它毕竟还够得上一个群体。共议营造小环境，应该是我们共享的大话题。它可以是理念上的思考，制度上的设计，但各自的经验绝不可以轻视和忽略。这些经验，谦谦君子或许以为不足道，但对莘莘学子乃至他们的老师却弥足珍贵。</span></p><p><span>于是关键的问题是，热爱学术的教师，须潜心经营自己的小环境。社会的氛围，学校的制度，都不是我们管得了的。我们对它不存奢望，它不过分干扰我们就该庆幸。成功的小环境该如何打造，是绝大的、成败攸关的问题。或许热爱学术的学者在今天的学界并非多数，但它毕竟还够得上一个群体。共议营造小环境，应该是我们共享的大话题。它可以是理念上的思考，制度上的设计，但各自的经验绝不可以轻视和忽略。这些经验，谦谦君子或许以为不足道，但对莘莘学子乃至他们的老师却弥足珍贵。</span></p><p><span>我一共只参加了两场答辩会（其中一场还是我的学生的），我怀疑是不少师生在刻意躲避这位不合时宜的人。混到这步田地真五味交集，但我无愧无悔，决意固持自己冥顽不灵的无知无畏。</span></p><p>&nbsp;</p><p><span>08年的情况，在23年并无本质上的改善</span></p><p><span>学生们内心与学术诀别及其导致的论文水准急剧滑坡的第一原因，是社会大环境存在的高度腐败，它水银泻地般渗透学府。大家（包括同学们的学长和老师）都在十万、百万地捞钱，身处最敏感年龄段的天才少年们岂能不察？千辛万苦考进帝都，岂能再回边城？而帝都的住房已成天价。女友的父母又岂能容忍自己娇养的千金嫁给一个无房汉，在今日世俗的词典中租房汉就是无房汉。于是他们中多数人的唯一选择就是竞争高薪职业，其他事情便很难上心了。</span></p><p><span>学生们内心与学术诀别及其导致的论文水准急剧滑坡的第一原因，是社会大环境存在的高度腐败，它水银泻地般渗透学府。大家（包括同学们的学长和老师）都在十万、百万地捞钱，身处最敏感年龄段的天才少年们岂能不察？千辛万苦考进帝都，岂能再回边城？而帝都的住房已成天价。女友的父母又岂能容忍自己娇养的千金嫁给一个无房汉，在今日世俗的词典中租房汉就是无房汉。于是他们中多数人的唯一选择就是竞争高薪职业，其他事情便很难上心了。</span></p><p><span>我以为，写论文是最最综合的、必不可少的锻炼和考察。就如同学徒木工，最终要打家具。你只拉过锯子、用过刨子，敢说自己会干木工活？</span></p><p><span>如果一篇像样的论文都没写过，能自称文科硕士？光说读过书考过试，能成？</span></p><p><span>编辑这本文集，意在“反熵”，抵抗大环境。“留下一份记录，提供一点参照，树立一支标杆”，是我在论文集第一编前言中自白的初衷。</span></p><p><span>最重要的是态度，基础的保证是时间，除了不足百分之一的天才少年，教师的悉心指教必不可少。</span></p><p><span>问题：1.你的论文实际上共花费了多长时间（包括调查、写作，以及和论文“直接相关”的文献阅读。请扣除开始调查或写作后插入其他活动所占时间，比如准备公务员考试、到求职单位实习等）？回答以月份为单位，比如6个月、14个月等。2.你的论文共写过几稿（不算入选三校文集后的这次修改）？3.你的导师阅读和指导过几稿？</span></p><p><span>由以上统计可以得出下面的认识。论文花费的全部时间除一人外全部超过6个月，平均耗时也超过6个月。这基本上可以说明，写作一篇较好的论文通常用时6个月以上。大家还须记取，我们统计的是“纯耗时”，这期间如果（也往往会）穿插其他活动，比如求职或准备公务员考试，论文历时就绝不止6个月，通常不低于9个月。除两人外，写作都在4稿以上，平均也接近4稿。根据我的经验，一篇好的硕士生论文，一般要经过4—5稿，起码3稿。经3稿能达到优秀的是少数。道理很简单，文章是改出来的，况初学飞翔之菜鸟们。由本次统计看出，导师大多是跟随到底的。监督与辅导是产生优秀论文的基本保证。</span></p><p><span>本统计中耐人寻味的是，有一篇论文耗时仅3个月，只写了1稿。我特别和他通信，获知他从一年前开始接触被调查对象，感觉和思路早就开始聚集。耗时3个月完成一篇优秀论文的我见到过几次。我的学生陈心想在美国学有所成，他在人大时的硕士论文就是纯耗时3个月，过后在《社会学研究》上发表。短时间成功的共同特征是，题目边界清晰，调查事项心中有数，正式调查前对被调查对象已有相当的了解。如果不是这样，3个月做出的论文肯定夹生。陈心想补充我的观点：短时间写出好论文必定是“曾经对这个研究对象和问题很关注，长时间地思考过，这样才会‘对被调查对象已有相当的了解’。调查和写作的时间往往还没有思考的时间长呢。而思考的时间可能在候车室，也可能在静卧时，还可能在与人谈天的时候触发了思考。思考是漫长的，写作是比较快的。所以，如果纯粹算我硕士论文调查和写作的时间，也就3个月。但如果是进入一个全新事物或者课题，3个月是不可能的”。本书中3月完稿的这位学生与其导师写作前有频繁深入的交流，所以才会一稿就是较好的文章。但我仍然以为不足为训，一稿就挑不出毛病的论文是没有的。当年陈心想3个月完成了一篇较好的论文，毕竟写了3稿，我修改了两次。我觉得时间和次数都不能再少了。</span></p><p><span>没有挑战的工作是乏味的，但不曾料到我们今番面对的是这样的挑战。</span></p><p><span>人大59篇论文，才选出1篇，实为地震。三系中只有人大是两年制，应该说不无关系。但两年制非自今年始，今年的问题格外严重，肯定还有其他因素。</span></p><p><span>古人云：敬惜纸字。文字一经印刷便不胫而走，出山门前端赖老师傅严格把关，不敢降格以求。</span></p><p><span>说实在话，这活挺辛苦。倘若水准尚可持续，当勉力为之。假使基础不复存在，又何苦支撑？</span></p><p><span>其特征被同人概括为：讲故事。</span></p><p><span>我们鼓励的论文就是：讲个故事，说个理儿。原因无他：今日之中国盛产“故事”——大量新生事物等待着有志者去观察，诸多微妙事理期待着慧心人来洞悉。讲出事实，说透事理，已经蛮好了。提炼出理论是何等伟大，而粘贴标签则无聊至极。因此我们鼓励同学们做实在的、力所能及的事情。</span></p><p>&nbsp;</p><p><span>数字模型能力，社会问题感知</span></p><p><span>而我们以为硕士论文中优秀的定量成果稀少的原因是，优秀的定量研究者需兼备定量操作能力和对社会问题的良好感觉。两者集于一身，实属不易。很多搞定量的学生，数字模型能力好，社会问题感知弱。</span></p><p><span>而我们以为硕士论文中优秀的定量成果稀少的原因是，优秀的定量研究者需兼备定量操作能力和对社会问题的良好感觉。两者集于一身，实属不易。很多搞定量的学生，数字模型能力好，社会问题感知弱。</span></p><p><span>我常常和同学们说：文科教育三件事——读书、思考、写作。社会学要特别加上一件：社会调查。四大件中，写作和其他三件很不同，就是写作最为综合。它既提升又反映着四大素质。离开了读书、思考、社会调查，怎么可能写好论文呢？所以说，论文是关键，是能力的最大锻炼，是能力的集中体现。</span></p><p><span>对教师而言，忽视了毕业论文的写作，就是忽视了执教的核心手段。</span></p><p><span>写作论文的过程，会迫使你读书，但不是沉溺于读书，而是既懂得了积累的意义，又明白了吸收的紧要；会促进你放开想象的双翼，不然论文是不会有新意的，但同时又必须精密推敲，严谨措辞，不然就是杂文散文，绝非论文。一个真正认真写过论文的同学，无论日后做官还是下海，都和没有认真做过论文的人有极大的不同。那是一种全面的、难于一言蔽之的锻炼，他的思维变得清晰、缜密、深入了。</span></p><p><span>指导论文两大路径，批改姑且不算。其一，阐明路数；其二，提供样板。二者相辅相成，不可偏废。</span></p><p><span>写论文的道数可以说一车话，我很同意，且一直在传播沈老师的那句口头禅：讲个故事，说个理儿。其精妙之处在于将论文的成功放在了两个支点上：将一个复杂的勾当说明白，且讲出个理儿，若只放在前一支点上怕是成了新闻稿，若只放在后一支点上恐同学们理论素养不逮，所以我们不提倡写纯理论的论文。我虽高度认同沈老师的口头禅，但若再往细说，我们似乎也小有一点分歧，就是他说的“理儿”比我说的“理儿”要高一筹。他的“理儿”就是理论的京味称谓。我则觉得，“理儿”还可作“事理”解。对硕士论文，我更愿意提倡，讲个故事，说出事理，即说出这现象、这勾当何以如此，当事人为什么着了道。我不敢奢望硕士生们能从他们讲述的“故事”中抽绎出“理论”。若我们如此提倡，压力之下，他们常常贴金包银，结果理论不是深刻地解释故事，而是生硬地包装故事。今日，此种风格已是颇成气候的一种八股。沈老师说的一点不错。只是我觉得，为将就同学们的水平，更现实可行的要求有可能是说出一番事理，而不是理论。</span>
+<span>附录三 文史哲是学习社会科学的基础</span></p><p>&nbsp;</p><p><span>多媒体是效率工具，不可因噎废食，以崇尚所谓古典为由，因循守旧，是不实事求是的表现。</span></p><p><span>当今教师有两种授课方式，多数人用多媒体，我属于少数派。我崇尚古典演说家，从来不用多媒体，能不用稿子最好。</span></p><p><span>当今教师有两种授课方式，多数人用多媒体，我属于少数派。我崇尚古典演说家，从来不用多媒体，能不用稿子最好。</span></p><p><span>文史哲是学习社会科学的基础。</span></p><p><span>讲这样一个题目，可以从多个方面来入手。我是从这里来破题的</span></p><p><span>王国维</span></p><p><span>想来想去，我觉得王国维在文史哲这三个方面是全才，没有一个短板。金字塔成就了他的高度。底座太大了，底下三个最要紧的支点，伸展开去支撑起来，不得了。</span></p><p><span>比如《人间词话》，还有大家不太知道的《宋元戏曲考》，</span></p><p><span>他之所以有这样的高度，是因为金字塔的效益，底座太宽了</span></p><p><span>虽然多数被我斧正文字的是研究生，但是我想直接的原因还不是本科教育，应该是中学教育。</span></p><p>&nbsp;</p><p><span>因为工业化标准化生产需要标准化的劳动力。 多样化任重道远。</span></p><p><span>就是12年教育当中，你眼睛看的是老师批卷的那支笔，从来不在意什么是真正的好文章。你可能把分数伺候到了，但是你不热爱写作，从来没有认真思考如何真正地把文章写好。</span></p><p><span>就是12年教育当中，你眼睛看的是老师批卷的那支笔，从来不在意什么是真正的好文章。你可能把分数伺候到了，但是你不热爱写作，从来没有认真思考如何真正地把文章写好。</span></p><p><span>而我希望你对文字有追求，希望你热爱美文，你只有热爱美文，对文字有了真正的自己的追求，你才能不在意分数，而在意写作能力的不断长进。</span></p><p><span>我们要提升文字的基础能力，毫无疑问地要从文学中吸收营养。我讲的文学是广义的文学，包括但不限于狭义的文学。</span></p><p><span>在古代被高看的是诗，所谓诗言志，小说不登大雅之堂。诗词、文章、元代兴起的杂曲，以后明清的小说，它们共同汇成文学宝库。宝库里的东西，是今人提升自己文字水准必须吸收的营养。</span></p><p><span>中国社会学界，两位先哲文字最好：潘光旦，费孝通。</span></p><p><span>老先生说：既然喜欢，慢慢地再读吧</span></p><p><span>老先生叫我去读《史记》，不是叫我学史，是叫我学文。</span></p><p><span>按中国古代文论，《史记》毫无疑问是最好的文字。</span></p><p><span>我讲文学就是那些“精致的文字”。你们要热爱精致的文字，从精致的文字当中吸收营养，只有当你们热爱精致的文字时，你们才有强烈的愿望，希望自己也能写出精致的文字。</span></p><p><span>要能把自己的文章写得很好，就一定要热爱广义的文学，热爱精致的文字，自己下决心掌握这门手艺。</span></p><p><span>提高文字功力的方法，有三条。第一，你要对好的文字有兴趣，此一点至关重要。第二，要阅读，要吸取</span></p><p><span>因热爱而阅读就能够吸收和提升</span></p><p><span>文字提升是热爱的副产品。</span></p><p><span>很多东西都是副产品，你要是直接去追求，可能得不到；相反你追求另一种东西，它可能产生副产品，就达到这个目的了。</span></p><p><span>我是怎么锻炼身体的呢？我不是为了健康锻炼身体，是热爱，好玩，去锻炼的。这么好玩我怎么能中断呢？我一直在锻炼，我身体挺好是我喜欢体育的副产品。</span></p><p>&nbsp;</p><p><span>我确实喜欢看故事</span></p><p><span>你要是因为热爱，就可以一直走下去，即使别的事情打扰，你还会挤出时间，还要去玩，去跑步、游泳、打球。同样，你的文字如果最后水平提高了，它应该是你热爱精致文字的副产品。</span></p><p><span>你要是因为热爱，就可以一直走下去，即使别的事情打扰，你还会挤出时间，还要去玩，去跑步、游泳、打球。同样，你的文字如果最后水平提高了，它应该是你热爱精致文字的副产品。</span></p><p><span>第三，文章是改出来的。</span></p><p><span>我们的文章，要靠改出来。文字能力在修改的过程中提升。要是每次都改5遍的话，一年以后，你出手就是你当初二稿的水准。再过一年，你出手就是你当初三稿的水准。你的手眼都提升了。</span></p><p><span>但你如果热爱了手段上怎么办呢？多改文章。这个路越早走越好，越晚越不好办。</span></p><p><span>哲学？简单说就是明白学。</span></p><p><span>何为明白？思想要有条理，有逻辑。哲学的学习能帮你提升这个东西。</span></p><p><span>一个是概念，一个是逻辑，再有一个就是逻辑上的可能性。</span></p><p><span>但是虽然没有定义，这个词是什么概念你要清楚，要明白，不能混淆。不然你在这个地方说这个词是一个意思，换了一个自然段是另一个意思，人家没法读懂，</span></p><p><span>遇到矛盾，找出差别。在概念上自己一定要想清楚。</span></p><p><span>写说理的文章，概念是砖石。</span></p><p><span>但是首先概念要清晰。不能胡子眉毛一把抓。</span></p><p><span>下面我们要说的是逻辑</span></p><p><span>。要提升逻辑能力，是不是首先要读一本《逻辑学》？扯淡。这是中国式教学的误区，所以我要说句糙话，给个棒喝。逻辑学教材，也可以读一本，开卷有益，但真正提升你的逻辑能力的，可不是靠这本书。</span></p><p><span>为什么这么说，它不是知识，是能力。提升它最好的手段就是论辩。</span></p><p><span>在论辩中，你抓别人不合逻辑的地方，睁大眼睛竖起耳朵，听对手哪里不合逻辑；你也经受别人的挑战，别人挑你的毛病，唉哟，我怎么这么论证，糊涂了一点。</span></p><p><span>文章是死的，不经受别人挑战。</span></p><p><span>你光告诉我结论不行，为什么是这样，你要给我几个论据。这个论据我不能同意，你还要再次阐述，几个回合下来，你有没有破绽马上就能看出来。</span></p><p><span>文章是定格的东西，其中流行的定式会掩盖你的逻辑缺陷。跟人家去交换意见，去论辩，就容易发现毛病，这个过程会帮助你提升。这一点，应该是中国古代文明与希腊古代文明的重要差别。</span></p><p><span>不是告诉你一个命题，记住它，以后答卷的时候就这么答，这是唯一答案。我不是要告诉你很多答案，美其名曰知识。我是要提升你的一种能力，你跟我争论吧。</span></p><p>&nbsp;</p><p><span>辩证，读经和辩论</span></p><p><span>这样的风气，在古希腊走到极端，形成了一个诡辩学派。诡辩学派是有它的功能的。苏格拉底保持着诡辩学派的积极一面，同时又克服了诡辩学派这些人的没有理想追求，为辩论而辩论。所以苏格拉底是一个里程碑式的人物。苏格拉底教学法从来是这样的。这个教学法跟我们的读经的方法构成两个极端。我也不是一味地反对读经，我乐观其成，因为当下中国教育搞得这么糟，可以尝试古人的一些教学法，希望看到他们能有什么成果。但是对读经要不断地观察和反省，并且要有另外的参照。看看人家古希腊人为什么开辟了逻辑的大道。</span></p><p><span>这样的风气，在古希腊走到极端，形成了一个诡辩学派。诡辩学派是有它的功能的。苏格拉底保持着诡辩学派的积极一面，同时又克服了诡辩学派这些人的没有理想追求，为辩论而辩论。所以苏格拉底是一个里程碑式的人物。苏格拉底教学法从来是这样的。这个教学法跟我们的读经的方法构成两个极端。我也不是一味地反对读经，我乐观其成，因为当下中国教育搞得这么糟，可以尝试古人的一些教学法，希望看到他们能有什么成果。但是对读经要不断地观察和反省，并且要有另外的参照。看看人家古希腊人为什么开辟了逻辑的大道。</span></p><p><span>你有空还可以读读穆勒的《自由论》。一个真理，不是把它背下来了，你就掌握了。你需要不断和人交锋、论辩，以加深对某个思想的理解。不仅逻辑，文字也是这样。我们不是要增加知识，是要提升能力，提升逻辑和文字的能力。</span></p><p><span>我说了概念，说了逻辑，下面说发现逻辑上的可能性。</span></p><p><span>有好多事情，逻辑上不是只有一种可能性。就像下棋一样，他走了这步棋，下面你的选择有好几种可能性。很多事情不仅是一步步往前推，你首先应该能发现逻辑上有多少种可能性。有的逻辑上的可能性在现实中不存在。但是你首先要发现从逻辑上到底有多少可能性。你要有个交代，要充分看到逻辑上的可能性。这就要考验你的认识和分析能力了。只有当你看到了逻辑上的多种可能性，你的选择是在一个比较广泛的基础上的时候，而不是认为只有这一个，你才能找到好的答案。这是一个挑战。在你展开你丰富想象的时候，与此同时，仍然能严格地合乎逻辑，这时候你就获得了一种逻辑的力量。</span></p><p><span>我看到很多研究文学的人，谈论政治问题、社会问题，不靠谱。就连风格，我们看起来都觉得很不舒服。为什么这样呢？他们太滥情了，太不会说理了，思考问题太不合逻辑了。他们的概念都模棱两可，不清晰。他没有受过哲学的洗礼。</span></p><p><span>什么是文学，文学是在遣词造句上下了最大功夫的一门手艺。</span></p><p><span>通过学习文学，久而久之，你在遣词造句上变得游刃有余，取舍从容。而如果与此同时你又受到哲学的洗礼，你的思想是清澈的、合乎逻辑的。有了这两个支点，就和仅仅受到文学的洗礼很不一样了。</span></p><p><span>我们还要谈第三点，历史。其实各个学科中，和社会学最相似的是历史学。可以这么说，历史学就是研究过去事情的社会学，社会学就是研究今天事情的历史学。</span></p><p><span>既然是非常之相似，就应该在更大程度上相互借鉴。</span></p><p><span>西方现当代史学家，非常注意从社会学吸收理论和方法论的营养。历史研究的很多方法，也被社会学家借鉴。所以现在你几乎看不到哪个理论和方法，只被一个学科垄断。</span></p><p>&nbsp;</p><p><span>因为历史也是叙事，所以历史书的文字也得是优美的。</span></p><p><span>但是我想说的是，历史学的方法或曰表达方式中，最主要的形式还是叙事。社会学可以有不同风格的作品，没有数字，文章就不精确，而没有文字，文章就不深刻。但我还是认为，叙事法也是社会学的首要的表述方式。叙事法是一种古老的表达方式，历史学使用得最久，著述最多。因此我们要向历史学作品学习。</span></p><p><span>但是我想说的是，历史学的方法或曰表达方式中，最主要的形式还是叙事。社会学可以有不同风格的作品，没有数字，文章就不精确，而没有文字，文章就不深刻。但我还是认为，叙事法也是社会学的首要的表述方式。叙事法是一种古老的表达方式，历史学使用得最久，著述最多。因此我们要向历史学作品学习。</span></p><p><span>我们其实都是在努力讲出一个真实的故事，这是我们跟虚构的差别，但实际上我们最终也是在营造一个故事，都要寻找和筛选材料，没有料，你还说什么呢？</span></p><p><span>老六判断好文章的口头禅是：有料，有种，有趣。</span></p><p><span>有料，是历史学和社会学有别于哲学的特质。</span></p><p><span>社会学中也有走抽象的路子、做纯理论的人。一方面这不可能是社会学的主流。另一方面，在同学们这个阶段，要走“经验研究”的路子。我从来不说“实证研究”，它是自然科学的路子，我们高攀不上。</span></p><p><span>成功的社会学作品依赖两个支点：理论发现和事实发现。</span></p><p><span>后者比较容易达到。前者对职业学者都是难乎其难，遑论同学们所处的这个阶段</span></p><p><span>有种，就是有性格，具备一些有冲击力的、反主流的思想。有趣，你写东西没趣的话，谁来看？</span></p><p><span>他们为什么写出这么多这么无趣的东西？他们在写作品的时候，自己一点乐趣都没有</span></p><p><span>学历史学，还有一个非常要紧的收益，就是获得历史感</span></p><p><span>但是博弈场中很多伎俩，还有人类社会中的制度，其实就这么多方式和内容。</span></p><p><span>阳光底下既然少有新鲜事，那么今天你要分析一个事件，你要有开阔的视角，还要追踪脉络，看它的前身后世，除了之前的类似事件，还要看前人对当时的事件的分析评判。这样，你在展开分析的时候，就不单薄，有后盾，有多个参照。你是两个眼睛看东西，一下能把这杯子抓住。一个眼睛看事物的话，可能一伸手没抓到，因为没有纵深感、位置感。</span></p><p><span>哪怕你做一个小题目，你要看这个小题目的时间、现象、背景、人物，以及在社会环境中的位置。</span></p><p><span>你的文章可以不过多地讲述背景，但是写这个文章时你脑子里一定要有背景。因为只有你脑子里有了“景深”，你对事件、对人物才会有较好的把握。明白了背景，你的分寸才可能对头。你才不是孤立地看待这个事件、这个人、这场博弈，你知道来龙去脉。</span></p><p><span>专业干历史容易见木不见林。吃专业饭，东西要做得精一点。</span></p><p><span>历史学是很难学的东西，很多题目前人做过了，我要再写，那当然要写得更精细了。这样转来转去，最后变得见木不见林，没有历史感。不过走到这一步也不容易，你要真见木不见林的话，你历史学学得够深的了。眼下你做一个业余爱好者，学不了那么深，所以你不大容易犯人家的职业病。今天的很多社会现象、社会制度、社会文化等等，你主要是关心这个。</span></p><p><span>历史感是一个非常要害的素养，有了历史感，你看这事情就有纵深了，就不单薄，不孤立了。</span></p><p><span>有认识很多事物、制度的演变的愿望</span></p><p><span>要跟大家谈一个和大家密切相关的事情，成才之路。</span></p><p><span>生物学</span></p><p><span>我个人的习惯，一门课我讲三四轮就不讲了，因为在讲三四轮的时候教学相长，我就会写出一本书来。以后这门课就画句号，就不上了。</span></p><p><span>我认为不接触就拒斥，是不可思议的。</span></p><p><span>怎么不从动物的这个视角去理解一下自身呢？</span></p><p><span>还有心理学</span></p><p><span>生物学，心理学，下面是政治学。中国没有独立于政治的经济生活和社会生活。再下面是经济学，不幸，经济学才排在第四，你不要那么高看经济学，经济学不是那么要紧的学科。</span></p><p><span>再下面说科学史。</span></p><p><span>整个科学史对你们来说，就像历史学一样，增加一种整体感。</span></p><p><span>要打下一定的文史哲基础。这样的话，你就有一些看家本领：你能写出很精致的文字，看问题更透彻，你的概念是经过缜密思考的，看到了多种逻辑可能性，你还有历史感，不孤立地看事情。这些能力是安身立命的东西。</span></p><p><span>因为你现在有宽阔的选择，而日后你的选择将越来越窄。</span></p><p><span>关于人类的定义有很多很多了，有人说人是使用工具的动物，后来改成人是会发明工具的动物，人是使用语言的动物。还有一个定义很精彩：人是具有可能性的动物。</span></p><p><span>我们在十几岁的时候可能性是很大很大的，而且你要知道，你越是一个天才少年，可能性越大。我有时候恭维一个年轻人会说这样的话，你身上有巨大可能。当然这巨大的可能性有时也挺危险的。但是我告诉你们，你们的可能性，与时俱退。再过五年、十年，你们还有现在这么大的可能性吗？所以我鼓励，现在读书的范围要宽一些。</span></p><p>&nbsp;</p><p><span>不要给自己设限，绝大多数人都没到要拼天赋的水平</span></p><p><span>你如果小时候就大量地喝的话就没问题了，如果你较大年岁才开始这么喝就不成了。大了，再怎么锻炼，也锻炼不出来了。</span></p><p><span>你如果小时候就大量地喝的话就没问题了，如果你较大年岁才开始这么喝就不成了。大了，再怎么锻炼，也锻炼不出来了。</span></p><p><span>文化学习上是一样的，你从来没有涉猎过哲学著作，你从来没有涉猎过生物学著作，到了30岁以后才尝试阅读这些东西，味同嚼蜡，事倍功半。而相反，如果说现在你涉猎过，开发出一点兴趣，未必要读太多本，你到35岁以后可以续上。</span></p><p><span>中学的时候是命题作文，解题是人家甩给你的习题。现在的这个学习方式，跟中学学习方式完全不同，你早点认识到这个转变，早点转换学习方式。你要是还按中学的路径走，那你智商再高，也没有前途，只能越学越傻。</span></p><p><span>因为现在我们开始学的就不再是写命题作文了，我们的绝大多数作业，我们的毕业论文，通通都是自己选题。</span></p><p><span>我们要学会选题，选题是一种智慧，做某个题目是一个智慧，选题是更大的一种智慧。</span></p><p><span>要忠实于自己的天赋，自己既然是个新鲜的人，什么东西对你有刺激，赶紧想这个事儿，抓住它分析</span></p><p><span>你有一点优势，就是眼光非常新鲜、敏感。</span></p><p><span>我相对迟钝了，我见怪不怪了，你见怪就怪。</span></p><p><span>这就很好，你必须抓住它，这是你的本钱。不要用成年学者的见解，代替自己的感受。</span></p><p><span>第二点跟大家说的，要非常重视思考、分析、解释自己熟悉的生活和世界。</span></p><p><span>每个人走到今天的轨迹都不一样，要非常珍惜自己曾经走过的轨迹。</span></p><p><span>要非常重视拿我们学到的方法和理论，来观察你们所熟悉的东西。这样便利，这样用不着去跟着老师加入一个课题组。你有你熟悉的东西，分析它，第一便利，第二深入，还没有开始调查呢，就已经知道这桩事情的一半了。</span></p><p><span>放假回老家，如果再补充点调查，就齐全了，事半功倍，能理解得深入。</span></p><p><span>我适合学社会学吗，我适合做学者吗，日后是读研还是去做实际工作，要不断审视自己有没有做研究的眼光，有没有分析力。拿什么去审视？对自己最熟悉的东西的分析和研究。</span></p><p><span>你对自己的教育经历形不成一点看法，做不出一定的分析，这是说不过去的。</span></p><p><span>很多老师巴不得让学生很快就成小大人，一味注意追踪学者们做什么题目，然后跟他们靠拢。靠来靠去，完全没有了自我。</span></p><p><span>一切历史都是现代史，每一代人有每一代人的题目。不做小大人，珍惜一个少年的敏感。</span>
+<span>微信读书</span></p></div></div>
+</body>
+</html>
