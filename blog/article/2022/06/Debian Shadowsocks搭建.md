@@ -3,11 +3,21 @@
 https://github.com/newhuan/shadowsocks-libev
 
 ```bash
+# 先在ECS的安全组中，把需要监听的TCP端口号（如:7676）添加白名单，然后再操作
 sudo apt update
 sudo apt install shadowsocks-libev
 
 # Edit the configuration file
 sudo vim /etc/shadowsocks-libev/config.json
+{
+    "server":["::1", "0.0.0.0"],# 注意，这里初始化是127.0.0.1,要改成0.0.0.0，表示监听外网
+    "mode":"tcp_and_udp",
+    "server_port":7676,
+    "local_port":1080,
+    "password":"tiger6666",
+    "timeout":86400,
+    "method":"chacha20-ietf-poly1305"
+}
 
 # Edit the default configuration for debian
 sudo vim /etc/default/shadowsocks-libev
