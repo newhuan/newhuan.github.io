@@ -1,0 +1,34 @@
+ 
+Debian上完整卸载nginx并重装
+
+卸载
+
+sudo apt-get remove nginx # 可删除除/etc/nginx 配置文件外的所有文件
+
+sudo apt-get purge nginx or rm -rf /etc/nginx #删除nginx配置文件
+
+sudo apt-get autoremove #自动删除安装nginx时安装的依赖包
+
+重装
+
+apt-get -o DPkg::options::=--force-confmiss --reinstall install nginx
+主要解决了配置文件缺失，无法启动nginx问题
+-------------------------------------
+1. 重启nginx的两个语句：
+
+sudo service nginx restart
+
+sudo nginx -s reload
+
+2. 启动Nginx
+sudo nginx
+
+3. 检查nginx语法是否有误
+sudo nginx -t
+
+5. 查看端口情况
+netstat -tpln
+
+6. kill所有占用某端口号的进程(释放端口号)
+sudo fuser -k 80/tcp
+sudo fuser -k 443/tcp

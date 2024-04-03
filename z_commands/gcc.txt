@@ -1,0 +1,2 @@
+还有就是因为csapp.c中有关于线程的头文件，在用gcc的时候最后要加上-lpthread 如:
+# gcc -o Ex  Ex.c -lpthread

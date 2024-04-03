@@ -1,0 +1,13 @@
+<链接> 是指向 /etc/alternatives/<名称> 的符号链接。
+    (如 /usr/bin/pager)
+<名称> 是该链接替换组的主控名。
+    (如 pager)
+<路径> 是候选项目标文件的位置。
+    (如 /usr/bin/less)
+<优先级> 是一个整数，在自动模式下，这个数字越高的选项，其优先级也就越高。
+
+update-alternatives --list java
+先install
+--install <链接> <名称> <路径> <优先级>
+然后config替换 
+--config <名称> 
